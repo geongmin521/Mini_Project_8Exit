@@ -1,4 +1,5 @@
 #include "Camera.h"
+#include "globalheader.h"
 
 Camera* Camera::Instance = nullptr;
 
@@ -34,8 +35,13 @@ void Camera::Update()
             _LookPos = _TargetObject->GetLocation();
         }
     }
+    CalDiff();
 }
 
 void Camera::CalDiff()
 {
+    Vector3 screenSize = Vector3(global::GetWinApp().GetWidth(), global::GetWinApp().GetHeight(), 0);
+    Vector3 center = screenSize / 2.0f;
+
+    _Diff = _LookPos - center;
 }

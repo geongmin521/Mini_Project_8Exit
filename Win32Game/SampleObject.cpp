@@ -38,9 +38,11 @@ void SampleObject::Update()
 
 void SampleObject::Render()
 {
+	Vector3 renderPosition = Camera::GetInstance()->GetRenderPos(GameObject::GetLocation());
+
 	BitBlt(RenderSystem::GetInstance()->_backDC,
-		(int)GameObject::GetLocation()._x, 
-		(int)GameObject::GetLocation()._y,
+		(int)renderPosition._x,
+		(int)renderPosition._y,
 		(int)_MyTex->Width(), (int)_MyTex->Height(), _MyTex->GetDC(), 0, 0, SRCCOPY);
 	ComponentRender();
 }

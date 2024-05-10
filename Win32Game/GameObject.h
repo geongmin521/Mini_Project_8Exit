@@ -3,6 +3,7 @@
 #include "TimeSystem.h"
 #include "InputSystem.h"
 #include "globalheader.h"
+#include "Camera.h"
 
 class Collider;
 

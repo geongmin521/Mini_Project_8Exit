@@ -24,9 +24,10 @@ void SampleScene::Start()
 
 	CollisionManager::GetInstance()->CheckGroup(LAYER_GROUP::DEFAULT, LAYER_GROUP::MONSTER);
 
-	Vector3 cameraSize(global::GetWinApp().GetWidth(), global::GetWinApp().GetHeight(), 0);
+	Vector3 cameraPosition= Vector3(global::GetWinApp().GetWidth() / 2, global::GetWinApp().GetHeight() / 2, 0);
 	//TODO: 카메라의 랜더링 사이즈를 윈도우 창의 크기와 똑같이 만들어야 합니다.
-	//분기 테스트를 위한 주석
+	Camera::GetInstance()->SetLookPos(cameraPosition);
+	Camera::GetInstance()->SetTarget(sample);
 }
 
 void SampleScene::End()
