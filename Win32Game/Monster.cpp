@@ -28,7 +28,8 @@ void Monster::Render()
 		(int)renderPosition._x,
 		(int)renderPosition._y,
 		(int)_MyTex->Width(), (int)_MyTex->Height(), _MyTex->GetDC(), 0, 0, SRCCOPY);
-	ComponentRender();
+	// BoxCollider도 캐릭터 이미지와 같이 움직이게 하려면 Update 에서 renderPosition 을 갱신해줘야 합니다.
+	//ComponentRender();
 }
 
 void Monster::OnCollisionEnter(Collider* collider)

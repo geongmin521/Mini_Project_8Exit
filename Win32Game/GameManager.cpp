@@ -7,6 +7,7 @@
 #include "ResourceManager.h"
 #include "CollisionManager.h"
 #include "EventManager.h"
+#include "Camera.h"
 
 namespace game
 {
@@ -34,6 +35,8 @@ namespace game
 		SceneManager::GetInstance()->Update();
 		CollisionManager::GetInstance()->Update();
 		InputSystem::GetInstance()->ResetInput();
+		Camera::GetInstance()->Update();
+
 	}
 
 	void GameManager::FixeUpdate()

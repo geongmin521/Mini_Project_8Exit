@@ -44,5 +44,5 @@ void SampleObject::Render()
 		(int)renderPosition._x,
 		(int)renderPosition._y,
 		(int)_MyTex->Width(), (int)_MyTex->Height(), _MyTex->GetDC(), 0, 0, SRCCOPY);
-	ComponentRender();
+	//ComponentRender();
 }
