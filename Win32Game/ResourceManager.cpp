@@ -35,8 +35,10 @@ Texture* ResourceManager::GetTexture(const std::wstring& key, const std::wstring
         return _Textures[key];
     }
 
-    std::wstring filepath = PathManager::GetInstance()->GetContentPath();
-    filepath += path;
+    //std::wstring filepath = PathManager::GetInstance()->GetContentPath();
+    //filepath += path;
+    
+    std::wstring filepath = L"Resources\\" + path;
     
     Texture* newTexture = new Texture;
     newTexture->Load(filepath);

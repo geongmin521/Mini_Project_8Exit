@@ -7,7 +7,7 @@
 
 SampleObject::SampleObject() : _MyTex(nullptr)
 {
-	_MyTex = ResourceManager::GetInstance()->GetTexture(L"Charactor", L"CharactorTest.bmp");
+	_MyTex = ResourceManager::GetInstance()->GetTexture(L"Charactor", L"Image\\CharactorTest.bmp");
 	GameObject::CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
