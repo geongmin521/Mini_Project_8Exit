@@ -2,6 +2,8 @@
 #include "globalheader.h"
 #include "Collider.h"
 
+#define collisionManager CollisionManager::GetInstance()
+
 union COLLIDER_ID {
 	struct {
 		UINT L_ID;

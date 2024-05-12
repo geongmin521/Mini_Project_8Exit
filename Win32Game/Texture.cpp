@@ -14,7 +14,7 @@ Texture::~Texture()
 void Texture::Load(const std::wstring& filepath)
 {
 	//TODO: 여기에 이미지를 로드해 갖고오는 코드를 만들어야 합니다.
-	_DC = CreateCompatibleDC(RenderSystem::GetInstance()->_hdc);
+	_DC = CreateCompatibleDC(renderSystem->_hdc);
 	_Bitmap = (HBITMAP)LoadImage(nullptr, filepath.c_str(), IMAGE_BITMAP, 0, 0, LR_CREATEDIBSECTION | LR_LOADFROMFILE);
 	GetObject(_Bitmap, sizeof(BITMAP), &_BitInfo);
 

@@ -28,21 +28,21 @@ void Collider::FinalUpdate()
 
 void Collider::Render()
 {
-	HPEN greenpen = RenderSystem::GetInstance()->GetPen(PEN_TYPE::GREEN);
-	HPEN oldpen = (HPEN)SelectObject(RenderSystem::GetInstance()->_backDC, greenpen);
+	HPEN greenpen = renderSystem->GetPen(PEN_TYPE::GREEN);
+	HPEN oldpen = (HPEN)SelectObject(renderSystem->_backDC, greenpen);
 
-	HBRUSH hollowbrush = RenderSystem::GetInstance()->GetBrush(BRUSH_TYPE::HOLLOW);
-	HBRUSH oldbrush = (HBRUSH)SelectObject(RenderSystem::GetInstance()->_backDC, hollowbrush);
+	HBRUSH hollowbrush = renderSystem->GetBrush(BRUSH_TYPE::HOLLOW);
+	HBRUSH oldbrush = (HBRUSH)SelectObject(renderSystem->_backDC, hollowbrush);
 
-	Rectangle(RenderSystem::GetInstance()->_backDC,
+	Rectangle(renderSystem->_backDC,
 		(int)(_ColliderPos._x - _Scale._x / 2.f),
 		(int)(_ColliderPos._y - _Scale._y / 2.f),
 		(int)(_ColliderPos._x + _Scale._x / 2.f),
 		(int)(_ColliderPos._y + _Scale._y / 2.f)
 		);
 
-	SelectObject(RenderSystem::GetInstance()->_backDC, oldpen);
-	SelectObject(RenderSystem::GetInstance()->_backDC, oldbrush);
+	SelectObject(renderSystem->_backDC, oldpen);
+	SelectObject(renderSystem->_backDC, oldbrush);
 	
 }
 

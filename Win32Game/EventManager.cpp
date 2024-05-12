@@ -47,7 +47,7 @@ void EventManager::Excute(const Event& e)
 	{
 		GameObject* newObj = (GameObject*)e.lParam;
 		LAYER_GROUP group = (LAYER_GROUP)e.wParam;
-		SceneManager::GetInstance()->GetCurScene()->AddObject(newObj, group);
+		sceneManager->GetCurScene()->AddObject(newObj, group);
 	}
 		break;
 	case EVENT_TYPE::DELETE_OBJECT:

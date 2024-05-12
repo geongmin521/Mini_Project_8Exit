@@ -21,21 +21,21 @@ namespace game
 	}
 	void GameManager::Initialize()
 	{		
-		TimeManager::GetInstance()->InitTime();
-		RenderSystem::GetInstance()->InitRender();
-		PathManager::GetInstance()->InitPath();
-		SceneManager::GetInstance()->InitScene();
-		CollisionManager::GetInstance()->Init();
+		timeManager->InitTime();
+		renderSystem->InitRender();
+		pathManager->InitPath();
+		sceneManager->InitScene();
+		collisionManager->Init();
 	}
 
 	void GameManager::Update()
 	{
-		InputSystem::GetInstance()->UpdateMouse();
-		InputSystem::GetInstance()->UpdateKey();
-		SceneManager::GetInstance()->Update();
-		CollisionManager::GetInstance()->Update();
-		InputSystem::GetInstance()->ResetInput();
-		Camera::GetInstance()->Update();
+		inputSystem->UpdateMouse();
+		inputSystem->UpdateKey();
+		sceneManager->Update();
+		collisionManager->Update();
+		inputSystem->ResetInput();
+		camera->Update();
 
 	}
 
@@ -46,9 +46,9 @@ namespace game
 
 	void GameManager::Render()
 	{
-		RenderSystem::GetInstance()->StartDraw();
-		SceneManager::GetInstance()->Render();
-		RenderSystem::GetInstance()->EndDraw();
+		renderSystem->StartDraw();
+		sceneManager->Render();
+		renderSystem->EndDraw();
 	}
 	void GameManager::Finalize()
 	{
@@ -72,7 +72,7 @@ namespace game
 			}
 			else
 			{
-				TimeManager::GetInstance()->UpdateTime();
+				timeManager->UpdateTime();
 
 				FixeUpdate();
 
@@ -80,7 +80,7 @@ namespace game
 
 				Render();
 
-				EventManager::GetInstance()->Update();
+				eventManager->Update();
 			}
 		}
 	}

@@ -2,6 +2,8 @@
 #include "globalheader.h"
 #include "Scene.h"
 
+#define sceneManager SceneManager::GetInstance()
+
 class Scene;
 
 class SceneManager

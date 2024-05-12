@@ -1,6 +1,8 @@
 #pragma once
 #include "Win32GameProject.h"
 
+#define inputSystem InputSystem::GetInstance()
+
 class InputSystem
 {
 public:

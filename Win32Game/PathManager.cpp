@@ -35,5 +35,5 @@ void PathManager::InitPath()
 		}
 	}
 	wcscat_s(_ContentPath, 255, L"\\main\\data\\image\\");
-	SetWindowText(global::GetWinApp().GetWindow(), _ContentPath);
+	SetWindowText(WindowHandle, _ContentPath);
 }

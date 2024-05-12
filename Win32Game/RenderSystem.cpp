@@ -51,13 +51,13 @@ void RenderSystem::CreateBrushPen()
 }
 
 void RenderSystem::InitRender() {
-	_hInstance = global::GetWinApp().GetInstance();
-	_hWnd = global::GetWinApp().GetWindow();
+	_hInstance = WindowInstance;
+	_hWnd = WindowHandle;
 	_hdc = GetDC(_hWnd);
 	_backDC = CreateCompatibleDC(_hdc);
 
 	GetClientRect(_hWnd, &_rect);
-	_MainBitmap = CreateCompatibleBitmap(_hdc, global::GetWinApp().GetWidth(), global::GetWinApp().GetHeight());
+	_MainBitmap = CreateCompatibleBitmap(_hdc, WindowWidth, WindowHeight);
 	_OldBitmap = (HBITMAP)SelectObject(_backDC, _MainBitmap);
 	
 	DeleteObject(_OldBitmap);
@@ -66,9 +66,9 @@ void RenderSystem::InitRender() {
 }
 
 void RenderSystem::StartDraw() {
-	PatBlt(_backDC, 0, 0, global::GetWinApp().GetWidth(), global::GetWinApp().GetHeight(), WHITENESS);
+	PatBlt(_backDC, 0, 0, WindowWidth, WindowHeight, WHITENESS);
 }
 
 void RenderSystem::EndDraw() {
-	BitBlt(_hdc, 0, 0, global::GetWinApp().GetWidth(), global::GetWinApp().GetHeight(), _backDC, 0, 0, SRCCOPY);
+	BitBlt(_hdc, 0, 0, WindowWidth, WindowHeight, _backDC, 0, 0, SRCCOPY);
 }

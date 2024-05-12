@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 
+#define camera Camera::GetInstance()
+
 class Camera
 {
 public:

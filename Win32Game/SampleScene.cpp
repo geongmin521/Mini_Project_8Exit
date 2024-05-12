@@ -22,16 +22,16 @@ void SampleScene::Start()
 	monster->SetLocation(Vector3(500, 500, 0));
 	AddObject(monster, LAYER_GROUP::MONSTER);
 
-	CollisionManager::GetInstance()->CheckGroup(LAYER_GROUP::DEFAULT, LAYER_GROUP::MONSTER);
+	collisionManager->CheckGroup(LAYER_GROUP::DEFAULT, LAYER_GROUP::MONSTER);
 
-	Vector3 cameraPosition= Vector3(global::GetWinApp().GetWidth() / 2, global::GetWinApp().GetHeight() / 2, 0);
+	Vector3 cameraPosition= Vector3((float)(WindowWidth / 2), (float)(WindowHeight / 2), 0);
 	//TODO: 카메라의 랜더링 사이즈를 윈도우 창의 크기와 똑같이 만들어야 합니다.
-	Camera::GetInstance()->SetLookPos(cameraPosition);
-	Camera::GetInstance()->SetTarget(sample);
+	camera->SetLookPos(cameraPosition);
+	camera->SetTarget(sample);
 }
 
 void SampleScene::End()
 {
-	CollisionManager::GetInstance()->Reset();
+	collisionManager->Reset();
 	Scene::SceneEnd();
 }

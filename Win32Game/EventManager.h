@@ -1,6 +1,8 @@
 #pragma once
 #include "globalheader.h"
 
+#define eventManager EventManager::GetInstance()
+
 struct Event {
 	EVENT_TYPE Event;
 	DWORD_PTR lParam;

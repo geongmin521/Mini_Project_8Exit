@@ -8,7 +8,7 @@ void CreateObject(GameObject* obj, LAYER_GROUP group)
 	tEvent.lParam = (DWORD_PTR)obj;
 	tEvent.wParam = (DWORD_PTR)group;
 
-	EventManager::GetInstance()->AddEvent(tEvent);
+	eventManager->AddEvent(tEvent);
 }
 
 void DeleteObject(GameObject* obj)
@@ -17,5 +17,5 @@ void DeleteObject(GameObject* obj)
 	tEvent.Event = EVENT_TYPE::DELETE_OBJECT;
 	tEvent.lParam = (DWORD_PTR)obj;
 
-	EventManager::GetInstance()->AddEvent(tEvent);
+	eventManager->AddEvent(tEvent);
 }

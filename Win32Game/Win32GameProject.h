@@ -1,6 +1,12 @@
 #pragma once
 #include "globalheader.h"
 
+#define Window global::GetWinApp()
+#define WindowWidth Window.GetWidth()
+#define WindowHeight Window.GetHeight()
+#define WindowHandle Window.GetWindow()
+#define WindowInstance Window.GetInstance()
+
 class WinApp
 {
 public:

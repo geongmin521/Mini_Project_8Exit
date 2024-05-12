@@ -40,7 +40,7 @@ void Camera::Update()
 
 void Camera::CalDiff()
 {
-    Vector3 screenSize = Vector3(global::GetWinApp().GetWidth(), global::GetWinApp().GetHeight(), 0);
+    Vector3 screenSize = Vector3((float)WindowWidth, (float)WindowHeight, 0);
     Vector3 center = screenSize / 2.0f;
 
     _Diff = _LookPos - center;

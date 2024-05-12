@@ -3,6 +3,7 @@
 #include "globalheader.h"
 #define IGNORE_RenderSYSTEM
 
+#define renderSystem RenderSystem::GetInstance()
 
 class RenderSystem
 {

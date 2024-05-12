@@ -3,6 +3,8 @@
 #include "Texture.h"
 #include "globalheader.h"
 
+#define resourceManager ResourceManager::GetInstance()
+
 class ResourceManager
 {
 public:

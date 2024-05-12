@@ -2,6 +2,8 @@
 #include "Win32GameProject.h"
 #include "globalheader.h"
 
+#define pathManager PathManager::GetInstance()
+
 class PathManager
 {
 public:

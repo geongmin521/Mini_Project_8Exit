@@ -7,7 +7,7 @@
 
 SampleObject::SampleObject() : _MyTex(nullptr)
 {
-	_MyTex = ResourceManager::GetInstance()->GetTexture(L"Charactor", L"Image\\CharactorTest.bmp");
+	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\CharactorTest.bmp");
 	GameObject::CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
@@ -20,16 +20,16 @@ SampleObject::~SampleObject()
 void SampleObject::Update()
 {
 	Vector3 dir(0, 0, 0);
-	if (InputSystem::GetInstance()->isKey(VK_UP)) {
+	if (inputSystem->isKey(VK_UP)) {
 		dir += Vector3(0, -1, 0);
 	}
-	if (InputSystem::GetInstance()->isKey(VK_DOWN)) {
+	if (inputSystem->isKey(VK_DOWN)) {
 		dir += Vector3(0, 1, 0);
 	}
-	if (InputSystem::GetInstance()->isKey(VK_LEFT)) {
+	if (inputSystem->isKey(VK_LEFT)) {
 		dir += Vector3(-1, 0, 0);
 	}
-	if (InputSystem::GetInstance()->isKey(VK_RIGHT)) {
+	if (inputSystem->isKey(VK_RIGHT)) {
 		dir += Vector3(1, 0, 0);
 	}
 	
@@ -38,9 +38,9 @@ void SampleObject::Update()
 
 void SampleObject::Render()
 {
-	Vector3 renderPosition = Camera::GetInstance()->GetRenderPos(GameObject::GetLocation());
+	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
 
-	BitBlt(RenderSystem::GetInstance()->_backDC,
+	BitBlt(renderSystem->_backDC,
 		(int)renderPosition._x,
 		(int)renderPosition._y,
 		(int)_MyTex->Width(), (int)_MyTex->Height(), _MyTex->GetDC(), 0, 0, SRCCOPY);

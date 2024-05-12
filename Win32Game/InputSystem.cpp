@@ -35,8 +35,8 @@ void InputSystem::DestroyInstance()
 
 void InputSystem::InitMouse()
 {
-	_curMouse._x = global::GetWinApp().GetWidth() / 2;
-	_curMouse._y = global::GetWinApp().GetHeight() / 2;
+	_curMouse._x = WindowWidth / 2;
+	_curMouse._y = WindowHeight / 2;
 	_curMouse._left = false;
 	_curMouse._right = false;
 	_curMouse._middle = false;
@@ -75,7 +75,7 @@ void InputSystem::UpdateMouse()
 
 	POINT pos;
 	GetCursorPos(&pos);
-	ScreenToClient(global::GetWinApp().GetWindow(), &pos);
+	ScreenToClient(WindowHandle, &pos);
 
 	_curMouse._x = pos.x;
 	_curMouse._y = pos.y;
