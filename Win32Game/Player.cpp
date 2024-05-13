@@ -7,7 +7,7 @@
 
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(200), _Speed(40)
 {
-	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\alpha100.png");
+	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\PlayerDump.png");
 	GameObject::CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
