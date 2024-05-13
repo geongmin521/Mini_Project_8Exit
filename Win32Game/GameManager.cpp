@@ -8,6 +8,7 @@
 #include "CollisionManager.h"
 #include "EventManager.h"
 #include "Camera.h"
+#include "Music.h"
 
 namespace game
 {
@@ -26,6 +27,8 @@ namespace game
 		pathManager->InitPath();
 		sceneManager->InitScene();
 		collisionManager->Init();
+		Music::soundManager->GetInstance();
+		Music::soundManager->LoadMusic(Music::eSoundList::StartBGM, true, "Sound\\BackgroudMusic.mp3");//¹è°æÀ½¾Ç
 	}
 
 	void GameManager::Update()
@@ -59,7 +62,7 @@ namespace game
 	void GameManager::Run()
 	{
 		MSG msg;
-
+		Music::soundManager->PlayMusic(Music::eSoundList::StartBGM, Music::eSoundChannel::BGM);//À½¾Ç Àç»ý
 		while (true)
 		{
 			if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))

@@ -19,15 +19,16 @@ namespace Music
         mInstance = nullptr;
     }
 
-    void SoundManager::LoadMusic(eSoundList soundlist, bool loopcheck, const char* music)
+    void SoundManager::LoadMusic(eSoundList soundlist, bool loopcheck, const std::string& path)
     {
         System_Create(&mSystem);
         mSystem->init(2, FMOD_INIT_NORMAL, 0);
-
+        std::string filepath = "data\\" + path;
+ 
         if (loopcheck)
-            mSystem->createSound(music, FMOD_LOOP_NORMAL, 0, &mSoundList[static_cast<int>(soundlist)]);
+            mSystem->createSound(filepath.c_str(), FMOD_LOOP_NORMAL, 0, &mSoundList[static_cast<int>(soundlist)]);
         else
-            mSystem->createSound(music, FMOD_LOOP_OFF, 0, &mSoundList[static_cast<int>(soundlist)]);
+            mSystem->createSound(filepath.c_str(), FMOD_LOOP_OFF, 0, &mSoundList[static_cast<int>(soundlist)]);
     }
 
     void SoundManager::PlayMusic(eSoundList soundlist, eSoundChannel channel)
