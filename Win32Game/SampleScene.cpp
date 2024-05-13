@@ -4,8 +4,7 @@
 #include"CollisionManager.h"
 #include "Camera.h"
 #include "BackGround.h"
-#include "Trap1.h"
-
+#include "Player.h"
 SampleScene::SampleScene()
 {
 }
@@ -19,6 +18,10 @@ void SampleScene::Start()
 	GameObject* sample = new SampleObject;
 	sample->SetLocation(Vector3(0, 0, 0));
 	AddObject(sample, LAYER_GROUP::PLAYER);
+
+	GameObject* player = new Player;
+	player->SetLocation(Vector3(0, 0, 0));
+	AddObject(player, LAYER_GROUP::PLAYER);
 
 	GameObject* monster = new Monster;
 	monster->SetLocation(Vector3(500, 500, 0));
@@ -35,7 +38,7 @@ void SampleScene::Start()
 	//Vector3 cameraPosition= Vector3((float)(WindowWidth / 2), (float)(WindowHeight / 2), 0);
 	//TODO: 카메라의 랜더링 사이즈를 윈도우 창의 크기와 똑같이 만들어야 합니다.
 	//camera->SetLookPos(cameraPosition);
-	camera->SetTarget(sample);
+	camera->SetTarget(player);
 }
 
 void SampleScene::End()
