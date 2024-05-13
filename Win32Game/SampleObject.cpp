@@ -7,7 +7,7 @@
 
 SampleObject::SampleObject() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\CharactorTest.bmp");
+	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\alpha100.png");
 	GameObject::CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
@@ -40,9 +40,10 @@ void SampleObject::Render()
 {
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
 
-	BitBlt(renderSystem->_backDC,
-		(int)renderPosition._x,
-		(int)renderPosition._y,
-		(int)_MyTex->Width(), (int)_MyTex->Height(), _MyTex->GetDC(), 0, 0, SRCCOPY);
+	Graphics g(renderSystem->_backDC);
+	g.DrawImage(_MyTex->GetImage(), 
+		(int)GameObject::GetLocation()._x, (int)GameObject::GetLocation()._y,
+		(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
+	);
 	//ComponentRender();
 }

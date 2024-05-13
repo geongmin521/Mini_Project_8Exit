@@ -9,11 +9,14 @@ public:
 	LONG Width() { return _BitInfo.bmWidth; }
 	LONG Height() { return _BitInfo.bmHeight; }
 	HDC GetDC() { return _DC; }
+	Image* GetImage() const { return _Image; }
 
 private:
 	HDC _DC;
 	HBITMAP _Bitmap;
 	BITMAP _BitInfo;
+	Image* _Image;
+	RECT _ImageSize;
 
 	Texture();
 	~Texture();

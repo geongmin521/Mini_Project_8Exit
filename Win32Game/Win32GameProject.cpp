@@ -21,6 +21,10 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ int       nCmdShow)
 {
 
+    ULONG_PTR gpToken;
+    GdiplusStartupInput gpsi;
+    if (GdiplusStartup(&gpToken, &gpsi, nullptr) != Ok) return 0;
+
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
@@ -29,6 +33,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     global::winApp.Run();
 
     global::winApp.Finalize();
+
+    GdiplusShutdown(gpToken);
 
     return EXIT_SUCCESS;
 }

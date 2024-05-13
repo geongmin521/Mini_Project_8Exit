@@ -12,6 +12,11 @@
 #include <string>
 #include <cmath>
 
+#include <ole2.h>
+#include <gdiplus.h>
+#pragma comment(lib, "gdiplus.lib")
+using namespace Gdiplus;
+
 enum class LAYER_GROUP {
 	DEFAULT,
 	MONSTER,
