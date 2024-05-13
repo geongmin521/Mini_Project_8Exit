@@ -1,0 +1,38 @@
+#include "TrapSceneTest.h"
+#include "Camera.h"
+#include "BackGround.h"
+#include "Player.h"
+#include "Trap1.h"
+#include "CollisionManager.h"
+
+
+TrapSceneTest::TrapSceneTest()
+{
+}
+
+TrapSceneTest::~TrapSceneTest()
+{
+}
+
+void TrapSceneTest::Start()
+{
+	GameObject* bg = new BackGround;
+	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
+	AddObject(bg, LAYER_GROUP::BACKGROUND);
+
+	GameObject* player = new Player;
+	AddObject(player, LAYER_GROUP::PLAYER);
+
+	GameObject* trap1 = new Trap1;
+	trap1->SetLocation(Vector3(1000, 100, 0));
+	AddObject(trap1, LAYER_GROUP::MONSTER);
+
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
+
+	camera->SetTarget(player);
+}
+
+void TrapSceneTest::End()
+{
+	SceneEnd();
+}
