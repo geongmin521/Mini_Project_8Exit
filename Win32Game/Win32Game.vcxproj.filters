@@ -61,6 +61,12 @@
     <Filter Include="소스 파일\Sound">
       <UniqueIdentifier>{aff9cc41-cfde-4595-9c65-d78443d4854c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Player">
+      <UniqueIdentifier>{8ae67304-ca42-4959-bd82-2c2cbea7aa70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Animation">
+      <UniqueIdentifier>{74c129cb-0fb6-4b69-a9bc-4ed96a1f3bf6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -143,6 +149,12 @@
     </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>소스 파일\TestGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>소스 파일\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>소스 파일\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +239,12 @@
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>소스 파일\TestGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>소스 파일\Animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
