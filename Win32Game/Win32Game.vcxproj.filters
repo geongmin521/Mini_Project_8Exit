@@ -141,6 +141,9 @@
     <ClInclude Include="Music.h">
       <Filter>소스 파일\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -221,6 +224,9 @@
     </ClCompile>
     <ClCompile Include="Music.cpp">
       <Filter>소스 파일\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>소스 파일\TestGameScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

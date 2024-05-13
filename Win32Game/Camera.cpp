@@ -43,5 +43,9 @@ void Camera::CalDiff()
     Vector3 screenSize = Vector3((float)WindowWidth, (float)WindowHeight, 0);
     Vector3 center = screenSize / 2.0f;
 
-    _Diff = _LookPos - center;
+    if (_LookPos._x <= 0) {
+        _Diff = center * -1;
+    }
+    else _Diff = _LookPos - center;
+    _Diff._y = center._y * -1;
 }
