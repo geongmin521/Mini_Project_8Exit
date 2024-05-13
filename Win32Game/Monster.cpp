@@ -26,8 +26,9 @@ void Monster::Render()
 
 	Graphics g(renderSystem->_backDC);
 	g.DrawImage(_MyTex->GetImage(),
-		(int)GameObject::GetLocation()._x, (int)GameObject::GetLocation()._y,
-		(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
+		(int)renderPosition._x - (int)_MyTex->Width() / 2,
+		(int)renderPosition._y - (int)_MyTex->Height() / 2,
+		(int)_MyTex->Width(), (int)_MyTex->Height()
 	);
 
 	// BoxCollider도 캐릭터 이미지와 같이 움직이게 하려면 Update 에서 renderPosition 을 갱신해줘야 합니다.

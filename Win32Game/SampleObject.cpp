@@ -42,9 +42,9 @@ void SampleObject::Render()
 
 	Graphics g(renderSystem->_backDC);
 	g.DrawImage(_MyTex->GetImage(), 
-		(int)renderPosition._x - (int)_MyTex->GetImage()->GetWidth() / 2, 
-		(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,
-		(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
+		(int)renderPosition._x - (int)_MyTex->Width() / 2, 
+		(int)renderPosition._y - (int)_MyTex->Height() / 2,
+		(int)_MyTex->Width(), (int)_MyTex->Height()
 	);
 	//ComponentRender();
 }

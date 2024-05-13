@@ -15,4 +15,5 @@ Texture::~Texture()
 void Texture::Load(const std::wstring& filepath)
 {
 	_Image = Image::FromFile(filepath.c_str());
+	_ImageSize = { _Image->GetWidth(), _Image->GetHeight() };
 }
