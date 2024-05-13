@@ -10,7 +10,7 @@ using namespace FMOD;
 #pragma comment (lib, "fmod_vc.lib")
 using namespace FMOD;
 #endif
-
+#include <string>
 namespace Music
 {
     enum class eSoundChannel
@@ -42,7 +42,7 @@ namespace Music
 
         static void DestroyInstance();
 
-        void LoadMusic(eSoundList list, bool loopcheck, const char* music);
+        void LoadMusic(eSoundList soundlist, bool loopcheck, const std::string& path);
 
         void PlayMusic(eSoundList list, eSoundChannel channel);
 
