@@ -20,8 +20,10 @@ using namespace Gdiplus;
 enum class LAYER_GROUP {
 	DEFAULT,
 	BACKGROUND,
+	BACKUNIT,
 	PLAYER,
 	MONSTER,
+	TRAPTRIGGER,
 
 	UI,
 	END = 32,

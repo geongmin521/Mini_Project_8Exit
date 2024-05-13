@@ -12,6 +12,8 @@ public:
 	void Move();
 	void Jump();
 
+	float GetSpeed() { return _Speed; }
+
 private:
 	Texture* _MyTex;
 	float _Speed;

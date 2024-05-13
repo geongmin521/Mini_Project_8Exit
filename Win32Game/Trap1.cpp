@@ -7,7 +7,7 @@ Trap1::Trap1() : _MyTex(nullptr)
 	_MyTex = resourceManager->GetTexture(L"Trap1", L"Image\\sampleTrap.png");
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
-	SetLocation(Vector3(1000, 100, 0));
+	SetLocation(Vector3(800, -340, 0));
 	_PrevPosition = GameObject::GetLocation();
 }
 
@@ -19,6 +19,12 @@ Trap1::~Trap1()
 void Trap1::Update()
 {
 	//TODO: 아래로 내려갔다가 사라집니다. Enable == true 일때 작동합니다.
+	if (Enable() == true) {
+		SetLocation(GetLocation() + Vector3(0, 1, 0) * 8000.0f * timeManager->GetDeltaTime());
+		if (GetLocation()._y >= 400) {
+			SetEnable(false);
+		}
+	}
 }
 
 void Trap1::Render()

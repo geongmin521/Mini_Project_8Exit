@@ -16,9 +16,15 @@ public:
 	virtual void Update();
 	virtual void Render();
 
+	void SetTargetTrap(GameObject* obj) { _TargetTrap = obj; }
+
+	void OnCollisionEnter(Collider* collider);
+
 	void InitTrap();
 
 private:
 	static TrapManager* Instance;
+
+	GameObject* _TargetTrap;
 };
 
