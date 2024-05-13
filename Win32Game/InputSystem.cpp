@@ -55,12 +55,12 @@ void InputSystem::UpdateKey()
 				_isKeyUp[i] = false;
 				_isKey[i] = true;
 			}
-			if (GetAsyncKeyState(i) & 0x8001) {
+			else if (GetAsyncKeyState(i) & 0x8001) {
 				_isKeyDown[i] = false;
 				_isKeyUp[i] = false;
 				_isKey[i] = true;
 			}
-			if (GetAsyncKeyState(i) & 0x0001) {
+			else if (GetAsyncKeyState(i) & 0x0001) {
 				_isKeyDown[i] = false;
 				_isKeyUp[i] = true;
 				_isKey[i] = false;
