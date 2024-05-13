@@ -4,6 +4,7 @@
 #include"CollisionManager.h"
 #include "Camera.h"
 #include "BackGround.h"
+#include "Trap1.h"
 
 SampleScene::SampleScene()
 {
