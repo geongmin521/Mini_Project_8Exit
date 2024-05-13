@@ -12,6 +12,8 @@ public:
     virtual void Update();
     virtual void Render();
 
+    void OnCollisionEnter(Collider* collision);
+
 private:
     Texture* _MyTex;
 
