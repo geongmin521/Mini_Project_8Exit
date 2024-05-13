@@ -19,6 +19,8 @@ using namespace Gdiplus;
 
 enum class LAYER_GROUP {
 	DEFAULT,
+	BACKGROUND,
+	PLAYER,
 	MONSTER,
 
 	UI,
