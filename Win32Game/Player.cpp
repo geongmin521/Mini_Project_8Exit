@@ -5,13 +5,13 @@
 #include "TimeSystem.h"
 #include "Collider.h"
 
-Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(600), _Speed(40)
+Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(500), _Speed(500)
 {
-	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\PlayerDump.png");
+	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"alpha100");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
-	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
+	//etCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
 }
 
 Player::~Player()

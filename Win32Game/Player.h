@@ -20,6 +20,9 @@ public:
 	void Move();
 	void Jump();
 	void ChangeState(PlayerState state);
+
+	float GetSpeed() { return _Speed; }
+
 private:
 	PlayerState _CurState;
 	Texture* _MyTex;

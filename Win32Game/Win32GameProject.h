@@ -34,7 +34,7 @@ private:
 	HINSTANCE m_hInstance = { 0 };  // HINSTANCE is a handle to an Instance of a module.
 	HWND m_hWnd = { 0 };			// HWND is a handle to a window.
 
-	int width = 1920;
+	int width = 1950;
 	int height = 1080;
 };
 

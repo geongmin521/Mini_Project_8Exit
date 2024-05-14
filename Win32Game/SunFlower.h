@@ -2,21 +2,18 @@
 #include "GameObject.h"
 #include "Texture.h"
 
-class Trap1 :
+class SunFlower :
     public GameObject
 {
 public:
-    Trap1();
-    ~Trap1();
+    SunFlower();
+    ~SunFlower();
 
     virtual void Update();
     virtual void Render();
 
-    void OnCollisionEnter(Collider* collision);
-
 private:
     Texture* _MyTex;
 
-    Vector3 _PrevPosition;
 };
 
