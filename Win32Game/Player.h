@@ -2,6 +2,14 @@
 #include "GameObject.h"
 #include "Texture.h"
 
+enum class PlayerState
+{
+	idle,
+	jump,
+	hit,
+	move
+};
+
 class Player : public GameObject
 {
 public:
@@ -11,8 +19,9 @@ public:
 	void Render();
 	void Move();
 	void Jump();
-
+	void ChangeState(PlayerState state);
 private:
+	PlayerState _CurState;
 	Texture* _MyTex;
 	float _Speed;
 	float _JumpPower;

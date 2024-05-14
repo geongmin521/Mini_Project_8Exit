@@ -5,10 +5,11 @@
 #include "TimeSystem.h"
 #include "Collider.h"
 
-Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(200), _Speed(40)
+Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(600), _Speed(40)
 {
 	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\PlayerDump.png");
 	GameObject::CreateCollider();
+	GameObject::CreateAnimater(L"alpha100");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
 }
@@ -21,18 +22,28 @@ void Player::Update()
 {
 	Move();
 	Jump();
+	if (GetAinmater() != nullptr)
+	{
+		GetAinmater()->Update();
+	}
 }
 
 void Player::Render()
 {
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
-
-	Graphics g(renderSystem->_backDC);
-	g.DrawImage(_MyTex->GetImage(),
-		(int)renderPosition._x - (int)_MyTex->GetImage()->GetWidth() / 2,
-		(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,
-		(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
-	);
+	if (GetAinmater() != nullptr)
+	{
+		GetAinmater()->Render();
+	}
+	else
+	{
+		Graphics g(renderSystem->_backDC);
+		g.DrawImage(_MyTex->GetImage(),
+			(int)renderPosition._x - (int)_MyTex->GetImage()->GetWidth() / 2,
+			(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,
+			(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
+		);
+	}
 }
 
 void Player::Move()
@@ -49,19 +60,52 @@ void Player::Move()
 
 void Player::Jump()
 {
-	if (inputSystem->isKeyDown(VK_SPACE)) //중력가속도 //addforce
+	static float CurJumpPower = 0;
+	if (inputSystem->isKeyDown(VK_SPACE) && _IsJump == false) 
 	{
+		ChangeState(PlayerState::jump);
 		_IsJump = true; 
-		_JumpPower = 500;//이것도 맥스파워로 저장할수있게하기? //아니면 지역변수 스태틱으로할까?
-		//뭐가 더 나은가? 여기서만 쓰는거면 지역변수 스태틱이 더 좋을듯?
+		CurJumpPower = _JumpPower;
 	}
 	if (_IsJump)
 	{	
 		//파워만큼 y축 증가 감소
-		SetLocation(GetLocation() + (Vector3(0, -1, 0) * timeManager->GetDeltaTime() * _JumpPower)); 
+		SetLocation(GetLocation() + (Vector3(0, -1, 0) * timeManager->GetDeltaTime() * CurJumpPower));
 		//중력가속도에 의해 힘감소
-		_JumpPower -= 980 * timeManager->GetDeltaTime();
+		CurJumpPower -= 980 * timeManager->GetDeltaTime();
 		if (GetLocation()._y >= 0) //땅의 높이가 필요함.. 
+		{
+			ChangeState(PlayerState::idle);
 			_IsJump = false;
+		}
+			
+	}
+}
+
+void Player::ChangeState(PlayerState state)
+{
+	this->_CurState = state;
+
+	if (GetAinmater() != nullptr)
+	{
+		std::wstring stateStr;
+		switch (state)
+		{
+		case PlayerState::idle: //enum을 wstring으로 수동 변환
+			stateStr = L"idle";
+			break;
+		case PlayerState::jump:
+			stateStr = L"jump";
+			break;
+		case PlayerState::hit:
+			stateStr = L"hit";
+			break;
+		case PlayerState::move:
+			stateStr = L"move";
+			break;
+		default:
+			break;
+		}
+		GetAinmater()->ChangeState(stateStr);
 	}
 }

@@ -1,50 +1,28 @@
 #pragma once
-#include "Texture.h"
-#include "globalheader.h"
-#include "ResourceManager.h"
 #include "RenderSystem.h"
-#include "Vector3.h"
+#include "Camera.h"
+#include "Texture.h"
+#include "ResourceManager.h"
 #include "GameObject.h"
 
 class Animation
 {
 public: //불러오는거?
-	Animation():_Owner(nullptr)
-	{
-		while(true)
-		{
-			int index = 0;
-			Texture* tx = resourceManager->GetTexture(L"Charactor", L"Image\\alpha100_" + std::to_wstring(index) + L".png");
-			if (tx == nullptr)
-			{
-				break;
-			}
-			else
-			{			
-				_AnimatedTexture.push_back(tx);
-				index++;
-			}			
-		}
-		
-	}
+	Animation(std::wstring name, float aniSpeed);
 	~Animation();
-
-	void Render()
-	{
-		Vector3 renderPosition = camera->GetRenderPos(_Owner->GetLocation());
-		
-		Graphics g(renderSystem->_backDC);
-		g.DrawImage(_AnimatedTexture[CurFrame]->GetImage(),
-			(int)renderPosition._x - (int)_AnimatedTexture[CurFrame]->GetImage()->GetWidth() / 2,
-			(int)renderPosition._y - (int)_AnimatedTexture[CurFrame]->GetImage()->GetHeight() / 2,
-			(int)_AnimatedTexture[CurFrame]->GetImage()->GetWidth(), (int)_AnimatedTexture[CurFrame]->GetImage()->GetHeight()
-		);
-	}
+	void Update();
+	void Render();
+	void ChangeState(std::wstring state);
+	void GetTexture(std::wstring name, std::wstring state);
 private:
 	GameObject* _Owner;
-	int _FrameSize; //이미 배열의 크기
-	int CurFrame; //이미 배열의 크기
-	float _AnimationSpeed;// 필요하겠지?
+	int CurFrame;		//현재 이미지번호
+	float _AnimationSpeed;
+	float _AnimationTime; 
+	std::wstring state; //보통 상태는 enum으로 처리하지만 범용성을 위해 string 으로 처리함
+	std::wstring name; //보통 상태는 enum으로 처리하지만 범용성을 위해 string 으로 처리함
 	std::vector<Texture*>  _AnimatedTexture; //텍스쳐 배열
+
+	friend class GameObject;
 };
 

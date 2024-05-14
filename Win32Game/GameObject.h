@@ -4,8 +4,10 @@
 #include "InputSystem.h"
 #include "globalheader.h"
 #include "Camera.h"
+#include "Animation.h"
 
 class Collider;
+class Animation;
 
 class GameObject
 {
@@ -18,7 +20,7 @@ public:
 	void Setname(const std::wstring& name) { _Name = name; }
 	void SetEnable(bool state) { _Enable = state; }
 	void CreateCollider();
-	
+	void CreateAnimater(std::wstring name);
 	Vector3 GetLocation() const { return Vector3(_Location); }
 	Vector3 GetScale() const { return Vector3(_Scale); }
 	const std::wstring& GetName() const { return _Name; }
@@ -36,6 +38,7 @@ public:
 
 	void ComponentRender();
 	Collider* GetCollider() { return _Collider; }
+	Animation* GetAinmater() { return _Animater; }
 
 private:
 	Vector3 _Location;
@@ -46,6 +49,7 @@ private:
 	bool _Alive = true;
 
 	Collider* _Collider;
+	Animation* _Animater;
 
 	void SetDead() { _Alive = false; }
 

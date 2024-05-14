@@ -17,6 +17,12 @@ void GameObject::CreateCollider()
 	_Collider->_Owner = this;
 }
 
+void GameObject::CreateAnimater(std::wstring name)
+{
+	_Animater = new Animation(name,0.2f);
+	_Animater->_Owner = this;
+}
+
 void GameObject::FinalUpdate()
 {
 	if (_Collider != nullptr) {
