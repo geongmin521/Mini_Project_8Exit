@@ -7,7 +7,7 @@
 
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(500), _Speed(500)
 {
-	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\PlayerDump.png");
+	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player.png");
 	GameObject::CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	//etCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
@@ -54,7 +54,7 @@ void Player::Jump()
 	if (inputSystem->isKeyDown(VK_SPACE)) //중력가속도 //addforce
 	{
 		_IsJump = true; 
-		_JumpPower = 500;//이것도 맥스파워로 저장할수있게하기? //아니면 지역변수 스태틱으로할까?
+		_JumpPower = 800;//이것도 맥스파워로 저장할수있게하기? //아니면 지역변수 스태틱으로할까?
 		//뭐가 더 나은가? 여기서만 쓰는거면 지역변수 스태틱이 더 좋을듯?
 	}
 	if (_IsJump)
