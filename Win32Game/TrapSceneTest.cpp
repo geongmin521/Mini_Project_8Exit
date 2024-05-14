@@ -2,10 +2,12 @@
 #include "Camera.h"
 #include "BackGround.h"
 #include "Player.h"
-#include "Trap1.h"
+#include "Spider1.h"
 #include "CollisionManager.h"
 #include "TrapManager.h"
 #include "Trap2.h"
+#include "Spider2.h"
+#include "SunFlower.h"
 
 
 TrapSceneTest::TrapSceneTest()
@@ -23,25 +25,33 @@ void TrapSceneTest::Start()
 	AddObject(bg, LAYER_GROUP::BACKGROUND);
 
 	GameObject* player = new Player;
-	player->SetLocation(Vector3(-800, 230, 0));
+	player->SetLocation(Vector3(-800, 200, 0));
 	AddObject(player, LAYER_GROUP::PLAYER);
 
-	GameObject* trap1 = new Trap1;
-	trap1->SetEnable(false);
-	AddObject(trap1, LAYER_GROUP::MONSTER);
+	GameObject* spider1 = new Spider1;
+	spider1->SetEnable(true);
+	AddObject(spider1, LAYER_GROUP::MONSTER);
 
-	GameObject* trap2 = new Trap2;
-	AddObject(trap2, LAYER_GROUP::BACKUNIT);
+	GameObject* spider2 = new Spider2;
+	spider2->SetEnable(true);
+	AddObject(spider2, LAYER_GROUP::MONSTER);
 
+	//GameObject* trap2 = new Trap2;
+	//AddObject(trap2, LAYER_GROUP::BACKUNIT);
+
+	GameObject* sunFlower = new SunFlower;
+	AddObject(sunFlower, LAYER_GROUP::MONSTER);
+
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::TRAPTRIGGER);
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::BACKUNIT);
 
 	camera->SetTarget(player);
 
-	trapManager->InitTrap();
-	trapManager->SetTargetTrap(trap2);
-	trapManager->SetLocation(Vector3(trap2->GetLocation()._x + 640, 230, 0));
-	AddObject(trapManager, LAYER_GROUP::TRAPTRIGGER);
+	//trapManager->InitTrap();
+	//trapManager->SetTargetTrap(spider1);
+	//trapManager->SetLocation(Vector3(trap2->GetLocation()._x + 640, 230, 0));
+	//AddObject(trapManager, LAYER_GROUP::TRAPTRIGGER);
 }
 
 void TrapSceneTest::End()
