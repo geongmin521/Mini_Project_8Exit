@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Trap1.h"
 #include "CollisionManager.h"
-
+#include "TextBox.h"
 
 TrapSceneTest::TrapSceneTest()
 {
@@ -23,6 +23,10 @@ void TrapSceneTest::Start()
 	GameObject* player = new Player;
 	AddObject(player, LAYER_GROUP::PLAYER);
 
+	GameObject* textBox = new TextBox;
+	textBox->SetLocation(Vector3(200,200, 0));
+	AddObject(textBox, LAYER_GROUP::UI);
+
 	GameObject* trap1 = new Trap1;
 	trap1->SetLocation(Vector3(1000, 100, 0));
 	AddObject(trap1, LAYER_GROUP::MONSTER);
@@ -32,7 +36,7 @@ void TrapSceneTest::Start()
 	camera->SetTarget(player);
 }
 
-void TrapSceneTest::End()
+void TrapSceneTest::End() 
 {
 	SceneEnd();
 }

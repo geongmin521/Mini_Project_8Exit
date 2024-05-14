@@ -7,7 +7,7 @@
 
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(600), _Speed(40)
 {
-	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\PlayerDump.png");
+	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\sampleTrap.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"alpha100");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
@@ -37,7 +37,8 @@ void Player::Render()
 	}
 	else
 	{
-		Graphics g(renderSystem->_backDC);
+		//_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);플립기능 애니메이션에도 적용하기.. 
+		Gdiplus::Graphics g(renderSystem->_backDC);
 		g.DrawImage(_MyTex->GetImage(),
 			(int)renderPosition._x - (int)_MyTex->GetImage()->GetWidth() / 2,
 			(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,
