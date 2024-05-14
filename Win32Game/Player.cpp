@@ -5,7 +5,8 @@
 #include "TimeSystem.h"
 #include "Collider.h"
 
-Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(200), _Speed(40)
+Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(200), _Speed(500), _IsRun(false), _RunSpeed(),
+				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(10.0f), _StaminaRecovery(2.0f)
 {
 	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\PlayerDump.png");
 	GameObject::CreateCollider();
@@ -21,6 +22,7 @@ void Player::Update()
 {
 	Move();
 	Jump();
+	Run();
 }
 
 void Player::Render()
@@ -33,6 +35,7 @@ void Player::Render()
 		(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,
 		(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
 	);
+	_staminaBar->Render();
 }
 
 void Player::Move()
@@ -64,4 +67,46 @@ void Player::Jump()
 		if (GetLocation()._y >= 0) //땅의 높이가 필요함.. 
 			_IsJump = false;
 	}
+	
+}
+
+void Player::Run()
+{
+	_CurrentSpeed = _Speed;
+	if (inputSystem->isKey(VK_CONTROL) && _Stamina > 0) //달리기
+	{
+		_IsRun = true;
+		_RunSpeed = _Speed + 10000;
+
+		// 스태미너 소모
+		_Stamina -= _StaminaDrain * timeManager->GetDeltaTime();
+		if (_Stamina < 0) 
+		{
+			_Stamina = 0;
+			_IsRun = false;
+		}
+	}
+	else
+	{
+		// 스태미너 회복
+		_Stamina += _StaminaRecovery * timeManager->GetDeltaTime();
+		if (_Stamina > _MaxStamina)
+		{
+			_Stamina = _MaxStamina;
+		}
+	}
+	if (_IsRun && _Stamina > 0)
+	{
+		_CurrentSpeed = _RunSpeed;
+		_IsRun = false;
+	}
+	if (inputSystem->isKey(VK_LEFT) || inputSystem->isKey('A'))
+	{
+		SetLocation(GetLocation() + Vector3(-1, 0, 0) * timeManager->GetDeltaTime() * _CurrentSpeed);
+	}
+	if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
+	{
+		SetLocation(GetLocation() + Vector3(1, 0, 0) * timeManager->GetDeltaTime() * _CurrentSpeed);
+	}
+	
 }

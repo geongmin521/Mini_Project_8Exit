@@ -156,6 +156,27 @@
     <ClInclude Include="Animation.h">
       <Filter>소스 파일\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="Trap1.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapSceneTest.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="SignMonster.h">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MainBackGround.h">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LastBackGround.h">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="StaminaBar.h">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -245,6 +266,27 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>소스 파일\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Trap1.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapSceneTest.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="SignMonster.cpp">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MainBackGround.cpp">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LastBackGround.cpp">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="StaminaBar.cpp">
+      <Filter>소스 파일\TestGameScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -149,6 +149,8 @@
     <ClInclude Include="GameResource.h" />
     <ClInclude Include="globalheader.h" />
     <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="LastBackGround.h" />
+    <ClInclude Include="MainBackGround.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="PathManager.h" />
@@ -160,6 +162,8 @@
     <ClInclude Include="SampleScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SignMonster.h" />
+    <ClInclude Include="StaminaBar.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeSystem.h" />
@@ -188,6 +192,8 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameResource.cpp" />
     <ClCompile Include="InputSystem.cpp" />
+    <ClCompile Include="LastBackGround.cpp" />
+    <ClCompile Include="MainBackGround.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="PathManager.cpp" />
@@ -198,6 +204,8 @@
     <ClCompile Include="SampleScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SignMonster.cpp" />
+    <ClCompile Include="StaminaBar.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeSystem.cpp" />
     <ClCompile Include="Trap1.cpp" />

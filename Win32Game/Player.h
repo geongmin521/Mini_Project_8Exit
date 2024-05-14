@@ -11,13 +11,23 @@ public:
 	void Render();
 	void Move();
 	void Jump();
+	void Run();
 
 private:
 	Texture* _MyTex;
 	float _Speed;
 	float _JumpPower;
+	float _RunSpeed;
+	float _BaseSpeed = _Speed;
+	float _CurrentSpeed = _BaseSpeed;
+	float _Stamina;         // 현재 스태미너
+	float _MaxStamina;      // 최대 스태미너
+	float _StaminaDrain;    // 달리기 시 초당 스태미너 소모량
+	float _StaminaRecovery; // 초당 스태미너 회복량
 	bool _IsJump;
 	bool _IsHit;
+	bool _IsRun;
 
+	
 };
 

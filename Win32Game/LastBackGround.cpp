@@ -1,20 +1,20 @@
-#include "BackGround.h"
+#include "LastBackGround.h"
 #include "ResourceManager.h"
 
-BackGround::BackGround() :_MyTex(0)
+LastBackGround::LastBackGround() :_MyTex(0)
 {
-	_MyTex = resourceManager->GetTexture(L"BackGround", L"Image\\BackGround.png");
+	_MyTex = resourceManager->GetTexture(L"LastBackGround", L"Image\\LastBackGround.png");
 }
 
-BackGround::~BackGround()
-{
-}
-
-void BackGround::Update()
+LastBackGround::~LastBackGround()
 {
 }
 
-void BackGround::Render()
+void LastBackGround::Update()
+{
+}
+
+void LastBackGround::Render()
 {
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
 
@@ -23,5 +23,5 @@ void BackGround::Render()
 		(int)renderPosition._x, (int)renderPosition._y,
 		(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
 	);
-  
+
 }

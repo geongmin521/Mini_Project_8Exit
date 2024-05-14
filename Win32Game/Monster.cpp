@@ -31,6 +31,7 @@ void Monster::Render()
 		(int)_MyTex->Width(), (int)_MyTex->Height()
 	);
 
+
 	// BoxCollider도 캐릭터 이미지와 같이 움직이게 하려면 Update 에서 renderPosition 을 갱신해줘야 합니다.
 	//ComponentRender();
 }
