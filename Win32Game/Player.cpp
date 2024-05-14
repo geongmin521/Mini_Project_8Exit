@@ -9,7 +9,7 @@ Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(600
 {
 	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\sampleTrap.png");
 	GameObject::CreateCollider();
-	GameObject::CreateAnimater(L"alpha100");
+	GameObject::CreateAnimater(L"Player");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
 }
@@ -93,16 +93,16 @@ void Player::ChangeState(PlayerState state)
 		switch (state)
 		{
 		case PlayerState::idle: //enum을 wstring으로 수동 변환
-			stateStr = L"idle";
+			stateStr = L"Idle";
 			break;
 		case PlayerState::jump:
-			stateStr = L"jump";
+			stateStr = L"Jump";
 			break;
 		case PlayerState::hit:
-			stateStr = L"hit";
+			stateStr = L"Hit";
 			break;
 		case PlayerState::move:
-			stateStr = L"move";
+			stateStr = L"Move";
 			break;
 		default:
 			break;

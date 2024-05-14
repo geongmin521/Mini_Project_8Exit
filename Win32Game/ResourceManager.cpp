@@ -49,3 +49,13 @@ Texture* ResourceManager::GetTexture(const std::wstring& key, const std::wstring
 
     return newTexture;
 }
+
+void ResourceManager::InsertDialog(const std::wstring& key, const std::wstring& value)
+{
+    _Dialog.insert({ key, value });
+}
+
+void ResourceManager::InsertMapObjectPos(const std::wstring& key, const std::vector<Vector3> value)
+{
+    _MapObjectPos.insert({ key, value });
+}

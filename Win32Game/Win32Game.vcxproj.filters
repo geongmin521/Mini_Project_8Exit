@@ -73,6 +73,9 @@
     <Filter Include="소스 파일\TextBox">
       <UniqueIdentifier>{8f47f2cf-9e33-483f-9d34-82a456eb9960}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\DataRead">
+      <UniqueIdentifier>{eb56651e-5805-4008-9046-8de46b4d0d4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -162,9 +165,6 @@
     <ClInclude Include="Animation.h">
       <Filter>소스 파일\Component\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="Trap1.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="TrapManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -177,6 +177,27 @@
     <ClInclude Include="TextBox.h">
       <Filter>소스 파일\TextBox</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
+=======
+    <ClInclude Include="Spider1.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider2.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="SunFlower.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapManager.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapSceneTest.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="DataRead.h">
+      <Filter>소스 파일\DataRead</Filter>
+    </ClInclude>
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -267,9 +288,6 @@
     <ClCompile Include="Animation.cpp">
       <Filter>소스 파일\Component\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="Trap1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="TrapManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -282,5 +300,26 @@
     <ClCompile Include="TextBox.cpp">
       <Filter>소스 파일\TextBox</Filter>
     </ClCompile>
+<<<<<<< Updated upstream
+=======
+    <ClCompile Include="Spider1.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Spider2.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="SunFlower.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapManager.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapSceneTest.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="DataRead.cpp">
+      <Filter>소스 파일\DataRead</Filter>
+    </ClCompile>
+>>>>>>> Stashed changes
   </ItemGroup>
 </Project>

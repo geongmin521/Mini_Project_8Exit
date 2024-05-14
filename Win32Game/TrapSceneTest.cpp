@@ -27,10 +27,6 @@ void TrapSceneTest::Start()
 	textBox->SetLocation(Vector3(200,200, 0));
 	AddObject(textBox, LAYER_GROUP::UI);
 
-	GameObject* trap1 = new Trap1;
-	trap1->SetLocation(Vector3(1000, 100, 0));
-	AddObject(trap1, LAYER_GROUP::MONSTER);
-
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
 
 	camera->SetTarget(player);
