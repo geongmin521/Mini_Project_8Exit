@@ -5,9 +5,10 @@
 #include "globalheader.h"
 #include "Camera.h"
 #include "Animation.h"
-
+#include "Text.h"
 class Collider;
 class Animation;
+class Text;
 
 class GameObject
 {
@@ -20,6 +21,7 @@ public:
 	void Setname(const std::wstring& name) { _Name = name; }
 	void SetEnable(bool state) { _Enable = state; }
 	void CreateCollider();
+	void CreateText();
 	void CreateAnimater(std::wstring name);
 	Vector3 GetLocation() const { return Vector3(_Location); }
 	Vector3 GetScale() const { return Vector3(_Scale); }
@@ -39,6 +41,7 @@ public:
 	void ComponentRender();
 	Collider* GetCollider() { return _Collider; }
 	Animation* GetAinmater() { return _Animater; }
+	Text* GetTextComponent() { return _Text; }
 
 private:
 	Vector3 _Location;
@@ -50,7 +53,7 @@ private:
 
 	Collider* _Collider;
 	Animation* _Animater;
-
+	Text* _Text;
 	void SetDead() { _Alive = false; }
 
 	friend class EventManager;

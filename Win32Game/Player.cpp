@@ -37,7 +37,8 @@ void Player::Render()
 	}
 	else
 	{
-		Graphics g(renderSystem->_backDC);
+		//_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);플립기능 애니메이션에도 적용하기.. 
+		Gdiplus::Graphics g(renderSystem->_backDC);
 		g.DrawImage(_MyTex->GetImage(),
 			(int)renderPosition._x - (int)_MyTex->GetImage()->GetWidth() / 2,
 			(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,

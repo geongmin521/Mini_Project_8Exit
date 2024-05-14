@@ -164,6 +164,8 @@
     <ClInclude Include="Spider2.h" />
     <ClInclude Include="SunFlower.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="TextBox.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeSystem.h" />
     <ClInclude Include="TrapManager.h" />
@@ -203,6 +205,8 @@
     <ClCompile Include="Spider1.cpp" />
     <ClCompile Include="Spider2.cpp" />
     <ClCompile Include="SunFlower.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeSystem.cpp" />
     <ClCompile Include="TrapManager.cpp" />

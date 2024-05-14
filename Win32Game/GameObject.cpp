@@ -17,6 +17,12 @@ void GameObject::CreateCollider()
 	_Collider->_Owner = this;
 }
 
+void GameObject::CreateText()
+{
+	_Text = new Text(12,Color(255,255,255,255));
+	_Text->_Owner = this;
+}
+
 void GameObject::CreateAnimater(std::wstring name)
 {
 	_Animater = new Animation(name,0.2f);

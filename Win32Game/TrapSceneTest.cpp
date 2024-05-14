@@ -8,7 +8,7 @@
 #include "Trap2.h"
 #include "Spider2.h"
 #include "SunFlower.h"
-
+#include "TextBox.h"
 
 TrapSceneTest::TrapSceneTest()
 {
@@ -41,6 +41,13 @@ void TrapSceneTest::Start()
 
 	GameObject* sunFlower = new SunFlower;
 	AddObject(sunFlower, LAYER_GROUP::MONSTER);
+	GameObject* textBox = new TextBox;
+	textBox->SetLocation(Vector3(200,200, 0));
+	AddObject(textBox, LAYER_GROUP::UI);
+
+	GameObject* trap1 = new Trap1;
+	trap1->SetLocation(Vector3(1000, 100, 0));
+	AddObject(trap1, LAYER_GROUP::MONSTER);
 
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::TRAPTRIGGER);
@@ -54,7 +61,7 @@ void TrapSceneTest::Start()
 	//AddObject(trapManager, LAYER_GROUP::TRAPTRIGGER);
 }
 
-void TrapSceneTest::End()
+void TrapSceneTest::End() 
 {
 	SceneEnd();
 }
