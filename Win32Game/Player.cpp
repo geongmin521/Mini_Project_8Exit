@@ -5,11 +5,11 @@
 #include "TimeSystem.h"
 #include "Collider.h"
 
-Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(500), _Speed(500)
+Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(500), _Speed(500), _CurState(PlayerState::idle)
 {
-	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player.png");
+	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player_idle_0.png");
 	GameObject::CreateCollider();
-	GameObject::CreateAnimater(L"alpha100");
+	GameObject::CreateAnimater(L"Player");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	//etCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
 }
@@ -44,6 +44,8 @@ void Player::Render()
 			(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
 		);
 	}
+
+	//ComponentRender();
 }
 
 void Player::Move()
@@ -73,7 +75,7 @@ void Player::Jump()
 		SetLocation(GetLocation() + (Vector3(0, -1, 0) * timeManager->GetDeltaTime() * CurJumpPower));
 		//중력가속도에 의해 힘감소
 		CurJumpPower -= 980 * timeManager->GetDeltaTime();
-		if (GetLocation()._y >= 0) //땅의 높이가 필요함.. 
+		if (GetLocation()._y >= 200) //땅의 높이가 필요함.. 
 		{
 			ChangeState(PlayerState::idle);
 			_IsJump = false;

@@ -10,8 +10,9 @@
 #include "SunFlower.h"
 
 
-TrapSceneTest::TrapSceneTest()
+TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(10, nullptr)
 {
+	//TODO: 여기서 각 구역 별 기믹오브젝트를 생성해야 합니다.
 }
 
 TrapSceneTest::~TrapSceneTest()
@@ -48,13 +49,59 @@ void TrapSceneTest::Start()
 
 	camera->SetTarget(player);
 
-	//trapManager->InitTrap();
-	//trapManager->SetTargetTrap(spider1);
-	//trapManager->SetLocation(Vector3(trap2->GetLocation()._x + 640, 230, 0));
-	//AddObject(trapManager, LAYER_GROUP::TRAPTRIGGER);
 }
 
 void TrapSceneTest::End()
 {
 	SceneEnd();
 }
+
+void TrapSceneTest::InitObjectPlace()
+{
+	int idx;
+	while (true) {
+		idx = GetRandomNum();
+		if (GetCompleteTrap(idx) == false && _PrevTrapIdx != idx) break;
+	}
+	_PrevTrapIdx = idx;
+
+	//TODO: idx의 값에 따라 오브젝트들을 심어야 합니다.
+	/*
+		0 : Spider
+		1 : SunFlower	HasTrap = 1
+		2 : ScareCrow	HasTrap = 1
+		3 : Spider		HasTrap = 1
+		4 : HorseCar	HasTrap = 1	
+		5 : SunFlower	HasTrap = 1
+		6 : WoodHouse	HasTrap = 1
+		7 : Spider		HasTrap = 1
+		8 : ScareCrow	HasTrap = 1
+		9 : Spider		
+	
+	*/
+
+}
+
+int TrapSceneTest::GetRandomNum()
+{
+	std::random_device rd;
+	std::mt19937_64 mt(rd());
+	std::uniform_int_distribution<int> dist(0, 9);
+	return dist(mt);
+}
+
+void TrapSceneTest::SetCompleteTrap(int idx)
+{
+	_CompleteTrap.insert({ idx, true });
+}
+
+bool TrapSceneTest::GetCompleteTrap(int idx)
+{
+	if (_CompleteTrap.find(idx) == _CompleteTrap.end()) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+

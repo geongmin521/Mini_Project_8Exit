@@ -11,6 +11,7 @@
 #include <queue>
 #include <string>
 #include <cmath>
+#include <random>
 
 #include <ole2.h>
 #include <gdiplus.h>
