@@ -15,13 +15,12 @@ public:
 
 private:
     std::vector<GameObject*> _ObjectPlace;
-    std::vector<GameObject*> _AnomalyObjects;
-    std::vector<GameObject*> _NormalObjects;
+    std::vector<std::vector<GameObject*>> _AnomalyObjects;
     std::map<int, bool> _CompleteTrap;
     int _PrevTrapIdx;
 
     void InitObjectPlace();
-    int GetRandomNum();
+    int GetRandomNum(int size);
     void SetCompleteTrap(int idx);
     bool GetCompleteTrap(int idx);
 };
