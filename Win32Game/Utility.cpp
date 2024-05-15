@@ -19,3 +19,11 @@ void DeleteObject(GameObject* obj)
 
 	eventManager->AddEvent(tEvent);
 }
+
+bool CheckRenderPosition(int& leftX, int& leftY, int& rightX, int& rightY)
+{
+	if (rightX < 0 || leftX > WindowWidth || rightY < 0 || leftY > WindowHeight) {
+		return false;
+	}
+	return true;
+}

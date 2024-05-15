@@ -12,6 +12,8 @@
 #include <string>
 #include <cmath>
 
+#include "Vector3.h"
+
 #include <ole2.h>
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
