@@ -15,6 +15,8 @@ public:
 
 private:
     std::vector<GameObject*> _ObjectPlace;
+    std::vector<GameObject*> _AnomalyObjects;
+    std::vector<GameObject*> _NormalObjects;
     std::map<int, bool> _CompleteTrap;
     int _PrevTrapIdx;
 
