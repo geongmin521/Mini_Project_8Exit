@@ -5,7 +5,6 @@
 #include "Spider1.h"
 #include "CollisionManager.h"
 #include "TrapManager.h"
-#include "Trap2.h"
 #include "Spider2.h"
 #include "SunFlower.h"
 
@@ -26,7 +25,7 @@ void TrapSceneTest::Start()
 	AddObject(bg, LAYER_GROUP::BACKGROUND);
 
 	GameObject* player = new Player;
-	player->SetLocation(Vector3(-800, 200, 0));
+	player->SetLocation(Vector3(-800, 230, 0));
 	AddObject(player, LAYER_GROUP::PLAYER);
 
 	GameObject* spider1 = new Spider1;
@@ -67,7 +66,8 @@ void TrapSceneTest::InitObjectPlace()
 
 	//TODO: idx의 값에 따라 오브젝트들을 심어야 합니다.
 	/*
-		0 : Spider
+	*   총 8개의 스테이지
+		0 : Spider		HasTrap = 1
 		1 : SunFlower	HasTrap = 1
 		2 : ScareCrow	HasTrap = 1
 		3 : Spider		HasTrap = 1
@@ -76,8 +76,19 @@ void TrapSceneTest::InitObjectPlace()
 		6 : WoodHouse	HasTrap = 1
 		7 : Spider		HasTrap = 1
 		8 : ScareCrow	HasTrap = 1
-		9 : Spider		
-	
+		9 : Spider		HasTrap = 1
+		
+		같은 종류, 다른 구역에서 동시에 이상현상이 발생할 수 있음.
+		-> 비트마스킹으로 정리.
+		거미 : 4구역, 15종
+		허수아비 : 2구역 3종
+		해바라기 : 2구역 3종
+		마차 : 1구역 1종
+		오두막 : 1구역 1종
+
+
+		한 구역의 이상현상의 종류가 많으면 확률을 이용해 이상현상 제어
+
 	*/
 
 }

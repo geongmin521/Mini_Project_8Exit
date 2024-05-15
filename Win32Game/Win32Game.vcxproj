@@ -148,6 +148,7 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameResource.h" />
     <ClInclude Include="globalheader.h" />
+    <ClInclude Include="HorseCar.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Music.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Win32GameProject.h" />
+    <ClInclude Include="WoodHouse.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc" />
@@ -189,6 +191,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameResource.cpp" />
+    <ClCompile Include="HorseCar.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Music.cpp" />
@@ -210,6 +213,7 @@
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Win32GameProject.cpp" />
+    <ClCompile Include="WoodHouse.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
