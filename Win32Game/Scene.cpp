@@ -55,5 +55,6 @@ void Scene::SceneEnd()
 				delete _GameObjects[i][j];
 			}
 		}
+		_GameObjects[i].clear();
 	}
 }
