@@ -59,11 +59,33 @@ void TrapSceneTest::InitObjectPlace()
 {
 	int idx;
 	while (true) {
-		idx = GetRandomNum(5);
+		idx = GetRandomNum(sizeof(_AreaSet) / sizeof(int));
 		if (_PrevTrapIdx != idx) break;
 	}
 	_PrevTrapIdx = idx;
 
+	int compareFlg = 1;
+	int areaSet = _AreaSet[_PrevTrapIdx];
+
+	// 이상현상이 존재하는 구역의 오브젝트중 정상과 비정상 오브젝트중에 뽑아 배치합니다.
+	for (int shift = _ObjectPlace.size() - 1; shift >= 0; shift--) {
+		if (areaSet & (compareFlg << shift)) {
+			int areaIdx = _ObjectPlace.size() - 1 - shift;
+			_ObjectPlace[areaIdx] = GetAnomalyObject(areaIdx);
+		}
+	}
+
+	// 이상현상이 존재하는 구역의 오브젝트를 다 채워넣었으면 나머지 정상적인 구역의 오브젝트도 채웁니다.
+	for (int i = 0; i < _ObjectPlace.size(); i++) {
+		if (_ObjectPlace[i] == nullptr) {
+			_ObjectPlace[i] = _AnomalyObjects[i][0];
+		}
+	}
+
+	// 랜더링과 업데이트를 할 수있게 오브젝트들을 씬에 등록해줍니다.
+	for (int i = 0; i < _ObjectPlace.size(); i++) {
+		AddObject(_ObjectPlace[i], LAYER_GROUP::MONSTER);
+	}
 	//TODO: idx의 값에 따라 오브젝트들을 심어야 합니다.
 	/*
 	*   총 8개의 스테이지
@@ -88,15 +110,17 @@ void TrapSceneTest::InitObjectPlace()
 
 		이상현상 구역을 정하는 방법 - 비트마스킹
 
-		거미 구역			: 1001000101
-		해바라기 구역		: 0100010000
-		허수아비 구역		: 0010000010
-		마차 구역			: 0000100000
-		오두막 구역			: 0000001000
+		거미 구역			: 0b1001000101
+		해바라기 구역		: 0b0100010000
+		허수아비 구역		: 0b0010000010
+		마차 구역			: 0b0000100000
+		오두막 구역			: 0b0000001000
 
 		5개 중에 랜덤 선택
 
 		선택된 구역을 쉬프트 연산으로 돌면서 & == true 면 확률에 따른 오브젝트 선택후 AddObject.
+		정상적인 현상은 무조건 각 구역의 0번 자리에 존재.
+
 		충돌이 있는 오브젝트의 구분은 각각의 OnCollision 함수들에서 시행. 모두 같은 레이어.
 
 		이후 오브젝트들 랜더링, 업데이트.
@@ -128,3 +152,8 @@ bool TrapSceneTest::GetCompleteTrap(int idx)
 	}
 }
 
+GameObject* TrapSceneTest::GetAnomalyObject(int idx)
+{
+	int randomAnomaly = GetRandomNum(_AnomalyObjects[idx].size());
+	return _AnomalyObjects[idx][randomAnomaly];
+}
