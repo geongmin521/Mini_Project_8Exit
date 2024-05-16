@@ -5,6 +5,8 @@ SunFlower::SunFlower() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"SunFlower", L"Image\\SunFlower.png");
 	SetLocation(Vector3(100, 100, 0));
+	_StartPos = GetLocation();
+	_EndPos = Vector3(GetLocation()._x, GetLocation()._y + 280.0f, GetLocation()._z);
 }
 
 SunFlower::~SunFlower()
@@ -13,6 +15,10 @@ SunFlower::~SunFlower()
 
 void SunFlower::Update()
 {
+	SetLocation(GetLocation() + _Dir * _MoveSpeed * timeManager->GetDeltaTime());
+	if (GetLocation()._y >= _EndPos._y || GetLocation()._y <= _StartPos._y) {
+		_Dir *= -1;
+	}
 }
 
 void SunFlower::Render()

@@ -3,7 +3,7 @@
 
 BackGround::BackGround() : _MyTex(0)
 {
-	_MyTex = resourceManager->GetTexture(L"BackGround", L"Image\\BackGround.png");
+	_MyTex = resourceManager->GetTexture(L"BackGround", L"Image\\BG_stage.png");
 }
 
 BackGround::~BackGround()

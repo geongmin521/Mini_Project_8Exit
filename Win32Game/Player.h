@@ -23,6 +23,8 @@ public:
 
 	float GetSpeed() { return _Speed; }
 
+
+
 private:
 	PlayerState _CurState;
 	Texture* _MyTex;

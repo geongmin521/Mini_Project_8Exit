@@ -195,6 +195,12 @@
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
+    <ClInclude Include="HorseCar.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="WoodHouse.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -313,6 +319,12 @@
       <Filter>소스 파일\TrapTest</Filter>
     </ClCompile>
     <ClCompile Include="TrapSceneTest.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="HorseCar.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="WoodHouse.cpp">
       <Filter>소스 파일\TrapTest</Filter>
     </ClCompile>
   </ItemGroup>
