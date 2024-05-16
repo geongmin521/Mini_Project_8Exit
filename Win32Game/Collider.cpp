@@ -24,7 +24,7 @@ Collider::~Collider()
 void Collider::FinalUpdate()
 {
 	Vector3 objpos = _Owner->GetLocation();
-	_ColliderPos = objpos;// +_Offset;
+	_ColliderPos = objpos + _Offset;
 }
 
 void Collider::Render()
