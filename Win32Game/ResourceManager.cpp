@@ -5,6 +5,12 @@ ResourceManager* ResourceManager::Instance = nullptr;
 
 ResourceManager::ResourceManager()
 {
+    PrivateFontCollection privateFontCollection;
+    privateFontCollection.AddFontFile(L"data\\Font\\Cafe24Classictype-v1.1.ttf");
+    privateFontCollection.AddFontFile(L"data\\Font\\ImcreSoojin.ttf");
+    int count = privateFontCollection.GetFamilyCount();
+    int found = 0;
+    privateFontCollection.GetFamilies(count, pFontFamily, &found);
 }
 
 ResourceManager::~ResourceManager()

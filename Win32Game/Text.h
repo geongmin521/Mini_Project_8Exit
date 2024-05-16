@@ -2,7 +2,7 @@
 #include "RenderSystem.h"
 #include "Camera.h"
 #include "Texture.h"
-#include "ResourceManager.h"
+//#include "ResourceManager.h"
 #include "GameObject.h"
 enum class alignX
 {
@@ -18,23 +18,29 @@ enum class alignY
 	bottom
 };
 
+enum class FontType
+{
+	title,
+	dialog
+};
+
 class Text
 {
 public: //불러오는거?
-	Text(int FontSize, Gdiplus::Color color);
+	Text(int FontSize, Gdiplus::Color color, FontType fonttype);
 	~Text();
 	void Render();
-	std::wstring GetText() { return _Text; }
 	void SetText(std::wstring text) { _Text = text; }
-	Gdiplus::RectF GetRect(alignX alignX, alignY alignY);
 	void SetRect(Vector3 size) { _Rect = size; }
+	std::wstring GetText() { return _Text; }
+	Gdiplus::RectF GetRect(alignX alignX, alignY alignY);
 private:
 	GameObject* _Owner;	
 	std::wstring _Text; 
 	Vector3 _Rect; //z는 무시 (안씀)
 	int _FontSize;
+	FontType _FontType;
 	Gdiplus::Color _color;
-
 
 	friend class GameObject;
 };
