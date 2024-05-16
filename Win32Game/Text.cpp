@@ -1,9 +1,10 @@
 #include "Text.h"
 
-Text::Text(int FontSize,Gdiplus::Color color): _Owner(nullptr)
+Text::Text(int FontSize,Gdiplus::Color color,FontType fonttype): _Owner(nullptr)
 {
 	_FontSize = FontSize;
 	_color = color;
+	_FontType = fonttype;
 }
 
 Text::~Text()
@@ -13,10 +14,8 @@ Text::~Text()
 void Text::Render()
 {
 	Graphics g(renderSystem->_backDC);
-
-	Gdiplus::FontFamily _FontFamily(L"Arial"); //폰트 이름?
-	Gdiplus::Font       _Font(&_FontFamily, 12, FontStyleBold, UnitPoint); //폰트 설정
-	Gdiplus::RectF rect = GetRect(alignX::left, alignY::bottom); //위치?
+	Gdiplus::Font       _Font( &resourceManager->GetFont((int)_FontType), 12, FontStyleBold, UnitPoint); //폰트 설정
+	Gdiplus::RectF rect = GetRect(alignX::middle, alignY::middle); //위치?
 	SolidBrush   solidBrush(_color); //컬러
 
 	g.DrawString(_Text.c_str(), -1, &_Font, rect, NULL, &solidBrush);

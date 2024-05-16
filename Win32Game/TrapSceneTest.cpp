@@ -12,6 +12,12 @@
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(10, nullptr), _AnomalyObjects(10)
 {
 	//TODO: 여기서 각 구역 별 오브젝트를 생성해야 합니다.
+	std::vector<Vector3> pos = resourceManager->GetMapPos(L"area1");
+	for (int i = 0; i < pos.size(); i++)
+	{
+		//TODO: 여기서 생성된 인스턴스의 포지션을 설정해줍니다.
+	}
+	
 }
 
 TrapSceneTest::~TrapSceneTest()
