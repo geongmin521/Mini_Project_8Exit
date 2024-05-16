@@ -24,7 +24,7 @@ namespace game
 	{		
 		timeManager->InitTime();
 		renderSystem->InitRender();
-		pathManager->InitPath();
+		//pathManager->InitPath();
 		sceneManager->InitScene();
 		collisionManager->Init();
 		Music::soundManager->GetInstance();
@@ -39,7 +39,7 @@ namespace game
 		collisionManager->Update();
 		inputSystem->ResetInput();
 		camera->Update();
-
+		SetWindowText(WindowHandle, std::to_wstring(timeManager->GetFrameRate()).c_str());
 	}
 
 	void GameManager::FixeUpdate()

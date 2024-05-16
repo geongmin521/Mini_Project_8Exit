@@ -34,20 +34,20 @@ void TimeManager::UpdateTime()
 	_PrevTime = _CurTime;
 	QueryPerformanceCounter(&_CurTime);
 
-	_DeltaTime = (float)(_CurTime.QuadPart - _PrevTime.QuadPart) / ((float)(_Frequency.QuadPart) / 1000.0f);
+	_DeltaTime = (float)(_CurTime.QuadPart - _PrevTime.QuadPart) / ((float)(_Frequency.QuadPart));
 
-#ifdef _DEBUG
-	if (_DeltaTime > (1.f / 60.f)) {
-		_DeltaTime = (1.f / 60.f);
-	}
-#endif
+//#ifdef _DEBUG
+//	if (_DeltaTime > (1.f / 60.f)) {
+//		_DeltaTime = (1.f / 60.f);
+//	}
+//#endif
 }
 
 const float TimeManager::GetFrameRate()
 {
 	if (_DeltaTime == 0) return 0;
 
-	return ceil(((1000.0f / _DeltaTime) * 1000) / 1000);
+	return ceil(((1.0f / _DeltaTime)));
 }
 
 const float TimeManager::GetDeltaTime()
