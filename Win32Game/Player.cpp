@@ -7,14 +7,11 @@
 #include "Camera.h"
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
 				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::idle)
-
-Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _CurState(PlayerState::idle)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player_idle_0.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"Player");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
-	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
 
 	_StaminaBar = new StaminaBar;
 	_StaminaBarMin = new StaminaBarMin;

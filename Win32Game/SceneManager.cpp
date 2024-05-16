@@ -31,7 +31,7 @@ void SceneManager::DestroyInstance() {
 }
 
 void SceneManager::InitScene() {
-	_Scenes[(int)SCENE_LAYER::MAIN] = new SampleScene;	 
+	_Scenes[(int)SCENE_LAYER::MAIN] = new TrapSceneTest;	 
 	_CurScene = _Scenes[(int)SCENE_LAYER::MAIN];
 	_CurScene->Start();
 }
