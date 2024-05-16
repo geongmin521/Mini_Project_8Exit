@@ -24,12 +24,8 @@ public:
 	void ChangeState(PlayerState state);
 
 	float GetSpeed() { return _Speed; }
-
-
-
 	void Run();
 	void StaminaBarActions();
-	void StaminaBarMinActions();
 	
 private:
 	PlayerState _CurState;

@@ -5,7 +5,7 @@
 #include "TimeSystem.h"
 #include "Collider.h"
 #include "Camera.h"
-Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(200), _Speed(500), _IsRun(false), _RunSpeed(),
+Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
 				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::idle)
 
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _CurState(PlayerState::idle)
@@ -31,7 +31,6 @@ void Player::Update()
 	Jump();
 	Run();
 	StaminaBarActions();
-	StaminaBarMinActions();
 	_StaminaBarMin->SetStaminaPercent(_Stamina / _MaxStamina);
 
 	if (GetAinmater() != nullptr)
@@ -57,13 +56,6 @@ void Player::Render()
 			(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
 		);
 	}
-
-	Graphics g(renderSystem->_backDC);
-	g.DrawImage(_MyTex->GetImage(),
-		(int)renderPosition._x - (int)_MyTex->GetImage()->GetWidth() / 2,
-		(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,
-		(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
-	);
 	_StaminaBar->Render();
 	_StaminaBarMin->Render();
 	ComponentRender();
@@ -71,15 +63,25 @@ void Player::Render()
 
 void Player::Move()
 {
+	float speed;
+	Vector3 dir;
 	if (inputSystem->isKey(VK_LEFT)|| inputSystem->isKey('A'))
 	{
-		SetLocation(GetLocation() + Vector3(-1, 0 ,0) * timeManager->GetDeltaTime() * _Speed);
-		
+		dir = Vector3(-1, 0, 0);
 	}
 	if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
 	{
-		SetLocation(GetLocation() + Vector3(1, 0, 0) * timeManager->GetDeltaTime() * _Speed);
+		dir = Vector3(1, 0, 0);
 	}
+	if (_IsRun)
+	{
+		speed = _Speed + _RunSpeed;
+	}
+	else
+	{
+		speed = _Speed;
+	}
+	SetLocation(GetLocation() + dir * timeManager->GetDeltaTime() * speed);
 }
 
 void Player::Jump()
@@ -140,9 +142,6 @@ void Player::Run()
 	if (inputSystem->isKey(VK_CONTROL) && _Stamina > 0) //달리기
 	{
 		_IsRun = true;
-		_RunSpeed = _Speed + 10000;
-
-		// 스태미너 소모
 		_Stamina -= _StaminaDrain * timeManager->GetDeltaTime();
 		if (_Stamina < 0) 
 		{
@@ -152,6 +151,7 @@ void Player::Run()
 	}
 	else
 	{
+		_IsRun = false;
 		// 스태미너 회복
 		_Stamina += _StaminaRecovery * timeManager->GetDeltaTime();
 		if (_Stamina > _MaxStamina)
@@ -159,20 +159,6 @@ void Player::Run()
 			_Stamina = _MaxStamina;
 		}
 	}
-	if (_IsRun && _Stamina > 0)
-	{
-		_CurrentSpeed = _RunSpeed;
-		_IsRun = false;
-	}
-	if (inputSystem->isKey(VK_LEFT) || inputSystem->isKey('A'))
-	{
-		SetLocation(GetLocation() + Vector3(-1, 0, 0) * timeManager->GetDeltaTime() * _CurrentSpeed);
-	}
-	if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
-	{
-		SetLocation(GetLocation() + Vector3(1, 0, 0) * timeManager->GetDeltaTime() * _CurrentSpeed);
-	}
-	
 }
 
 void Player::StaminaBarActions()
@@ -180,16 +166,9 @@ void Player::StaminaBarActions()
 	// 스태미너바의 위치를 플레이어 위치로 업데이트
 	if (_StaminaBar != nullptr) {
 		_StaminaBar->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 300.0f, GetLocation()._z));
-
-	}
-}
-
-void Player::StaminaBarMinActions()
-{
-	// 줄어드는 스태미너바의 위치를 플레이어 위치로 업데이트
-	if (_StaminaBarMin != nullptr) {
 		_StaminaBarMin->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 300.0f, GetLocation()._z));
 	}
 }
+
 
 
