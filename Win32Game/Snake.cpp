@@ -44,6 +44,8 @@ void Snake::Render()
 	int endX = (int)_MyTex->Width();
 	int endY = (int)_MyTex->Height();
 
+	
+
 	if (CheckRenderPosition(startX, startY, endX, endY) == true) {
 		g.DrawImage(_MyTex->GetImage(),
 			startX, startY,
@@ -65,6 +67,7 @@ void Snake::OnCollisionExit(Collider* collider)
 	if (_State == SNAKE_STATE::IDLE) {
 		GetCollider()->SetScale(Vector3(278.0f, 200.0f, 0.0f));
 		_RunDir = Vector3(1, 0, 0);
+		_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);
 		_State = SNAKE_STATE::MOVEDOWN;
 	}
 }
