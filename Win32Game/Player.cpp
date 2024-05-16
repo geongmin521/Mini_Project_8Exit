@@ -95,16 +95,16 @@ void Player::ChangeState(PlayerState state)
 		switch (state)
 		{
 		case PlayerState::idle: //enum을 wstring으로 수동 변환
-			stateStr = L"idle";
+			stateStr = L"Idle";
 			break;
 		case PlayerState::jump:
-			stateStr = L"jump";
+			stateStr = L"Jump";
 			break;
 		case PlayerState::hit:
-			stateStr = L"hit";
+			stateStr = L"Hit";
 			break;
 		case PlayerState::move:
-			stateStr = L"move";
+			stateStr = L"Move";
 			break;
 		default:
 			break;

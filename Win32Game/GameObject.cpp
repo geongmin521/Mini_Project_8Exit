@@ -25,7 +25,7 @@ void GameObject::CreateText()
 
 void GameObject::CreateAnimater(std::wstring name)
 {
-	_Animater = new Animation(name,0.2f);
+	_Animater = new Animation(name,0.1f);
 	_Animater->_Owner = this;
 }
 

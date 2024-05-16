@@ -9,7 +9,7 @@
 #include "EventManager.h"
 #include "Camera.h"
 #include "Music.h"
-
+#include "DataRead.h"
 namespace game
 {
 
@@ -27,6 +27,8 @@ namespace game
 		//pathManager->InitPath();
 		sceneManager->InitScene();
 		collisionManager->Init();
+		DataRead data = DataRead();
+		data.FileDataRead();
 		Music::soundManager->GetInstance();
 		Music::soundManager->LoadMusic(Music::eSoundList::StartBGM, true, "Sound\\BackgroudMusic.mp3");//πË∞Ê¿Ωæ«
 	}
