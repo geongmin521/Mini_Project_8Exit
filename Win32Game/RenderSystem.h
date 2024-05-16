@@ -24,7 +24,6 @@ public:
 
 	void CreateBrushPen();
 	void InitRender();
-
 	void StartDraw();
 	void EndDraw();
 

@@ -6,7 +6,7 @@
 
 Monster::Monster() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Monster", L"Image\\alpha30.png");
+	_MyTex = resourceManager->GetTexture(L"Monster", L"Image\\sampleTrap.png");
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
@@ -30,6 +30,7 @@ void Monster::Render()
 		(int)renderPosition._y - (int)_MyTex->Height() / 2,
 		(int)_MyTex->Width(), (int)_MyTex->Height()
 	);
+
 
 	// BoxCollider도 캐릭터 이미지와 같이 움직이게 하려면 Update 에서 renderPosition 을 갱신해줘야 합니다.
 	//ComponentRender();

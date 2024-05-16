@@ -1,7 +1,7 @@
 #include "BackGround.h"
 #include "ResourceManager.h"
 
-BackGround::BackGround() : _MyTex(0)
+BackGround::BackGround() :_MyTex(0)
 {
 	_MyTex = resourceManager->GetTexture(L"BackGround", L"Image\\BG_stage_long.bmp");
 }

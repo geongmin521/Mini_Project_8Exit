@@ -151,6 +151,8 @@
     <ClInclude Include="globalheader.h" />
     <ClInclude Include="HorseCar.h" />
     <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="LastBackGround.h" />
+    <ClInclude Include="MainBackGround.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="PathManager.h" />
@@ -165,6 +167,9 @@
     <ClInclude Include="Spider1.h" />
     <ClInclude Include="Spider2.h" />
     <ClInclude Include="SunFlower.h" />
+    <ClInclude Include="SignMonster.h" />
+    <ClInclude Include="StaminaBar.h" />
+    <ClInclude Include="StaminaBarMin.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="TextBox.h" />
@@ -197,6 +202,8 @@
     <ClCompile Include="GameResource.cpp" />
     <ClCompile Include="HorseCar.cpp" />
     <ClCompile Include="InputSystem.cpp" />
+    <ClCompile Include="LastBackGround.cpp" />
+    <ClCompile Include="MainBackGround.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="PathManager.cpp" />
@@ -212,6 +219,9 @@
     <ClCompile Include="SunFlower.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TextBox.cpp" />
+    <ClCompile Include="SignMonster.cpp" />
+    <ClCompile Include="StaminaBar.cpp" />
+    <ClCompile Include="StaminaBarMin.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeSystem.cpp" />
     <ClCompile Include="TrapManager.cpp" />

@@ -3,10 +3,10 @@
 #include "GameObject.h"
 #include "Texture.h"
 
-class BackGround : public GameObject {
+class MainBackGround : public GameObject {
 public:
-	BackGround();
-	~BackGround();
+	MainBackGround();
+	~MainBackGround();
 
 	
 	virtual void Update();
@@ -14,5 +14,5 @@ public:
 
 private:
 	Texture* _MyTex;
+	
 };
-
