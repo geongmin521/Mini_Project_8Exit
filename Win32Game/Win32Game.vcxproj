@@ -162,6 +162,7 @@
     <ClInclude Include="SampleScene.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Snake.h" />
     <ClInclude Include="Spider1.h" />
     <ClInclude Include="Spider2.h" />
     <ClInclude Include="SunFlower.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="SampleScene.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Snake.cpp" />
     <ClCompile Include="Spider1.cpp" />
     <ClCompile Include="Spider2.cpp" />
     <ClCompile Include="SunFlower.cpp" />

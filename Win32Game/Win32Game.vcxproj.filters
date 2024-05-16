@@ -234,6 +234,9 @@
     <ClInclude Include="TrapManager.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -358,6 +361,9 @@
       <Filter>소스 파일\TrapTest</Filter>
     </ClCompile>
     <ClCompile Include="TrapSceneTest.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
       <Filter>소스 파일\TrapTest</Filter>
     </ClCompile>
   </ItemGroup>
