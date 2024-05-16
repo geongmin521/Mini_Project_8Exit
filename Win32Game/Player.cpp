@@ -133,7 +133,7 @@ void Player::StaminaBarMinActions()
 {
 	// 줄어드는 스태미너바의 위치를 플레이어 위치로 업데이트
 	if (_StaminaBarMin != nullptr) {
-		_StaminaBarMin->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 500.0f, GetLocation()._z));
+		_StaminaBarMin->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 300.0f, GetLocation()._z));
 	}
 }
 

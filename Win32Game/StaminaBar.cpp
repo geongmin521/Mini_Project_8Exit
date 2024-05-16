@@ -5,7 +5,7 @@
 
 StaminaBar::StaminaBar() :_MaxTex(0)
 {
-    _MaxTex = resourceManager->GetTexture(L"StaminaBar", L"Image\\MaxTex.png");
+    _MaxTex = resourceManager->GetTexture(L"StaminaBar", L"Image\\MaxTex2.png");
    
 }
 
