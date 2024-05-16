@@ -15,6 +15,7 @@ public:
 	LONG Height() { return _ImageSize.height; }
 	HDC GetDC() { return _DC; }
 	Image* GetImage() const { return _Image; }
+	BITMAP GetBitInfo() { return _BitInfo; }
 
 private:
 	HDC _DC;
