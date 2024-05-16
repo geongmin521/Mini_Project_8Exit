@@ -4,14 +4,18 @@
 #include "RenderSystem.h"
 #include "TimeSystem.h"
 #include "Collider.h"
-
+#include "Camera.h"
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(200), _Speed(500), _IsRun(false), _RunSpeed(),
-				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(10.0f), _StaminaRecovery(2.0f)
+				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"Charactor", L"Image\\PlayerDump.png");
 	GameObject::CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));
+
+	_StaminaBar = new StaminaBar;
+	_StaminaBarMin = new StaminaBarMin;
+
 }
 
 Player::~Player()
@@ -23,6 +27,9 @@ void Player::Update()
 	Move();
 	Jump();
 	Run();
+	StaminaBarActions();
+	StaminaBarMinActions();
+	_StaminaBarMin->SetStaminaPercent(_Stamina / _MaxStamina);
 }
 
 void Player::Render()
@@ -35,7 +42,8 @@ void Player::Render()
 		(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,
 		(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
 	);
-	_staminaBar->Render();
+	_StaminaBar->Render();
+	_StaminaBarMin->Render();
 }
 
 void Player::Move()
@@ -43,6 +51,7 @@ void Player::Move()
 	if (inputSystem->isKey(VK_LEFT)|| inputSystem->isKey('A'))
 	{
 		SetLocation(GetLocation() + Vector3(-1, 0 ,0) * timeManager->GetDeltaTime() * _Speed);
+		
 	}
 	if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
 	{
@@ -110,3 +119,22 @@ void Player::Run()
 	}
 	
 }
+
+void Player::StaminaBarActions()
+{
+	// 스태미너바의 위치를 플레이어 위치로 업데이트
+	if (_StaminaBar != nullptr) {
+		_StaminaBar->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 300.0f, GetLocation()._z));
+
+	}
+}
+
+void Player::StaminaBarMinActions()
+{
+	// 줄어드는 스태미너바의 위치를 플레이어 위치로 업데이트
+	if (_StaminaBarMin != nullptr) {
+		_StaminaBarMin->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 500.0f, GetLocation()._z));
+	}
+}
+
+

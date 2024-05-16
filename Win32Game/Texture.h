@@ -10,12 +10,11 @@ struct ImageSize {
 class Texture : public GameResource {
 public:
 	void Load(const std::wstring& filepath);
-
+	void Resize(int newWidth, int newHeight);
 	LONG Width() { return _ImageSize.width; }
 	LONG Height() { return _ImageSize.height; }
 	HDC GetDC() { return _DC; }
 	Image* GetImage() const { return _Image; }
-
 private:
 	HDC _DC;
 	HBITMAP _Bitmap;

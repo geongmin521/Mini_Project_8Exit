@@ -177,6 +177,9 @@
     <ClInclude Include="StaminaBar.h">
       <Filter>소스 파일\TestGameScene</Filter>
     </ClInclude>
+    <ClInclude Include="StaminaBarMin.h">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -286,6 +289,9 @@
       <Filter>소스 파일\TestGameScene</Filter>
     </ClCompile>
     <ClCompile Include="StaminaBar.cpp">
+      <Filter>소스 파일\TestGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="StaminaBarMin.cpp">
       <Filter>소스 파일\TestGameScene</Filter>
     </ClCompile>
   </ItemGroup>

@@ -6,7 +6,7 @@
 
 Monster::Monster() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Monster", L"Image\\alpha30.png");
+	_MyTex = resourceManager->GetTexture(L"Monster", L"Image\\sampleTrap.png");
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetOffset(Vector3((float)_MyTex->Width() / 2, (float)_MyTex->Height() / 2, 0));

@@ -1,7 +1,8 @@
 #pragma once
 #include "GameObject.h"
 #include "Texture.h"
-
+#include "StaminaBar.h"
+#include "StaminaBarMin.h"
 class Player : public GameObject
 {
 public:
@@ -12,7 +13,9 @@ public:
 	void Move();
 	void Jump();
 	void Run();
-
+	void StaminaBarActions();
+	void StaminaBarMinActions();
+	
 private:
 	Texture* _MyTex;
 	float _Speed;
@@ -28,6 +31,7 @@ private:
 	bool _IsHit;
 	bool _IsRun;
 
-	
+	StaminaBar* _StaminaBar;
+	StaminaBarMin* _StaminaBarMin;
 };
 

@@ -3,6 +3,7 @@
 #include "RenderSystem.h"
 #include "Collider.h"
 #include "Utility.h"
+
 SignMonster::SignMonster() : _MyTex(nullptr)
 {
     _MyTex = resourceManager->GetTexture(L"SignMonster", L"Image\\CharactorTest.bmp");

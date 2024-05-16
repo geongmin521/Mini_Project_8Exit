@@ -164,6 +164,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SignMonster.h" />
     <ClInclude Include="StaminaBar.h" />
+    <ClInclude Include="StaminaBarMin.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TimeSystem.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SignMonster.cpp" />
     <ClCompile Include="StaminaBar.cpp" />
+    <ClCompile Include="StaminaBarMin.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeSystem.cpp" />
     <ClCompile Include="Trap1.cpp" />

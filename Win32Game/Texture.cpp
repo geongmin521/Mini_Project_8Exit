@@ -17,3 +17,12 @@ void Texture::Load(const std::wstring& filepath)
 	_Image = Image::FromFile(filepath.c_str());
 	_ImageSize = { _Image->GetWidth(), _Image->GetHeight() };
 }
+
+void Texture::Resize(int newWidth, int newHeight) {
+    // 이미지의 크기를 조정합니다.
+    if (_Image != nullptr) {
+        delete _Image;
+        _Image = new Gdiplus::Bitmap(newWidth, newHeight, _Image->GetPixelFormat());
+        _ImageSize = { _Image->GetWidth(), _Image->GetHeight() };
+    }
+}

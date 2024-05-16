@@ -21,9 +21,9 @@ void SampleScene::Start()
 {
 	
 
-	GameObject* sample = new SampleObject;
+	/*GameObject* sample = new SampleObject;
 	sample->SetLocation(Vector3(0, 0, 0));
-	AddObject(sample, LAYER_GROUP::PLAYER);
+	AddObject(sample, LAYER_GROUP::PLAYER);*/
 
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(0, 0, 0));
@@ -49,9 +49,9 @@ void SampleScene::Start()
 	sign->SetLocation(Vector3(0, 100, 0));
 	AddObject(sign, LAYER_GROUP::MONSTER);
 
-	GameObject* staminaBar = new StaminaBar;
-	staminaBar->SetLocation(Vector3(0, 50, 0));
-	AddObject(staminaBar, LAYER_GROUP::BACKGROUND);
+	
+	
+	
 
 	collisionManager->CheckGroup(LAYER_GROUP::DEFAULT, LAYER_GROUP::MONSTER);
 
