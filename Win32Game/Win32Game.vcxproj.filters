@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="소스 파일">
@@ -64,20 +64,11 @@
     <Filter Include="소스 파일\Player">
       <UniqueIdentifier>{8ae67304-ca42-4959-bd82-2c2cbea7aa70}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Component\Animation">
+    <Filter Include="소스 파일\Animation">
       <UniqueIdentifier>{74c129cb-0fb6-4b69-a9bc-4ed96a1f3bf6}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\TrapTest">
       <UniqueIdentifier>{aa6795c2-a37e-4764-bc92-436df21b6208}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\Component\Text">
-      <UniqueIdentifier>{f707d999-b739-4262-b265-c41eff777918}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\TextBox">
-      <UniqueIdentifier>{8f47f2cf-9e33-483f-9d34-82a456eb9960}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\DataRead">
-      <UniqueIdentifier>{eb56651e-5805-4008-9046-8de46b4d0d4a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -166,19 +157,7 @@
       <Filter>소스 파일\Player</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>소스 파일\Component\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="TrapManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="TrapSceneTest.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>소스 파일\Component\Text</Filter>
-    </ClInclude>
-    <ClInclude Include="TextBox.h">
-      <Filter>소스 파일\TextBox</Filter>
+      <Filter>소스 파일\Animation</Filter>
     </ClInclude>
     <ClInclude Include="Spider1.h">
       <Filter>소스 파일\TrapTest</Filter>
@@ -307,19 +286,7 @@
       <Filter>소스 파일\Player</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>소스 파일\Component\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="TrapManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TrapSceneTest.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>소스 파일\Component\Text</Filter>
-    </ClCompile>
-    <ClCompile Include="TextBox.cpp">
-      <Filter>소스 파일\TextBox</Filter>
+      <Filter>소스 파일\Animation</Filter>
     </ClCompile>
     <ClCompile Include="Spider1.cpp">
       <Filter>소스 파일\TrapTest</Filter>
