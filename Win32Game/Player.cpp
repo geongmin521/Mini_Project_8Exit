@@ -7,6 +7,8 @@
 #include "Camera.h"
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(200), _Speed(500), _IsRun(false), _RunSpeed(),
 				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::idle)
+
+Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _CurState(PlayerState::idle)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player_idle_0.png");
 	GameObject::CreateCollider();
@@ -94,8 +96,8 @@ void Player::Jump()
 		//파워만큼 y축 증가 감소
 		SetLocation(GetLocation() + (Vector3(0, -1, 0) * timeManager->GetDeltaTime() * CurJumpPower));
 		//중력가속도에 의해 힘감소
-		CurJumpPower -= 980 * timeManager->GetDeltaTime();
-		if (GetLocation()._y >= 200) //땅의 높이가 필요함.. 
+		CurJumpPower -= 4980 * timeManager->GetDeltaTime();
+		if (GetLocation()._y >= 230) //땅의 높이가 필요함.. 
 		{
 			ChangeState(PlayerState::idle);
 			_IsJump = false;

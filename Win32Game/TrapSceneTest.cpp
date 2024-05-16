@@ -8,6 +8,7 @@
 #include "Spider2.h"
 #include "SunFlower.h"
 #include "TextBox.h"
+#include "Snake.h"
 
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(10, nullptr), _AnomalyObjects(10)
 {
@@ -44,6 +45,9 @@ void TrapSceneTest::Start()
 
 	//GameObject* trap2 = new Trap2;
 	//AddObject(trap2, LAYER_GROUP::BACKUNIT);
+
+	GameObject* snake = new Snake;
+	AddObject(snake, LAYER_GROUP::MONSTER);
 
 	GameObject* sunFlower = new SunFlower;
 	AddObject(sunFlower, LAYER_GROUP::MONSTER);
@@ -109,26 +113,7 @@ void TrapSceneTest::InitObjectPlace()
 		8 : ScareCrow	
 		9 : Spider		
 		
-		같은 종류, 다른 구역에서 동시에 이상현상이 발생할 수 있음.
-		-> 비트마스킹으로 정리.
-		거미 : 4구역, 15종
-		허수아비 : 2구역 3종
-		해바라기 : 2구역 3종
-		마차 : 1구역 1종
-		오두막 : 1구역 1종
-
-		이상현상 구역을 정하는 방법 - 비트마스킹
-
-		거미 구역			: 0b1001000101
-		해바라기 구역		: 0b0100010000
-		허수아비 구역		: 0b0010000010
-		마차 구역			: 0b0000100000
-		오두막 구역			: 0b0000001000
-
-		5개 중에 랜덤 선택
-
-		선택된 구역을 쉬프트 연산으로 돌면서 & == true 면 확률에 따른 오브젝트 선택후 AddObject.
-		정상적인 현상은 무조건 각 구역의 0번 자리에 존재.
+		레벨에 따라 등장할 기믹 개수는 정해져 있다.
 
 		충돌이 있는 오브젝트의 구분은 각각의 OnCollision 함수들에서 시행. 모두 같은 레이어.
 
