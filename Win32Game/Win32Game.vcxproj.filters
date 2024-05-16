@@ -201,8 +201,6 @@
     <ClInclude Include="WoodHouse.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
-<<<<<<< Updated upstream
-=======
     <ClInclude Include="Spider1.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
@@ -221,7 +219,6 @@
     <ClInclude Include="DataRead.h">
       <Filter>소스 파일\DataRead</Filter>
     </ClInclude>
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
