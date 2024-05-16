@@ -168,12 +168,6 @@
     <ClInclude Include="Animation.h">
       <Filter>소스 파일\Component\Animation</Filter>
     </ClInclude>
-    <ClInclude Include="TrapManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="TrapSceneTest.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Text.h">
       <Filter>소스 파일\Component\Text</Filter>
     </ClInclude>
@@ -233,6 +227,12 @@
     </ClInclude>
     <ClInclude Include="DataRead.h">
       <Filter>소스 파일\DataRead</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapSceneTest.h">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapManager.h">
+      <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -324,12 +324,6 @@
     <ClCompile Include="Animation.cpp">
       <Filter>소스 파일\Component\Animation</Filter>
     </ClCompile>
-    <ClCompile Include="TrapManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TrapSceneTest.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Text.cpp">
       <Filter>소스 파일\Component\Text</Filter>
     </ClCompile>
@@ -355,6 +349,15 @@
       <Filter>소스 파일\TrapTest</Filter>
     </ClCompile>
     <ClCompile Include="WoodHouse.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="DataRead.cpp">
+      <Filter>소스 파일\DataRead</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapManager.cpp">
+      <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapSceneTest.cpp">
       <Filter>소스 파일\TrapTest</Filter>
     </ClCompile>
   </ItemGroup>
