@@ -6,9 +6,7 @@
 #include "Collider.h"
 #include "Camera.h"
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(200), _Speed(500), _IsRun(false), _RunSpeed(),
-				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr)
-
-Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(500), _Speed(500), _CurState(PlayerState::idle)
+				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::idle)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player_idle_0.png");
 	GameObject::CreateCollider();
@@ -33,7 +31,7 @@ void Player::Update()
 	StaminaBarActions();
 	StaminaBarMinActions();
 	_StaminaBarMin->SetStaminaPercent(_Stamina / _MaxStamina);
-}
+
 	if (GetAinmater() != nullptr)
 	{
 		GetAinmater()->Update();
@@ -66,9 +64,7 @@ void Player::Render()
 	);
 	_StaminaBar->Render();
 	_StaminaBarMin->Render();
-}
-
-	//ComponentRender();
+	ComponentRender();
 }
 
 void Player::Move()
