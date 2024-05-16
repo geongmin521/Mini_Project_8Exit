@@ -82,3 +82,40 @@ Vector3 Vector3::operator*	(const float& scalar) const {
 Vector3 Vector3::operator/	(const float& scalar) const {
 	return Vector3(*this) /= scalar;
 }
+
+bool Vector3::operator<(const Vector3& v) const
+{
+	return (
+		this->Magnitude() < v.Magnitude()
+		);
+}
+
+bool Vector3::operator>(const Vector3& v) const
+{
+	return (
+		this->Magnitude() > v.Magnitude()
+		);
+}
+
+bool Vector3::operator==(const Vector3& v) const
+{
+	return (
+		this->Magnitude() == v.Magnitude()
+		);
+}
+
+bool Vector3::operator<=(const Vector3& v) const
+{
+	return (
+		*this < v &&
+		*this == v
+		);
+}
+
+bool Vector3::operator>=(const Vector3& v) const
+{
+	return (
+		*this > v &&
+		*this == v
+		);
+}
