@@ -16,7 +16,7 @@ SunFlower::~SunFlower()
 void SunFlower::Update()
 {
 	SetLocation(GetLocation() + _Dir * _MoveSpeed * timeManager->GetDeltaTime());
-	if (GetLocation()._y >= _EndPos._y || GetLocation()._y <= _StartPos._y) {
+	if (GetLocation()._y > _EndPos._y ||GetLocation()._y < _StartPos._y) {
 		_Dir *= -1;
 	}
 }

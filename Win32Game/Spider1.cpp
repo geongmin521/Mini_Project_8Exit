@@ -46,5 +46,8 @@ void Spider1::Render()
 }
 
 void Spider1::OnCollisionExit(Collider* collider) {
-	_MoveDown = true;
+	if (GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
+		_MoveDown = true;
+	}
+	
 }
