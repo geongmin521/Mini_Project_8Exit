@@ -83,5 +83,5 @@ void Collider::OnTrigger(Collider* collider)
 
 void Collider::OnTriggerExit(Collider* collider)
 {
-	_Owner->OnTriggerEnter(collider);
+	_Owner->OnTriggerExit(collider);
 }

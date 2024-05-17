@@ -16,7 +16,6 @@ Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(180
 	_Runable = true;
 	_StaminaBar = new StaminaBar;
 	_StaminaBarMin = new StaminaBarMin;
-
 }
 
 Player::~Player()
@@ -64,7 +63,7 @@ void Player::Render()
 		_StaminaBar->Render();
 		_StaminaBarMin->Render();
 	}
-
+	//Gdiplus::
 	ComponentRender();
 }
 
@@ -126,8 +125,6 @@ void Player::Jump()
 		}			
 	}
 }
-
-
 
 void Player::ChangeState(PlayerState state)
 {
@@ -242,8 +239,3 @@ void Player::OnCollisionEnter(Collider* collider)
 	ChangeState(PlayerState::Hit); //애니메이션에서 루프인지 아닌지에따라 루프가끝나면 알림오기?
 
 }
-
-
-
-
-

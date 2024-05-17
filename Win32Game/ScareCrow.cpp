@@ -13,6 +13,7 @@ ScareCrow::ScareCrow() : _MyTex(nullptr), _State(SCARECROW_STATE::IDLE), _MoveSp
 	_Search = new ScareCrow_Search;
 	CreateObject(_Search, LAYER_GROUP::SEARCH);
 	SetName(L"ScareCrow");
+	GetCollider()->SetTrigger(true);
 }
 
 ScareCrow::~ScareCrow()
@@ -72,7 +73,7 @@ void ScareCrow::Render()
 	//_Search->Render();
 }
 
-void ScareCrow::OnCollisionEnter(Collider* collider)
+void ScareCrow::OnTriggerEnter(Collider* collider)
 {
 	if (_State == SCARECROW_STATE::CHASE) {
 		SceneReload();

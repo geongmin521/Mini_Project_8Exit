@@ -9,6 +9,7 @@ Spider1::Spider1() : _MyTex(nullptr)
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0.0f));
 	SetName(L"Spider1");
+	GetCollider()->SetTrigger(true);
 }
 
 Spider1::~Spider1()
@@ -46,7 +47,7 @@ void Spider1::Render()
 	ComponentRender();
 }
 
-void Spider1::OnCollisionExit(Collider* collider) {
+void Spider1::OnTriggerExit(Collider* collider) {
 	if (GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
 		_MoveDown = true;
 	}

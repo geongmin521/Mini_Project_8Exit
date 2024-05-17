@@ -20,7 +20,7 @@ public:
     virtual void Render();
 
     void OnCollisionEnter(Collider* collider);
-    void OnCollisionExit(Collider* collider);
+    void OnTriggerExit(Collider* collider);
 
 private:
     Texture* _MyTex;
