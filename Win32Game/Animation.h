@@ -14,6 +14,8 @@ public: //불러오는거?
 	void Render();
 	void ChangeState(std::wstring state);
 	void GetTexture(std::wstring name, std::wstring state);
+	void Flip(bool FilpX);
+	void SetFlip();
 private:
 	GameObject* _Owner;
 	int CurFrame;		//현재 이미지번호
@@ -22,7 +24,6 @@ private:
 	std::wstring state; //보통 상태는 enum으로 처리하지만 범용성을 위해 string 으로 처리함
 	std::wstring name; //보통 상태는 enum으로 처리하지만 범용성을 위해 string 으로 처리함
 	std::vector<Texture*>  _AnimatedTexture; //텍스쳐 배열
-
 	friend class GameObject;
 };
 

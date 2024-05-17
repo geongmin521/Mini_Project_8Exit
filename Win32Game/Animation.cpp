@@ -3,7 +3,6 @@
 void Animation::Render()
 {
 	Vector3 renderPosition = camera->GetRenderPos(_Owner->GetLocation());
-
 	Graphics g(renderSystem->_backDC);
 	g.DrawImage(_AnimatedTexture[CurFrame]->GetImage(),
 		(int)renderPosition._x - (int)_AnimatedTexture[CurFrame]->GetImage()->GetWidth() / 2,
@@ -26,6 +25,7 @@ void Animation::ChangeState(std::wstring state)
 
 void Animation::Update()
 {
+	SetFlip();
 	_AnimationTime += timeManager->GetDeltaTime();
 	if (_AnimationTime >= _AnimationSpeed)
 	{
@@ -52,6 +52,24 @@ void Animation::GetTexture(std::wstring name, std::wstring state = L"Idle")
 			_AnimatedTexture.push_back(tx);
 			index++;
 		}
+	}
+}
+
+void Animation::Flip(bool FilpX)
+{
+	for (int i = 0; i < _AnimatedTexture.size(); i++)
+	{
+		_AnimatedTexture[i]->SetFlipX(FilpX);
+		_AnimatedTexture[i]->GetImage()->RotateFlip(RotateNoneFlipX);
+	}	
+}
+
+void Animation::SetFlip() //다른데서 호출하기 싫으니까 업데이트에서 처리하기 싶고 상태와 상관없이.. 현재방향으로 
+//플립하기. 
+{
+	if (_Owner->GetFilpX() != _AnimatedTexture[0]->GetFlipX())
+	{
+		Flip(!_AnimatedTexture[0]->GetFlipX());
 	}
 }
 
