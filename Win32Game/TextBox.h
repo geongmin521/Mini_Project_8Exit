@@ -5,7 +5,7 @@
 class TextBox : public GameObject //텍스트 컴포넌트를 가질 오브젝트
 {
 public:
-	TextBox();
+	TextBox(std::wstring text);
 	~TextBox();
 	void Update();
 	void Render();
