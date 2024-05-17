@@ -1,5 +1,6 @@
 #include "Utility.h"
 #include "EventManager.h"
+#include "SceneManager.h"
 
 void CreateObject(GameObject* obj, LAYER_GROUP group)
 {
@@ -26,4 +27,9 @@ bool CheckRenderPosition(int& leftX, int& leftY, int& rightX, int& rightY)
 		return false;
 	}
 	return true;
+}
+
+void SceneReload()
+{
+	sceneManager->SceneReload();
 }

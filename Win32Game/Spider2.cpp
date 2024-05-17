@@ -9,6 +9,7 @@ Spider2::Spider2() : _MyTex(nullptr), _CoolTime(0.7f), _State(SPIDER_STATE::IDLE
 
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0.0f));
+	SetName(L"Spider2");
 }
 
 Spider2::~Spider2()

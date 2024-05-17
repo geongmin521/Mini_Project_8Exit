@@ -51,3 +51,9 @@ void SceneManager::LoadScene(int idx)
 	_CurScene = _Scenes[idx];
 	_CurScene->Start();
 }
+
+void SceneManager::SceneReload()
+{
+	_CurScene->End();
+	_CurScene->Start();
+}
