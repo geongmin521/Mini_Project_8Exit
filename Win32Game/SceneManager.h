@@ -18,6 +18,7 @@ public:
 	void Update();
 	void Render();
 	void LoadScene(int idx);
+	void SceneReload();
 	Scene* GetCurScene() const { return _CurScene; }
 
 private:

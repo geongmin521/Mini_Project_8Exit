@@ -2,13 +2,16 @@
 #include "ResourceManager.h"
 #include "Collider.h"
 #include "TrapSceneTest.h"
+#include "Utility.h"
 
-ScareCrow::ScareCrow() : _MyTex(nullptr), _State(SCARECROW_STATE::IDLE), _MoveSpeed(500.0f * 1.3f), _CoolTime(3.0f)
+ScareCrow::ScareCrow() : _MyTex(nullptr), _State(SCARECROW_STATE::IDLE), _MoveSpeed(500.0f * 1.3f), _CoolTime(3.0f), _Search(nullptr), _WaitTime(2.0f)
 {
 	_MyTex = resourceManager->GetTexture(L"ScareCrow", L"Image\\ScareCrow.png");
 	CreateCollider();
 	SetLocation(Vector3(1300, 100, 0));
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0.0f));
+	_Search = new ScareCrow_Search;
+	CreateObject(_Search, LAYER_GROUP::MONSTER);
 }
 
 ScareCrow::~ScareCrow()
@@ -31,12 +34,19 @@ void ScareCrow::Update()
 			SetLocation(GetLocation() + playerDir * _MoveSpeed * timeManager->GetDeltaTime());
 			_CoolTime -= timeManager->GetDeltaTime();
 			if (_CoolTime <= 0.0f) {
-				_State = SCARECROW_STATE::IDLE;
+				_State = SCARECROW_STATE::WAIT;
 				_CoolTime = 3.0f;
 			}
 		}
 		else {
 			_State = SCARECROW_STATE::IDLE;
+		}
+	}
+	else if (_State == SCARECROW_STATE::WAIT) {
+		_WaitTime -= timeManager->GetDeltaTime();
+		if (_WaitTime <= 0.0f) {
+			_State = SCARECROW_STATE::CHASE;
+			_WaitTime = 2.0f;
 		}
 	}
 }
@@ -58,9 +68,12 @@ void ScareCrow::Render()
 		);
 	}
 	ComponentRender();
-	_Search->Render();
+	//_Search->Render();
 }
 
 void ScareCrow::OnCollisionEnter(Collider* collider)
 {
+	if (_State == SCARECROW_STATE::CHASE) {
+		SceneReload();
+	}
 }

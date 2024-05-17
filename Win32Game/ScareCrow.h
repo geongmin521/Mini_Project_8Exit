@@ -5,6 +5,7 @@
 
 enum class SCARECROW_STATE {
     IDLE,
+    WAIT,
     CHASE,
 };
 
@@ -28,6 +29,7 @@ private:
 
     float _MoveSpeed;
     float _CoolTime;
+    float _WaitTime;
 
     friend class TrapSceneTest;
 };

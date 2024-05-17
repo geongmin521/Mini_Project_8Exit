@@ -6,12 +6,13 @@
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(10, nullptr), _AnomalyObjects(10)
 {
 	//TODO: 여기서 각 구역 별 오브젝트를 생성해야 합니다.
+
 	std::vector<Vector3> pos = resourceManager->GetMapPos(L"area1");
 	for (int i = 0; i < pos.size(); i++)
 	{
 		//TODO: 여기서 생성된 인스턴스의 포지션을 설정해줍니다.
 	}
-	
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
 }
 
 TrapSceneTest::~TrapSceneTest()
@@ -20,6 +21,43 @@ TrapSceneTest::~TrapSceneTest()
 
 void TrapSceneTest::Start()
 {
+	//GameObject* bg = new BackGround;
+	//bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
+
+	//
+	//
+
+	//
+	//AddObject(spider1, LAYER_GROUP::MONSTER);
+
+	//
+	//AddObject(spider2, LAYER_GROUP::MONSTER);
+
+	//GameObject* scareCrow = new ScareCrow;
+	//AddObject(scareCrow, LAYER_GROUP::MONSTER);
+
+	//GameObject* snake = new Snake;
+	//AddObject(snake, LAYER_GROUP::MONSTER);
+
+	//
+	//AddObject(sunFlower, LAYER_GROUP::MONSTER);
+	//
+	//
+	//AddObject(textBox, LAYER_GROUP::UI);
+	GameObject* spider1 = new Spider1;
+	_ObjectPlace[0] = spider1;
+	GameObject* spider2 = new Spider2;
+	_ObjectPlace[1] = spider2;
+	GameObject* scareCrow = new ScareCrow;
+	_ObjectPlace[2] = scareCrow;
+	GameObject* snake = new Snake;
+	_ObjectPlace[3] = snake;
+	GameObject* sunFlower = new SunFlower;
+	_ObjectPlace[4] = sunFlower;
+	GameObject* textBox = new TextBox;
+	textBox->SetLocation(Vector3(200, 200, 0));
+	_ObjectPlace[5] = textBox;
+
 	GameObject* bg = new BackGround;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
 	AddObject(bg, LAYER_GROUP::BACKGROUND);
@@ -27,34 +65,10 @@ void TrapSceneTest::Start()
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));
 	AddObject(player, LAYER_GROUP::PLAYER);
-
-	GameObject* spider1 = new Spider1;
-	AddObject(spider1, LAYER_GROUP::MONSTER);
-
-	GameObject* spider2 = new Spider2;
-	AddObject(spider2, LAYER_GROUP::MONSTER);
-
-	GameObject* scareCrow = new ScareCrow;
-	AddObject(scareCrow, LAYER_GROUP::MONSTER);
-	GameObject* scareCrow_Search = new ScareCrow_Search;
-	AddObject(scareCrow_Search, LAYER_GROUP::MONSTER);
-	((ScareCrow*)scareCrow)->_Search = (ScareCrow_Search*)scareCrow_Search;
-
-	GameObject* snake = new Snake;
-	AddObject(snake, LAYER_GROUP::MONSTER);
-
-	GameObject* sunFlower = new SunFlower;
-	AddObject(sunFlower, LAYER_GROUP::MONSTER);
-	GameObject* textBox = new TextBox;
-	textBox->SetLocation(Vector3(200,200, 0));
-	AddObject(textBox, LAYER_GROUP::UI);
-
-	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
-	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::TRAPTRIGGER);
-	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::BACKUNIT);
-
+	
 	camera->SetTarget(player);
 
+	InitObjectPlace();
 }
 
 void TrapSceneTest::End() 
@@ -64,34 +78,34 @@ void TrapSceneTest::End()
 
 void TrapSceneTest::InitObjectPlace()
 {
-	int idx;
-	while (true) {
-		idx = GetRandomNum(sizeof(_AreaSet) / sizeof(int));
-		if (_PrevTrapIdx != idx) break;
-	}
-	_PrevTrapIdx = idx;
+	//int idx;
+	//while (true) {
+	//	idx = GetRandomNum(sizeof(_AreaSet) / sizeof(int));
+	//	if (_PrevTrapIdx != idx) break;
+	//}
+	//_PrevTrapIdx = idx;
 
-	int compareFlg = 1;
-	int areaSet = _AreaSet[_PrevTrapIdx];
+	//int compareFlg = 1;
+	//int areaSet = _AreaSet[_PrevTrapIdx];
 
-	// 이상현상이 존재하는 구역의 오브젝트중 정상과 비정상 오브젝트중에 뽑아 배치합니다.
-	for (int shift = _ObjectPlace.size() - 1; shift >= 0; shift--) {
-		if (areaSet & (compareFlg << shift)) {
-			int areaIdx = _ObjectPlace.size() - 1 - shift;
-			_ObjectPlace[areaIdx] = GetAnomalyObject(areaIdx);
-		}
-	}
+	//// 이상현상이 존재하는 구역의 오브젝트중 정상과 비정상 오브젝트중에 뽑아 배치합니다.
+	//for (int shift = _ObjectPlace.size() - 1; shift >= 0; shift--) {
+	//	if (areaSet & (compareFlg << shift)) {
+	//		int areaIdx = _ObjectPlace.size() - 1 - shift;
+	//		_ObjectPlace[areaIdx] = GetAnomalyObject(areaIdx);
+	//	}
+	//}
 
-	// 이상현상이 존재하는 구역의 오브젝트를 다 채워넣었으면 나머지 정상적인 구역의 오브젝트도 채웁니다.
-	for (int i = 0; i < _ObjectPlace.size(); i++) {
-		if (_ObjectPlace[i] == nullptr) {
-			_ObjectPlace[i] = _AnomalyObjects[i][0];
-		}
-	}
+	//// 이상현상이 존재하는 구역의 오브젝트를 다 채워넣었으면 나머지 정상적인 구역의 오브젝트도 채웁니다.
+	//for (int i = 0; i < _ObjectPlace.size(); i++) {
+	//	if (_ObjectPlace[i] == nullptr) {
+	//		_ObjectPlace[i] = _AnomalyObjects[i][0];
+	//	}
+	//}
 
 	// 랜더링과 업데이트를 할 수있게 오브젝트들을 씬에 등록해줍니다.
 	for (int i = 0; i < _ObjectPlace.size(); i++) {
-		AddObject(_ObjectPlace[i], LAYER_GROUP::MONSTER);
+		if(_ObjectPlace[i] != nullptr) AddObject(_ObjectPlace[i], LAYER_GROUP::MONSTER);
 	}
 	//TODO: idx의 값에 따라 오브젝트들을 심어야 합니다.
 	/*
