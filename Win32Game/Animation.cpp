@@ -41,7 +41,7 @@ void Animation::GetTexture(std::wstring name, std::wstring state = L"Idle")
 	while (true)//상태머신까지는 추가해야해.. 구분은.. 상태와 enum으로?
 	{
 		//이름_상태_번호
-		std::wstring path = name + L"_" + state + L"_" + std::to_wstring(index); //스테이터스까지 여기에 더해주기?
+		std::wstring path = name + L"\\" + state + L"\\" + name + L"_" + state + L"_" + std::to_wstring(index); //스테이터스까지 여기에 더해주기?
 		Texture* tx = resourceManager->GetTexture(path, L"Image\\"+ path + L".png"); //상태머신은 enum일 확률이 높은데.. 그걸 스트링으로 변경해서 넘겨야지/./
 		if (tx->Width() == 0)
 		{
