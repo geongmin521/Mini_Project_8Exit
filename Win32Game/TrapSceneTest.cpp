@@ -52,8 +52,6 @@ void TrapSceneTest::Start()
 	_ObjectPlace[2] = scareCrow;
 	GameObject* snake = new Snake;
 	_ObjectPlace[3] = snake;
-	GameObject* sunFlower = new SunFlower;
-	AddObject(sunFlower, LAYER_GROUP::MONSTER);
 
 	GameObject* npc = new NPC;
 	npc->SetEnable(true);

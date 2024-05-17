@@ -9,3 +9,4 @@
 #include "Snake.h"
 #include "ScareCrow.h"
 #include "ScareCrow_Search.h"
+#include "NPC.h"

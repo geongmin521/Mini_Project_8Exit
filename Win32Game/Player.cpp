@@ -12,7 +12,7 @@ Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(180
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"Player");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
-	GameObject::Setname(L"Player");
+	GameObject::SetName(L"Player");
 	_Runable = true;
 	_StaminaBar = new StaminaBar;
 	_StaminaBarMin = new StaminaBarMin;
