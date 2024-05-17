@@ -16,14 +16,15 @@ public:
 	HDC GetDC() { return _DC; }
 	Image* GetImage() const { return _Image; }
 	BITMAP GetBitInfo() { return _BitInfo; }
-
+	const bool GetFlipX() { return FlipX; }
+	void SetFlipX(bool flipX) {  FlipX = flipX; }
 private:
 	HDC _DC;
 	HBITMAP _Bitmap;
 	BITMAP _BitInfo;
 	Image* _Image;
 	ImageSize _ImageSize;
-
+	bool FlipX;
 	Texture();
 	~Texture();
 

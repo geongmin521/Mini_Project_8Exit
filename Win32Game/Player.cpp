@@ -6,13 +6,14 @@
 #include "Collider.h"
 #include "Camera.h"
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
-				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::idle)
+				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::Idle)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"Player");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GameObject::Setname(L"Player");
+	_Runable = true;
 	_StaminaBar = new StaminaBar;
 	_StaminaBarMin = new StaminaBarMin;
 
@@ -24,12 +25,16 @@ Player::~Player()
 
 void Player::Update()
 {
-	Move();
-	Jump();
-	Run();
+	if (_IsHit == false)
+	{
+		Move();
+		Jump();
+		Run();		
+		StateManager();
+		_StaminaBarMin->SetStaminaPercent(_Stamina / _MaxStamina);
+	}
 	StaminaBarActions();
-	StateManager();
-	_StaminaBarMin->SetStaminaPercent(_Stamina / _MaxStamina);
+
 
 	if (GetAinmater() != nullptr)
 	{
@@ -54,8 +59,12 @@ void Player::Render()
 			(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
 		);
 	}
-	_StaminaBar->Render();
-	_StaminaBarMin->Render();
+	if (_IsRun == true)
+	{
+		_StaminaBar->Render();
+		_StaminaBarMin->Render();
+	}
+
 	ComponentRender();
 }
 
@@ -68,12 +77,14 @@ void Player::Move()
 		_IsWalk = true;
 		dir = Vector3(-1, 0, 0);
 		SetDir(dir);
+		SetFilpX(true);
 	}
 	else if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
 	{
 		_IsWalk = true;
 		dir = Vector3(1, 0, 0);
 		SetDir(dir);
+		SetFilpX(false);
 	}
 	else
 	{
@@ -129,19 +140,19 @@ void Player::ChangeState(PlayerState state)
 		std::wstring stateStr;
 		switch (state)
 		{
-		case PlayerState::idle: //enum을 wstring으로 수동 변환
+		case PlayerState::Idle: //enum을 wstring으로 수동 변환
 			stateStr = L"Idle";
 			break;
-		case PlayerState::jump:
+		case PlayerState::Jump:
 			stateStr = L"Jump";
 			break;
-		case PlayerState::walk:
+		case PlayerState::Walk:
 			stateStr = L"Walk";
 			break;
-		case PlayerState::hit:
+		case PlayerState::Hit:
 			stateStr = L"Hit";
 			break;
-		case PlayerState::run:
+		case PlayerState::Run:
 			stateStr = L"Run";
 			break;
 		default:
@@ -155,7 +166,7 @@ void Player::StateManager()
 {
 	if (_IsJump)
 	{
-		ChangeState(PlayerState::jump);
+		ChangeState(PlayerState::Jump);
 		return;
 	}
 	else
@@ -164,16 +175,16 @@ void Player::StateManager()
 		{
 			if (_IsRun)
 			{
-				ChangeState(PlayerState::run);
+				ChangeState(PlayerState::Run);
 			}
 			else
 			{
-				ChangeState(PlayerState::walk);
+				ChangeState(PlayerState::Walk);
 			}
 		}
 		else
 		{
-			ChangeState(PlayerState::idle);
+			ChangeState(PlayerState::Idle);
 		}
 	}
 }
@@ -181,13 +192,19 @@ void Player::StateManager()
 void Player::Run()
 {
 	_CurrentSpeed = _Speed;
-	if (inputSystem->isKeyDown(VK_CONTROL) && _Stamina > 0) //달리기
+	if (inputSystem->isKey(VK_CONTROL) && _Stamina > 0 && _Runable&&_IsWalk)//스테이터스 
 	{
 		_IsRun = true;
 	}
-	if (inputSystem->isKeyUp(VK_CONTROL)) //달리기
+	else
 	{
+		
 		_IsRun = false;
+	}
+
+	if (!inputSystem->isKey(VK_CONTROL))
+	{
+		_Runable = true;
 	}
 
 	if (_IsRun)
@@ -196,6 +213,7 @@ void Player::Run()
 		if (_Stamina < 0)
 		{
 			_Stamina = 0;
+			_Runable = false;
 			_IsRun = false;
 		}
 	}
@@ -220,7 +238,9 @@ void Player::StaminaBarActions()
 
 void Player::OnCollisionEnter(Collider* collider)
 {
-	ChangeState(PlayerState::hit); //애니메이션에서 루프인지 아닌지에따라 루프가끝나면 알림오기?
+	_IsHit = true;
+	ChangeState(PlayerState::Hit); //애니메이션에서 루프인지 아닌지에따라 루프가끝나면 알림오기?
+
 }
 
 
