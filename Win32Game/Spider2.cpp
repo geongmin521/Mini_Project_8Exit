@@ -2,9 +2,9 @@
 #include "ResourceManager.h"
 #include "Collider.h"
 
-Spider2::Spider2() : _MyTex(nullptr)
+Spider2::Spider2() : _MyTex(nullptr), _CoolTime(0.7f), _State(SPIDER_STATE::IDLE)
 {
-	_MyTex = resourceManager->GetTexture(L"Spider2", L"Image\\SpiderTrap2.png");
+	_MyTex = resourceManager->GetTexture(L"Spider2", L"Image\\Spider.png");
 	SetLocation(Vector3(300, -800, 0));
 
 	CreateCollider();
@@ -17,12 +17,20 @@ Spider2::~Spider2()
 
 void Spider2::Update()
 {
-	if (GetLocation()._y >= 0) {
-		_MoveDown = false;
-	}
-	if (_MoveDown == true) {
+	if (_State == SPIDER_STATE::MOVEDOWN) {
 		SetLocation(GetLocation() + Vector3(0, 1, 0) * 2160.0f * timeManager->GetDeltaTime());
-		
+		if (GetLocation()._y >= 230) {
+			_State = SPIDER_STATE::WAIT;
+		}
+	}
+	else if (_State == SPIDER_STATE::WAIT) {
+		_CoolTime -= timeManager->GetDeltaTime();
+		if (_CoolTime <= 0) {
+			_State = SPIDER_STATE::RUN;
+		}
+	}
+	else if (_State == SPIDER_STATE::RUN) {
+		SetLocation(GetLocation() + Vector3(1, 0, 0) * _MoveSpeed * timeManager->GetDeltaTime());
 	}
 }
 
@@ -48,7 +56,7 @@ void Spider2::Render()
 
 void Spider2::OnCollisionExit(Collider* collider)
 {
-	if (GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
-		_MoveDown = true;
+	if (_State == SPIDER_STATE::IDLE && GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
+		_State = SPIDER_STATE::MOVEDOWN;
 	}
 }
