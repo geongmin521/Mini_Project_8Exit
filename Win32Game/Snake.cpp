@@ -64,7 +64,7 @@ void Snake::OnCollisionEnter(Collider* collider)
 
 void Snake::OnCollisionExit(Collider* collider)
 {
-	if (_State == SNAKE_STATE::IDLE) {
+	if (_State == SNAKE_STATE::IDLE && GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
 		GetCollider()->SetScale(Vector3(278.0f, 200.0f, 0.0f));
 		_RunDir = Vector3(1, 0, 0);
 		_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);
