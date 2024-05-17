@@ -16,10 +16,12 @@ public:
 	void SetOffset(const Vector3& pos) { _Offset = pos; }
 	void SetPos(const Vector3& pos) { _ColliderPos = pos; }
 	void SetScale(const Vector3& scale) { _Scale = scale; }
+	void SetTrigger(bool state) { _Trigger = state; }
 
 	Vector3 GetOffset() const { return _Offset; }
 	Vector3 GetPos() const { return _ColliderPos; }
 	Vector3 GetScale() const { return _Scale; }
+	const bool IsTrigger() const { return _Trigger; }
 	GameObject* GetOwnerObject() { return _Owner; }
 
 	void Render();
@@ -30,6 +32,10 @@ public:
 	void OnCollision(Collider* collider);
 	void OnCollisionExit(Collider* collider);
 
+	void OnTriggerEnter(Collider* collider);
+	void OnTrigger(Collider* collider);
+	void OnTriggerExit(Collider* collider);
+
 	// 기본 대입 연산자가 작동하지 않게 미리 방어를 해줍니다.
 	Collider& operator= (Collider& origin) = delete;
 private:
@@ -37,6 +43,8 @@ private:
 	Vector3 _Offset;
 	Vector3 _ColliderPos;
 	Vector3 _Scale;
+
+	bool _Trigger;
 
 	// Collider가 생성될 때 마다 고유한 번호를 가지게 하기 위해서 정적변수를 선언합니다.
 	static UINT _NextID;

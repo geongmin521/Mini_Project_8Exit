@@ -42,6 +42,10 @@ public:
 	virtual void OnCollision(Collider* collider) {}
 	virtual void OnCollisionExit(Collider* collider) {}
 
+	virtual void OnTriggerEnter(Collider* collider) {}
+	virtual void OnTrigger(Collider* collider) {}
+	virtual void OnTriggerExit(Collider* collider) {}
+
 	void ComponentRender();
 	Collider* GetCollider() { return _Collider; }
 	Animation* GetAinmater() { return _Animater; }
