@@ -79,6 +79,9 @@
     <Filter Include="소스 파일\DataRead">
       <UniqueIdentifier>{eb56651e-5805-4008-9046-8de46b4d0d4a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\NPC">
+      <UniqueIdentifier>{de0d606b-b61d-40a5-b612-4092eca63331}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -234,9 +237,6 @@
     <ClInclude Include="TrapManager.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
-    <ClInclude Include="Trap1.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="TrapManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -260,6 +260,9 @@
     </ClInclude>
     <ClInclude Include="Snake.h">
       <Filter>소스 파일\TrapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>소스 파일\NPC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -387,9 +390,6 @@
     <ClCompile Include="TrapSceneTest.cpp">
       <Filter>소스 파일\TrapTest</Filter>
     </ClCompile>
-    <ClCompile Include="Trap1.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="TrapManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -413,6 +413,9 @@
     </ClCompile>
     <ClCompile Include="Snake.cpp">
       <Filter>소스 파일\TrapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>소스 파일\NPC</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

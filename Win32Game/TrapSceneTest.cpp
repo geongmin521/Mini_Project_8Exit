@@ -45,9 +45,12 @@ void TrapSceneTest::Start()
 
 	GameObject* sunFlower = new SunFlower;
 	AddObject(sunFlower, LAYER_GROUP::MONSTER);
-	GameObject* textBox = new TextBox;
-	textBox->SetLocation(Vector3(200,200, 0));
-	AddObject(textBox, LAYER_GROUP::UI);
+
+	GameObject* npc = new NPC;
+	npc->SetEnable(true);
+	AddObject(npc, LAYER_GROUP::MONSTER);
+
+	
 
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::TRAPTRIGGER);

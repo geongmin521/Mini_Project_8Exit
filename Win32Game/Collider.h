@@ -2,7 +2,7 @@
 #include "Vector3.h"
 #include "GameObject.h"
 
-class GameObjcet;
+class GameObject;
 
 class Collider
 {
