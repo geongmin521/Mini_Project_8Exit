@@ -65,10 +65,12 @@ void Player::Move()
 	if (inputSystem->isKey(VK_LEFT)|| inputSystem->isKey('A'))
 	{
 		dir = Vector3(-1, 0, 0);
+		SetDir(dir);
 	}
 	if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
 	{
 		dir = Vector3(1, 0, 0);
+		SetDir(dir);
 	}
 	if (_IsRun)
 	{
