@@ -7,7 +7,7 @@
 #include "TextBox.h"
 NPC::NPC() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"NPC", L"Image\\sampleTrap.png");
+	_MyTex = resourceManager->GetTexture(L"NPC", L"Image\\bonfire.png");
 
 	SetLocation(Vector3(300, 300, 0));
 
