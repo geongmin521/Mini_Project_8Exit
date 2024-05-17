@@ -8,7 +8,7 @@
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
 				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::idle)
 {
-	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player_idle_0.png");
+	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"Player");
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
@@ -28,6 +28,7 @@ void Player::Update()
 	Jump();
 	Run();
 	StaminaBarActions();
+	StateManager();
 	_StaminaBarMin->SetStaminaPercent(_Stamina / _MaxStamina);
 
 	if (GetAinmater() != nullptr)
@@ -62,17 +63,24 @@ void Player::Move()
 {
 	float speed;
 	Vector3 dir;
-	if (inputSystem->isKey(VK_LEFT)|| inputSystem->isKey('A'))
+	if (inputSystem->isKey(VK_LEFT)|| inputSystem->isKey('A')) 
 	{
+		_IsWalk = true;
 		dir = Vector3(-1, 0, 0);
 		SetDir(dir);
 	}
-	if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
+	else if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
 	{
+		_IsWalk = true;
 		dir = Vector3(1, 0, 0);
 		SetDir(dir);
 	}
-	if (_IsRun)
+	else
+	{
+		_IsWalk = false;
+	}
+
+	if (_IsRun) //스피드가 올라감
 	{
 		speed = _Speed + _RunSpeed;
 	}
@@ -80,7 +88,11 @@ void Player::Move()
 	{
 		speed = _Speed;
 	}
-	SetLocation(GetLocation() + dir * timeManager->GetDeltaTime() * speed);
+
+	if (_IsWalk)
+	{
+		SetLocation(GetLocation() + dir * timeManager->GetDeltaTime() * speed);
+	}
 }
 
 void Player::Jump()
@@ -88,7 +100,6 @@ void Player::Jump()
 	static float CurJumpPower = 0;
 	if (inputSystem->isKeyDown(VK_SPACE) && _IsJump == false) 
 	{
-		ChangeState(PlayerState::jump);
 		_IsJump = true; 
 		CurJumpPower = _JumpPower;
 	}
@@ -100,15 +111,17 @@ void Player::Jump()
 		CurJumpPower -= 4980 * timeManager->GetDeltaTime();
 		if (GetLocation()._y >= 230) //땅의 높이가 필요함.. 
 		{
-			ChangeState(PlayerState::idle);
 			_IsJump = false;
-		}
-			
+		}			
 	}
 }
 
+
+
 void Player::ChangeState(PlayerState state)
 {
+	if (this->_CurState == state) //기존상태와 같으면 넘기기
+		return;
 	this->_CurState = state;
 
 	if (GetAinmater() != nullptr)
@@ -122,11 +135,14 @@ void Player::ChangeState(PlayerState state)
 		case PlayerState::jump:
 			stateStr = L"Jump";
 			break;
+		case PlayerState::walk:
+			stateStr = L"Walk";
+			break;
 		case PlayerState::hit:
 			stateStr = L"Hit";
 			break;
-		case PlayerState::move:
-			stateStr = L"Move";
+		case PlayerState::run:
+			stateStr = L"Run";
 			break;
 		default:
 			break;
@@ -135,14 +151,49 @@ void Player::ChangeState(PlayerState state)
 	}
 }
 
+void Player::StateManager()
+{
+	if (_IsJump)
+	{
+		ChangeState(PlayerState::jump);
+		return;
+	}
+	else
+	{
+		if (_IsWalk)
+		{
+			if (_IsRun)
+			{
+				ChangeState(PlayerState::run);
+			}
+			else
+			{
+				ChangeState(PlayerState::walk);
+			}
+		}
+		else
+		{
+			ChangeState(PlayerState::idle);
+		}
+	}
+}
+
 void Player::Run()
 {
 	_CurrentSpeed = _Speed;
-	if (inputSystem->isKey(VK_CONTROL) && _Stamina > 0) //달리기
+	if (inputSystem->isKeyDown(VK_CONTROL) && _Stamina > 0) //달리기
 	{
 		_IsRun = true;
+	}
+	if (inputSystem->isKeyUp(VK_CONTROL)) //달리기
+	{
+		_IsRun = false;
+	}
+
+	if (_IsRun)
+	{
 		_Stamina -= _StaminaDrain * timeManager->GetDeltaTime();
-		if (_Stamina < 0) 
+		if (_Stamina < 0)
 		{
 			_Stamina = 0;
 			_IsRun = false;
@@ -150,8 +201,6 @@ void Player::Run()
 	}
 	else
 	{
-		_IsRun = false;
-		// 스태미너 회복
 		_Stamina += _StaminaRecovery * timeManager->GetDeltaTime();
 		if (_Stamina > _MaxStamina)
 		{
@@ -168,6 +217,13 @@ void Player::StaminaBarActions()
 		_StaminaBarMin->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 300.0f, GetLocation()._z));
 	}
 }
+
+void Player::OnCollisionEnter(Collider* collider)
+{
+	ChangeState(PlayerState::hit); //애니메이션에서 루프인지 아닌지에따라 루프가끝나면 알림오기?
+}
+
+
 
 
 

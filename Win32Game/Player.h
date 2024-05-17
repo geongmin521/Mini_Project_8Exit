@@ -6,8 +6,9 @@ enum class PlayerState
 {
 	idle,
 	jump,
+	walk,
+	run,
 	hit,
-	move
 };
 
 #include "StaminaBar.h"
@@ -22,11 +23,13 @@ public:
 	void Move();
 	void Jump();
 	void ChangeState(PlayerState state);
+	void StateManager();
 
 	float GetSpeed() { return _Speed; }
 	void Run();
 	void StaminaBarActions();
-	
+	void OnCollisionEnter(Collider* collider);
+
 private:
 	PlayerState _CurState;
 	Texture* _MyTex;
@@ -42,6 +45,7 @@ private:
 	bool _IsJump;
 	bool _IsHit;
 	bool _IsRun;
+	bool _IsWalk;
 
 	StaminaBar* _StaminaBar;
 	StaminaBarMin* _StaminaBarMin;
