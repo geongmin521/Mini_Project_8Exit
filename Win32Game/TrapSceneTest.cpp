@@ -1,14 +1,7 @@
 #include "TrapSceneTest.h"
 #include "Camera.h"
-#include "BackGround.h"
-#include "Player.h"
-#include "Spider1.h"
 #include "CollisionManager.h"
-#include "TrapManager.h"
-#include "Spider2.h"
-#include "SunFlower.h"
-#include "TextBox.h"
-#include "Snake.h"
+#include "InGameObjectHeader.h"
 
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(10, nullptr), _AnomalyObjects(10)
 {
@@ -36,15 +29,16 @@ void TrapSceneTest::Start()
 	AddObject(player, LAYER_GROUP::PLAYER);
 
 	GameObject* spider1 = new Spider1;
-	spider1->SetEnable(true);
 	AddObject(spider1, LAYER_GROUP::MONSTER);
 
 	GameObject* spider2 = new Spider2;
-	spider2->SetEnable(true);
 	AddObject(spider2, LAYER_GROUP::MONSTER);
 
-	//GameObject* trap2 = new Trap2;
-	//AddObject(trap2, LAYER_GROUP::BACKUNIT);
+	GameObject* scareCrow = new ScareCrow;
+	AddObject(scareCrow, LAYER_GROUP::MONSTER);
+	GameObject* scareCrow_Search = new ScareCrow_Search;
+	AddObject(scareCrow_Search, LAYER_GROUP::MONSTER);
+	((ScareCrow*)scareCrow)->_Search = (ScareCrow_Search*)scareCrow_Search;
 
 	GameObject* snake = new Snake;
 	AddObject(snake, LAYER_GROUP::MONSTER);
