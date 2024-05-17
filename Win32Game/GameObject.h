@@ -20,11 +20,13 @@ public:
 	void SetScale(const Vector3& scale) { _Scale = scale; }
 	void Setname(const std::wstring& name) { _Name = name; }
 	void SetEnable(bool state) { _Enable = state; }
+	void SetDir(Vector3& dir) { _Dir = dir; }
 	void CreateCollider();
 	void CreateText();
 	void CreateAnimater(std::wstring name);
 	Vector3 GetLocation() const { return Vector3(_Location); }
 	Vector3 GetScale() const { return Vector3(_Scale); }
+	Vector3 GetDir() const { return Vector3(_Dir); }
 	const std::wstring& GetName() const { return _Name; }
 	bool Enable() { return _Enable; }
 
@@ -46,6 +48,7 @@ public:
 private:
 	Vector3 _Location;
 	Vector3 _Scale;
+	Vector3 _Dir;
 	std::wstring _Name;
 	bool _Enable = true;
 
