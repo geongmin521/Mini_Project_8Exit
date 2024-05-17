@@ -9,6 +9,7 @@ Snake::Snake() : _MyTex(nullptr)
 	CreateCollider();
 
 	GetCollider()->SetScale(Vector3(_MyTex->Width(), 2300.0f, 0));
+	SetName(L"Snake");
 }
 
 Snake::~Snake()

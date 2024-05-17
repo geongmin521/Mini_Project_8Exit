@@ -6,7 +6,8 @@ SunFlower::SunFlower() : _MyTex(nullptr)
 	_MyTex = resourceManager->GetTexture(L"SunFlower", L"Image\\SunFlower.png");
 	SetLocation(Vector3(100, 100, 0));
 	_StartPos = GetLocation();
-	_EndPos = Vector3(GetLocation()._x, GetLocation()._y + 280.0f, GetLocation()._z);
+	_EndPos = Vector3(GetLocation()._x, GetLocation()._y + 280.0f, GetLocation()._z); 
+	SetName(L"SunFlower");
 }
 
 SunFlower::~SunFlower()

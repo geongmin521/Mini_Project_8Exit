@@ -18,7 +18,7 @@ public:
 
 	void SetLocation(const Vector3& loc) { _Location = loc; }
 	void SetScale(const Vector3& scale) { _Scale = scale; }
-	void Setname(const std::wstring& name) { _Name = name; }
+	void SetName(const std::wstring& name) { _Name = name; }
 	void SetEnable(bool state) { _Enable = state; }
 	void SetDir(Vector3& dir) { _Dir = dir; }
 	void CreateCollider();

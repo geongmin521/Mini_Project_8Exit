@@ -11,7 +11,8 @@ ScareCrow::ScareCrow() : _MyTex(nullptr), _State(SCARECROW_STATE::IDLE), _MoveSp
 	SetLocation(Vector3(1300, 100, 0));
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0.0f));
 	_Search = new ScareCrow_Search;
-	CreateObject(_Search, LAYER_GROUP::MONSTER);
+	CreateObject(_Search, LAYER_GROUP::SEARCH);
+	SetName(L"ScareCrow");
 }
 
 ScareCrow::~ScareCrow()

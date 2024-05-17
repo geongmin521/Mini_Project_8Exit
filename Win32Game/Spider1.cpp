@@ -8,6 +8,7 @@ Spider1::Spider1() : _MyTex(nullptr)
 	SetLocation(Vector3(800, -700, 0));
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0.0f));
+	SetName(L"Spider1");
 }
 
 Spider1::~Spider1()
