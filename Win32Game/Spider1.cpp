@@ -4,7 +4,7 @@
 
 Spider1::Spider1() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Spider1", L"Image\\SpiderTrap1.png");
+	_MyTex = resourceManager->GetTexture(L"Spider1", L"Image\\Spider_Small.png");
 	SetLocation(Vector3(800, -700, 0));
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0.0f));
