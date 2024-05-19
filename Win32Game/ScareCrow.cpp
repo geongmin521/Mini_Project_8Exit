@@ -27,8 +27,16 @@ void ScareCrow::Update()
 	_Search->SetLocation(GetLocation());
 
 	if (_State == SCARECROW_STATE::IDLE) {
+		if (playerLocation._x < GetLocation()._x) {
+			SetFlipX(false);
+		}
+		else {
+			SetFlipX(true);
+		}
 		if (playerLocation._x - GetLocation()._x >= 640.0f) {
-			_State = SCARECROW_STATE::CHASE;
+			if (GetMoveAnomalyState() == true) {
+				_State = SCARECROW_STATE::CHASE;
+			}
 		}
 	}
 	else if (_State == SCARECROW_STATE::CHASE) {
