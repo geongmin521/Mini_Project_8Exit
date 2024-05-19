@@ -67,7 +67,7 @@ void Animation::Flip(bool FilpX)
 void Animation::SetFlip() //다른데서 호출하기 싫으니까 업데이트에서 처리하기 싶고 상태와 상관없이.. 현재방향으로 
 //플립하기. 
 {
-	if (_Owner->GetFilpX() != _AnimatedTexture[0]->GetFlipX())
+	if (_Owner->GetFlipX() != _AnimatedTexture[0]->GetFlipX())
 	{
 		Flip(!_AnimatedTexture[0]->GetFlipX());
 	}
