@@ -10,3 +10,4 @@
 #include "ScareCrow.h"
 #include "ScareCrow_Search.h"
 #include "NPC.h"
+#include "SunFlower_Anomaly.h"

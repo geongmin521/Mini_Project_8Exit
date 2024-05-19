@@ -24,11 +24,11 @@ Player::~Player()
 
 void Player::Update()
 {
-	_ResetTimer -= timeManager->GetDeltaTime();
-	if (_ResetTimer <= 0) {
-		_ResetTimer = 5.0f;
-		SceneReload();
-	}
+	//_ResetTimer -= timeManager->GetDeltaTime();
+	//if (_ResetTimer <= 0) {
+	//	_ResetTimer = 5.0f;
+	//	SceneReload();
+	//}
 	if (_IsHit == false)
 	{
 		Move();
@@ -81,14 +81,14 @@ void Player::Move()
 		_IsWalk = true;
 		dir = Vector3(-1, 0, 0);
 		SetDir(dir);
-		SetFilpX(true);
+		SetFlipX(true);
 	}
 	else if (inputSystem->isKey(VK_RIGHT) || inputSystem->isKey('D'))
 	{
 		_IsWalk = true;
 		dir = Vector3(1, 0, 0);
 		SetDir(dir);
-		SetFilpX(false);
+		SetFlipX(false);
 	}
 	else
 	{

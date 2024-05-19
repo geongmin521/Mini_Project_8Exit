@@ -3,12 +3,12 @@
 #include "Texture.h"
 #include "FlowerStem.h"
 
-class SunFlower :
+class SunFlower_Anomaly :
     public GameObject
 {
 public:
-    SunFlower();
-    ~SunFlower();
+    SunFlower_Anomaly();
+    ~SunFlower_Anomaly();
 
     virtual void Update();
     virtual void Render();
@@ -20,5 +20,6 @@ private:
     Vector3 _Dir = Vector3(0, 1, 0);
     float _StartPos;
     float _EndPos;
-    float _MoveSpeed = 100.0f;
+    float _MoveSpeed = 200.0f;
 };
+

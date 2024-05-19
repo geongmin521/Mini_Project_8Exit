@@ -144,6 +144,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="DataRead.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="FlowerStem.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="SignMonster.h" />
     <ClInclude Include="StaminaBar.h" />
     <ClInclude Include="StaminaBarMin.h" />
+    <ClInclude Include="SunFlower_Anomaly.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="TextBox.h" />
@@ -202,6 +204,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DataRead.cpp" />
     <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="FlowerStem.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameResource.cpp" />
@@ -226,6 +229,7 @@
     <ClCompile Include="Spider1.cpp" />
     <ClCompile Include="Spider2.cpp" />
     <ClCompile Include="SunFlower.cpp" />
+    <ClCompile Include="SunFlower_Anomaly.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="SignMonster.cpp" />

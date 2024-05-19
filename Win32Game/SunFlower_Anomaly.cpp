@@ -1,21 +1,21 @@
-#include "SunFlower.h"
+#include "SunFlower_Anomaly.h"
 #include "ResourceManager.h"
 
-SunFlower::SunFlower() : _MyTex(nullptr)
+SunFlower_Anomaly::SunFlower_Anomaly() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"SunFlower_Head", L"Image\\Flower_Head.png");
 	_StartPos = 400.0f - (float)(WindowHeight / 2);
 	_EndPos = 600.0f - (float)(WindowHeight / 2);
-	SetName(L"SunFlower");
+	SetName(L"SunFlower_Anomaly");
 	_MyStem = new FlowerStem;
 	CreateObject(_MyStem, LAYER_GROUP::BACKUNIT);
 }
 
-SunFlower::~SunFlower()
+SunFlower_Anomaly::~SunFlower_Anomaly()
 {
 }
 
-void SunFlower::Update()
+void SunFlower_Anomaly::Update()
 {
 	_MyStem->SetLocation(Vector3(GetLocation()._x, 100.0f, 0));
 	SetLocation(GetLocation() + _Dir * _MoveSpeed * timeManager->GetDeltaTime());
@@ -27,7 +27,7 @@ void SunFlower::Update()
 	}
 }
 
-void SunFlower::Render()
+void SunFlower_Anomaly::Render()
 {
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
 	Graphics g(renderSystem->_backDC);
