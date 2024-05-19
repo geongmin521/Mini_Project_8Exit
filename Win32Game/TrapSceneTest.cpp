@@ -2,7 +2,7 @@
 #include "Camera.h"
 #include "CollisionManager.h"
 #include "InGameObjectHeader.h"
-
+#include "DarkChange.h"
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(10, nullptr), _AnomalyObjects(10)
 {
 	//TODO: 여기서 각 구역 별 오브젝트를 생성해야 합니다.
@@ -61,7 +61,9 @@ void TrapSceneTest::Start()
 	npc->SetEnable(true);
 	AddObject(npc, LAYER_GROUP::TRAPTRIGGER);
 
-	
+	GameObject* dark = new DarkChange;
+	dark->SetLocation(Vector3(0,0, 0));
+	AddObject(dark, LAYER_GROUP::BACKGROUND);
 
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));

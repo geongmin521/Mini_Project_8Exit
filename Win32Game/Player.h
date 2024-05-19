@@ -1,7 +1,8 @@
 #pragma once
 #include "GameObject.h"
 #include "Texture.h"
-
+#include "StaminaBar.h"
+#include "StaminaBarMin.h"
 enum class PlayerState
 {
 	Idle,
@@ -11,8 +12,7 @@ enum class PlayerState
 	Hit,
 };
 
-#include "StaminaBar.h"
-#include "StaminaBarMin.h"
+
 class Player : public GameObject
 {
 public:

@@ -82,6 +82,9 @@
     <Filter Include="소스 파일\NPC">
       <UniqueIdentifier>{de0d606b-b61d-40a5-b612-4092eca63331}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\DarkChange">
+      <UniqueIdentifier>{15cf98f1-5e55-4bcb-b95c-63eb4e3067cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -264,6 +267,18 @@
     <ClInclude Include="NPC.h">
       <Filter>소스 파일\NPC</Filter>
     </ClInclude>
+    <ClInclude Include="InGameObjectHeader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ScareCrow.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="ScareCrow_Search.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DarkChange.h">
+      <Filter>소스 파일\DarkChange</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -416,6 +431,15 @@
     </ClCompile>
     <ClCompile Include="NPC.cpp">
       <Filter>소스 파일\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="ScareCrow.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ScareCrow_Search.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DarkChange.cpp">
+      <Filter>소스 파일\DarkChange</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
