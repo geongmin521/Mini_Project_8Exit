@@ -33,3 +33,11 @@ void SceneReload()
 {
 	sceneManager->SceneReload();
 }
+
+int GetRandomNum(int dis)
+{
+	std::random_device rd;
+	std::mt19937_64 mt(rd());
+	std::uniform_int_distribution<int> dist(0, dis - 1);
+	return dist(mt);
+}
