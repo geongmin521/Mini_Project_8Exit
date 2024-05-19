@@ -12,7 +12,7 @@ public:
     virtual void Update();
     virtual void Render();
 
-    void OnCollisionExit(Collider* collision);
+    void OnTriggerExit(Collider* collision);
 
 private:
     Texture* _MyTex;

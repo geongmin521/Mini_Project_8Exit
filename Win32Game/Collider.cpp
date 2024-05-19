@@ -70,3 +70,18 @@ void Collider::OnCollisionExit(Collider* collider)
 {
 	_Owner->OnCollisionExit(collider);
 }
+
+void Collider::OnTriggerEnter(Collider* collider)
+{
+	_Owner->OnTriggerEnter(collider);
+}
+
+void Collider::OnTrigger(Collider* collider)
+{
+	_Owner->OnTrigger(collider);
+}
+
+void Collider::OnTriggerExit(Collider* collider)
+{
+	_Owner->OnTriggerExit(collider);
+}

@@ -10,6 +10,7 @@ Spider2::Spider2() : _MyTex(nullptr), _CoolTime(0.7f), _State(SPIDER_STATE::IDLE
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0.0f));
 	SetName(L"Spider2");
+	GetCollider()->SetTrigger(true);
 }
 
 Spider2::~Spider2()
@@ -55,7 +56,7 @@ void Spider2::Render()
 	ComponentRender();
 }
 
-void Spider2::OnCollisionExit(Collider* collider)
+void Spider2::OnTriggerExit(Collider* collider)
 {
 	if (_State == SPIDER_STATE::IDLE && GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
 		_State = SPIDER_STATE::MOVEDOWN;

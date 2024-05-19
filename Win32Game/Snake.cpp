@@ -10,6 +10,7 @@ Snake::Snake() : _MyTex(nullptr)
 
 	GetCollider()->SetScale(Vector3(_MyTex->Width(), 2300.0f, 0));
 	SetName(L"Snake");
+	GetCollider()->SetTrigger(true);
 }
 
 Snake::~Snake()
@@ -63,12 +64,14 @@ void Snake::OnCollisionEnter(Collider* collider)
 	//}
 }
 
-void Snake::OnCollisionExit(Collider* collider)
+void Snake::OnTriggerExit(Collider* collider)
 {
 	if (_State == SNAKE_STATE::IDLE && GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
+		
 		GetCollider()->SetScale(Vector3(278.0f, 200.0f, 0.0f));
 		_RunDir = Vector3(1, 0, 0);
 		_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);
 		_State = SNAKE_STATE::MOVEDOWN;
+		GetCollider()->SetTrigger(false);
 	}
 }

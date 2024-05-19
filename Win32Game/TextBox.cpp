@@ -1,14 +1,11 @@
 #include "TextBox.h"
 
-TextBox::TextBox() : _MyTex(nullptr)
+TextBox::TextBox(std::wstring text) : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"123", L"Image\\PlayerDump.png");
 	GameObject::CreateText();
 	GetTextComponent()->SetRect(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
-	if (GetTextComponent() != nullptr)
-	{
-		GetTextComponent()->SetText(L"Test 한글도 나오나?"); //컴포넌트랑 이름구분이 없어서 헷갈리나?
-	}
+	GetTextComponent()->SetText(text);
 }
 
 TextBox::~TextBox()

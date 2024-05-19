@@ -156,6 +156,7 @@
     <ClInclude Include="MainBackGround.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Music.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="PathManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RenderSystem.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="MainBackGround.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Music.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="PathManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderSystem.cpp" />

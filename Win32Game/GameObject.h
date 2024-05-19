@@ -23,12 +23,15 @@ public:
 	void SetDir(Vector3& dir) { _Dir = dir; }
 	void SetDiffAnomalyState(bool state) { _IsDiffAnomaly = state; }
 	void SetMoveAnomalyState(bool state) { _IsMoveAnomaly = state; }
+	void SetFilpX(bool flipX) { _FlipX = flipX; }
+	void SetDir(Vector3 dir) { _Dir = dir; }
 	void CreateCollider();
 	void CreateText();
 	void CreateAnimater(std::wstring name);
 	Vector3 GetLocation() const { return Vector3(_Location); }
 	Vector3 GetScale() const { return Vector3(_Scale); }
-	Vector3 GetDir() const { return Vector3(_Dir); }
+	bool GetFilpX() const { return _FlipX; }
+	Vector3 GetDir() const { return _Dir; }
 	const std::wstring& GetName() const { return _Name; }
 	bool Enable() { return _Enable; }
 	const bool GetDiffAnomalyState() const { return _IsDiffAnomaly; }
@@ -43,6 +46,10 @@ public:
 	virtual void OnCollision(Collider* collider) {}
 	virtual void OnCollisionExit(Collider* collider) {}
 
+	virtual void OnTriggerEnter(Collider* collider) {}
+	virtual void OnTrigger(Collider* collider) {}
+	virtual void OnTriggerExit(Collider* collider) {}
+
 	void ComponentRender();
 	Collider* GetCollider() { return _Collider; }
 	Animation* GetAinmater() { return _Animater; }
@@ -52,6 +59,7 @@ private:
 	Vector3 _Location;
 	Vector3 _Scale;
 	Vector3 _Dir;
+	bool _FlipX;
 	std::wstring _Name;
 	bool _Enable = true;
 	bool _IsDiffAnomaly = false;

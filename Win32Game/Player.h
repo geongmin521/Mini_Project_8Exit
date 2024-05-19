@@ -4,11 +4,11 @@
 
 enum class PlayerState
 {
-	idle,
-	jump,
-	walk,
-	run,
-	hit,
+	Idle,
+	Jump,
+	Walk,
+	Run,
+	Hit,
 };
 
 #include "StaminaBar.h"
@@ -24,6 +24,7 @@ public:
 	void Jump();
 	void ChangeState(PlayerState state);
 	void StateManager();
+
 
 	float GetSpeed() { return _Speed; }
 	void Run();
@@ -46,6 +47,7 @@ private:
 	bool _IsHit;
 	bool _IsRun;
 	bool _IsWalk;
+	bool _Runable;
 
 	StaminaBar* _StaminaBar;
 	StaminaBarMin* _StaminaBarMin;

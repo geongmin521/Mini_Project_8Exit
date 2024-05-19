@@ -1,7 +1,7 @@
 #include "GameObject.h"
 #include "Collider.h"
 
-GameObject::GameObject() : _Location(0, 0, 0), _Scale(0, 0, 0), _Name(L""), _Collider(nullptr)
+GameObject::GameObject() : _Location(0, 0, 0), _Scale(0, 0, 0), _Name(L""), _Collider(nullptr), _FlipX(false)
 {
 }
 GameObject::~GameObject() 

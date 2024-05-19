@@ -9,6 +9,7 @@
 #include "MainBackGround.h"
 #include "LastBackGround.h"
 #include "StaminaBar.h"
+#include "NPC.h"
 SampleScene::SampleScene()
 {
 }
