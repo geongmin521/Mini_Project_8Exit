@@ -3,10 +3,9 @@
 #include "CollisionManager.h"
 #include "InGameObjectHeader.h"
 
-TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(10, nullptr), _AnomalyObjects(10)
+TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(6), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(6), _AreaSettingState{}
 {
 	//TODO: 여기서 각 구역 별 오브젝트를 생성해야 합니다.
-
 	std::vector<Vector3> pos = resourceManager->GetMapPos(L"area1");
 	for (int i = 0; i < pos.size(); i++)
 	{
@@ -21,42 +20,44 @@ TrapSceneTest::~TrapSceneTest()
 
 void TrapSceneTest::Start()
 {
-	//GameObject* bg = new BackGround;
-	//bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
-
-	//
-	//
-
-	//
-	//AddObject(spider1, LAYER_GROUP::MONSTER);
-
-	//
-	//AddObject(spider2, LAYER_GROUP::MONSTER);
-
-	//GameObject* scareCrow = new ScareCrow;
-	//AddObject(scareCrow, LAYER_GROUP::MONSTER);
-
-	//GameObject* snake = new Snake;
-	//AddObject(snake, LAYER_GROUP::MONSTER);
-
-	//
-	//AddObject(sunFlower, LAYER_GROUP::MONSTER);
-	//
-	//
-	//AddObject(textBox, LAYER_GROUP::UI);
-	GameObject* spider1 = new Spider1;
-	_ObjectPlace[0] = spider1;
-	GameObject* spider2 = new Spider2;
-	_ObjectPlace[1] = spider2;
-	GameObject* scareCrow = new ScareCrow;
-	_ObjectPlace[2] = scareCrow;
+	//=============
+	//	1구역 : spider
+	//=============
+	for (int i = 0; i < 6; i++) {
+		GameObject* spider = new Spider1;
+		_AnomalyObjects[0].push_back(spider);
+	}
+	GameObject* spiderBig = new Spider2;
+	_AnomalyObjects[0].push_back(spiderBig); // 6
 	GameObject* snake = new Snake;
-	_ObjectPlace[3] = snake;
+	_AnomalyObjects[0].push_back(snake);     // 7
+
+	//=============
+	//	2구역 : scarecrow
+	//=============
+	for (int i = 0; i < 4; i++) {
+		GameObject* scareCrow = new ScareCrow;
+		_AnomalyObjects[1].push_back(scareCrow);
+	}
+
+	//=============
+	//	3구역 : sunflower
+	//=============
 	GameObject* sunFlower = new SunFlower;
-	_ObjectPlace[4] = sunFlower;
+
+	//=============
+	//	4구역 : horsecar
+	//=============
+
+	//=============
+	//	5구역 : spider_hive
+	//=============
+
+	//=============
+	//	6구역 : woodhouse
+	//=============
 	GameObject* textBox = new TextBox;
 	textBox->SetLocation(Vector3(200, 200, 0));
-	_ObjectPlace[5] = textBox;
 
 	GameObject* bg = new BackGround;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
@@ -73,40 +74,68 @@ void TrapSceneTest::Start()
 
 void TrapSceneTest::End() 
 {
+
 	SceneEnd();
 }
 
 void TrapSceneTest::InitObjectPlace()
 {
-	//int idx;
-	//while (true) {
-	//	idx = GetRandomNum(sizeof(_AreaSet) / sizeof(int));
-	//	if (_PrevTrapIdx != idx) break;
-	//}
-	//_PrevTrapIdx = idx;
-
-	//int compareFlg = 1;
-	//int areaSet = _AreaSet[_PrevTrapIdx];
-
-	//// 이상현상이 존재하는 구역의 오브젝트중 정상과 비정상 오브젝트중에 뽑아 배치합니다.
-	//for (int shift = _ObjectPlace.size() - 1; shift >= 0; shift--) {
-	//	if (areaSet & (compareFlg << shift)) {
-	//		int areaIdx = _ObjectPlace.size() - 1 - shift;
-	//		_ObjectPlace[areaIdx] = GetAnomalyObject(areaIdx);
-	//	}
-	//}
-
-	//// 이상현상이 존재하는 구역의 오브젝트를 다 채워넣었으면 나머지 정상적인 구역의 오브젝트도 채웁니다.
-	//for (int i = 0; i < _ObjectPlace.size(); i++) {
-	//	if (_ObjectPlace[i] == nullptr) {
-	//		_ObjectPlace[i] = _AnomalyObjects[i][0];
-	//	}
-	//}
-
-	// 랜더링과 업데이트를 할 수있게 오브젝트들을 씬에 등록해줍니다.
-	for (int i = 0; i < _ObjectPlace.size(); i++) {
-		if(_ObjectPlace[i] != nullptr) AddObject(_ObjectPlace[i], LAYER_GROUP::MONSTER);
+	for (int i = 0; i < _AnomalyObjects.size(); i++) {
+		for (int j = 0; j < _AnomalyObjects[i].size(); j++) {
+			_AnomalyObjects[i][j]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
+			_AnomalyObjects[i][j]->SetEnable(false);
+		}
 	}
+
+	Vector3 areaOffset(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0.0f);
+	int diffCount = _StageSet[_StageNum].first;
+	int moveCount = _StageSet[_StageNum].second;
+
+	// state = 0 -> Normal / state = 1 -> diffimage / state = 2 -> moveobject
+	memset(_AreaSettingState, 0, sizeof(_AreaSettingState));
+	SetDiffAnomaly(diffCount);
+	SetMoveAnomaly(moveCount);
+
+	for (int areaIdx = 0; areaIdx < 1; areaIdx++) {
+		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
+		int targetObject;
+		if (_AreaSettingState[areaIdx] == 1) {
+			targetObject = GetRandomNum(_AreaObjectCount[areaIdx]);
+			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {
+				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
+				_AnomalyObjects[areaIdx][i]->SetEnable(true);
+				if (i == targetObject) {
+					_AnomalyObjects[areaIdx][i]->SetDiffAnomalyState(true);
+				}
+				AddObject(_AnomalyObjects[areaIdx][i], LAYER_GROUP::MONSTER);
+			}
+		}
+		else if (_AreaSettingState[areaIdx] == 2) {
+			targetObject = GetRandomNum(_AreaObjectCount[areaIdx]);
+			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {
+				if (i == targetObject) {
+					int moveIdx = GetRandomNum(_AreaMoveAnomalyCount[areaIdx]);
+					_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]
+						->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
+					_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]->SetEnable(true);
+					AddObject(_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx], LAYER_GROUP::MONSTER);
+					continue;
+				}
+				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
+				_AnomalyObjects[areaIdx][i]->SetEnable(true);
+				AddObject(_AnomalyObjects[areaIdx][i], LAYER_GROUP::MONSTER);
+			}
+		}
+		else {
+			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {
+				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
+				_AnomalyObjects[areaIdx][i]->SetEnable(true);
+				AddObject(_AnomalyObjects[areaIdx][i], LAYER_GROUP::MONSTER);
+			}
+		}
+	}
+
+
 	//TODO: idx의 값에 따라 오브젝트들을 심어야 합니다.
 	/*
 	*   총 8개의 스테이지
@@ -131,31 +160,38 @@ void TrapSceneTest::InitObjectPlace()
 
 }
 
-int TrapSceneTest::GetRandomNum(int size)
+void TrapSceneTest::SetDiffAnomaly(int count)
 {
-	std::random_device rd;
-	std::mt19937_64 mt(rd());
-	std::uniform_int_distribution<int> dist(0, size - 1);
-	return dist(mt);
-}
-
-void TrapSceneTest::SetCompleteTrap(int idx)
-{
-	_CompleteTrap.insert({ idx, true });
-}
-
-bool TrapSceneTest::GetCompleteTrap(int idx)
-{
-	if (_CompleteTrap.find(idx) == _CompleteTrap.end()) {
-		return false;
-	}
-	else {
-		return true;
+	if (count == 0) return;
+	while (count > 0) {
+		int randomNum = GetRandomNum(_AreaCount);
+		if (randomNum == 5 && _StageNum == 6) continue;
+		if (_AreaSettingState[randomNum] == 0) {
+			_AreaSettingState[randomNum] = 1;
+			count--;
+		}
 	}
 }
 
-GameObject* TrapSceneTest::GetAnomalyObject(int idx)
+void TrapSceneTest::SetMoveAnomaly(int count)
 {
-	int randomAnomaly = GetRandomNum(_AnomalyObjects[idx].size());
-	return _AnomalyObjects[idx][randomAnomaly];
+	if (count == 0) return;
+	while (count > 0) {
+		int randomNum = GetRandomNum(_AreaCount);
+		if (randomNum == 5 && _StageNum != 6) continue;
+		if (_AreaSettingState[randomNum] == 0 && _AreaMoveAnomalyCount[randomNum] != 0) {
+			_AreaSettingState[randomNum] = 2;
+			count--;
+		}
+	}
+}
+
+void TrapSceneTest::ResetObjectPos()
+{
+	for (int i = 0; i < _AnomalyObjects.size(); i++) {
+		for (int j = 0; j < _AnomalyObjects[i].size(); j++) {
+			_AnomalyObjects[i][j]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
+			_AnomalyObjects[i][j]->SetEnable(false);
+		}
+	}
 }

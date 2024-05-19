@@ -58,9 +58,9 @@ void Snake::Render()
 
 void Snake::OnCollisionEnter(Collider* collider)
 {
-	if (_State == SNAKE_STATE::CHASE) {
-		SceneReload();
-	}
+	//if (_State == SNAKE_STATE::CHASE) {
+	//	SceneReload();
+	//}
 }
 
 void Snake::OnCollisionExit(Collider* collider)

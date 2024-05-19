@@ -221,6 +221,7 @@ void Player::StaminaBarActions()
 void Player::OnCollisionEnter(Collider* collider)
 {
 	ChangeState(PlayerState::hit); //애니메이션에서 루프인지 아닌지에따라 루프가끝나면 알림오기?
+	SceneReload();
 }
 
 

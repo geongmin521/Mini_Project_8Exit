@@ -21,6 +21,8 @@ public:
 	void SetName(const std::wstring& name) { _Name = name; }
 	void SetEnable(bool state) { _Enable = state; }
 	void SetDir(Vector3& dir) { _Dir = dir; }
+	void SetDiffAnomalyState(bool state) { _IsDiffAnomaly = state; }
+	void SetMoveAnomalyState(bool state) { _IsMoveAnomaly = state; }
 	void CreateCollider();
 	void CreateText();
 	void CreateAnimater(std::wstring name);
@@ -29,7 +31,8 @@ public:
 	Vector3 GetDir() const { return Vector3(_Dir); }
 	const std::wstring& GetName() const { return _Name; }
 	bool Enable() { return _Enable; }
-
+	const bool GetDiffAnomalyState() const { return _IsDiffAnomaly; }
+	const bool GetMoveAnomalyState() const { return _IsMoveAnomaly; }
 	bool IsAlive() { return _Alive; }
 
 	virtual void FinalUpdate() final;
@@ -51,7 +54,8 @@ private:
 	Vector3 _Dir;
 	std::wstring _Name;
 	bool _Enable = true;
-
+	bool _IsDiffAnomaly = false;
+	bool _IsMoveAnomaly = false;
 	bool _Alive = true;
 
 	Collider* _Collider;
