@@ -13,6 +13,8 @@ public:
     virtual void Update();
     virtual void Render();
 
+    virtual void ResetState();
+
 private:
     Texture* _MyTex;
     FlowerStem* _MyStem;

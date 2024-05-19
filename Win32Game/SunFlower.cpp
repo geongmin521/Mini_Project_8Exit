@@ -8,6 +8,7 @@ SunFlower::SunFlower() : _MyTex(nullptr)
 	_EndPos = 600.0f - (float)(WindowHeight / 2);
 	SetName(L"SunFlower");
 	_MyStem = new FlowerStem;
+	_MyStem->SetLocation(Vector3(-10000, -10000, 0));
 	CreateObject(_MyStem, LAYER_GROUP::BACKUNIT);
 }
 
@@ -18,6 +19,7 @@ SunFlower::~SunFlower()
 void SunFlower::Update()
 {
 	_MyStem->SetLocation(Vector3(GetLocation()._x, 100.0f, 0));
+	_MyStem->SetEnable(Enable());
 	SetLocation(GetLocation() + _Dir * _MoveSpeed * timeManager->GetDeltaTime());
 	if (GetLocation()._y > _EndPos) {
 		_Dir = Vector3(0, -1, 0);
@@ -43,4 +45,10 @@ void SunFlower::Render()
 			endX, endY
 		);
 	}
+}
+
+void SunFlower::ResetState()
+{
+	_MyStem->SetLocation(Vector3(GetLocation()._x, 100.0f, 0));
+	_MyStem->SetEnable(Enable());
 }
