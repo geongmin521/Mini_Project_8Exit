@@ -3,7 +3,7 @@
 
 SunFlower::SunFlower() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"SunFlower", L"Image\\SunFlower.png");
+	_MyTex = resourceManager->GetTexture(L"SunFlower_Head", L"Image\\Flower_Head.png");
 	SetLocation(Vector3(100, 100, 0));
 	_StartPos = GetLocation();
 	_EndPos = Vector3(GetLocation()._x, GetLocation()._y + 280.0f, GetLocation()._z); 
