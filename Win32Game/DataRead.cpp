@@ -48,7 +48,14 @@ void Mapdata(std::wifstream& file)
         std::wstring line;
         while (std::getline(iss, line, L'/')) { // 슬래쉬로 쪼개기            
         //, 를 제외한 벨류를 넣어주기
-            V3Pos.push_back(Vector3(std::stof(line.substr(0, 1)), std::stof(line.substr(2, 3)),0));
+            std::wistringstream point(line);
+            std::wstring pos;
+            Vector3 tmpPos;
+            std::getline(point, pos, L',');
+            tmpPos._x = std::stof(pos);
+            std::getline(point, pos, L',');
+            tmpPos._y = std::stof(pos);
+            V3Pos.push_back(tmpPos);
         }
         resourceManager->InsertMapObjectPos(key, V3Pos);
     }
