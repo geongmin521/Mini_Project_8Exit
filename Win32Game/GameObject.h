@@ -24,7 +24,6 @@ public:
 	void SetDiffAnomalyState(bool state) { _IsDiffAnomaly = state; }
 	void SetMoveAnomalyState(bool state) { _IsMoveAnomaly = state; }
 	void SetFilpX(bool flipX) { _FlipX = flipX; }
-	void SetDir(Vector3 dir) { _Dir = dir; }
 	void CreateCollider();
 	void CreateText();
 	void CreateAnimater(std::wstring name);

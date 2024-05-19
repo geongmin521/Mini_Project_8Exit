@@ -56,8 +56,6 @@ void TrapSceneTest::Start()
 	//=============
 	//	6±¸¿ª : woodhouse
 	//=============
-	GameObject* textBox = new TextBox;
-	textBox->SetLocation(Vector3(200, 200, 0));
 
 	GameObject* bg = new BackGround;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
