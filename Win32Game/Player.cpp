@@ -24,6 +24,11 @@ Player::~Player()
 
 void Player::Update()
 {
+	_ResetTimer -= timeManager->GetDeltaTime();
+	if (_ResetTimer <= 0) {
+		_ResetTimer = 5.0f;
+		SceneReload();
+	}
 	if (_IsHit == false)
 	{
 		Move();

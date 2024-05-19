@@ -29,6 +29,7 @@ void Spider2::Update()
 		_CoolTime -= timeManager->GetDeltaTime();
 		if (_CoolTime <= 0) {
 			_State = SPIDER_STATE::RUN;
+			_CoolTime = 0.7f;
 		}
 	}
 	else if (_State == SPIDER_STATE::RUN) {
@@ -54,6 +55,11 @@ void Spider2::Render()
 	}
 
 	ComponentRender();
+}
+
+void Spider2::ResetState()
+{
+	_State = SPIDER_STATE::IDLE;
 }
 
 void Spider2::OnTriggerExit(Collider* collider)

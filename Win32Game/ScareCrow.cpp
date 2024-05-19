@@ -8,9 +8,9 @@ ScareCrow::ScareCrow() : _MyTex(nullptr), _State(SCARECROW_STATE::IDLE), _MoveSp
 {
 	_MyTex = resourceManager->GetTexture(L"ScareCrow", L"Image\\ScareCrow.png");
 	CreateCollider();
-	SetLocation(Vector3(1300, 100, 0));
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0.0f));
 	_Search = new ScareCrow_Search;
+	_Search->SetLocation(Vector3(-10000, -10000, 0));
 	CreateObject(_Search, LAYER_GROUP::SEARCH);
 	SetName(L"ScareCrow");
 	GetCollider()->SetTrigger(true);

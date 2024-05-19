@@ -47,6 +47,11 @@ void Spider1::Render()
 	ComponentRender();
 }
 
+void Spider1::ResetState()
+{
+	_MoveDown = false;
+}
+
 void Spider1::OnTriggerExit(Collider* collider) {
 	if (GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
 		_MoveDown = true;

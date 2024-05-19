@@ -41,6 +41,8 @@ public:
 	virtual void Update() = 0;
 	virtual void Render() = 0;
 
+	virtual void ResetState() {}
+
 	virtual void OnCollisionEnter(Collider* collider) {}
 	virtual void OnCollision(Collider* collider) {}
 	virtual void OnCollisionExit(Collider* collider) {}

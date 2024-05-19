@@ -57,6 +57,11 @@ void Snake::Render()
 	ComponentRender();
 }
 
+void Snake::ResetState()
+{
+	_State = SNAKE_STATE::IDLE;
+}
+
 void Snake::OnCollisionEnter(Collider* collider)
 {
 	//if (_State == SNAKE_STATE::CHASE) {

@@ -78,7 +78,7 @@ void TrapSceneTest::Start()
 
 void TrapSceneTest::End() 
 {
-
+	ResetObjectPos();
 	SceneEnd();
 }
 
@@ -196,6 +196,7 @@ void TrapSceneTest::ResetObjectPos()
 		for (int j = 0; j < _AnomalyObjects[i].size(); j++) {
 			_AnomalyObjects[i][j]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
 			_AnomalyObjects[i][j]->SetEnable(false);
+			_AnomalyObjects[i][j]->ResetState();
 		}
 	}
 }

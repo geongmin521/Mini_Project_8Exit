@@ -48,6 +48,7 @@ private:
 	bool _IsRun;
 	bool _IsWalk;
 	bool _Runable;
+	float _ResetTimer = 5.0f;
 
 	StaminaBar* _StaminaBar;
 	StaminaBarMin* _StaminaBarMin;
