@@ -22,13 +22,13 @@ namespace game
 	}
 	void GameManager::Initialize()
 	{		
+		DataRead data = DataRead();
+		data.FileDataRead();
 		timeManager->InitTime();
 		renderSystem->InitRender();
 		//pathManager->InitPath();
 		sceneManager->InitScene();
-		collisionManager->Init();
-		DataRead data = DataRead();
-		data.FileDataRead();
+		collisionManager->Init();		
 		Music::soundManager->GetInstance();
 		Music::soundManager->LoadMusic(Music::eSoundList::StartBGM, true, "Sound\\BackgroudMusic.mp3");//πË∞Ê¿Ωæ«
 	}
