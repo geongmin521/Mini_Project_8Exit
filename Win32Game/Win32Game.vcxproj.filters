@@ -82,6 +82,24 @@
     <Filter Include="소스 파일\NPC">
       <UniqueIdentifier>{de0d606b-b61d-40a5-b612-4092eca63331}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MainScene">
+      <UniqueIdentifier>{4c2e635d-fc8d-48b7-b4e7-eb4edf206529}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainScene\Spiders">
+      <UniqueIdentifier>{efe62d8a-b91f-4001-ae4d-612b230c2cb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainScene\ScareCrows">
+      <UniqueIdentifier>{01396e9f-0fa4-4104-ab6c-53447385b01d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainScene\SunFlowers">
+      <UniqueIdentifier>{e40d2a02-3626-4900-983e-667bdae79d48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainScene\HorseCar">
+      <UniqueIdentifier>{9790f018-3587-44dd-95cf-956b1286ef97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainScene\WoodHouse">
+      <UniqueIdentifier>{f5ef035d-1145-439d-a94a-deb3d5770f76}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -177,25 +195,7 @@
     <ClInclude Include="TextBox.h">
       <Filter>소스 파일\TextBox</Filter>
     </ClInclude>
-    <ClInclude Include="Spider1.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Spider2.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="SunFlower.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
     <ClInclude Include="TrapManager.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="TrapSceneTest.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="HorseCar.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="WoodHouse.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
     <ClInclude Include="Spider1.h">
@@ -258,20 +258,38 @@
     <ClInclude Include="StaminaBarMin.h">
       <Filter>소스 파일\TestGameScene</Filter>
     </ClInclude>
-    <ClInclude Include="Snake.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="InGameObjectHeader.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="ScareCrow.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="ScareCrow_Search.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
     <ClInclude Include="NPC.h">
       <Filter>소스 파일\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameObjectHeader.h">
+      <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="HorseCar.h">
+      <Filter>소스 파일\MainScene\HorseCar</Filter>
+    </ClInclude>
+    <ClInclude Include="ScareCrow.h">
+      <Filter>소스 파일\MainScene\ScareCrows</Filter>
+    </ClInclude>
+    <ClInclude Include="ScareCrow_Search.h">
+      <Filter>소스 파일\MainScene\ScareCrows</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider1.h">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider2.h">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClInclude>
+    <ClInclude Include="SunFlower.h">
+      <Filter>소스 파일\MainScene\SunFlowers</Filter>
+    </ClInclude>
+    <ClInclude Include="WoodHouse.h">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapSceneTest.h">
+      <Filter>소스 파일\MainScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -369,25 +387,7 @@
     <ClCompile Include="TextBox.cpp">
       <Filter>소스 파일\TextBox</Filter>
     </ClCompile>
-    <ClCompile Include="Spider1.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Spider2.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
-    <ClCompile Include="SunFlower.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
     <ClCompile Include="TrapManager.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
-    <ClCompile Include="TrapSceneTest.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
-    <ClCompile Include="HorseCar.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
-    <ClCompile Include="WoodHouse.cpp">
       <Filter>소스 파일\TrapTest</Filter>
     </ClCompile>
     <ClCompile Include="DataRead.cpp">
@@ -420,17 +420,35 @@
     <ClCompile Include="StaminaBarMin.cpp">
       <Filter>소스 파일\TestGameScene</Filter>
     </ClCompile>
-    <ClCompile Include="Snake.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
-    <ClCompile Include="ScareCrow.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
-    <ClCompile Include="ScareCrow_Search.cpp">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClCompile>
     <ClCompile Include="NPC.cpp">
       <Filter>소스 파일\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="HorseCar.cpp">
+      <Filter>소스 파일\MainScene\HorseCar</Filter>
+    </ClCompile>
+    <ClCompile Include="ScareCrow.cpp">
+      <Filter>소스 파일\MainScene\ScareCrows</Filter>
+    </ClCompile>
+    <ClCompile Include="ScareCrow_Search.cpp">
+      <Filter>소스 파일\MainScene\ScareCrows</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClCompile>
+    <ClCompile Include="Spider1.cpp">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClCompile>
+    <ClCompile Include="Spider2.cpp">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClCompile>
+    <ClCompile Include="SunFlower.cpp">
+      <Filter>소스 파일\MainScene\SunFlowers</Filter>
+    </ClCompile>
+    <ClCompile Include="WoodHouse.cpp">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapSceneTest.cpp">
+      <Filter>소스 파일\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
