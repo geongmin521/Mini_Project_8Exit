@@ -14,7 +14,7 @@ public:
     const Vector3& GetPlayerDir() { return _PlayerDir; }
     const Vector3& GetPlayerLocation() { return _PlayerLocation; }
 
-    void OnCollision(Collider* collider);
+    void OnTrigger(Collider* collider);
 private:
     Vector3 _PlayerDir;
     Vector3 _PlayerLocation;

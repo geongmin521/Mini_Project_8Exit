@@ -12,6 +12,7 @@ TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(6), _AnomalyObje
 		//TODO: 여기서 생성된 인스턴스의 포지션을 설정해줍니다.
 	}
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::SEARCH);
 }
 
 TrapSceneTest::~TrapSceneTest()
@@ -39,6 +40,9 @@ void TrapSceneTest::Start()
 		GameObject* scareCrow = new ScareCrow;
 		_AnomalyObjects[1].push_back(scareCrow);
 	}
+	GameObject* scareCrow_Anomaly = new ScareCrow;
+	scareCrow_Anomaly->SetMoveAnomalyState(true);
+	_AnomalyObjects[1].push_back(scareCrow_Anomaly);
 
 	//=============
 	//	3구역 : sunflower
@@ -105,7 +109,7 @@ void TrapSceneTest::InitObjectPlace()
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
 
-	for (int areaIdx = 2; areaIdx < 3; areaIdx++) {
+	for (int areaIdx = 1; areaIdx < 2; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
 		int targetObject;
 		if (_AreaSettingState[areaIdx] == 1) {
@@ -143,30 +147,6 @@ void TrapSceneTest::InitObjectPlace()
 			}
 		}
 	}
-
-
-	//TODO: idx의 값에 따라 오브젝트들을 심어야 합니다.
-	/*
-	*   총 8개의 스테이지
-		0 : Spider		
-		1 : SunFlower	
-		2 : ScareCrow	
-		3 : Spider		
-		4 : HorseCar		
-		5 : SunFlower	
-		6 : WoodHouse	
-		7 : Spider		
-		8 : ScareCrow	
-		9 : Spider		
-		
-		레벨에 따라 등장할 기믹 개수는 정해져 있다.
-
-		충돌이 있는 오브젝트의 구분은 각각의 OnCollision 함수들에서 시행. 모두 같은 레이어.
-
-		이후 오브젝트들 랜더링, 업데이트.
-
-	*/
-
 }
 
 void TrapSceneTest::SetDiffAnomaly(int count)

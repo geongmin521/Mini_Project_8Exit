@@ -44,7 +44,7 @@ private:
 	Vector3 _ColliderPos;
 	Vector3 _Scale;
 
-	bool _Trigger;
+	bool _Trigger = false;
 
 	// Collider가 생성될 때 마다 고유한 번호를 가지게 하기 위해서 정적변수를 선언합니다.
 	static UINT _NextID;

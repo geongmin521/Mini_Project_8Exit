@@ -19,6 +19,8 @@ public:
     virtual void Update();
     virtual void Render();
 
+    virtual void ResetState();
+
     void OnTriggerEnter(Collider* collider);
 
 private:

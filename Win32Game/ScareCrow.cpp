@@ -25,14 +25,9 @@ void ScareCrow::Update()
 	Vector3 playerDir = _Search->GetPlayerDir();
 	Vector3 playerLocation = _Search->GetPlayerLocation();
 	_Search->SetLocation(GetLocation());
+	_Search->SetEnable(Enable());
 
 	if (_State == SCARECROW_STATE::IDLE) {
-		if (playerLocation._x < GetLocation()._x) {
-			SetFlipX(false);
-		}
-		else {
-			SetFlipX(true);
-		}
 		if (playerLocation._x - GetLocation()._x >= 640.0f) {
 			if (GetMoveAnomalyState() == true) {
 				_State = SCARECROW_STATE::CHASE;
@@ -78,12 +73,16 @@ void ScareCrow::Render()
 		);
 	}
 	ComponentRender();
-	//_Search->Render();
+}
+
+void ScareCrow::ResetState()
+{
+	_State = SCARECROW_STATE::IDLE;
 }
 
 void ScareCrow::OnTriggerEnter(Collider* collider)
 {
 	if (_State == SCARECROW_STATE::CHASE) {
-		SceneReload();
+		_State = SCARECROW_STATE::IDLE;
 	}
 }
