@@ -3,9 +3,9 @@
 
 SunFlower::SunFlower() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"SunFlower_Head", L"Image\\Flower_Head.png");
-	_StartPos = 400.0f - (float)(WindowHeight / 2);
-	_EndPos = 600.0f - (float)(WindowHeight / 2);
+	_MyTex = resourceManager->GetTexture(L"SunFlower_Head", L"Image\\Flower_Head_Crop.png");
+	_StartPos = 200.0f - (float)(WindowHeight / 2);
+	_EndPos = 400.0f - (float)(WindowHeight / 2);
 	SetName(L"SunFlower");
 	_MyStem = new FlowerStem;
 	_MyStem->SetLocation(Vector3(-10000, -10000, 0));
