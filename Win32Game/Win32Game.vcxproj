@@ -166,6 +166,7 @@
     <ClInclude Include="SampleObject.h" />
     <ClInclude Include="SampleScene.h" />
     <ClInclude Include="ScareCrow.h" />
+    <ClInclude Include="ScareCrow_Rotate.h" />
     <ClInclude Include="ScareCrow_Search.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -222,6 +223,7 @@
     <ClCompile Include="SampleObject.cpp" />
     <ClCompile Include="SampleScene.cpp" />
     <ClCompile Include="ScareCrow.cpp" />
+    <ClCompile Include="ScareCrow_Rotate.cpp" />
     <ClCompile Include="ScareCrow_Search.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />

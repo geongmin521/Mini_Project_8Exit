@@ -59,6 +59,16 @@ void TrapSceneTest::Start()
 	//=============
 	//	5备开 : spider_hive
 	//=============
+	for (int i = 0; i < 5; i++) {
+		GameObject* spider = new Spider1;
+		_AnomalyObjects[4].push_back(spider);
+	}
+	GameObject* scareCrow_Rotate = new ScareCrow_Rotate;
+	_AnomalyObjects[4].push_back(scareCrow_Rotate);
+
+	GameObject* scareCrowRotate_Anomaly = new ScareCrow_Rotate;
+	scareCrowRotate_Anomaly->SetMoveAnomalyState(true);
+	_AnomalyObjects[4].push_back(scareCrow_Rotate);
 
 	//=============
 	//	6备开 : woodhouse
@@ -106,7 +116,10 @@ void TrapSceneTest::InitObjectPlace()
 	memset(_AreaSettingState, 0, sizeof(_AreaSettingState));
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
-	for (int areaIdx = 0; areaIdx < 1; areaIdx++) {
+
+	_AreaSettingState[4] = 1;
+
+	for (int areaIdx = 4; areaIdx < 5; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
 		int targetObject;
 		if (_AreaSettingState[areaIdx] == 1) {

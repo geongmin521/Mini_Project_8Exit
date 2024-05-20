@@ -18,6 +18,8 @@ SunFlower::~SunFlower()
 
 void SunFlower::Update()
 {
+	ChangeImage();
+
 	_MyStem->SetLocation(Vector3(GetLocation()._x, 100.0f, 0));
 	_MyStem->SetEnable(Enable());
 	SetLocation(GetLocation() + _Dir * _MoveSpeed * timeManager->GetDeltaTime());
@@ -51,4 +53,15 @@ void SunFlower::ResetState()
 {
 	_MyStem->SetLocation(Vector3(GetLocation()._x, 100.0f, 0));
 	_MyStem->SetEnable(Enable());
+	_MyTex = resourceManager->GetTexture(L"SunFlower_Head", L"Image\\Flower_Head_Crop.png");
+}
+
+void SunFlower::ChangeImage()
+{
+	if (GetDiffAnomalyState() == true) {
+		std::wstring newKey = GetName() + L"_Anomaly";
+		std::wstring newPath = L"Image\\" + newKey + L".png";
+		_MyTex = resourceManager->GetTexture(newKey, newPath);
+		SetDiffAnomalyState(false);
+	}
 }

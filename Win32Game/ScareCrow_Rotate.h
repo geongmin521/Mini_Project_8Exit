@@ -1,28 +1,26 @@
 #pragma once
 #include "GameObject.h"
 #include "Texture.h"
-#include "FlowerStem.h"
 
-class SunFlower :
+class ScareCrow_Rotate :
     public GameObject
 {
 public:
-    SunFlower();
-    ~SunFlower();
+    ScareCrow_Rotate();
+    ~ScareCrow_Rotate();
 
     virtual void Update();
     virtual void Render();
 
     virtual void ResetState();
 
+    virtual void OnTriggerExit(Collider* collider);
+
 private:
     Texture* _MyTex;
-    FlowerStem* _MyStem;
 
-    Vector3 _Dir = Vector3(0, 1, 0);
-    float _StartPos;
-    float _EndPos;
-    float _MoveSpeed = 100.0f;
+    bool _MoveDown = false;
 
     void ChangeImage();
 };
+

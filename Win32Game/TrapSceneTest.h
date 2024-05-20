@@ -36,7 +36,7 @@ private:
         4,
         5,
         1,
-        7,
+        6,
         1
     };
     int _AreaMoveAnomalyCount[6] = {
