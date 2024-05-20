@@ -24,8 +24,6 @@ public:
 	void Jump();
 	void ChangeState(PlayerState state);
 	void StateManager();
-
-
 	float GetSpeed() { return _Speed; }
 	void Run();
 	void StaminaBarActions();
@@ -37,8 +35,6 @@ private:
 	float _Speed;
 	float _JumpPower;
 	float _RunSpeed;
-	float _BaseSpeed = _Speed;
-	float _CurrentSpeed = _BaseSpeed;
 	float _Stamina;         // 현재 스태미너
 	float _MaxStamina;      // 최대 스태미너
 	float _StaminaDrain;    // 달리기 시 초당 스태미너 소모량
@@ -48,7 +44,6 @@ private:
 	bool _IsRun;
 	bool _IsWalk;
 	bool _Runable;
-	float _ResetTimer = 5.0f;
 
 	StaminaBar* _StaminaBar;
 	StaminaBarMin* _StaminaBarMin;

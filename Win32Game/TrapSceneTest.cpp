@@ -55,7 +55,18 @@ void TrapSceneTest::Start()
 	//=============
 	//	4구역 : horsecar
 	//=============
+	GameObject* horseCar = new HorseCar();	
+	horseCar->SetLocation(Vector3(0, 0, 0));
+	AddObject(horseCar, LAYER_GROUP::MONSTER);
 
+	GameObject* merchant = new Merchant();
+	merchant->SetLocation(Vector3(500, -2, 0));
+	AddObject(merchant, LAYER_GROUP::MONSTER);
+
+	GameObject* horse = new Horse();
+	horse->SetLocation(Vector3(-500, -2, 0));
+	AddObject(horse, LAYER_GROUP::MONSTER);
+	//_AnomalyObjects[2].push_back(sunFlower_Anomaly);
 	//=============
 	//	5구역 : spider_hive
 	//=============
@@ -122,9 +133,10 @@ void TrapSceneTest::InitObjectPlace()
 	for (int areaIdx = 4; areaIdx < 5; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
 		int targetObject;
+		std::vector<Vector3> pos = resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1));
 		if (_AreaSettingState[areaIdx] == 1) {
 			targetObject = GetRandomNum(_AreaObjectCount[areaIdx]);
-			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {
+			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {//GetMapPos 로 백터를 통해 사이즈 구하기 즉 오브젝트 카운트 제거
 				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
 				_AnomalyObjects[areaIdx][i]->SetEnable(true);
 				if (i == targetObject) {

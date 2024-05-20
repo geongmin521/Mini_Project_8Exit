@@ -26,7 +26,7 @@ public:
 	void SetFlipX(bool flipX) { _FlipX = flipX; }
 	void CreateCollider();
 	void CreateText();
-	void CreateAnimater(std::wstring name);
+	void CreateAnimater(std::wstring name, float animationTime);
 	Vector3 GetLocation() const { return Vector3(_Location); }
 	Vector3 GetScale() const { return Vector3(_Scale); }
 	bool GetFlipX() const { return _FlipX; }

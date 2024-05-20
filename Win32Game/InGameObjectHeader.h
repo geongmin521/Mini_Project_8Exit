@@ -11,4 +11,8 @@
 #include "ScareCrow_Search.h"
 #include "NPC.h"
 #include "SunFlower_Anomaly.h"
+#include "HorseCar.h"
+#include "Merchant.h"
+#include "Horse.h"
+#include "SunFlower_Anomaly.h"
 #include "ScareCrow_Rotate.h"

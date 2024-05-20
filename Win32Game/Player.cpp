@@ -10,7 +10,7 @@ Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(180
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
 	GameObject::CreateCollider();
-	GameObject::CreateAnimater(L"Player");
+	GameObject::CreateAnimater(L"Player",0.1f);
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GameObject::SetName(L"Player");
 	_Runable = true;
@@ -24,11 +24,6 @@ Player::~Player()
 
 void Player::Update()
 {
-	//_ResetTimer -= timeManager->GetDeltaTime();
-	//if (_ResetTimer <= 0) {
-	//	_ResetTimer = 5.0f;
-	//	SceneReload();
-	//}
 	if (_IsHit == false)
 	{
 		Move();
@@ -193,7 +188,6 @@ void Player::StateManager()
 
 void Player::Run()
 {
-	_CurrentSpeed = _Speed;
 	if (inputSystem->isKey(VK_CONTROL) && _Stamina > 0 && _Runable&&_IsWalk)//스테이터스 
 	{
 		_IsRun = true;
