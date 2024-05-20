@@ -32,7 +32,7 @@ private:
         {2, 2}
     };
     int _AreaObjectCount[6] = {
-        6,
+        5,
         4,
         5,
         1,

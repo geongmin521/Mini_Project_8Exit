@@ -24,7 +24,7 @@ void TrapSceneTest::Start()
 	//=============
 	//	1±¸¿ª : spider
 	//=============
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 5; i++) {
 		GameObject* spider = new Spider1;
 		_AnomalyObjects[0].push_back(spider);
 	}
