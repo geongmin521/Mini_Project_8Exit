@@ -100,6 +100,9 @@
     <Filter Include="소스 파일\MainScene\WoodHouse">
       <UniqueIdentifier>{f5ef035d-1145-439d-a94a-deb3d5770f76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MainScene\UI">
+      <UniqueIdentifier>{cd9ff6b7-bb54-4fd1-b0bd-5808bd8005ae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -300,6 +303,12 @@
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
     </ClInclude>
+    <ClInclude Include="MainGameUI.h">
+      <Filter>소스 파일\MainScene\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_Pause.h">
+      <Filter>소스 파일\MainScene\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -467,6 +476,12 @@
     </ClCompile>
     <ClCompile Include="ScareCrow_Rotate.cpp">
       <Filter>소스 파일\MainScene\ScareCrows</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGameUI.cpp">
+      <Filter>소스 파일\MainScene\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_Pause.cpp">
+      <Filter>소스 파일\MainScene\UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
