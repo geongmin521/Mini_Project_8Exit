@@ -22,6 +22,8 @@ ScareCrow::~ScareCrow()
 
 void ScareCrow::Update()
 {
+	ChangeImage();
+
 	Vector3 playerDir = _Search->GetPlayerDir();
 	Vector3 playerLocation = _Search->GetPlayerLocation();
 	_Search->SetLocation(GetLocation());
@@ -102,9 +104,9 @@ void ScareCrow::OnTriggerEnter(Collider* collider)
 void ScareCrow::ChangeImage()
 {
 	if (GetDiffAnomalyState() == true) {
-		int anomalyIdx = GetRandomNum(2);
+		int anomalyIdx = GetRandomNum(1);
 		std::wstring newKey = GetName() + L"_Anomaly" + std::to_wstring(anomalyIdx);
-		std::wstring newPath = newKey + L".png";
+		std::wstring newPath = L"Image\\" + newKey + L".png";
 		_MyTex = resourceManager->GetTexture(newKey, newPath);
 		SetDiffAnomalyState(false);
 	}
