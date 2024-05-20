@@ -77,6 +77,10 @@ void TrapSceneTest::Start()
 	MainGameUI* mainUi = new MainGameUI;
 	AddObject(mainUi, LAYER_GROUP::UI);
 
+	PauseUI* pauseUi = new PauseUI;
+	pauseUi->SetEnable(false);
+	AddObject(pauseUi, LAYER_GROUP::UI);
+
 	GameObject* bg = new BackGround;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
 	AddObject(bg, LAYER_GROUP::BACKGROUND);

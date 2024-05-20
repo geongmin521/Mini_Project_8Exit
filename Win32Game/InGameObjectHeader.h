@@ -13,3 +13,4 @@
 #include "SunFlower_Anomaly.h"
 #include "ScareCrow_Rotate.h"
 #include "MainGameUI.h"
+#include "PauseUI.h"

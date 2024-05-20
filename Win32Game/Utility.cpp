@@ -82,12 +82,23 @@ bool CheckPositionOnUI(GameObject* obj)
 		Vector3 uiObjPos = obj->GetLocation();
 		Vector3 uiObjScale = obj->GetScale();
 		if (
-			uiObjPos._x - uiObjScale._x >= mousePos._x &&
-			uiObjPos._x + uiObjScale._x <= mousePos._x &&
-			uiObjPos._y - uiObjScale._y >= mousePos._y &&
-			uiObjPos._y + uiObjScale._y <= mousePos._y) {
+			uiObjPos._x - uiObjScale._x / 2.0f <= mousePos._x &&
+			uiObjPos._x + uiObjScale._x / 2.0f >= mousePos._x &&
+			uiObjPos._y - uiObjScale._y / 2.0f <= mousePos._y &&
+			uiObjPos._y + uiObjScale._y / 2.0f >= mousePos._y) {
 			return true;
 		}
 	}
 	return false;
+}
+
+GameObject* GetUIObject(const std::wstring& name)
+{
+	std::vector<GameObject*> uiObjects = sceneManager->GetCurScene()->GetGroupObject(LAYER_GROUP::UI);
+	for (int i = 0; i < uiObjects.size(); i++) {
+		if (uiObjects[i]->GetName() == name) {
+			return uiObjects[i];
+		}
+	}
+	// TODO: 여기에 return 문을 삽입합니다.
 }

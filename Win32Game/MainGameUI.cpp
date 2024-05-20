@@ -6,8 +6,10 @@ MainGameUI::MainGameUI()
 {
 	Button_Pause* buttonPause = new Button_Pause;
 	buttonPause->_Parent = this;
-	buttonPause->SetLocation(Vector3(1800.0f, 80.0f, 0));
+	buttonPause->SetLocation(Vector3(100.0f, 80.0f, 0));
 	_Child.push_back(buttonPause);
+
+	SetName(L"MainUI");
 }
 
 MainGameUI::~MainGameUI()

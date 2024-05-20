@@ -17,12 +17,15 @@ public:
 	const float GetFrameRate();
 	const float GetDeltaTime();
 
+	void SetTimeScale(float scale);
+
 private:
 	LARGE_INTEGER _CurTime;
 	LARGE_INTEGER _PrevTime;
 	LARGE_INTEGER _Frequency;
 
 	float _DeltaTime;
+	float _TimeScale;
 
 	static TimeManager* Instance;
 };
