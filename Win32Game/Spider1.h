@@ -20,6 +20,8 @@ private:
 
     Vector3 _PrevPosition;
 
+    int _StopLoc;
+
     bool _MoveDown = false;
 
     void ChangeImage();

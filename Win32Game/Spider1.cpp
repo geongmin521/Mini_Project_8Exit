@@ -2,7 +2,7 @@
 #include "ResourceManager.h"
 #include "Collider.h"
 
-Spider1::Spider1() : _MyTex(nullptr)
+Spider1::Spider1() : _MyTex(nullptr), _StopLoc(0)
 {
 	_MyTex = resourceManager->GetTexture(L"Spider", L"Image\\Spider_Small.png");
 	SetLocation(Vector3(800, -700, 0));
@@ -10,6 +10,7 @@ Spider1::Spider1() : _MyTex(nullptr)
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0.0f));
 	SetName(L"Spider");
 	GetCollider()->SetTrigger(true);
+	_StopLoc = GetRandomNum(-100, 100);
 }
 
 Spider1::~Spider1()
@@ -21,7 +22,7 @@ void Spider1::Update()
 {
 	ChangeImage();
 
-	if (GetLocation()._y >= 0) {
+	if (GetLocation()._y >= _StopLoc) {
 		_MoveDown = false;
 	}
 	if (_MoveDown == true) {
