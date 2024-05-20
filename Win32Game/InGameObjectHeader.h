@@ -11,3 +11,5 @@
 #include "ScareCrow_Search.h"
 #include "NPC.h"
 #include "SunFlower_Anomaly.h"
+#include "WoodHouse.h"
+#include "WoodHouse2.h"

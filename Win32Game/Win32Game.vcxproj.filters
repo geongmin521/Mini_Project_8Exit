@@ -201,12 +201,6 @@
     <ClInclude Include="TrapManager.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
-    <ClInclude Include="Spider1.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Spider2.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
     <ClInclude Include="SunFlower.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
@@ -296,6 +290,18 @@
     </ClInclude>
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="WoodHouse2.h">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider1.h">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider2.h">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClInclude>
+    <ClInclude Include="Witch.h">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -461,6 +467,12 @@
     </ClCompile>
     <ClCompile Include="TrapSceneTest.cpp">
       <Filter>소스 파일\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="WoodHouse2.cpp">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Witch.cpp">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

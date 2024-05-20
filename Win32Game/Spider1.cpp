@@ -24,7 +24,7 @@ void Spider1::Update()
 	}
 	if (_MoveDown == true) {
 		SetLocation(GetLocation() + Vector3(0, 1, 0) * 1200.0f * timeManager->GetDeltaTime());
-		
+
 	}
 }
 
