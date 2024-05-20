@@ -28,8 +28,6 @@ void TrapSceneTest::Start()
 		GameObject* spider = new Spider1;
 		_AnomalyObjects[0].push_back(spider);
 	}
-	GameObject* spiderBig = new Spider2;
-	_AnomalyObjects[0].push_back(spiderBig); // 6
 	GameObject* snake = new Snake;
 	_AnomalyObjects[0].push_back(snake);     // 7
 
@@ -108,8 +106,7 @@ void TrapSceneTest::InitObjectPlace()
 	memset(_AreaSettingState, 0, sizeof(_AreaSettingState));
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
-
-	for (int areaIdx = 2; areaIdx < 3; areaIdx++) {
+	for (int areaIdx = 0; areaIdx < 1; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
 		int targetObject;
 		if (_AreaSettingState[areaIdx] == 1) {

@@ -21,5 +21,7 @@ private:
     Vector3 _PrevPosition;
 
     bool _MoveDown = false;
+
+    void ChangeImage();
 };
 

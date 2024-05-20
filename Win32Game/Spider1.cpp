@@ -4,11 +4,11 @@
 
 Spider1::Spider1() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Spider1", L"Image\\Spider_Small.png");
+	_MyTex = resourceManager->GetTexture(L"Spider", L"Image\\Spider_Small.png");
 	SetLocation(Vector3(800, -700, 0));
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0.0f));
-	SetName(L"Spider1");
+	SetName(L"Spider");
 	GetCollider()->SetTrigger(true);
 }
 
@@ -19,6 +19,8 @@ Spider1::~Spider1()
 
 void Spider1::Update()
 {
+	ChangeImage();
+
 	if (GetLocation()._y >= 0) {
 		_MoveDown = false;
 	}
@@ -50,6 +52,7 @@ void Spider1::Render()
 void Spider1::ResetState()
 {
 	_MoveDown = false;
+	_MyTex = resourceManager->GetTexture(L"Spider", L"Image\\Spider_Small.png");
 }
 
 void Spider1::OnTriggerExit(Collider* collider) {
@@ -57,4 +60,14 @@ void Spider1::OnTriggerExit(Collider* collider) {
 		_MoveDown = true;
 	}
 	
+}
+
+void Spider1::ChangeImage()
+{
+	if (GetDiffAnomalyState() == true) {
+		std::wstring newKey = GetName() + L"_Anomaly";
+		std::wstring newPath = L"Image\\" + newKey + L".png";
+		_MyTex = resourceManager->GetTexture(newKey, newPath);
+		SetDiffAnomalyState(false);
+	}
 }

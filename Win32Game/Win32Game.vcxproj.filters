@@ -201,23 +201,11 @@
     <ClInclude Include="TrapManager.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
-    <ClInclude Include="Spider1.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Spider2.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="SunFlower.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
     <ClInclude Include="TrapManager.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
     <ClInclude Include="DataRead.h">
       <Filter>소스 파일\DataRead</Filter>
-    </ClInclude>
-    <ClInclude Include="TrapSceneTest.h">
-      <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
     <ClInclude Include="TrapManager.h">
       <Filter>소스 파일\TrapTest</Filter>
@@ -293,6 +281,18 @@
     </ClInclude>
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapSceneTest.h">
+      <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider1.h">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider2.h">
+      <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClInclude>
+    <ClInclude Include="SunFlower.h">
+      <Filter>소스 파일\MainScene\SunFlowers</Filter>
     </ClInclude>
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
