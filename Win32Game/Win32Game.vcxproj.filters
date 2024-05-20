@@ -297,6 +297,15 @@
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
     </ClInclude>
+    <ClInclude Include="Horse.h">
+      <Filter>소스 파일\MainScene\HorseCar</Filter>
+    </ClInclude>
+    <ClInclude Include="HorseCar_Search.h">
+      <Filter>소스 파일\MainScene\HorseCar</Filter>
+    </ClInclude>
+    <ClInclude Include="Merchant.h">
+      <Filter>소스 파일\MainScene\HorseCar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -461,6 +470,15 @@
     </ClCompile>
     <ClCompile Include="TrapSceneTest.cpp">
       <Filter>소스 파일\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Horse.cpp">
+      <Filter>소스 파일\MainScene\HorseCar</Filter>
+    </ClCompile>
+    <ClCompile Include="HorseCar_Search.cpp">
+      <Filter>소스 파일\MainScene\HorseCar</Filter>
+    </ClCompile>
+    <ClCompile Include="Merchant.cpp">
+      <Filter>소스 파일\MainScene\HorseCar</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

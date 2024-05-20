@@ -2,7 +2,7 @@
 
 TextBox::TextBox(std::wstring text) : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"123", L"Image\\PlayerDump.png");
+	_MyTex = resourceManager->GetTexture(L"TextBox", L"Image\\MaxTex.png");
 	GameObject::CreateText();
 	GetTextComponent()->SetRect(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetTextComponent()->SetText(text);
