@@ -33,6 +33,8 @@ private:
     float _CoolTime;
     float _WaitTime;
 
+    void ChangeImage();
+
     friend class TrapSceneTest;
 };
 

@@ -213,9 +213,6 @@
     <ClInclude Include="TrapManager.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
-    <ClInclude Include="TrapSceneTest.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
     <ClInclude Include="DataRead.h">
       <Filter>소스 파일\DataRead</Filter>
     </ClInclude>
@@ -293,6 +290,9 @@
     </ClInclude>
     <ClInclude Include="Spider2.h">
       <Filter>소스 파일\MainScene\Spiders</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapSceneTest.h">
+      <Filter>소스 파일\MainScene</Filter>
     </ClInclude>
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
@@ -405,9 +405,6 @@
     <ClCompile Include="TrapManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="TrapSceneTest.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="SignMonster.cpp">
       <Filter>소스 파일\TestGameScene</Filter>
     </ClCompile>
@@ -458,6 +455,9 @@
     </ClCompile>
     <ClCompile Include="SunFlower_Anomaly.cpp">
       <Filter>소스 파일\MainScene\SunFlowers</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapSceneTest.cpp">
+      <Filter>소스 파일\MainScene</Filter>
     </ClCompile>
     <ClCompile Include="TrapSceneTest.cpp">
       <Filter>소스 파일\MainScene</Filter>

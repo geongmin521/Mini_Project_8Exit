@@ -28,6 +28,12 @@ void ScareCrow::Update()
 	_Search->SetEnable(Enable());
 
 	if (_State == SCARECROW_STATE::IDLE) {
+		if (playerLocation._x < GetLocation()._x) {
+			SetFlipX(false);
+		}
+		else {
+			SetFlipX(true);
+		}
 		if (playerLocation._x - GetLocation()._x >= 640.0f) {
 			if (GetMoveAnomalyState() == true) {
 				_State = SCARECROW_STATE::CHASE;
@@ -61,6 +67,11 @@ void ScareCrow::Render()
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
 	Graphics g(renderSystem->_backDC);
 
+	if (_MyTex->GetFlipX() != GetFlipX()) {
+		_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);
+		_MyTex->SetFlipX(GetFlipX());
+	}
+
 	int startX = (int)renderPosition._x - (int)_MyTex->Width() / 2;
 	int startY = (int)renderPosition._y - (int)_MyTex->Height() / 2;
 	int endX = (int)_MyTex->Width();
@@ -78,11 +89,23 @@ void ScareCrow::Render()
 void ScareCrow::ResetState()
 {
 	_State = SCARECROW_STATE::IDLE;
+	_MyTex = resourceManager->GetTexture(L"ScareCrow", L"Image\\ScareCrow.png");
 }
 
 void ScareCrow::OnTriggerEnter(Collider* collider)
 {
 	if (_State == SCARECROW_STATE::CHASE) {
 		_State = SCARECROW_STATE::IDLE;
+	}
+}
+
+void ScareCrow::ChangeImage()
+{
+	if (GetDiffAnomalyState() == true) {
+		int anomalyIdx = GetRandomNum(2);
+		std::wstring newKey = GetName() + L"_Anomaly" + std::to_wstring(anomalyIdx);
+		std::wstring newPath = newKey + L".png";
+		_MyTex = resourceManager->GetTexture(newKey, newPath);
+		SetDiffAnomalyState(false);
 	}
 }
