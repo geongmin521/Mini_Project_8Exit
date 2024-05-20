@@ -141,6 +141,7 @@
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Button_Pause.h" />
     <ClInclude Include="Button_Resume.h" />
+    <ClInclude Include="Button_Start.h" />
     <ClInclude Include="Button_Title.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collider.h" />
@@ -157,7 +158,10 @@
     <ClInclude Include="InGameObjectHeader.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="LastBackGround.h" />
+    <ClInclude Include="LobbyScene.h" />
+    <ClInclude Include="LobbyUI.h" />
     <ClInclude Include="MainBackGround.h" />
+    <ClInclude Include="MainBG.h" />
     <ClInclude Include="MainGameUI.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Music.h" />
@@ -208,6 +212,7 @@
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Button_Pause.cpp" />
     <ClCompile Include="Button_Resume.cpp" />
+    <ClCompile Include="Button_Start.cpp" />
     <ClCompile Include="Button_Title.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collider.cpp" />
@@ -221,7 +226,10 @@
     <ClCompile Include="HorseCar.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="LastBackGround.cpp" />
+    <ClCompile Include="LobbyScene.cpp" />
+    <ClCompile Include="LobbyUI.cpp" />
     <ClCompile Include="MainBackGround.cpp" />
+    <ClCompile Include="MainBG.cpp" />
     <ClCompile Include="MainGameUI.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Music.cpp" />

@@ -2,12 +2,12 @@
 #include "GameObject.h"
 #include "Texture.h"
 
-class Button_Title :
+class Button_Start :
     public GameObject
 {
 public:
-    Button_Title();
-    ~Button_Title();
+    Button_Start();
+    ~Button_Start();
 
     virtual void Update();
     virtual void Render();
@@ -16,11 +16,10 @@ public:
 
 private:
     Texture* _MyTex;
-
     Vector3 _Pos;
 
     GameObject* _Parent;
 
-    friend class PauseUI;
+    friend class LobbyUI;
 };
 

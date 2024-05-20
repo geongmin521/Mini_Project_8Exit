@@ -1,21 +1,19 @@
-#include "PauseBG.h"
-#include "ResourceManager.h"
+#include "MainBG.h"
 
-PauseBG::PauseBG() : _MyTex(nullptr), _Parent(nullptr)
+MainBG::MainBG() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"PauseBG", L"Image\\Screen_Pause.png");
 }
 
-PauseBG::~PauseBG()
+MainBG::~MainBG()
 {
 }
 
-void PauseBG::Update()
+void MainBG::Update()
 {
-
 }
 
-void PauseBG::Render()
+void MainBG::Render()
 {
 	Graphics g(renderSystem->_backDC);
 	int endX = (int)_MyTex->Width();

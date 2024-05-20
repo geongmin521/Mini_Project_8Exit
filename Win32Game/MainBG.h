@@ -2,25 +2,18 @@
 #include "GameObject.h"
 #include "Texture.h"
 
-class Button_Title :
+class MainBG :
     public GameObject
 {
 public:
-    Button_Title();
-    ~Button_Title();
+    MainBG();
+    ~MainBG();
 
     virtual void Update();
     virtual void Render();
 
-    void OnClick();
-
 private:
     Texture* _MyTex;
 
-    Vector3 _Pos;
-
-    GameObject* _Parent;
-
-    friend class PauseUI;
 };
 

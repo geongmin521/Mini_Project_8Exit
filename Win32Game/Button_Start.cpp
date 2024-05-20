@@ -1,18 +1,18 @@
-#include "Button_Title.h"
+#include "Button_Start.h"
 #include "ResourceManager.h"
 #include "SceneManager.h"
 
-Button_Title::Button_Title() : _MyTex(nullptr), _Parent(nullptr)
+Button_Start::Button_Start() : _MyTex(nullptr), _Parent(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Button_Title", L"Image\\Button\\Button_Title.png");
+	_MyTex = resourceManager->GetTexture(L"Button_Start", L"Image\\Button\\Button_Start.png");
 	SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 }
 
-Button_Title::~Button_Title()
+Button_Start::~Button_Start()
 {
 }
 
-void Button_Title::Update()
+void Button_Start::Update()
 {
 	SetLocation(_Pos);
 	if (inputSystem->GetMouseButtonUp(0)) {
@@ -22,7 +22,7 @@ void Button_Title::Update()
 	}
 }
 
-void Button_Title::Render()
+void Button_Start::Render()
 {
 	Graphics g(renderSystem->_backDC);
 	int endX = (int)_MyTex->Width();
@@ -34,7 +34,7 @@ void Button_Title::Render()
 	);
 }
 
-void Button_Title::OnClick()
+void Button_Start::OnClick()
 {
-	sceneManager->LoadScene(SCENE_LAYER::MAIN);
+	sceneManager->LoadScene(SCENE_LAYER::PLAY);
 }

@@ -109,6 +109,15 @@
     <Filter Include="소스 파일\MainScene\UI\MainUI">
       <UniqueIdentifier>{fe929cfb-f042-46e1-819c-596de96a8b73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MainStartScene">
+      <UniqueIdentifier>{1da5dcfd-09d0-43ed-aa33-d6c4ce5ea16c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainStartScene\UI">
+      <UniqueIdentifier>{4fae41ca-041d-4f37-b785-f188afc3348a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainStartScene\UI\MainUI">
+      <UniqueIdentifier>{3c7a296d-982f-4a77-ae20-2e142161becf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -327,6 +336,18 @@
     <ClInclude Include="MainGameUI.h">
       <Filter>소스 파일\MainScene\UI\MainUI</Filter>
     </ClInclude>
+    <ClInclude Include="LobbyScene.h">
+      <Filter>소스 파일\MainStartScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyUI.h">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_Start.h">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MainBG.h">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -512,6 +533,18 @@
     </ClCompile>
     <ClCompile Include="MainGameUI.cpp">
       <Filter>소스 파일\MainScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="LobbyScene.cpp">
+      <Filter>소스 파일\MainStartScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LobbyUI.cpp">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_Start.cpp">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MainBG.cpp">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include "SampleScene.h"
 #include "TrapSceneTest.h"
 #include "Scene.h"
+#include "LobbyScene.h"
 
 SceneManager* SceneManager::Instance = nullptr;
 SceneManager::SceneManager() : _CurScene(nullptr) {
@@ -31,7 +32,8 @@ void SceneManager::DestroyInstance() {
 }
 
 void SceneManager::InitScene() {
-	_Scenes[(int)SCENE_LAYER::MAIN] = new TrapSceneTest;
+	_Scenes[(int)SCENE_LAYER::MAIN] = new LobbyScene;
+	_Scenes[(int)SCENE_LAYER::PLAY] = new TrapSceneTest;
 	_CurScene = _Scenes[(int)SCENE_LAYER::MAIN];
 	_CurScene->Start();
 }
@@ -45,10 +47,10 @@ void SceneManager::Render() {
 	_CurScene->Render();
 }
 
-void SceneManager::LoadScene(int idx)
+void SceneManager::LoadScene(SCENE_LAYER layer)
 {
 	_CurScene->End();
-	_CurScene = _Scenes[idx];
+	_CurScene = _Scenes[(int)layer];
 	_CurScene->Start();
 }
 
