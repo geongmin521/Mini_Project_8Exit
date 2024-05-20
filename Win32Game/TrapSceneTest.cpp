@@ -81,15 +81,22 @@ void TrapSceneTest::Start()
 	pauseUi->SetEnable(false);
 	AddObject(pauseUi, LAYER_GROUP::UI);
 
-	GameObject* bg = new BackGround;
+	GameObject* bg = new GameBG;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
 	AddObject(bg, LAYER_GROUP::BACKGROUND);
+	GameObject* bg2 = new GameBG;
+	bg2->SetLocation(Vector3(-(float)(WindowWidth / 2) + 11520.0f, -(float)(WindowHeight / 2), 0));
+	AddObject(bg2, LAYER_GROUP::BACKGROUND);
+
+	GameObject* sign = new WoodSign;
+	sign->SetLocation(Vector3(-250.0f, 220.0f, 0));
+	AddObject(sign, LAYER_GROUP::BACKUNIT);
 
 	GameObject* npc = new NPC;
-	npc->SetEnable(true);
+	npc->SetLocation(Vector3(-250.0f, 80, 0));
 	AddObject(npc, LAYER_GROUP::TRAPTRIGGER);
 
-	
+
 
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));
@@ -126,8 +133,8 @@ void TrapSceneTest::InitObjectPlace()
 
 	_AreaSettingState[4] = 1;
 
-	for (int areaIdx = 4; areaIdx < 5; areaIdx++) {
-		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
+	for (int areaIdx = 0; areaIdx < 3; areaIdx++) {
+		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
 		int targetObject;
 		if (_AreaSettingState[areaIdx] == 1) {
 			targetObject = GetRandomNum(_AreaObjectCount[areaIdx]);

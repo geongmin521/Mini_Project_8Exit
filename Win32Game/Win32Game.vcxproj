@@ -150,6 +150,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FlowerStem.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameBG.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameResource.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Win32GameProject.h" />
     <ClInclude Include="WoodHouse.h" />
+    <ClInclude Include="WoodSign.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc" />
@@ -220,6 +222,7 @@
     <ClCompile Include="DataRead.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FlowerStem.cpp" />
+    <ClCompile Include="GameBG.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameResource.cpp" />
@@ -265,6 +268,7 @@
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Win32GameProject.cpp" />
     <ClCompile Include="WoodHouse.cpp" />
+    <ClCompile Include="WoodSign.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -118,6 +118,9 @@
     <Filter Include="소스 파일\MainStartScene\UI\MainUI">
       <UniqueIdentifier>{3c7a296d-982f-4a77-ae20-2e142161becf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MainScene\OtherObjects">
+      <UniqueIdentifier>{02066507-188e-45e2-b6b5-d42dcea03e4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -348,6 +351,12 @@
     <ClInclude Include="MainBG.h">
       <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
     </ClInclude>
+    <ClInclude Include="GameBG.h">
+      <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="WoodSign.h">
+      <Filter>소스 파일\MainScene\OtherObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -545,6 +554,12 @@
     </ClCompile>
     <ClCompile Include="MainBG.cpp">
       <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBG.cpp">
+      <Filter>소스 파일\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="WoodSign.cpp">
+      <Filter>소스 파일\MainScene\OtherObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
