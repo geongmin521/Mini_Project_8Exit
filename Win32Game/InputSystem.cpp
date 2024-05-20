@@ -86,6 +86,42 @@ void InputSystem::UpdateMouse()
 	_curMouse._middle = (GetKeyState(VK_MBUTTON) & 0x8000) != 0;
 }
 
+bool InputSystem::GetMouseButtonDown(int idx)
+{
+	switch (idx) {
+	case 0:
+		return (_prevMouse._left == false && _curMouse._left == true);
+	case 1:
+		return (_prevMouse._middle == false && _curMouse._middle == true);
+	case 2:
+		return (_prevMouse._right == false && _curMouse._right == true);
+	}
+}
+
+bool InputSystem::GetMouseButton(int idx)
+{
+	switch (idx) {
+	case 0:
+		return (_prevMouse._left == true && _curMouse._left == true);
+	case 1:
+		return (_prevMouse._middle == true && _curMouse._middle == true);
+	case 2:
+		return (_prevMouse._right == true && _curMouse._right == true);
+	}
+}
+
+bool InputSystem::GetMouseButtonUp(int idx)
+{
+	switch (idx) {
+	case 0:
+		return (_prevMouse._left == true && _curMouse._left == false);
+	case 1:
+		return (_prevMouse._middle == true && _curMouse._middle == false);
+	case 2:
+		return (_prevMouse._right == true && _curMouse._right == false);
+	}
+}
+
 void InputSystem::ResetInput() {
 	for (int i = 0; i < 256; i++) {
 		_isKeyDown[i] = false;

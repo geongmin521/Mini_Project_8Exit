@@ -41,3 +41,27 @@ int GetRandomNum(int dis)
 	std::uniform_int_distribution<int> dist(0, dis - 1);
 	return dist(mt);
 }
+
+Vector3 GetMousePos()
+{
+	return Vector3(inputSystem->GetMouseState()._x, inputSystem->GetMouseState()._y, 0);
+}
+
+bool CheckPositionOnUI(Vector3& pos)
+{
+	std::vector<GameObject*> uiObjects = sceneManager->GetCurScene()->GetGroupObject(LAYER_GROUP::UI);
+	for (int i = 0; i < uiObjects.size(); i++) {
+		if (uiObjects[i]->Enable() == true) {
+			Vector3 uiObjPos = uiObjects[i]->GetLocation();
+			Vector3 uiObjScale = uiObjects[i]->GetScale();
+			if (
+				uiObjPos._x - uiObjScale._x >= pos._x &&
+				uiObjPos._x + uiObjScale._x <= pos._x &&
+				uiObjPos._y - uiObjScale._y >= pos._y &&
+				uiObjPos._y - uiObjScale._y <= pos._y) {
+				return true;
+			}
+		}
+	}
+	return false;
+}

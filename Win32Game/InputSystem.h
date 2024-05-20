@@ -38,6 +38,9 @@ public:
 
 	void InitMouse();
 	void UpdateMouse();
+	bool GetMouseButtonDown(int idx);
+	bool GetMouseButton(int idx);
+	bool GetMouseButtonUp(int idx);
 	const MouseState& GetMouseState() const { return _curMouse; }
 	const MouseState& GetPrevMouseState() const { return _prevMouse; }
 	bool isSame(const MouseState& a, const MouseState& b){ 

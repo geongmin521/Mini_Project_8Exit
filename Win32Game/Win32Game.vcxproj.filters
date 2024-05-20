@@ -213,9 +213,6 @@
     <ClInclude Include="TrapManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="TrapSceneTest.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="SignMonster.h">
       <Filter>소스 파일\TestGameScene</Filter>
     </ClInclude>
@@ -299,6 +296,12 @@
     </ClInclude>
     <ClInclude Include="ScareCrow_Rotate.h">
       <Filter>소스 파일\MainScene\ScareCrows</Filter>
+    </ClInclude>
+    <ClInclude Include="TrapSceneTest.h">
+      <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>소스 파일\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +470,9 @@
     </ClCompile>
     <ClCompile Include="ScareCrow_Rotate.cpp">
       <Filter>소스 파일\MainScene\ScareCrows</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>소스 파일\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
