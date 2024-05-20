@@ -42,6 +42,14 @@ int GetRandomNum(int dis)
 	return dist(mt);
 }
 
+int GetRandomNum(int from, int to)
+{
+	std::random_device rd;
+	std::mt19937_64 mt(rd());
+	std::uniform_int_distribution<int> dist(from, to - 1);
+	return dist(mt);
+}
+
 Vector3 GetMousePos()
 {
 	Vector3 mousePos(inputSystem->GetMouseState()._x, inputSystem->GetMouseState()._y, 0);

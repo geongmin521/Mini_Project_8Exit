@@ -9,6 +9,7 @@ void DeleteObject(GameObject* obj);
 bool CheckRenderPosition(int& leftX, int& leftY, int& rightX, int& rightY);
 void SceneReload();
 int GetRandomNum(int dis);
+int GetRandomNum(int from, int to);
 Vector3 GetMousePos();
 Vector3 GetWorldMousePos();
 bool CheckPositionOnUI();
