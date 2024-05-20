@@ -29,7 +29,7 @@ enum class LAYER_GROUP {
 	SEARCH,
 	PLAYER,
 
-	UI,
+	UI = 31,
 	END = 32,
 };
 
