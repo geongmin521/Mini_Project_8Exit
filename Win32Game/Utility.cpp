@@ -44,7 +44,9 @@ int GetRandomNum(int dis)
 
 Vector3 GetMousePos()
 {
-	return Vector3(inputSystem->GetMouseState()._x, inputSystem->GetMouseState()._y, 0);
+	Vector3 mousePos(inputSystem->GetMouseState()._x, inputSystem->GetMouseState()._y, 0);
+	Vector3 worldPos = camera->GetRenderPos(mousePos);
+	return worldPos;
 }
 
 bool CheckPositionOnUI(Vector3& pos)
@@ -58,7 +60,7 @@ bool CheckPositionOnUI(Vector3& pos)
 				uiObjPos._x - uiObjScale._x >= pos._x &&
 				uiObjPos._x + uiObjScale._x <= pos._x &&
 				uiObjPos._y - uiObjScale._y >= pos._y &&
-				uiObjPos._y - uiObjScale._y <= pos._y) {
+				uiObjPos._y + uiObjScale._y <= pos._y) {
 				return true;
 			}
 		}
