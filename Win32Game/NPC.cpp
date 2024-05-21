@@ -12,7 +12,7 @@ NPC::NPC() : _MyTex(nullptr)
 
 	SetLocation(Vector3(300, 300, 0));
 
-	_TextBox = new TextBox(L"ぞしぞし");
+	_TextBox = new TextBox(L"ぞしぞし", 12, Color(255, 0, 0, 0), (int)FontType::dialog);
 	CreateObject(_TextBox,LAYER_GROUP::UI);
 
 	CreateCollider();

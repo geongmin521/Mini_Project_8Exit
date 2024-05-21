@@ -9,7 +9,7 @@ Merchant::Merchant()
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0.0f));
 	GetCollider()->SetTrigger(true);
 	SetName(L"Merchant");
-	_TextBox = new TextBox(L"°Å¹Ì ¸ÔÀ»·¡?");
+	_TextBox = new TextBox(L"°Å¹Ì ¸ÔÀ»·¡?",12,Color(255,0,0,0),(int)FontType::dialog);
 	CreateObject(_TextBox, LAYER_GROUP::UI);
 	_TextBox->SetEnable(false); 
 

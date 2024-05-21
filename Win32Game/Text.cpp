@@ -14,10 +14,10 @@ Text::~Text()
 void Text::Render()
 {
 	Graphics g(renderSystem->_backDC);
-	Gdiplus::Font       _Font( &resourceManager->GetFont((int)_FontType), 12, FontStyleBold, UnitPoint); //폰트 설정
+	Gdiplus::Font       _Font( &resourceManager->GetFont((int)_FontType), _FontSize, FontStyleBold, UnitPoint); //폰트 설정
 	Gdiplus::RectF rect = GetRect(alignX::middle, alignY::middle); //위치?
 	SolidBrush   solidBrush(_color); //컬러
-
+	//rect = RectF(0, 0, 100, 100);
 	g.DrawString(_Text.c_str(), -1, &_Font, rect, NULL, &solidBrush);
 }
 
@@ -28,8 +28,8 @@ void Text::FinalUpdate()
 
 Gdiplus::RectF Text::GetRect(alignX alignX, alignY alignY)
 {
-	int posX = _Owner->GetLocation()._x;
-	int posY = _Owner->GetLocation()._y;
+	int posX = _Owner->GetLocation()._x + _Offset._x;
+	int posY = _Owner->GetLocation()._y + _Offset._y;
 	switch (alignX)
 	{
 	case alignX::left:

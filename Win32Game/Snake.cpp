@@ -11,7 +11,8 @@ Snake::Snake() : _MyTex(nullptr)
 	GetCollider()->SetScale(Vector3(_MyTex->Width(), 2300.0f, 0));
 	SetName(L"Snake");
 	GetCollider()->SetTrigger(true);
-	GameObject::CreateAnimater(L"Merchant", 0.1f);
+	GameObject::CreateAnimater(L"Snake", 0.1f);
+	SetFlipX(true);
 }
 
 Snake::~Snake()
@@ -21,20 +22,21 @@ Snake::~Snake()
 void Snake::Update()
 {
 	if (_State == SNAKE_STATE::CHASE) {
-		SetLocation(GetLocation() + _RunDir * _MoveSpeed * 2 * timeManager->GetDeltaTime());
+		SetLocation(GetLocation() + _RunDir *_MoveSpeed * timeManager->GetDeltaTime());
 	}
 	else if (_State == SNAKE_STATE::MOVEDOWN) {
 		SetLocation(GetLocation() + Vector3(0, 1, 0) * _MoveSpeed * timeManager->GetDeltaTime());
 		if (GetLocation()._y >= 300) {
-			_State = SNAKE_STATE::WAIT;
+			ChangeState(SNAKE_STATE::WAIT);
 		}
 	}
 	else if (_State == SNAKE_STATE::WAIT) {
 		_CoolTime -= timeManager->GetDeltaTime();
 		if (_CoolTime <= 0) {
-			_State = SNAKE_STATE::CHASE;
+			ChangeState(SNAKE_STATE::CHASE);
 		}
 	}
+	GetAinmater()->Update();
 }
 
 void Snake::ChangeState(SNAKE_STATE state)
@@ -68,7 +70,7 @@ void Snake::Render()
 	int endY = (int)_MyTex->Height();
 
 	
-	if (GetAinmater() == nullptr)
+	if (GetAinmater() != nullptr)
 	{
 		GetAinmater()->Render();
 	}
@@ -87,7 +89,7 @@ void Snake::Render()
 
 void Snake::ResetState()
 {
-	_State = SNAKE_STATE::IDLE;
+	ChangeState(SNAKE_STATE::IDLE);
 }
 
 void Snake::OnCollisionEnter(Collider* collider)
@@ -104,7 +106,7 @@ void Snake::OnTriggerExit(Collider* collider)
 		GetCollider()->SetScale(Vector3(278.0f, 200.0f, 0.0f));
 		_RunDir = Vector3(1, 0, 0);
 		_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);
-		_State = SNAKE_STATE::MOVEDOWN;
-		GetCollider()->SetTrigger(false);
+		ChangeState(SNAKE_STATE::MOVEDOWN);
+		//GetCollider()->SetTrigger(false);
 	}
 }

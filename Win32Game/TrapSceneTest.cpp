@@ -153,7 +153,7 @@ void TrapSceneTest::InitObjectPlace()
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
 
-	
+	_AreaSettingState[0] = 2;
 
 	for (int areaIdx = 0; areaIdx < 6; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
