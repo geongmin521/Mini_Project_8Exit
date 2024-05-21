@@ -121,6 +121,9 @@
     <Filter Include="소스 파일\MainScene\OtherObjects">
       <UniqueIdentifier>{02066507-188e-45e2-b6b5-d42dcea03e4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MainOpeningScene">
+      <UniqueIdentifier>{19bf3543-b5e5-4f00-b020-32890efa8165}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -375,6 +378,18 @@
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
     </ClInclude>
+    <ClInclude Include="Witch.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="WoodHouse2.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CartoonObject.h">
+      <Filter>소스 파일\MainOpeningScene</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningScene.h">
+      <Filter>소스 파일\MainOpeningScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -596,6 +611,12 @@
     </ClCompile>
     <ClCompile Include="GameBG.cpp">
       <Filter>소스 파일\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CartoonObject.cpp">
+      <Filter>소스 파일\MainOpeningScene</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningScene.cpp">
+      <Filter>소스 파일\MainOpeningScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
