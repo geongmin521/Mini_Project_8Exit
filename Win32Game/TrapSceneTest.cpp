@@ -115,10 +115,12 @@ void TrapSceneTest::Start()
 	GameObject* npc1 = new NPC(L"StageCat"); //테스트용 다른 npc
 	npc1->SetLocation(Vector3(0, 80, 0));
 	AddObject(npc1, LAYER_GROUP::SEARCH);
+	_DefaultObjects.push_back(npc1); // 2
 
 	GameObject* npc2 = new NPC(L"EndCat");//테스트용 다른 npc
 	npc2->SetLocation(Vector3(250.0f, 80, 0));
 	AddObject(npc2, LAYER_GROUP::SEARCH);
+	_DefaultObjects.push_back(npc2); // 3
 
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));
@@ -145,7 +147,9 @@ void TrapSceneTest::End()
 void TrapSceneTest::InitObjectPlace()
 {
 	dynamic_cast<WoodSign*>(_DefaultObjects[0])->Init(_StageNum);
-	dynamic_cast<WoodSign*>(_DefaultObjects[1])->Init(_StageNum);
+	dynamic_cast<NPC*>(_DefaultObjects[1])->Init(_StageNum);
+	dynamic_cast<NPC*>(_DefaultObjects[2])->Init(_StageNum);
+	dynamic_cast<NPC*>(_DefaultObjects[3])->Init(_StageNum);
 
 	GetGroupObject(LAYER_GROUP::PLAYER)[0]->SetLocation(Vector3(-800, 230, 0));
 	for (int i = 0; i < _AnomalyObjects.size(); i++) {

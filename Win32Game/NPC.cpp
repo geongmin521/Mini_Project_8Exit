@@ -85,7 +85,7 @@ void NPC::OnTriggerExit(Collider* collider) {
 
 void NPC::Init(int stage)
 {
-	_StageNum = stage;
+	_StageNum = stage - 1;
 	if (_DialogKey == L"EndCat")
 	{
 		EndDioLog();
