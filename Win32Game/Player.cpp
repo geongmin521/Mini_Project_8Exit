@@ -6,12 +6,13 @@
 #include "Collider.h"
 #include "Camera.h"
 #include "Utility.h"
+#include "Music.h"
 
 Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
 				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _CurState(PlayerState::Idle)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
-	_AnswerUI = resourceManager->GetTexture(L"Player", L"Image\\UI\\Crayon.png");
+	_AnswerUI = resourceManager->GetTexture(L"Crayon", L"Image\\UI\\Crayon.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"Player",0.1f);
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
@@ -24,6 +25,7 @@ Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false),
 		CreateObject(answer, LAYER_GROUP::UI);
 
 	}
+	Circle = 3;
 	_FadeIn = new FadeIn;
 }
 
@@ -104,13 +106,14 @@ void Player::Render()
 	}
 	for (int i = 0; i < Circle; i++)
 	{
-		Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
+		//Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
 		Graphics g(renderSystem->_backDC);
-		g.DrawImage(_AnswerUI->GetImage(),
-			(int)renderPosition._x - (int)_AnswerUI->GetImage()->GetWidth() / 2 + i * 200,
-			(int)renderPosition._y - (int)_AnswerUI->GetImage()->GetHeight() / 2,
-			(int)(_AnswerUI->GetImage()->GetWidth() + i * 200), (int)_AnswerUI->GetImage()->GetHeight()
-		);
+		int sizeX = (int)_AnswerUI->Width();
+		int sizeY = (int)_AnswerUI->Height();
+		int posX = 0 + i * 60;
+		int posY = WindowHeight - 200;
+	
+		g.DrawImage(_AnswerUI->GetImage(), posX , posY, sizeX , sizeY);
 		
 	}
 	ComponentRender();
@@ -188,16 +191,20 @@ void Player::ChangeState(PlayerState state)
 		{
 		case PlayerState::Idle: //enum을 wstring으로 수동 변환
 			stateStr = L"Idle";
+			Music::soundManager->StopMusic(Music::eSoundChannel::Player);
 			break;
 		case PlayerState::Jump:
 			stateStr = L"Jump";
 			break;
 		case PlayerState::Walk:
 			stateStr = L"Walk";
+			Music::soundManager->PlayMusic(Music::eSoundList::Player_Walk, Music::eSoundChannel::Player);//음악 재생
 			break;
 		case PlayerState::Hit:
 			stateStr = L"Hit";
 			GetAinmater()->SetIsLoop(false);
+			Music::soundManager->PlayMusic(Music::eSoundList::Attacked_by_Objects, Music::eSoundChannel::Effect);//음악 재생
+
 			break;
 		case PlayerState::Run:
 			stateStr = L"Run";

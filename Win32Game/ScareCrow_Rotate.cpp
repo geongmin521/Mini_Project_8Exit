@@ -1,7 +1,7 @@
 #include "ScareCrow_Rotate.h"
 #include "ResourceManager.h"
 #include "Collider.h"
-
+#include "Music.h"
 ScareCrow_Rotate::ScareCrow_Rotate() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"ScareCrow_Rotated", L"Image\\ScareCrow.png");
@@ -63,6 +63,7 @@ void ScareCrow_Rotate::OnTriggerExit(Collider* collider)
 {
 	if(GetMoveAnomalyState() == true){
 		_MoveDown = true;
+		Music::soundManager->PlayMusic(Music::eSoundList::Scarecrow_drop_from_Web, Music::eSoundChannel::Effect);
 	}
 }
 
