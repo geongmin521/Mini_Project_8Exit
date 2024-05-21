@@ -139,7 +139,6 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnswerCircle.h" />
-    <ClInclude Include="BackGround.h" />
     <ClInclude Include="Button_Pause.h" />
     <ClInclude Include="Button_Resume.h" />
     <ClInclude Include="Button_Start.h" />
@@ -164,14 +163,11 @@
     <ClInclude Include="HorseCar_Search.h" />
     <ClInclude Include="InGameObjectHeader.h" />
     <ClInclude Include="InputSystem.h" />
-    <ClInclude Include="LastBackGround.h" />
     <ClInclude Include="LobbyScene.h" />
     <ClInclude Include="LobbyUI.h" />
-    <ClInclude Include="MainBackGround.h" />
     <ClInclude Include="Merchant.h" />
     <ClInclude Include="MainBG.h" />
     <ClInclude Include="MainGameUI.h" />
-    <ClInclude Include="Monster.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="OpeningScene.h" />
@@ -182,8 +178,6 @@
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
-    <ClInclude Include="SampleObject.h" />
-    <ClInclude Include="SampleScene.h" />
     <ClInclude Include="ScareCrow.h" />
     <ClInclude Include="ScareCrow_Rotate.h" />
     <ClInclude Include="ScareCrow_Search.h" />
@@ -193,8 +187,6 @@
     <ClInclude Include="Spider1.h" />
     <ClInclude Include="Spider2.h" />
     <ClInclude Include="SunFlower.h" />
-    <ClInclude Include="SignMonster.h" />
-    <ClInclude Include="StaminaBar.h" />
     <ClInclude Include="StaminaBarMin.h" />
     <ClInclude Include="SunFlower_Anomaly.h" />
     <ClInclude Include="targetver.h" />
@@ -222,7 +214,6 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnswerCircle.cpp" />
-    <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Button_Pause.cpp" />
     <ClCompile Include="Button_Resume.cpp" />
     <ClCompile Include="Button_Start.cpp" />
@@ -244,14 +235,11 @@
     <ClCompile Include="HorseCar.cpp" />
     <ClCompile Include="HorseCar_Search.cpp" />
     <ClCompile Include="InputSystem.cpp" />
-    <ClCompile Include="LastBackGround.cpp" />
     <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="LobbyUI.cpp" />
-    <ClCompile Include="MainBackGround.cpp" />
     <ClCompile Include="Merchant.cpp" />
     <ClCompile Include="MainBG.cpp" />
     <ClCompile Include="MainGameUI.cpp" />
-    <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="OpeningScene.cpp" />
@@ -261,8 +249,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
-    <ClCompile Include="SampleObject.cpp" />
-    <ClCompile Include="SampleScene.cpp" />
     <ClCompile Include="ScareCrow.cpp" />
     <ClCompile Include="ScareCrow_Rotate.cpp" />
     <ClCompile Include="ScareCrow_Search.cpp" />
@@ -275,8 +261,6 @@
     <ClCompile Include="SunFlower_Anomaly.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TextBox.cpp" />
-    <ClCompile Include="SignMonster.cpp" />
-    <ClCompile Include="StaminaBar.cpp" />
     <ClCompile Include="StaminaBarMin.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TimeSystem.cpp" />
