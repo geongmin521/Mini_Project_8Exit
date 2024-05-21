@@ -54,21 +54,23 @@ void Player::Update()
 
 	if (inputSystem->GetMouseButtonDown(0)) //왼쪽 클릭시
 	{
-		for (int i = 0; i < _Answer.size(); i++)
-		{
-			if (CheckPositionOnWorld(_Answer[i]) && _Answer[i]->Enable() == true)
+		if (CheckPositionOnUI() == false && CheckMouseOnScreen()) {
+			for (int i = 0; i < _Answer.size(); i++)
 			{
-				_Answer[i]->SetEnable(false);//기존에 설치한 서클을 회수하기
-				return;//함수종료
+				if (CheckPositionOnWorld(_Answer[i]) && _Answer[i]->Enable() == true)
+				{
+					_Answer[i]->SetEnable(false);//기존에 설치한 서클을 회수하기
+					return;//함수종료
+				}
 			}
-		}
-		for (int i = 0; i < _Answer.size(); i++)
-		{
-			if (_Answer[i]->Enable() ==false) //비활성화된 동그라미만 가능
+			for (int i = 0; i < _Answer.size(); i++)
 			{
-				_Answer[i]->SetEnable(true);
-				_Answer[i]->SetLocation(GetWorldMousePos());
-				break;
+				if (_Answer[i]->Enable() == false) //비활성화된 동그라미만 가능
+				{
+					_Answer[i]->SetEnable(true);
+					_Answer[i]->SetLocation(GetWorldMousePos());
+					break;
+				}
 			}
 		}
 	}
