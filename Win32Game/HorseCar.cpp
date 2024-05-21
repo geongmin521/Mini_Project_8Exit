@@ -35,7 +35,7 @@ void HorseCar::Update() //다른 클래스랑 거의 엇비슷한데.. 새로만들었네.. 이것들�
 		}
 	}
 	else if (_MoveState == HorseCarMoveState::Move) {
-
+		GetCollider()->SetTrigger(false);
 		if (abs(_Search->GetPlayerLocation()._x - GetLocation()._x) < 10) //일정거리 안쪽이면 움직이 않는다.
 			return;
 		Vector3 dir = _Search->GetPlayerLocation()._x - GetLocation()._x > 0 ? Vector3(1, 0, 0) : Vector3(-1, 0, 0);

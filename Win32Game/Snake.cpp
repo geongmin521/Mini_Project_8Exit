@@ -103,7 +103,8 @@ void Snake::OnTriggerExit(Collider* collider)
 {
 	if (_State == SNAKE_STATE::IDLE && GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
 		
-		GetCollider()->SetScale(Vector3(278.0f, 200.0f, 0.0f));
+		GetCollider()->SetScale(Vector3(200.0f, 170.0f, 0.0f));
+		GetCollider()->SetOffset(Vector3(0, 20.0f, 0));
 		_RunDir = Vector3(1, 0, 0);
 		_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);
 		ChangeState(SNAKE_STATE::MOVEDOWN);

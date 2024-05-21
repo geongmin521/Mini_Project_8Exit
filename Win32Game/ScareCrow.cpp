@@ -43,6 +43,7 @@ void ScareCrow::Update()
 		}
 	}
 	else if (_State == SCARECROW_STATE::CHASE) {
+		GetCollider()->SetTrigger(false);
 		if (playerDir._x >= 1.0f) {
 			SetLocation(GetLocation() + playerDir * _MoveSpeed * timeManager->GetDeltaTime());
 			_CoolTime -= timeManager->GetDeltaTime();
