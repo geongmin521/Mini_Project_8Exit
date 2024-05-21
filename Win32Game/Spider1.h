@@ -13,12 +13,16 @@ public:
     virtual void Render();
     virtual void ResetState();
 
+    void SetStopLoc(float y);
+
     void OnTriggerExit(Collider* collision);
 
 private:
     Texture* _MyTex;
 
     Vector3 _PrevPosition;
+
+    float _StopLoc;
 
     bool _MoveDown = false;
 

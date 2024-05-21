@@ -17,7 +17,7 @@ public:
 	void InitScene();
 	void Update();
 	void Render();
-	void LoadScene(int idx);
+	void LoadScene(SCENE_LAYER layer);
 	void SceneReload();
 	Scene* GetCurScene() const { return _CurScene; }
 

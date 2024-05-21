@@ -100,6 +100,27 @@
     <Filter Include="소스 파일\MainScene\WoodHouse">
       <UniqueIdentifier>{f5ef035d-1145-439d-a94a-deb3d5770f76}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\MainScene\UI">
+      <UniqueIdentifier>{cd9ff6b7-bb54-4fd1-b0bd-5808bd8005ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainScene\UI\PauseUI">
+      <UniqueIdentifier>{e02b7950-dfc3-44f5-b4ae-5d697f89e788}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainScene\UI\MainUI">
+      <UniqueIdentifier>{fe929cfb-f042-46e1-819c-596de96a8b73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainStartScene">
+      <UniqueIdentifier>{1da5dcfd-09d0-43ed-aa33-d6c4ce5ea16c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainStartScene\UI">
+      <UniqueIdentifier>{4fae41ca-041d-4f37-b785-f188afc3348a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainStartScene\UI\MainUI">
+      <UniqueIdentifier>{3c7a296d-982f-4a77-ae20-2e142161becf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\MainScene\OtherObjects">
+      <UniqueIdentifier>{02066507-188e-45e2-b6b5-d42dcea03e4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -309,6 +330,42 @@
     <ClInclude Include="Merchant.h">
       <Filter>소스 파일\MainScene\HorseCar</Filter>
     </ClInclude>
+    <ClInclude Include="PauseUI.h">
+      <Filter>소스 파일\MainScene\UI\PauseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_Resume.h">
+      <Filter>소스 파일\MainScene\UI\PauseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_Title.h">
+      <Filter>소스 파일\MainScene\UI\PauseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseBG.h">
+      <Filter>소스 파일\MainScene\UI\PauseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_Pause.h">
+      <Filter>소스 파일\MainScene\UI\MainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGameUI.h">
+      <Filter>소스 파일\MainScene\UI\MainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyScene.h">
+      <Filter>소스 파일\MainStartScene</Filter>
+    </ClInclude>
+    <ClInclude Include="LobbyUI.h">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_Start.h">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="MainBG.h">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBG.h">
+      <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="WoodSign.h">
+      <Filter>소스 파일\MainScene\OtherObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -485,6 +542,42 @@
     </ClCompile>
     <ClCompile Include="ScareCrow_Rotate.cpp">
       <Filter>소스 파일\MainScene\ScareCrows</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseUI.cpp">
+      <Filter>소스 파일\MainScene\UI\PauseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_Resume.cpp">
+      <Filter>소스 파일\MainScene\UI\PauseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_Title.cpp">
+      <Filter>소스 파일\MainScene\UI\PauseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseBG.cpp">
+      <Filter>소스 파일\MainScene\UI\PauseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_Pause.cpp">
+      <Filter>소스 파일\MainScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGameUI.cpp">
+      <Filter>소스 파일\MainScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="LobbyScene.cpp">
+      <Filter>소스 파일\MainStartScene</Filter>
+    </ClCompile>
+    <ClCompile Include="LobbyUI.cpp">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_Start.cpp">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="MainBG.cpp">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBG.cpp">
+      <Filter>소스 파일\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="WoodSign.cpp">
+      <Filter>소스 파일\MainScene\OtherObjects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

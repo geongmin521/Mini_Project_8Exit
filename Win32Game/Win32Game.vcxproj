@@ -139,6 +139,10 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Button_Pause.h" />
+    <ClInclude Include="Button_Resume.h" />
+    <ClInclude Include="Button_Start.h" />
+    <ClInclude Include="Button_Title.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
@@ -146,6 +150,7 @@
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="FlowerStem.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GameBG.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameResource.h" />
@@ -156,12 +161,18 @@
     <ClInclude Include="InGameObjectHeader.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="LastBackGround.h" />
+    <ClInclude Include="LobbyScene.h" />
+    <ClInclude Include="LobbyUI.h" />
     <ClInclude Include="MainBackGround.h" />
     <ClInclude Include="Merchant.h" />
+    <ClInclude Include="MainBG.h" />
+    <ClInclude Include="MainGameUI.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="PathManager.h" />
+    <ClInclude Include="PauseBG.h" />
+    <ClInclude Include="PauseUI.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RenderSystem.h" />
     <ClInclude Include="Resource.h" />
@@ -192,6 +203,7 @@
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Win32GameProject.h" />
     <ClInclude Include="WoodHouse.h" />
+    <ClInclude Include="WoodSign.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc" />
@@ -203,12 +215,17 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Button_Pause.cpp" />
+    <ClCompile Include="Button_Resume.cpp" />
+    <ClCompile Include="Button_Start.cpp" />
+    <ClCompile Include="Button_Title.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DataRead.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FlowerStem.cpp" />
+    <ClCompile Include="GameBG.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameResource.cpp" />
@@ -217,12 +234,18 @@
     <ClCompile Include="HorseCar_Search.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="LastBackGround.cpp" />
+    <ClCompile Include="LobbyScene.cpp" />
+    <ClCompile Include="LobbyUI.cpp" />
     <ClCompile Include="MainBackGround.cpp" />
     <ClCompile Include="Merchant.cpp" />
+    <ClCompile Include="MainBG.cpp" />
+    <ClCompile Include="MainGameUI.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="PathManager.cpp" />
+    <ClCompile Include="PauseBG.cpp" />
+    <ClCompile Include="PauseUI.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
@@ -251,6 +274,7 @@
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Win32GameProject.cpp" />
     <ClCompile Include="WoodHouse.cpp" />
+    <ClCompile Include="WoodSign.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

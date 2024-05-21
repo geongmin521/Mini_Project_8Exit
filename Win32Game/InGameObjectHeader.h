@@ -16,3 +16,8 @@
 #include "Horse.h"
 #include "SunFlower_Anomaly.h"
 #include "ScareCrow_Rotate.h"
+#include "ScareCrow_Rotate.h"
+#include "MainGameUI.h"
+#include "PauseUI.h"
+#include "GameBG.h"
+#include "WoodSign.h"

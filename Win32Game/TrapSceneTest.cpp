@@ -24,8 +24,9 @@ void TrapSceneTest::Start()
 	//=============
 	//	1备开 : spider
 	//=============
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 5; i++) {
 		GameObject* spider = new Spider1;
+		dynamic_cast<Spider1*>(spider)->SetStopLoc(100.0f);
 		_AnomalyObjects[0].push_back(spider);
 	}
 	GameObject* snake = new Snake;
@@ -85,20 +86,36 @@ void TrapSceneTest::Start()
 	//	6备开 : woodhouse
 	//=============
 
-	GameObject* bg = new BackGround;
+	MainGameUI* mainUi = new MainGameUI;
+	AddObject(mainUi, LAYER_GROUP::UI);
+
+	PauseUI* pauseUi = new PauseUI;
+	pauseUi->SetEnable(false);
+	AddObject(pauseUi, LAYER_GROUP::UI);
+
+	GameObject* bg = new GameBG;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
 	AddObject(bg, LAYER_GROUP::BACKGROUND);
+	GameObject* bg2 = new GameBG;
+	bg2->SetLocation(Vector3(-(float)(WindowWidth / 2) + 11520.0f, -(float)(WindowHeight / 2), 0));
+	AddObject(bg2, LAYER_GROUP::BACKGROUND);
+
+	GameObject* sign = new WoodSign;
+	sign->SetLocation(Vector3(-250.0f, 220.0f, 0));
+	AddObject(sign, LAYER_GROUP::BACKUNIT);
 
 	GameObject* npc = new NPC;
-	npc->SetEnable(true);
+	npc->SetLocation(Vector3(-250.0f, 80, 0));
 	AddObject(npc, LAYER_GROUP::TRAPTRIGGER);
 
-	
+
 
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));
 	AddObject(player, LAYER_GROUP::PLAYER);
 	
+	timeManager->SetTimeScale(1.0f);
+
 	camera->SetTarget(player);
 
 	InitObjectPlace();
@@ -130,8 +147,8 @@ void TrapSceneTest::InitObjectPlace()
 
 	_AreaSettingState[4] = 1;
 
-	for (int areaIdx = 4; areaIdx < 5; areaIdx++) {
-		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
+	for (int areaIdx = 0; areaIdx < 3; areaIdx++) {
+		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
 		int targetObject;
 		std::vector<Vector3> pos = resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1));
 		if (_AreaSettingState[areaIdx] == 1) {

@@ -3,7 +3,7 @@
 
 TimeManager* TimeManager::Instance = nullptr;
 
-TimeManager::TimeManager() : _CurTime{ 0 }, _PrevTime{ 0 }, _Frequency{ 0 } , _DeltaTime(0)
+TimeManager::TimeManager() : _CurTime{ 0 }, _PrevTime{ 0 }, _Frequency{ 0 } , _DeltaTime(0), _TimeScale(1.0f)
 {
 }
 
@@ -35,6 +35,7 @@ void TimeManager::UpdateTime()
 	QueryPerformanceCounter(&_CurTime);
 
 	_DeltaTime = (float)(_CurTime.QuadPart - _PrevTime.QuadPart) / ((float)(_Frequency.QuadPart));
+	_DeltaTime *= _TimeScale;
 
 //#ifdef _DEBUG
 //	if (_DeltaTime > (1.f / 60.f)) {
@@ -53,4 +54,9 @@ const float TimeManager::GetFrameRate()
 const float TimeManager::GetDeltaTime()
 {
 	return _DeltaTime;
+}
+
+void TimeManager::SetTimeScale(float scale)
+{
+	_TimeScale = scale;
 }
