@@ -19,6 +19,7 @@ public:
 	void CalDiff();
 
 	Vector3 GetRenderPos(const Vector3& objPos) const { return objPos - _Diff; }
+	Vector3 GetWorldPos(const Vector3& objPos) const { return  objPos + Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2) -200, 0) + _LookPos; }
 
 private:
 	Vector3 _LookPos;

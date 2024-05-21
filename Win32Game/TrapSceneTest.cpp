@@ -101,7 +101,7 @@ void TrapSceneTest::Start()
 
 	GameObject* npc = new NPC;
 	npc->SetLocation(Vector3(-250.0f, 80, 0));
-	AddObject(npc, LAYER_GROUP::TRAPTRIGGER);
+	AddObject(npc, LAYER_GROUP::SEARCH);
 
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));

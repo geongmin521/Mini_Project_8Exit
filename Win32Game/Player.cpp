@@ -5,6 +5,8 @@
 #include "TimeSystem.h"
 #include "Collider.h"
 #include "Camera.h"
+#include "Utility.h"
+
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
 				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::Idle)
 {
@@ -16,6 +18,12 @@ Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(180
 	_Runable = true;
 	_StaminaBar = new StaminaBar;
 	_StaminaBarMin = new StaminaBarMin;
+	for (int i = 0; i < 3; i++)
+	{
+		AnswerCircle* answer = new AnswerCircle;
+		_Answer.push_back(answer);
+		CreateObject(answer, LAYER_GROUP::UI);
+	}
 }
 
 Player::~Player()
@@ -42,6 +50,27 @@ void Player::Update()
 	if (GetAinmater() != nullptr)
 	{
 		GetAinmater()->Update();
+	}
+
+	if (inputSystem->GetMouseButtonDown(0)) //왼쪽 클릭시
+	{
+		for (int i = 0; i < _Answer.size(); i++)
+		{
+			if (CheckPositionOnWorld(_Answer[i]) && _Answer[i]->Enable() == true)
+			{
+				_Answer[i]->SetEnable(false);//기존에 설치한 서클을 회수하기
+				return;//함수종료
+			}
+		}
+		for (int i = 0; i < _Answer.size(); i++)
+		{
+			if (_Answer[i]->Enable() ==false) //비활성화된 동그라미만 가능
+			{
+				_Answer[i]->SetEnable(true);
+				_Answer[i]->SetLocation(GetWorldMousePos());
+				break;
+			}
+		}
 	}
 }
 

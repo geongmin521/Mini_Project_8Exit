@@ -11,6 +11,7 @@ Snake::Snake() : _MyTex(nullptr)
 	GetCollider()->SetScale(Vector3(_MyTex->Width(), 2300.0f, 0));
 	SetName(L"Snake");
 	GetCollider()->SetTrigger(true);
+	GameObject::CreateAnimater(L"Merchant", 0.1f);
 }
 
 Snake::~Snake()
@@ -36,6 +37,26 @@ void Snake::Update()
 	}
 }
 
+void Snake::ChangeState(SNAKE_STATE state)
+{
+	if (_State == state) //기존상태와 같으면 넘기기
+		return;
+	_State = state;
+	if (GetAinmater() != nullptr)
+	{
+		std::wstring stateStr;
+		if (SNAKE_STATE::CHASE == _State)
+		{
+			stateStr = L"Move";
+		}
+		else
+		{
+			stateStr = L"Idle";
+		}
+		GetAinmater()->ChangeState(stateStr);
+	}
+}
+
 void Snake::Render()
 {
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
@@ -47,13 +68,20 @@ void Snake::Render()
 	int endY = (int)_MyTex->Height();
 
 	
-
-	if (CheckRenderPosition(startX, startY, endX, endY) == true) {
-		g.DrawImage(_MyTex->GetImage(),
-			startX, startY,
-			endX, endY
-		);
+	if (GetAinmater() == nullptr)
+	{
+		GetAinmater()->Render();
 	}
+	else
+	{
+		if (CheckRenderPosition(startX, startY, endX, endY) == true) {
+			g.DrawImage(_MyTex->GetImage(),
+				startX, startY,
+				endX, endY
+			);
+		}
+	}
+	
 	ComponentRender();
 }
 

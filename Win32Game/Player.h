@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.h"
 #include "Texture.h"
+#include "AnswerCircle.h"
+#include <vector>
 
 enum class PlayerState
 {
@@ -46,9 +48,7 @@ private:
 	bool _IsRun;
 	bool _IsWalk;
 	bool _Runable;
-
-	std::vector<GameObject*> _CheckObjects;
-
+	std::vector<GameObject*> _Answer;
 	StaminaBar* _StaminaBar;
 	StaminaBarMin* _StaminaBarMin;
 };

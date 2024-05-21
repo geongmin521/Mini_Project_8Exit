@@ -59,7 +59,7 @@ Vector3 GetMousePos()
 Vector3 GetWorldMousePos()
 {
 	Vector3 mousePos(inputSystem->GetMouseState()._x, inputSystem->GetMouseState()._y, 0);
-	Vector3 worldPos = camera->GetRenderPos(mousePos);
+	Vector3 worldPos = camera->GetWorldPos(mousePos);
 	return worldPos;
 }
 
@@ -86,6 +86,23 @@ bool CheckPositionOnUI()
 bool CheckPositionOnUI(GameObject* obj)
 {
 	Vector3 mousePos = GetMousePos();
+	if (obj->Enable() == true) {
+		Vector3 uiObjPos = obj->GetLocation();
+		Vector3 uiObjScale = obj->GetScale();
+		if (
+			uiObjPos._x - uiObjScale._x / 2.0f <= mousePos._x &&
+			uiObjPos._x + uiObjScale._x / 2.0f >= mousePos._x &&
+			uiObjPos._y - uiObjScale._y / 2.0f <= mousePos._y &&
+			uiObjPos._y + uiObjScale._y / 2.0f >= mousePos._y) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool CheckPositionOnWorld(GameObject* obj) //¿ùµåÁÂÇ¥
+{
+	Vector3 mousePos = GetWorldMousePos();
 	if (obj->Enable() == true) {
 		Vector3 uiObjPos = obj->GetLocation();
 		Vector3 uiObjScale = obj->GetScale();

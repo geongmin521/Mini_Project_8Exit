@@ -118,6 +118,8 @@ void HorseCar::Init()
 	{
 		GameObject::CreateAnimater(L"Carriage", 0.1f);
 		GetAinmater()->ChangeState(L"Idle"); //애니메이터
+		GetCollider()->SetScale(Vector3((float)_MyTex->Width() -440, (float)_MyTex->Height(), 0.0f));
+		GetCollider()->SetOffset(Vector3(-220,0,0));
 		path = L"Carriage_Variation\\Carriage_Variation_0.png";
 	}
 	else
