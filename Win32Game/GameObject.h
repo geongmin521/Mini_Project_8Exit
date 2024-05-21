@@ -25,7 +25,7 @@ public:
 	void SetMoveAnomalyState(bool state) { _IsMoveAnomaly = state; }
 	void SetFlipX(bool flipX) { _FlipX = flipX; }
 	void CreateCollider();
-	void CreateText();
+	void CreateText(int fontSize, Color color, int fontType);
 	void CreateAnimater(std::wstring name, float animationTime);
 	Vector3 GetLocation() const { return Vector3(_Location); }
 	Vector3 GetScale() const { return Vector3(_Scale); }

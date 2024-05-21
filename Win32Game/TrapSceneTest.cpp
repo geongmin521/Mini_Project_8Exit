@@ -255,7 +255,7 @@ bool TrapSceneTest::CheckCorrect() {
 			Vector3 checkObjLoc = _AnomalyObjects[_AnomalyIdx[j].first][_AnomalyIdx[j].second]->GetCollider()->GetPos();
 			Vector3 checkObjScale = _AnomalyObjects[_AnomalyIdx[j].first][_AnomalyIdx[j].second]->GetCollider()->GetScale();
 			if (BorderCheck(checkCollisionLoc, checkCollisionScale, checkObjLoc, checkObjScale) == true) {
-				objIdx.insert(_AnomalyIdx[i]);
+				objIdx.insert(_AnomalyIdx[j]);
 			}
 		}
 	}

@@ -1,10 +1,10 @@
 #include "Text.h"
 
-Text::Text(int FontSize,Gdiplus::Color color,FontType fonttype): _Owner(nullptr)
+Text::Text(int FontSize,Gdiplus::Color color, int fonttype): _Owner(nullptr)
 {
 	_FontSize = FontSize;
 	_color = color;
-	_FontType = fonttype;
+	_FontType = (FontType)fonttype;
 }
 
 Text::~Text()

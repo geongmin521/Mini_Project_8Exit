@@ -8,7 +8,7 @@ class WoodSign :
 public:
     WoodSign();
     ~WoodSign();
-
+    void Init(int _SceneNum);
     virtual void Update();
     virtual void Render();
 

@@ -1,10 +1,12 @@
 #include "AnswerCircle.h"
-
+#include "Collider.h"
 AnswerCircle::AnswerCircle()
 {
 	_MyTex = resourceManager->GetTexture(L"Answer", L"Image\\UI\\Circle.png");
 	SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	SetEnable(false);
+	CreateCollider();
+	GetCollider()->SetScale(GetScale());
 }
 
 AnswerCircle::~AnswerCircle()

@@ -5,13 +5,13 @@
 #include "Utility.h"
 #include "ResourceManager.h"
 #include "TextBox.h"
+
 NPC::NPC() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"NPC", L"Image\\Cat_Animation\\Cat_Talk_0.png");
 
 	SetLocation(Vector3(300, 300, 0));
 
-	CreateText();
 	_TextBox = new TextBox(L"ぞしぞし");
 	CreateObject(_TextBox,LAYER_GROUP::UI);
 
@@ -45,7 +45,7 @@ void NPC::Render()
 
 	if (GetAinmater() != nullptr)
 	{
-		GetAinmater()->Render();
+		//GetAinmater()->Render();
 	}
 	else
 	{

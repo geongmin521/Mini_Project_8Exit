@@ -49,7 +49,6 @@ private:
 	bool _IsWalk;
 	bool _Runable;
 	std::vector<GameObject*> _Answer;
-	StaminaBar* _StaminaBar;
 	StaminaBarMin* _StaminaBarMin;
 };
 
