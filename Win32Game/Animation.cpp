@@ -25,12 +25,25 @@ void Animation::ChangeState(std::wstring state)
 
 void Animation::Update()
 {
+	if (_IsEnd) //애니메이션이 끝났다면 업데이트를통해 다음프레임으로 넘어가지않기
+		return;
 	SetFlip();
 	_AnimationTime += timeManager->GetDeltaTime();
 	if (_AnimationTime >= _AnimationSpeed)
 	{
 		_AnimationTime -= _AnimationSpeed;
-		CurFrame = (CurFrame + 1) % _AnimatedTexture.size();
+		if (_IsLoop == true)
+		{
+			CurFrame = (CurFrame + 1) % _AnimatedTexture.size();
+		}
+		else
+		{
+			CurFrame++;
+			if (CurFrame == _AnimatedTexture.size() -1)
+			{
+				_IsEnd = true;
+			}			
+		}	
 	}
 }
 
@@ -86,6 +99,7 @@ void Animation::FinalUpdate()
 
 Animation::Animation(std::wstring name,float aniSpeed) :_Owner(nullptr) //여기에 경로 받아오기
 {
+	_IsLoop = true; //기본적으로 false
 	this->name = name;
 	GetTexture(name);
 	CurFrame = 0;

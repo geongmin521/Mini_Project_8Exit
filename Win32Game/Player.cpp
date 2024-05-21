@@ -7,21 +7,22 @@
 #include "Camera.h"
 #include "Utility.h"
 
-Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
+Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
 				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _CurState(PlayerState::Idle)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
+	_AnswerUI = resourceManager->GetTexture(L"Player", L"Image\\UI\\Crayon.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"Player",0.1f);
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GameObject::SetName(L"Player");
-	_Runable = true;
 	_StaminaBarMin = new StaminaBarMin;
 	for (int i = 0; i < 3; i++)
 	{
 		AnswerCircle* answer = new AnswerCircle;
 		_Answer.push_back(answer);
 		CreateObject(answer, LAYER_GROUP::UI);
+
 	}
 	_FadeIn = new FadeIn;
 }
@@ -38,7 +39,15 @@ void Player::Update()
 		Jump();
 		Run();		
 		StateManager();
+		CheckCircle();
 		_StaminaBarMin->SetStaminaPercent(_Stamina / _MaxStamina);
+	}
+	else
+	{
+		if (GetAinmater()->GetIsEnd() == true)
+		{
+			SceneReload();
+		}
 	}
 	StaminaBarActions();
 
@@ -51,8 +60,11 @@ void Player::Update()
 	if (GetAinmater() != nullptr)
 	{
 		GetAinmater()->Update();
-	}
+	}	
+}
 
+void Player::CheckCircle()
+{
 	if (inputSystem->GetMouseButtonDown(0)) //왼쪽 클릭시
 	{
 		if (CheckPositionOnUI() == false && CheckMouseOnScreen()) {
@@ -61,6 +73,7 @@ void Player::Update()
 				if (CheckPositionOnWorld(_Answer[i]) && _Answer[i]->Enable() == true)
 				{
 					_Answer[i]->SetEnable(false);//기존에 설치한 서클을 회수하기
+					Circle++;
 					return;//함수종료
 				}
 			}
@@ -68,6 +81,7 @@ void Player::Update()
 			{
 				if (_Answer[i]->Enable() == false) //비활성화된 동그라미만 가능
 				{
+					Circle--;
 					_Answer[i]->SetEnable(true);
 					_Answer[i]->SetLocation(GetWorldMousePos());
 					break;
@@ -84,21 +98,21 @@ void Player::Render()
 	{
 		GetAinmater()->Render();
 	}
-	else
-	{
-		//_MyTex->GetImage()->RotateFlip(RotateNoneFlipX);플립기능 애니메이션에도 적용하기.. 
-		Gdiplus::Graphics g(renderSystem->_backDC);
-		g.DrawImage(_MyTex->GetImage(),
-			(int)renderPosition._x - (int)_MyTex->GetImage()->GetWidth() / 2,
-			(int)renderPosition._y - (int)_MyTex->GetImage()->GetHeight() / 2,
-			(int)_MyTex->GetImage()->GetWidth(), (int)_MyTex->GetImage()->GetHeight()
-		);
-	}
 	if (_IsRun == true)
 	{
 		_StaminaBarMin->Render();
 	}
-	//Gdiplus::
+	for (int i = 0; i < Circle; i++)
+	{
+		Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
+		Graphics g(renderSystem->_backDC);
+		g.DrawImage(_AnswerUI->GetImage(),
+			(int)renderPosition._x - (int)_AnswerUI->GetImage()->GetWidth() / 2 + i * 200,
+			(int)renderPosition._y - (int)_AnswerUI->GetImage()->GetHeight() / 2,
+			(int)(_AnswerUI->GetImage()->GetWidth() + i * 200), (int)_AnswerUI->GetImage()->GetHeight()
+		);
+		
+	}
 	ComponentRender();
 	if (_FadeIn->Enable())
 		_FadeIn->Render();
@@ -128,18 +142,16 @@ void Player::Move()
 	}
 
 	if (_IsRun) //스피드가 올라감
-	{
 		speed = _Speed + _RunSpeed;
-	}
 	else
-	{
 		speed = _Speed;
-	}
-
+	
 	if (_IsWalk)
-	{
 		SetLocation(GetLocation() + dir * timeManager->GetDeltaTime() * speed);
-	}
+
+	if (inputSystem->isKey('P'))
+		_Speed = 5000;
+	
 }
 
 void Player::Jump()
@@ -185,6 +197,7 @@ void Player::ChangeState(PlayerState state)
 			break;
 		case PlayerState::Hit:
 			stateStr = L"Hit";
+			GetAinmater()->SetIsLoop(false);
 			break;
 		case PlayerState::Run:
 			stateStr = L"Run";
@@ -272,6 +285,16 @@ void Player::OnCollisionEnter(Collider* collider)
 {
 	_IsHit = true;
 	ChangeState(PlayerState::Hit); //애니메이션에서 루프인지 아닌지에따라 루프가끝나면 알림오기?
-	SceneReload();
+	
 
+}
+
+void Player::Init() //스테이지 리로드마다 상태 변경해주기
+{
+	_Runable = true;
+	_IsHit = false;
+	_IsJump = false;
+	ChangeState(PlayerState::Idle);
+	GetAinmater()->SetIsEnd(false);
+	GetAinmater()->SetIsLoop(true);
 }

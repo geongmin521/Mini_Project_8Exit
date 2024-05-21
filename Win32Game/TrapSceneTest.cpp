@@ -125,7 +125,7 @@ void TrapSceneTest::Start()
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));
 	AddObject(player, LAYER_GROUP::PLAYER);
-	
+	_DefaultObjects.push_back(player); // 4
 	timeManager->SetTimeScale(1.0f);
 
 	camera->SetTarget(player);
@@ -150,6 +150,7 @@ void TrapSceneTest::InitObjectPlace()
 	dynamic_cast<NPC*>(_DefaultObjects[1])->Init(_StageNum);
 	dynamic_cast<NPC*>(_DefaultObjects[2])->Init(_StageNum);
 	dynamic_cast<NPC*>(_DefaultObjects[3])->Init(_StageNum);
+	dynamic_cast<Player*>(_DefaultObjects[4])->Init();
 
 	GetGroupObject(LAYER_GROUP::PLAYER)[0]->SetLocation(Vector3(-800, 230, 0));
 	for (int i = 0; i < _AnomalyObjects.size(); i++) {

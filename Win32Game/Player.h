@@ -31,7 +31,8 @@ public:
 	void Run();
 	void StaminaBarActions();
 	void OnCollisionEnter(Collider* collider);
-
+	void CheckCircle();
+	void Init();
 	std::vector<GameObject*>& GetCheckObject() { return _Answer; }
 
 private:
@@ -44,12 +45,14 @@ private:
 	float _MaxStamina;      // 최대 스태미너
 	float _StaminaDrain;    // 달리기 시 초당 스태미너 소모량
 	float _StaminaRecovery; // 초당 스태미너 회복량
+	int Circle;// 남은 서클수?
 	bool _IsJump;
 	bool _IsHit;
 	bool _IsRun;
 	bool _IsWalk;
 	bool _Runable;
 	std::vector<GameObject*> _Answer;
+	Texture* _AnswerUI;
 	FadeIn* _FadeIn;
 	StaminaBarMin* _StaminaBarMin;
 };
