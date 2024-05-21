@@ -205,8 +205,10 @@
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Win32GameProject.h" />
+    <ClInclude Include="Witch.h" />
     <ClInclude Include="WoodHouse.h" />
     <ClInclude Include="WoodSign.h" />
+    <ClInclude Include="WoodHouse2.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc" />
@@ -279,7 +281,9 @@
     <ClCompile Include="Utility.cpp" />
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Win32GameProject.cpp" />
+    <ClCompile Include="Witch.cpp" />
     <ClCompile Include="WoodHouse.cpp" />
+    <ClCompile Include="WoodHouse2.cpp" />
     <ClCompile Include="WoodSign.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
