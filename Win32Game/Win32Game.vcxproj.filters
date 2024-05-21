@@ -366,6 +366,9 @@
     <ClInclude Include="WoodSign.h">
       <Filter>소스 파일\MainScene\OtherObjects</Filter>
     </ClInclude>
+    <ClInclude Include="AnswerCircle.h">
+      <Filter>소스 파일\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -578,6 +581,9 @@
     </ClCompile>
     <ClCompile Include="WoodSign.cpp">
       <Filter>소스 파일\MainScene\OtherObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="AnswerCircle.cpp">
+      <Filter>소스 파일\Player</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ public: //불러오는거?
 	void Flip(bool FilpX);
 	void SetFlip();
 	void FinalUpdate();
-
+	void SetName(std::wstring name) { this->name = name; };
 private:
 	GameObject* _Owner;
 	int CurFrame;		//현재 이미지번호

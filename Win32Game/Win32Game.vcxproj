@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnswerCircle.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Button_Pause.h" />
     <ClInclude Include="Button_Resume.h" />
@@ -214,6 +215,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnswerCircle.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Button_Pause.cpp" />
     <ClCompile Include="Button_Resume.cpp" />

@@ -19,7 +19,7 @@ public:
     virtual void Update();
     virtual void Render();
     virtual void ResetState();
-
+    void ChangeState(SNAKE_STATE state);
     void OnCollisionEnter(Collider* collider);
     void OnTriggerExit(Collider* collider);
 

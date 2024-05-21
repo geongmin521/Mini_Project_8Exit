@@ -14,4 +14,5 @@ Vector3 GetMousePos();
 Vector3 GetWorldMousePos();
 bool CheckPositionOnUI();
 bool CheckPositionOnUI(GameObject* obj);
-GameObject* GetUIObject(const std::wstring& name);
+GameObject* GetUIObject(const std::wstring& name); 
+bool CheckPositionOnWorld(GameObject* obj);
