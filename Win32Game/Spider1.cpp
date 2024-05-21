@@ -56,6 +56,11 @@ void Spider1::ResetState()
 	_MyTex = resourceManager->GetTexture(L"Spider", L"Image\\Spider_Small.png");
 }
 
+void Spider1::SetStopLoc(float y)
+{
+	_StopLoc = y;
+}
+
 void Spider1::OnTriggerExit(Collider* collider) {
 	if (GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
 		_MoveDown = true;

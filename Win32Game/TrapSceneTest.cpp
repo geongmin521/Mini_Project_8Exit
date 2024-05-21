@@ -26,6 +26,7 @@ void TrapSceneTest::Start()
 	//=============
 	for (int i = 0; i < 5; i++) {
 		GameObject* spider = new Spider1;
+		dynamic_cast<Spider1*>(spider)->SetStopLoc(100.0f);
 		_AnomalyObjects[0].push_back(spider);
 	}
 	GameObject* snake = new Snake;

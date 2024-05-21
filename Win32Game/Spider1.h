@@ -13,6 +13,8 @@ public:
     virtual void Render();
     virtual void ResetState();
 
+    void SetStopLoc(float y);
+
     void OnTriggerExit(Collider* collision);
 
 private:
@@ -20,7 +22,7 @@ private:
 
     Vector3 _PrevPosition;
 
-    int _StopLoc;
+    float _StopLoc;
 
     bool _MoveDown = false;
 
