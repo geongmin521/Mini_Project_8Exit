@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "CollisionManager.h"
 #include "InGameObjectHeader.h"
+#include "SceneManager.h"
 
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(1), _AreaSettingState{}
 {
@@ -169,8 +170,6 @@ void TrapSceneTest::InitObjectPlace()
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
 
-	_AreaSettingState[0] = 2;
-
 	for (int areaIdx = 0; areaIdx < 6; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
 		int targetObject;
@@ -214,6 +213,7 @@ void TrapSceneTest::NextStage()
 {
 	if (CheckCorrect() == true) {
 		_StageNum++;
+		if(_StageNum > 6) sceneManager->LoadScene(SCENE_LAYER::ENDING);
 	}
 	else {
 		if (_StageNum > 1) {

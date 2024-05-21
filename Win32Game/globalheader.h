@@ -38,6 +38,8 @@ enum class SCENE_LAYER {
 	MAIN,
 	STORY,
 	PLAY,
+	ENDING,
+	ENDINGSTORY,
 
 	END,
 };

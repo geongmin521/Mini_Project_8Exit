@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "LobbyScene.h"
 #include "OpeningScene.h"
+#include "HomeScene.h"
 
 SceneManager* SceneManager::Instance = nullptr;
 SceneManager::SceneManager() : _CurScene(nullptr) {
@@ -36,7 +37,8 @@ void SceneManager::InitScene() {
 	_Scenes[(int)SCENE_LAYER::MAIN] = new LobbyScene;
 	_Scenes[(int)SCENE_LAYER::STORY] = new OpeningScene;
 	_Scenes[(int)SCENE_LAYER::PLAY] = new TrapSceneTest;
-	_CurScene = _Scenes[(int)SCENE_LAYER::MAIN];
+	_Scenes[(int)SCENE_LAYER::ENDING] = new HomeScene;
+	_CurScene = _Scenes[(int)SCENE_LAYER::PLAY];
 	_CurScene->Start();
 }
 
