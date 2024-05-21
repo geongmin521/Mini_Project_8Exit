@@ -102,6 +102,8 @@ void TrapSceneTest::Start()
 	player->SetLocation(Vector3(-800, 230, 0));
 	AddObject(player, LAYER_GROUP::PLAYER);
 	
+	timeManager->SetTimeScale(1.0f);
+
 	camera->SetTarget(player);
 
 	InitObjectPlace();
