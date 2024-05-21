@@ -19,11 +19,12 @@ public:
 	void CalDiff();
 
 	Vector3 GetRenderPos(const Vector3& objPos) const { return objPos - _Diff; }
-	Vector3 GetWorldPos(const Vector3& objPos) const { return  objPos + Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2) -200, 0) + _LookPos; }
+	Vector3 GetWorldPos(const Vector3& objPos) const { return  objPos + Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0) + _CameraPos; }
 
 private:
 	Vector3 _LookPos;
 	Vector3 _Diff; // 카메라 중심과 화면 중앙 좌표와의 차이
+	Vector3 _CameraPos;
 	GameObject* _TargetObject;
 
 	static Camera* Instance;

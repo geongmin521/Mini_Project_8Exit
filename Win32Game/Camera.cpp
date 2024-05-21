@@ -35,6 +35,9 @@ void Camera::Update()
             _LookPos = _TargetObject->GetLocation();
         }
     }
+    Vector3 screenSize = Vector3((float)WindowWidth, (float)WindowHeight, 0);
+    Vector3 center = screenSize / 2.0f;
+    _CameraPos = center + _Diff;
     CalDiff();
 }
 
@@ -44,7 +47,7 @@ void Camera::CalDiff()
     Vector3 center = screenSize / 2.0f;
 
     if (_LookPos._x <= 0) { // 23040
-        _Diff = center * -1;
+        _Diff._x = center._x * -1;
     }
     else if (_LookPos._x >= 23040.0f - WindowWidth) {
         _Diff._x = 23040.0f - WindowWidth - center._x;
