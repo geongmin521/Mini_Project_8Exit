@@ -23,6 +23,7 @@ Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(180
 		_Answer.push_back(answer);
 		CreateObject(answer, LAYER_GROUP::UI);
 	}
+	_FadeIn = new FadeIn;
 }
 
 Player::~Player()
@@ -43,9 +44,10 @@ void Player::Update()
 
 	Vector3 renderPosition = camera->GetRenderPos(GetLocation());
 	if ((int)renderPosition._x - (_MyTex->Width() / 2) >= WindowWidth) {
-		SceneReload();
+		_FadeIn->SetEnable(true);
 	}
-
+	if(_FadeIn->Enable())
+		_FadeIn->Update();
 	if (GetAinmater() != nullptr)
 	{
 		GetAinmater()->Update();
@@ -98,6 +100,8 @@ void Player::Render()
 	}
 	//Gdiplus::
 	ComponentRender();
+	if (_FadeIn->Enable())
+		_FadeIn->Render();
 }
 
 void Player::Move()

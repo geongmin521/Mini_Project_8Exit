@@ -2,10 +2,11 @@
 #include "ResourceManager.h"
 #include "SceneManager.h"
 
-Button_Start::Button_Start() : _MyTex(nullptr), _Parent(nullptr)
+Button_Start::Button_Start() : _MyTex(nullptr), _Parent(nullptr), _FadeIn(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"Button_Start", L"Image\\Button\\Button_Start.png");
 	SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
+	_FadeIn = new FadeIn;
 }
 
 Button_Start::~Button_Start()
@@ -20,6 +21,9 @@ void Button_Start::Update()
 			OnClick();
 		}
 	}
+	if (_FadeIn->Enable()) {
+		_FadeIn->Update();
+	}
 }
 
 void Button_Start::Render()
@@ -32,9 +36,13 @@ void Button_Start::Render()
 		(INT)_Pos._x - endX / 2, (INT)_Pos._y - endY / 2,
 		endX, endY
 	);
+	if (_FadeIn->Enable()) {
+		_FadeIn->Render();
+	}
 }
 
 void Button_Start::OnClick()
 {
-	sceneManager->LoadScene(SCENE_LAYER::STORY);
+	_FadeIn->SetTargetScene(SCENE_LAYER::STORY);
+	_FadeIn->SetEnable(true);
 }

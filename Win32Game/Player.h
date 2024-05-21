@@ -3,6 +3,7 @@
 #include "Texture.h"
 #include "AnswerCircle.h"
 #include <vector>
+#include "FadeIn.h"
 
 enum class PlayerState
 {
@@ -49,6 +50,7 @@ private:
 	bool _IsWalk;
 	bool _Runable;
 	std::vector<GameObject*> _Answer;
+	FadeIn* _FadeIn;
 	StaminaBarMin* _StaminaBarMin;
 };
 
