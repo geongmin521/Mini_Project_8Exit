@@ -53,7 +53,7 @@ void Scene::SceneEnd()
 	for (int i = 0; i < (int)LAYER_GROUP::END; i++) {
 		for (int j = 0; j < _GameObjects[i].size(); j++) {
 			if (_GameObjects[i][j] != nullptr) {
-				delete _GameObjects[i][j];
+				DeleteObject( _GameObjects[i][j]);
 			}
 		}
 		_GameObjects[i].clear();
