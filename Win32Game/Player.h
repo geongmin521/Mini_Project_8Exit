@@ -31,7 +31,7 @@ public:
 	void StaminaBarActions();
 	void OnCollisionEnter(Collider* collider);
 
-	std::vector<GameObject*>& GetCheckObject() { return _CheckObjects; }
+	std::vector<GameObject*>& GetCheckObject() { return _Answer; }
 
 private:
 	PlayerState _CurState;
