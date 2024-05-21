@@ -155,7 +155,7 @@ void TrapSceneTest::InitObjectPlace()
 
 	
 
-	for (int areaIdx = 0; areaIdx < 5; areaIdx++) {
+	for (int areaIdx = 0; areaIdx < 6; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
 		int targetObject;
 		std::vector<Vector3> pos = resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1));
