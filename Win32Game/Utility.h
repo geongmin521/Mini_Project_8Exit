@@ -12,6 +12,7 @@ int GetRandomNum(int dis);
 int GetRandomNum(int from, int to);
 Vector3 GetMousePos();
 Vector3 GetWorldMousePos();
+bool CheckMouseOnScreen();
 bool CheckPositionOnUI();
 bool CheckPositionOnUI(GameObject* obj);
 GameObject* GetUIObject(const std::wstring& name);

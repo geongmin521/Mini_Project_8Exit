@@ -63,6 +63,18 @@ Vector3 GetWorldMousePos()
 	return worldPos;
 }
 
+bool CheckMouseOnScreen()
+{
+	Vector3 mp = GetMousePos();
+	if (
+		mp._x >= 0 && mp._x <= WindowWidth &&
+		mp._y >= 0 && mp._y <= WindowHeight
+		) {
+		return true;
+	}
+	return false;
+}
+
 bool CheckPositionOnUI()
 {
 	Vector3 mousePos = GetMousePos();
