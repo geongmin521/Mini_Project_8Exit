@@ -106,9 +106,17 @@ void TrapSceneTest::Start()
 	sign->SetLocation(Vector3(-250.0f, 220.0f, 0));
 	AddObject(sign, LAYER_GROUP::BACKUNIT);
 
-	GameObject* npc = new NPC;
+	GameObject* npc = new NPC(L"StartCat");
 	npc->SetLocation(Vector3(-250.0f, 80, 0));
 	AddObject(npc, LAYER_GROUP::SEARCH);
+
+	GameObject* npc1 = new NPC(L"StageCat"); //테스트용 다른 npc
+	npc1->SetLocation(Vector3(0, 80, 0));
+	AddObject(npc1, LAYER_GROUP::SEARCH);
+
+	GameObject* npc2 = new NPC(L"EndCat");//테스트용 다른 npc
+	npc2->SetLocation(Vector3(250.0f, 80, 0));
+	AddObject(npc2, LAYER_GROUP::SEARCH);
 
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));
