@@ -34,6 +34,10 @@ void Player::Update()
 	}
 	StaminaBarActions();
 
+	Vector3 renderPosition = camera->GetRenderPos(GetLocation());
+	if ((int)renderPosition._x - (_MyTex->Width() / 2) >= WindowWidth) {
+		SceneReload();
+	}
 
 	if (GetAinmater() != nullptr)
 	{

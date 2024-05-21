@@ -29,6 +29,8 @@ public:
 	void StaminaBarActions();
 	void OnCollisionEnter(Collider* collider);
 
+	std::vector<GameObject*>& GetCheckObject() { return _CheckObjects; }
+
 private:
 	PlayerState _CurState;
 	Texture* _MyTex;
@@ -44,6 +46,8 @@ private:
 	bool _IsRun;
 	bool _IsWalk;
 	bool _Runable;
+
+	std::vector<GameObject*> _CheckObjects;
 
 	StaminaBar* _StaminaBar;
 	StaminaBarMin* _StaminaBarMin;

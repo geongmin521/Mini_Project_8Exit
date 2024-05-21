@@ -14,7 +14,7 @@ public:
     virtual void End();
 
 private:
-    std::vector<std::vector<GameObject*>> _ObjectPlace;
+    std::vector<GameObject*> _DefaultObjects;
     std::vector<std::vector<GameObject*>> _AnomalyObjects;
     std::map<int, bool> _CompleteTrap;
     int _PrevTrapIdx;
@@ -47,9 +47,11 @@ private:
         1,
         1
     };
+    std::vector<std::pair<int, int>> _AnomalyIdx;
     void InitObjectPlace();
     void SetDiffAnomaly(int count);
     void SetMoveAnomaly(int count);
     void ResetObjectPos();
+    bool CheckCorrect();
 };
 

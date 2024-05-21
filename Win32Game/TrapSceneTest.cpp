@@ -3,24 +3,9 @@
 #include "CollisionManager.h"
 #include "InGameObjectHeader.h"
 
-TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _ObjectPlace(6), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(6), _AreaSettingState{}
+TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(1), _AreaSettingState{}
 {
 	//TODO: 여기서 각 구역 별 오브젝트를 생성해야 합니다.
-	std::vector<Vector3> pos = resourceManager->GetMapPos(L"area1");
-	for (int i = 0; i < pos.size(); i++)
-	{
-		//TODO: 여기서 생성된 인스턴스의 포지션을 설정해줍니다.
-	}
-	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
-	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::SEARCH);
-}
-
-TrapSceneTest::~TrapSceneTest()
-{
-}
-
-void TrapSceneTest::Start()
-{
 	//=============
 	//	1구역 : spider
 	//=============
@@ -62,6 +47,7 @@ void TrapSceneTest::Start()
 	_AnomalyObjects[3].push_back(horse);
 	GameObject* horseCar = new HorseCar();
 	_AnomalyObjects[3].push_back(horseCar);
+
 	//=============
 	//	5구역 : spider_hive
 	//=============
@@ -80,6 +66,17 @@ void TrapSceneTest::Start()
 	//	6구역 : woodhouse
 	//=============
 
+
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::SEARCH);
+}
+
+TrapSceneTest::~TrapSceneTest()
+{
+}
+
+void TrapSceneTest::Start()
+{
 	MainGameUI* mainUi = new MainGameUI;
 	AddObject(mainUi, LAYER_GROUP::UI);
 
@@ -102,8 +99,6 @@ void TrapSceneTest::Start()
 	npc->SetLocation(Vector3(-250.0f, 80, 0));
 	AddObject(npc, LAYER_GROUP::TRAPTRIGGER);
 
-
-
 	GameObject* player = new Player;
 	player->SetLocation(Vector3(-800, 230, 0));
 	AddObject(player, LAYER_GROUP::PLAYER);
@@ -117,6 +112,12 @@ void TrapSceneTest::Start()
 
 void TrapSceneTest::End() 
 {
+	if (CheckCorrect() == true) {
+		_StageNum++;
+	}
+	else {
+		_StageNum--;
+	}
 	ResetObjectPos();
 	SceneEnd();
 }
@@ -141,12 +142,13 @@ void TrapSceneTest::InitObjectPlace()
 
 	_AreaSettingState[4] = 1;
 
-	for (int areaIdx = 3; areaIdx < 4; areaIdx++) {
-		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
+	for (int areaIdx = 0; areaIdx < 4; areaIdx++) {
+		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
 		int targetObject;
 		std::vector<Vector3> pos = resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1));
 		if (_AreaSettingState[areaIdx] == 1) {
 			targetObject = GetRandomNum(_AreaObjectCount[areaIdx]);
+			_AnomalyIdx.push_back({ areaIdx, targetObject });
 			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {//GetMapPos 로 백터를 통해 사이즈 구하기 즉 오브젝트 카운트 제거
 				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
 				_AnomalyObjects[areaIdx][i]->SetEnable(true);
@@ -216,5 +218,27 @@ void TrapSceneTest::ResetObjectPos()
 			_AnomalyObjects[i][j]->SetEnable(false);
 			_AnomalyObjects[i][j]->ResetState();
 		}
+	}
+}
+
+bool TrapSceneTest::CheckCorrect() {
+	std::vector<GameObject*> checkedObj = dynamic_cast<Player*>(GetGroupObject(LAYER_GROUP::PLAYER)[0])->GetCheckObject();
+	std::set<std::pair<int, int>> objIdx;
+	for (int i = 0; i < checkedObj.size(); i++) {
+		Vector3 checkCollisionLoc = checkedObj[i]->GetCollider()->GetPos();
+		Vector3 checkCollisionScale = checkedObj[i]->GetCollider()->GetScale();
+		for (int j = 0; j < _AnomalyIdx.size(); j++) {
+			Vector3 checkObjLoc = _AnomalyObjects[_AnomalyIdx[j].first][_AnomalyIdx[j].second]->GetCollider()->GetPos();
+			Vector3 checkObjScale = _AnomalyObjects[_AnomalyIdx[j].first][_AnomalyIdx[j].second]->GetCollider()->GetScale();
+			if (BorderCheck(checkCollisionLoc, checkCollisionScale, checkObjLoc, checkObjScale) == true) {
+				objIdx.insert(_AnomalyIdx[i]);
+			}
+		}
+	}
+	if (objIdx.size() == _AnomalyIdx.size()) {
+		return true;
+	}
+	else {
+		return false;
 	}
 }

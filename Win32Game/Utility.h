@@ -15,3 +15,4 @@ Vector3 GetWorldMousePos();
 bool CheckPositionOnUI();
 bool CheckPositionOnUI(GameObject* obj);
 GameObject* GetUIObject(const std::wstring& name);
+bool BorderCheck(Vector3& aPos, Vector3& aScale, Vector3& bPos, Vector3& bScale);
