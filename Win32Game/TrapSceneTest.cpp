@@ -153,13 +153,7 @@ void TrapSceneTest::InitObjectPlace()
 	dynamic_cast<NPC*>(_DefaultObjects[3])->Init(_StageNum);
 	dynamic_cast<Player*>(_DefaultObjects[4])->Init();
 
-	GetGroupObject(LAYER_GROUP::PLAYER)[0]->SetLocation(Vector3(-800, 230, 0));
-	for (int i = 0; i < _AnomalyObjects.size(); i++) {
-		for (int j = 0; j < _AnomalyObjects[i].size(); j++) {
-			_AnomalyObjects[i][j]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
-			//_AnomalyObjects[i][j]->SetEnable(false);
-		}
-	}
+	ResetObjectPos();
 
 	Vector3 areaOffset(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0.0f);
 	int diffCount = _StageSet[_StageNum].first;
