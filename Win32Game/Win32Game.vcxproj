@@ -144,6 +144,7 @@
     <ClInclude Include="Button_Start.h" />
     <ClInclude Include="Button_Title.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CartoonObject.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="DataRead.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="NPC.h" />
+    <ClInclude Include="OpeningScene.h" />
     <ClInclude Include="PathManager.h" />
     <ClInclude Include="PauseBG.h" />
     <ClInclude Include="PauseUI.h" />
@@ -220,6 +222,7 @@
     <ClCompile Include="Button_Start.cpp" />
     <ClCompile Include="Button_Title.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CartoonObject.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DataRead.cpp" />
@@ -243,6 +246,7 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="OpeningScene.cpp" />
     <ClCompile Include="PathManager.cpp" />
     <ClCompile Include="PauseBG.cpp" />
     <ClCompile Include="PauseUI.cpp" />

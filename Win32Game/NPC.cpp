@@ -17,6 +17,7 @@ NPC::NPC() : _MyTex(nullptr)
 
 	CreateCollider();
 	GetCollider()->SetScale(Vector3(600, 600, 0.0f));
+	GetCollider()->SetTrigger(true);
 	_TextBox->SetEnable(false);
 }
 

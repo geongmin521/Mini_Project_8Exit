@@ -36,5 +36,5 @@ void Button_Start::Render()
 
 void Button_Start::OnClick()
 {
-	sceneManager->LoadScene(SCENE_LAYER::PLAY);
+	sceneManager->LoadScene(SCENE_LAYER::STORY);
 }

@@ -36,6 +36,7 @@ enum class LAYER_GROUP {
 
 enum class SCENE_LAYER {
 	MAIN,
+	STORY,
 	PLAY,
 
 	END,

@@ -13,6 +13,9 @@ public:
     virtual void Start();
     virtual void End();
 
+    void InitObjectPlace();
+    void NextStage();
+
 private:
     std::vector<GameObject*> _DefaultObjects;
     std::vector<std::vector<GameObject*>> _AnomalyObjects;
@@ -48,7 +51,7 @@ private:
         1
     };
     std::vector<std::pair<int, int>> _AnomalyIdx;
-    void InitObjectPlace();
+    
     void SetDiffAnomaly(int count);
     void SetMoveAnomaly(int count);
     void ResetObjectPos();

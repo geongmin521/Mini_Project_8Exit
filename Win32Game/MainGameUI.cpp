@@ -14,6 +14,9 @@ MainGameUI::MainGameUI()
 
 MainGameUI::~MainGameUI()
 {
+	for (int i = 0; i < _Child.size(); i++) {
+		delete _Child[i];
+	}
 }
 
 void MainGameUI::Update()

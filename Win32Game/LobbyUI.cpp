@@ -15,7 +15,9 @@ LobbyUI::LobbyUI()
 
 LobbyUI::~LobbyUI()
 {
-
+	for (int i = 0; i < _Child.size(); i++) {
+		delete _Child[i];
+	}
 }
 
 void LobbyUI::Update()

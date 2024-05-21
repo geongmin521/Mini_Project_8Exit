@@ -6,6 +6,18 @@
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(1), _AreaSettingState{}
 {
 	//TODO: 여기서 각 구역 별 오브젝트를 생성해야 합니다.
+	
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::SEARCH);
+}
+
+TrapSceneTest::~TrapSceneTest()
+{
+
+}
+
+void TrapSceneTest::Start()
+{
 	//=============
 	//	1구역 : spider
 	//=============
@@ -60,23 +72,15 @@ TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidt
 
 	GameObject* scareCrowRotate_Anomaly = new ScareCrow_Rotate;
 	scareCrowRotate_Anomaly->SetMoveAnomalyState(true);
-	_AnomalyObjects[4].push_back(scareCrow_Rotate);
+	_AnomalyObjects[4].push_back(scareCrowRotate_Anomaly);
 
 	//=============
 	//	6구역 : woodhouse
 	//=============
 
 
-	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
-	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::SEARCH);
-}
 
-TrapSceneTest::~TrapSceneTest()
-{
-}
 
-void TrapSceneTest::Start()
-{
 	MainGameUI* mainUi = new MainGameUI;
 	AddObject(mainUi, LAYER_GROUP::UI);
 
@@ -107,27 +111,29 @@ void TrapSceneTest::Start()
 
 	camera->SetTarget(player);
 
+	for (int i = 0; i < _AnomalyObjects.size(); i++) {
+		for (int j = 0; j < _AnomalyObjects[i].size(); j++) {
+			AddObject(_AnomalyObjects[i][j], LAYER_GROUP::MONSTER);
+		}
+	}
+
 	InitObjectPlace();
 }
 
 void TrapSceneTest::End() 
 {
-	if (CheckCorrect() == true) {
-		_StageNum++;
-	}
-	else {
-		_StageNum--;
-	}
-	ResetObjectPos();
 	SceneEnd();
 }
 
 void TrapSceneTest::InitObjectPlace()
 {
+	
+
+	GetGroupObject(LAYER_GROUP::PLAYER)[0]->SetLocation(Vector3(-800, 230, 0));
 	for (int i = 0; i < _AnomalyObjects.size(); i++) {
 		for (int j = 0; j < _AnomalyObjects[i].size(); j++) {
 			_AnomalyObjects[i][j]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
-			_AnomalyObjects[i][j]->SetEnable(false);
+			//_AnomalyObjects[i][j]->SetEnable(false);
 		}
 	}
 
@@ -140,9 +146,9 @@ void TrapSceneTest::InitObjectPlace()
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
 
-	_AreaSettingState[4] = 1;
+	
 
-	for (int areaIdx = 0; areaIdx < 4; areaIdx++) {
+	for (int areaIdx = 0; areaIdx < 5; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
 		int targetObject;
 		std::vector<Vector3> pos = resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1));
@@ -155,7 +161,7 @@ void TrapSceneTest::InitObjectPlace()
 				if (i == targetObject) {
 					_AnomalyObjects[areaIdx][i]->SetDiffAnomalyState(true);
 				}
-				AddObject(_AnomalyObjects[areaIdx][i], LAYER_GROUP::MONSTER);
+				
 			}
 		}
 		else if (_AreaSettingState[areaIdx] == 2) {
@@ -171,17 +177,28 @@ void TrapSceneTest::InitObjectPlace()
 				}
 				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
 				_AnomalyObjects[areaIdx][i]->SetEnable(true);
-				AddObject(_AnomalyObjects[areaIdx][i], LAYER_GROUP::MONSTER);
 			}
 		}
 		else {
 			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {
 				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
 				_AnomalyObjects[areaIdx][i]->SetEnable(true);
-				AddObject(_AnomalyObjects[areaIdx][i], LAYER_GROUP::MONSTER);
 			}
 		}
 	}
+}
+
+void TrapSceneTest::NextStage()
+{
+	if (CheckCorrect() == true) {
+		_StageNum++;
+	}
+	else {
+		if (_StageNum > 1) {
+			_StageNum--;
+		}
+	}
+	ResetObjectPos();
 }
 
 void TrapSceneTest::SetDiffAnomaly(int count)
@@ -215,7 +232,7 @@ void TrapSceneTest::ResetObjectPos()
 	for (int i = 0; i < _AnomalyObjects.size(); i++) {
 		for (int j = 0; j < _AnomalyObjects[i].size(); j++) {
 			_AnomalyObjects[i][j]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
-			_AnomalyObjects[i][j]->SetEnable(false);
+			//_AnomalyObjects[i][j]->SetEnable(false);
 			_AnomalyObjects[i][j]->ResetState();
 		}
 	}

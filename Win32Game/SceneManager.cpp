@@ -3,6 +3,7 @@
 #include "TrapSceneTest.h"
 #include "Scene.h"
 #include "LobbyScene.h"
+#include "OpeningScene.h"
 
 SceneManager* SceneManager::Instance = nullptr;
 SceneManager::SceneManager() : _CurScene(nullptr) {
@@ -33,6 +34,7 @@ void SceneManager::DestroyInstance() {
 
 void SceneManager::InitScene() {
 	_Scenes[(int)SCENE_LAYER::MAIN] = new LobbyScene;
+	_Scenes[(int)SCENE_LAYER::STORY] = new OpeningScene;
 	_Scenes[(int)SCENE_LAYER::PLAY] = new TrapSceneTest;
 	_CurScene = _Scenes[(int)SCENE_LAYER::MAIN];
 	_CurScene->Start();
@@ -56,6 +58,6 @@ void SceneManager::LoadScene(SCENE_LAYER layer)
 
 void SceneManager::SceneReload()
 {
-	_CurScene->End();
-	_CurScene->Start();
+	dynamic_cast<TrapSceneTest*>(_CurScene)->NextStage();
+	dynamic_cast<TrapSceneTest*>(_CurScene)->InitObjectPlace();
 }
