@@ -4,7 +4,7 @@
 
 Button_Start::Button_Start() : _MyTex(nullptr), _Parent(nullptr), _FadeIn(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Button_Start", L"Image\\UI\\Title_main.png");
+	_MyTex = resourceManager->GetTexture(L"Button_Start", L"Image\\Button\\Button_Start.png");
 	SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	_FadeIn = new FadeIn;
 }
