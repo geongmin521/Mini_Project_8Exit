@@ -81,6 +81,7 @@ bool CheckPositionOnUI()
 	std::vector<GameObject*> uiObjects = sceneManager->GetCurScene()->GetGroupObject(LAYER_GROUP::UI);
 	for (int i = 0; i < uiObjects.size(); i++) {
 		if (uiObjects[i]->Enable() == true) {
+			if (uiObjects[i]->GetName() == L"PauseUI") return true;
 			Vector3 uiObjPos = uiObjects[i]->GetLocation();
 			Vector3 uiObjScale = uiObjects[i]->GetScale();
 			if (
@@ -91,6 +92,13 @@ bool CheckPositionOnUI()
 				return true;
 			}
 		}
+	}
+	//160, 140
+	if (
+		mousePos._x >= 0 && mousePos._x <= 160 &&
+		mousePos._y >= 0 && mousePos._y <= 140
+		) {
+		return true;
 	}
 	return false;
 }
