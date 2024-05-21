@@ -73,6 +73,17 @@ void Animation::SetFlip() //다른데서 호출하기 싫으니까 업데이트에서 처리하기 싶�
 	}
 }
 
+void Animation::FinalUpdate()
+{
+	SetFlip();
+	_AnimationTime += timeManager->GetDeltaTime();
+	if (_AnimationTime >= _AnimationSpeed)
+	{
+		_AnimationTime -= _AnimationSpeed;
+		CurFrame = (CurFrame + 1) % _AnimatedTexture.size();
+	}
+}
+
 Animation::Animation(std::wstring name,float aniSpeed) :_Owner(nullptr) //여기에 경로 받아오기
 {
 	this->name = name;

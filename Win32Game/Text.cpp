@@ -21,6 +21,11 @@ void Text::Render()
 	g.DrawString(_Text.c_str(), -1, &_Font, rect, NULL, &solidBrush);
 }
 
+void Text::FinalUpdate()
+{
+
+}
+
 Gdiplus::RectF Text::GetRect(alignX alignX, alignY alignY)
 {
 	int posX = _Owner->GetLocation()._x;

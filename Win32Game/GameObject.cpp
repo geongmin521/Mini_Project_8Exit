@@ -34,6 +34,12 @@ void GameObject::FinalUpdate()
 	if (_Collider != nullptr) {
 		_Collider->FinalUpdate();
 	}
+	//if (_Animater != nullptr) {
+	//	_Animater->FinalUpdate();
+	//}
+	//if (_Text != nullptr) {
+	//	_Text->FinalUpdate();
+	//}
 }
 
 void GameObject::ComponentRender()
@@ -41,4 +47,10 @@ void GameObject::ComponentRender()
 	if (_Collider != nullptr) {
 		_Collider->Render();
 	}
+	//if (_Animater != nullptr) {
+	//	_Animater->Render();
+	//}
+	//if (_Text != nullptr) {
+	//	_Text->Render();
+	//}
 }

@@ -16,6 +16,8 @@ public: //불러오는거?
 	void GetTexture(std::wstring name, std::wstring state);
 	void Flip(bool FilpX);
 	void SetFlip();
+	void FinalUpdate();
+
 private:
 	GameObject* _Owner;
 	int CurFrame;		//현재 이미지번호

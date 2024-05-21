@@ -56,18 +56,12 @@ void TrapSceneTest::Start()
 	//=============
 	//	4备开 : horsecar
 	//=============
-	GameObject* horseCar = new HorseCar();	
-	horseCar->SetLocation(Vector3(0, 0, 0));
-	AddObject(horseCar, LAYER_GROUP::MONSTER);
-
 	GameObject* merchant = new Merchant();
-	merchant->SetLocation(Vector3(500, -2, 0));
-	AddObject(merchant, LAYER_GROUP::MONSTER);
-
+	_AnomalyObjects[3].push_back(merchant);
 	GameObject* horse = new Horse();
-	horse->SetLocation(Vector3(-500, -2, 0));
-	AddObject(horse, LAYER_GROUP::MONSTER);
-	//_AnomalyObjects[2].push_back(sunFlower_Anomaly);
+	_AnomalyObjects[3].push_back(horse);
+	GameObject* horseCar = new HorseCar();
+	_AnomalyObjects[3].push_back(horseCar);
 	//=============
 	//	5备开 : spider_hive
 	//=============
@@ -147,8 +141,8 @@ void TrapSceneTest::InitObjectPlace()
 
 	_AreaSettingState[4] = 1;
 
-	for (int areaIdx = 0; areaIdx < 3; areaIdx++) {
-		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
+	for (int areaIdx = 3; areaIdx < 4; areaIdx++) {
+		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
 		int targetObject;
 		std::vector<Vector3> pos = resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1));
 		if (_AreaSettingState[areaIdx] == 1) {

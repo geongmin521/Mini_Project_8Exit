@@ -3,23 +3,18 @@
 #include "Utility.h"
 HorseCar::HorseCar() : _MyTex(nullptr)
 {
+	SetName(L"HorseCar");
 	_MyTex = resourceManager->GetTexture(L"Carriage", L"Image\\Carriage_Variation\\Carriage_Variation_0.png");
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0.0f));
+	GetCollider()->SetTrigger(true);
 	_Search = new HorseCar_Search;
 	_Search->SetLocation(GetLocation()); //현재위치로 설정
 	CreateObject(_Search, LAYER_GROUP::SEARCH);
-	SetName(L"HorseCar");
-
-	GetCollider()->SetTrigger(true);
 	_isChase = false;
 	_CoolTime = 2;
 	_WaitTime = 1;
-
 	_MoveSpeed = 300;
-	_MoveState = HorseCarMoveState::Idle;
-
-	Init(6, true);//테스트용 
 }
 
 HorseCar::~HorseCar()
@@ -28,6 +23,7 @@ HorseCar::~HorseCar()
 
 void HorseCar::Update() //다른 클래스랑 거의 엇비슷한데.. 새로만들었네.. 이것들을 다합칠수있지 않았었을까?
 {
+	ChangeImage();
 	//아래의 모든 코드는 움직이는 마차일때만 작동하는거지?
 	if (HorseCarState::Move != _State)
 		return;
@@ -100,23 +96,28 @@ void HorseCar::ResetState()
 	//이거는 있어야하나? 모르겟다.
 }
 
-void HorseCar::Init(int stage, bool isTrap)
+void HorseCar::Init()
 {
-	if (isTrap)//기믹인지아닌지에 따라 상태 뽑기
+	_MoveState = HorseCarMoveState::Idle;
+
+	if (GetMoveAnomalyState())
+	{			
+		_State = HorseCarState::Move;
+	}
+	else if(GetDiffAnomalyState())
 	{
-		//스테이지 6번이면 move 상태까지 뽑을수있음
-		_State = stage == 6 ? (HorseCarState)(GetRandomNum(3) + 1) : (HorseCarState)(GetRandomNum(2) + 1);
+		_State = (HorseCarState)(GetRandomNum(2) + 1);
 	}
 	else
 	{
 		_State = HorseCarState::Normal;
 	}
 	std::wstring path;
-	//_State = HorseCarState::Move;
+	
 	if (_State == HorseCarState::Move) //상태가 이동일때 애니메이션 할당하기
 	{
 		GameObject::CreateAnimater(L"Carriage", 0.1f);
-		GetAinmater()->ChangeState(L"Idle");
+		GetAinmater()->ChangeState(L"Idle"); //애니메이터
 		path = L"Carriage_Variation\\Carriage_Variation_0.png";
 	}
 	else
@@ -158,5 +159,8 @@ void HorseCar::OnCollisoinEnter(Collider* collider)
 
 void HorseCar::ChangeImage()
 {
-	Init(6,true);// 스테이지 번호를 받아와야하는데.. 
+	if (GetDiffAnomalyState() == true || GetMoveAnomalyState() == true) {
+		Init();// 스테이지 번호를 받아와야하는데.. 
+		SetDiffAnomalyState(false);
+	}
 }

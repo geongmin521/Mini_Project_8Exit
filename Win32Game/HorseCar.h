@@ -28,7 +28,7 @@ public:
     virtual void Update();
     virtual void Render();
     virtual void ResetState();
-    void Init(int stage, bool isTrap);
+    void Init();
     void SetState(HorseCarMoveState _moveState);
     void OnCollisoinEnter(Collider* collider);
  

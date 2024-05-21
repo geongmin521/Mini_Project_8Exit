@@ -32,6 +32,7 @@ public: //불러오는거?
 	void Render();
 	void SetText(std::wstring text) { _Text = text; }
 	void SetRect(Vector3 size) { _Rect = size; }
+	void FinalUpdate();
 	std::wstring GetText() { return _Text; }
 	Gdiplus::RectF GetRect(alignX alignX, alignY alignY);
 private:
