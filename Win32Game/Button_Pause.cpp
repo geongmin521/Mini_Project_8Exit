@@ -4,7 +4,7 @@
 
 Button_Pause::Button_Pause() : _MyTex(nullptr), _Parent(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Button_Pause", L"Image\\Button\\Button_Pause.png");
+	_MyTex = resourceManager->GetTexture(L"Button_Pause", L"Image\\Button\\Pause.png");
 	SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 }
 
