@@ -27,6 +27,10 @@ void Horse::init(bool isTrap)
 
 void Horse::Update()
 {
+	if (GetDiffAnomalyState() == true) {
+		init(true);
+		SetDiffAnomalyState(false);
+	}
 }
 
 void Horse::Render()
