@@ -1,2 +1,31 @@
-cat1: 처음보나?
-cat2: 뭔가 다른 건 없었어?
+StartCat0:안녕 아가야
+StartCat1:멍청한 얼굴이네 :)
+StartCat2:저주 걸린 사과라도 주워 먹었나 보지
+StartCat3:집에 돌아가고 싶어? 
+StartCat4:그럼 내 말을 잘 들어봐 
+StartCat5:여긴 첫 번째 길이야
+StartCat6:다음 길부터 뭔가 달라질 수도 있어
+StartCat7:달라진 게 있으면 이 색연필로 체크해둬
+StartCat8:틀리면 안돼
+StartCat9:누가 쫓아와도 체크는 꼭 해야 해
+StartCat10:잘 할 수 있을거야
+StageCat0:첫 번째 길이야.
+StageCat1:두 번째 길이야.
+StageCat2:세 번째 길이야.
+StageCat3:네 번째 길이야.
+StageCat4:다섯 번째 길이야.
+StageCat5:마지막 번째 길이야.
+EndCat0:이 길을 잘 기억해둬
+EndCat1:제대로 보고 온 거 맞아?			
+EndCat2:오래 걸었어?			
+EndCat3:무서웠어?			
+EndCat4:잘 하고 있어
+EndCat5:오두막엔 마녀가 산대
+EndCat6:급해보이네
+EndCat7:잘 가 :)
+EndCat8:우리 자주 보네
+EndCat9:거미도 잘 보면 귀엽게 생겼어		
+EndCat10:해바라기들이 왜 웃지?	
+EndCat11:마차상인은 옷이 두 벌 밖에 없나봐			
+EndCat12:멋쟁이 허수아비 :)			
+EndCat13:뱀도 본 적 있어?			

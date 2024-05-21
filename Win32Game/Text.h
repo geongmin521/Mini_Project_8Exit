@@ -31,6 +31,7 @@ public: //불러오는거?
 	~Text();
 	void Render();
 	void SetText(std::wstring text) { _Text = text; }
+	void SetOffset(Vector3 offset) { _Offset = offset; }
 	void SetRect(Vector3 size) { _Rect = size; }
 	void FinalUpdate();
 	std::wstring GetText() { return _Text; }
@@ -39,6 +40,7 @@ private:
 	GameObject* _Owner;	
 	std::wstring _Text; 
 	Vector3 _Rect; //z는 무시 (안씀)
+	Vector3 _Offset; //z는 무시 (안씀)
 	int _FontSize;
 	FontType _FontType;
 	Gdiplus::Color _color;

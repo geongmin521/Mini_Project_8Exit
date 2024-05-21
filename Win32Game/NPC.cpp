@@ -6,13 +6,13 @@
 #include "ResourceManager.h"
 #include "TextBox.h"
 
-NPC::NPC() : _MyTex(nullptr)
+NPC::NPC(std::wstring DialogKey) : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"NPC", L"Image\\Cat_Animation\\Cat_Talk_0.png");
 
 	SetLocation(Vector3(300, 300, 0));
-
-	_TextBox = new TextBox(L"ㅎㅇㅎㅇ");
+	_DialogKey = DialogKey;
+	_TextBox = new TextBox(resourceManager->GetDialog(_DialogKey + L"0"), 12, Color(255, 0, 0, 0), (int)FontType::dialog);
 	CreateObject(_TextBox,LAYER_GROUP::UI);
 
 	CreateCollider();
@@ -30,6 +30,10 @@ NPC::~NPC()
 void NPC::Update()
 {
 	GetAinmater()->Update();
+	if (_DialogKey == L"StartCat")
+	{
+		TutorialDiaLog();
+	}
 }
 
 void NPC::Render()
@@ -45,7 +49,7 @@ void NPC::Render()
 
 	if (GetAinmater() != nullptr)
 	{
-		//GetAinmater()->Render();
+		GetAinmater()->Render();
 	}
 	else
 	{
@@ -57,10 +61,8 @@ void NPC::Render()
 			);
 		}
 	}
-
 	_TextBox->SetLocation(Vector3(startX, startY-200, 0));
 	ComponentRender();
-	//_TextBox->Render();
 }
 
 
@@ -79,5 +81,52 @@ void NPC::OnTriggerExit(Collider* collider) {
 		GetAinmater()->ChangeState(L"Idle");
 		_TextBox->SetEnable(false);
 	}
+}
+
+void NPC::Init(int stage)
+{
+	_StageNum = stage;
+	if (_DialogKey == L"EndCat")
+	{
+		EndDioLog();
+	}
+	else if (_DialogKey == L"StageCat")
+	{
+		StageDioLog();
+	}
+}
+
+void NPC::StageDioLog()
+{
+	std::wstring text = resourceManager->GetDialog(L"StageCat" + std::to_wstring(_StageNum));
+	_TextBox->GetTextComponent()->SetText(text);
+}
+
+void NPC::TutorialDiaLog() //콜라이더 와 상관없이 진행하기?
+{
+	static int dialogCount=0;
+	static float Timer=0;
+	Timer += timeManager->GetDeltaTime();	
+	if (Timer >= 2)
+	{
+		Timer = 0;
+		std::wstring text = resourceManager->GetDialog(L"StartCat" + std::to_wstring(dialogCount));
+		_TextBox->GetTextComponent()->SetText(text); 
+		dialogCount++;
+	}
+}
+
+void NPC::EndDioLog()
+{
+	std::wstring text;
+	if (_StageNum == 1)
+	{
+		text = resourceManager->GetDialog(L"EndCat0");
+	}
+	else
+	{
+		text = resourceManager->GetDialog(L"EndCat" + std::to_wstring(GetRandomNum(13)+1));
+	}
+	_TextBox->GetTextComponent()->SetText(text);
 }
 
