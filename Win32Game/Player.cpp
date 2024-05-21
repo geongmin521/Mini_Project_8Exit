@@ -8,7 +8,7 @@
 #include "Utility.h"
 
 Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
-				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _StaminaBar(nullptr), _CurState(PlayerState::Idle)
+				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _CurState(PlayerState::Idle)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
 	GameObject::CreateCollider();
@@ -16,7 +16,6 @@ Player::Player(): _MyTex(nullptr), _IsHit(false), _IsJump(false), _JumpPower(180
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GameObject::SetName(L"Player");
 	_Runable = true;
-	_StaminaBar = new StaminaBar;
 	_StaminaBarMin = new StaminaBarMin;
 	for (int i = 0; i < 3; i++)
 	{
@@ -93,7 +92,6 @@ void Player::Render()
 	}
 	if (_IsRun == true)
 	{
-		_StaminaBar->Render();
 		_StaminaBarMin->Render();
 	}
 	//Gdiplus::
@@ -259,9 +257,8 @@ void Player::Run()
 void Player::StaminaBarActions()
 {
 	// 스태미너바의 위치를 플레이어 위치로 업데이트
-	if (_StaminaBar != nullptr) {
-		_StaminaBar->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 300.0f, GetLocation()._z));
-		_StaminaBarMin->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 300.0f, GetLocation()._z));
+	if (_StaminaBarMin != nullptr) {
+		_StaminaBarMin->SetLocation(Vector3(GetLocation()._x, GetLocation()._y - 230.0f, GetLocation()._z));
 	}
 }
 

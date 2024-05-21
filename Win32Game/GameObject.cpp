@@ -17,9 +17,9 @@ void GameObject::CreateCollider()
 	_Collider->_Owner = this;
 }
 
-void GameObject::CreateText()
+void GameObject::CreateText(int fontSize,Color color, int fontType)
 {
-	_Text = new Text(12,Color(255,255,255,255),FontType::title);
+	_Text = new Text(fontSize, color, fontType);
 	_Text->_Owner = this;
 }
 

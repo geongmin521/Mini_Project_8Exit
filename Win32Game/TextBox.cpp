@@ -3,7 +3,7 @@
 TextBox::TextBox(std::wstring text) : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"BigTextBox", L"Image\\UI\\Chatwindow_Big.png");
-	GameObject::CreateText();
+	GameObject::CreateText(12, Color(255, 0, 0, 0), (int)FontType::dialog);
 	GetTextComponent()->SetRect(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetTextComponent()->SetText(text);
 }

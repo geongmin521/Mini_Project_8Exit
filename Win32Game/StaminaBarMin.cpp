@@ -3,10 +3,10 @@
 #include "ResourceManager.h"
 #include "Texture.h"
 #include "Player.h"
+
 StaminaBarMin::StaminaBarMin() :_MaxTex(0), _BarWidth(200), _BarHeight(20), _Position(0, 0, 0), _Percent(0.0f)
 {
-	_MaxTex = resourceManager->GetTexture(L"StaminaBarMin", L"Image\\MaxTex.png");
-
+	_MaxTex = resourceManager->GetTexture(L"StaminaBarMin", L"Image\\UI\\Stamina.png");
 }
 
 StaminaBarMin::~StaminaBarMin()

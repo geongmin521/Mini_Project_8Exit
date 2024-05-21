@@ -3,10 +3,18 @@
 WoodSign::WoodSign() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"WoodSign", L"Image\\Sign.png");
+	GameObject::CreateText(30, Color(255, 255, 255, 255), (int)FontType::dialog);
+	GetTextComponent()->SetRect(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
+	Init(1);
 }
 
 WoodSign::~WoodSign()
 {
+}
+
+void WoodSign::Init(int _SceneNum)
+{
+	GetTextComponent()->SetText(std::to_wstring(_SceneNum));
 }
 
 void WoodSign::Update()
@@ -28,5 +36,9 @@ void WoodSign::Render()
 			startX, startY,
 			endX, endY
 		);
+	}
+	if (GetTextComponent() != nullptr)
+	{
+		GetTextComponent()->Render();
 	}
 }

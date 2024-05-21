@@ -27,7 +27,7 @@ enum class FontType
 class Text
 {
 public: //불러오는거?
-	Text(int FontSize, Gdiplus::Color color, FontType fonttype);
+	Text(int FontSize, Gdiplus::Color color, int fonttype);
 	~Text();
 	void Render();
 	void SetText(std::wstring text) { _Text = text; }
