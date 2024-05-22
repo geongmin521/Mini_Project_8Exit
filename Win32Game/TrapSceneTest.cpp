@@ -98,6 +98,11 @@ void TrapSceneTest::Start()
 	pauseUi->SetEnable(false);
 	AddObject(pauseUi, LAYER_GROUP::UI);
 
+
+	GameObject* woodhouse = new WoodHouse;
+	woodhouse->SetLocation(Vector3((float)1200, (float)100, 0));
+	AddObject(woodhouse, LAYER_GROUP::SEARCH);
+
 	GameObject* bg = new GameBG;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
 	AddObject(bg, LAYER_GROUP::BACKGROUND);
