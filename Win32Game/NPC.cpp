@@ -5,9 +5,10 @@
 #include "Utility.h"
 #include "ResourceManager.h"
 #include "TextBox.h"
+#include "Utility.h"
 NPC::NPC() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"NPC", L"Image\\bonfire.png");
+	_MyTex = resourceManager->GetTexture(L"NPC", L"Bonfire\\Image\\bonfire.png");
 
 	SetLocation(Vector3(300, 300, 0));
 
@@ -18,20 +19,28 @@ NPC::NPC() : _MyTex(nullptr)
 	CreateCollider();
 	GetCollider()->SetScale(Vector3(600, 600, 0.0f));
 	_TextBox->SetEnable(false);
+	StateChange(BONFIRE_STATE::IDLE);
+	SetName(L"Bonfire");
+	CreateAnimater(L"Bonfire");
 }
 
 NPC::~NPC()
 {
 }
 
+
 void NPC::Update()
 {
-	
+	GetAinmater()->Update();
 }
 
 void NPC::Render()
 {
-
+	if (_BonfireState == BONFIRE_STATE::IDLE)
+	{
+		GetAinmater()->Render();
+		return;
+	}
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
 	Graphics g(renderSystem->_backDC);
 
@@ -67,3 +76,27 @@ void NPC::OnCollisionExit(Collider* collider) {
 	}
 }
 
+void NPC::StateChange(BONFIRE_STATE _BonfireState)
+{
+	if (this->_BonfireState == _BonfireState) //기존상태와 같으면 넘기기
+		return;
+	this->_BonfireState = _BonfireState;
+
+	if (GetAinmater() != nullptr)
+	{
+		std::wstring stateStr;
+		switch (_BonfireState)
+		{
+		case BONFIRE_STATE::IDLE:
+			stateStr = L"Idle";
+			break;
+
+			GetAinmater()->ChangeState(stateStr);
+		}
+	}
+}
+
+void NPC::ResetState()
+{
+	StateChange(BONFIRE_STATE::IDLE);
+}

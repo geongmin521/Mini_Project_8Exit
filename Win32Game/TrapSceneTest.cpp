@@ -65,13 +65,11 @@ void TrapSceneTest::Start()
 	//=============
 	//	6±¸¿ª : woodhouse
 	//=============
-	for (int i = 0; i < 1; i++) {
-		GameObject* woodhouse = new WoodHouse;
-		_AnomalyObjects[5].push_back(woodhouse);
-	}
-	GameObject* woodhouse2 = new WoodHouse2;
-	_AnomalyObjects[5].push_back(woodhouse2);
 
+
+	GameObject* woodhouse = new WoodHouse;
+	woodhouse->SetLocation(Vector3((float)1200, (float)100, 0));
+	AddObject(woodhouse, LAYER_GROUP::SEARCH);
 
 	GameObject* bg = new BackGround;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
@@ -116,7 +114,7 @@ void TrapSceneTest::InitObjectPlace()
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
 
-	for (int areaIdx = 5; areaIdx < 6; areaIdx++) {
+	for (int areaIdx = 5; areaIdx < 5; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * 0, areaOffset._y, areaOffset._z);
 		int targetObject;
 		if (_AreaSettingState[areaIdx] == 1) {
