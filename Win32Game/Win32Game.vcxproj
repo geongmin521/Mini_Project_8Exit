@@ -159,9 +159,11 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameResource.h" />
     <ClInclude Include="globalheader.h" />
+    <ClInclude Include="HomeScene.h" />
     <ClInclude Include="Horse.h" />
     <ClInclude Include="HorseCar.h" />
     <ClInclude Include="HorseCar_Search.h" />
+    <ClInclude Include="House.h" />
     <ClInclude Include="InGameObjectHeader.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="LobbyScene.h" />
@@ -233,9 +235,11 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameResource.cpp" />
+    <ClCompile Include="HomeScene.cpp" />
     <ClCompile Include="Horse.cpp" />
     <ClCompile Include="HorseCar.cpp" />
     <ClCompile Include="HorseCar_Search.cpp" />
+    <ClCompile Include="House.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="LobbyUI.cpp" />

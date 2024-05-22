@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "CollisionManager.h"
 #include "InGameObjectHeader.h"
+#include "SceneManager.h"
 
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(1), _AreaSettingState{}
 {
@@ -151,13 +152,7 @@ void TrapSceneTest::InitObjectPlace()
 	dynamic_cast<Player*>(_DefaultObjects[3])->Init();
 	dynamic_cast<Explain*>(_DefaultObjects[4])->Init(_StageNum);
 
-	GetGroupObject(LAYER_GROUP::PLAYER)[0]->SetLocation(Vector3(-800, 230, 0));
-	for (int i = 0; i < _AnomalyObjects.size(); i++) {
-		for (int j = 0; j < _AnomalyObjects[i].size(); j++) {
-			_AnomalyObjects[i][j]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
-			//_AnomalyObjects[i][j]->SetEnable(false);
-		}
-	}
+	ResetObjectPos();
 
 	Vector3 areaOffset(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0.0f);
 	int diffCount = _StageSet[_StageNum].first;
@@ -167,8 +162,6 @@ void TrapSceneTest::InitObjectPlace()
 	memset(_AreaSettingState, 0, sizeof(_AreaSettingState));
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
-
-	_AreaSettingState[0] = 2;
 
 	for (int areaIdx = 0; areaIdx < 6; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
@@ -213,6 +206,7 @@ void TrapSceneTest::NextStage()
 {
 	if (CheckCorrect() == true) {
 		_StageNum++;
+		if(_StageNum > 6) sceneManager->LoadScene(SCENE_LAYER::ENDING);
 	}
 	else {
 		if (_StageNum > 1) {

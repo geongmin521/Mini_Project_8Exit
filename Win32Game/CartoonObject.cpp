@@ -1,7 +1,7 @@
 #include "CartoonObject.h"
 #include "SceneManager.h"
 
-CartoonObject::CartoonObject() : _MyTex(nullptr), _RenderTime(0.0f), sceneIdx(1)
+CartoonObject::CartoonObject() : _MyTex(nullptr), _RenderTime(3.0f), sceneIdx(1)
 {
 	_MyTex = resourceManager->GetTexture(L"OpeningScene1", L"Image\\scenes\\1.png");
 }
@@ -14,7 +14,7 @@ void CartoonObject::Update()
 {
 	_RenderTime -= timeManager->GetDeltaTime();
 	if (_RenderTime <= 0) {
-		_RenderTime = 0.0f;
+		_RenderTime = 3.0f;
 		sceneIdx++;
 		if (sceneIdx > 4) {
 			sceneManager->LoadScene(SCENE_LAYER::PLAY);
