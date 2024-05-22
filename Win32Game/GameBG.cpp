@@ -18,7 +18,7 @@ void GameBG::Render()
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
 
 	BitBlt(renderSystem->_backDC, 
-		renderPosition._x, renderPosition._y, 
+		(int)renderPosition._x, (int)renderPosition._y, 
 		_MyTex->GetBitInfo().bmWidth, _MyTex->GetBitInfo().bmHeight, 
 		_MyTex->GetDC(), 0, 0, SRCCOPY
 	);

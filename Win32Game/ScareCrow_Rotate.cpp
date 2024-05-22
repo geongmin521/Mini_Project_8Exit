@@ -6,7 +6,7 @@ ScareCrow_Rotate::ScareCrow_Rotate() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"ScareCrow_Rotated", L"Image\\ScareCrow.png");
 	CreateCollider();
-	GetCollider()->SetScale(Vector3(_MyTex->Width(), 2300.0f, 0));
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0));
 	GetCollider()->SetTrigger(true);
 	SetName(L"ScareCrow_Rotated");
 }

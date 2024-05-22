@@ -77,7 +77,7 @@ void Merchant::Render()
 	}
 	else
 	{
-		_TextBox->SetLocation(Vector3(startX+200, startY, 0));
+		_TextBox->SetLocation(Vector3((float)(startX + 200), (float)startY, 0));
 		GetAinmater()->Render();
 	}
 	//_TextBox->Render();

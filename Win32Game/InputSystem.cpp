@@ -95,6 +95,8 @@ bool InputSystem::GetMouseButtonDown(int idx)
 		return (_prevMouse._middle == false && _curMouse._middle == true);
 	case 2:
 		return (_prevMouse._right == false && _curMouse._right == true);
+	default:
+		return false;
 	}
 }
 
@@ -107,6 +109,8 @@ bool InputSystem::GetMouseButton(int idx)
 		return (_prevMouse._middle == true && _curMouse._middle == true);
 	case 2:
 		return (_prevMouse._right == true && _curMouse._right == true);
+	default:
+		return false;
 	}
 }
 
@@ -119,6 +123,8 @@ bool InputSystem::GetMouseButtonUp(int idx)
 		return (_prevMouse._middle == true && _curMouse._middle == false);
 	case 2:
 		return (_prevMouse._right == true && _curMouse._right == false);
+	default:
+		return false;
 	}
 }
 

@@ -31,7 +31,7 @@ void WoodSign::Render()
 	int startY = (int)renderPosition._y - (int)_MyTex->Height() / 2;
 	int endX = (int)_MyTex->Width();
 	int endY = (int)_MyTex->Height();
-	_TextBox->SetLocation(Vector3(startX + 200, startY, 0));
+	_TextBox->SetLocation(Vector3((float)(startX + 200), (float)startY, 0));
 	if (CheckRenderPosition(startX, startY, endX, endY) == true) {
 		g.DrawImage(_MyTex->GetImage(),
 			startX, startY,

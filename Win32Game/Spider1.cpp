@@ -10,7 +10,7 @@ Spider1::Spider1() : _MyTex(nullptr), _StopLoc(0)
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0.0f));
 	SetName(L"Spider");
 	GetCollider()->SetTrigger(true);
-	_StopLoc = GetRandomNum(-100, 100);
+	_StopLoc = (float)GetRandomNum(-100, 100);
 }
 
 Spider1::~Spider1()

@@ -9,7 +9,7 @@ Snake::Snake() : _MyTex(nullptr)
 	SetLocation(Vector3(1300, -850, 0));
 	CreateCollider();
 
-	GetCollider()->SetScale(Vector3(_MyTex->Width(), 2300.0f, 0));
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0));
 	SetName(L"Snake");
 	GetCollider()->SetTrigger(true);
 	GameObject::CreateAnimater(L"Snake", 0.1f);

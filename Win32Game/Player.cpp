@@ -26,7 +26,6 @@ Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false),
 
 	}
 	Circle = 3;
-	_FadeIn = new FadeIn;
 }
 
 Player::~Player()
