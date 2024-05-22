@@ -56,7 +56,6 @@ namespace game
 		collisionManager->Update();
 		inputSystem->ResetInput();
 		camera->Update();
-		SetWindowText(WindowHandle, std::to_wstring(timeManager->GetFrameRate()).c_str());
 	}
 
 	void GameManager::FixeUpdate()

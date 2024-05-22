@@ -56,5 +56,5 @@ void Button_End::Render()
 
 void Button_End::OnClick()
 {
-	
+	DestroyWindow(WindowHandle);
 }

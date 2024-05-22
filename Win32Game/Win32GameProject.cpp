@@ -42,7 +42,7 @@ void WinApp::Initialize(HINSTANCE hInstance)
 {
     m_hInstance = hInstance;
 
-    const TCHAR* appName = TEXT("Test Game Framework");
+    const TCHAR* appName = TEXT("MidNight Dream");
 
     //Step 1: Registering the Window Class
 
