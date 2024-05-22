@@ -3,6 +3,8 @@
 #include "Collider.h"
 #include "Utility.h"
 #include "Bonfire.h"
+#include "Music.h"
+
 WoodHouse::WoodHouse() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"Cottage1", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
@@ -10,7 +12,6 @@ WoodHouse::WoodHouse() : _MyTex(nullptr)
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(1, 3);
 	// 7번 위치 ( 25920~ )
-	SetLocation(Vector3(1000, 300, 0));
 	CreateCollider();
 	GetCollider()->SetScale(Vector3(300, 550, 0.0f));
 	GetCollider()->SetTrigger(true);
@@ -19,6 +20,7 @@ WoodHouse::WoodHouse() : _MyTex(nullptr)
 	CreateAnimater(L"Cottage", 0.1f);
 	_Bonfire = new Bonfire;
 	CreateObject(_Bonfire,LAYER_GROUP::SEARCH);
+
 	Init();
 }
 
@@ -50,6 +52,7 @@ void WoodHouse::Init()
 void WoodHouse::Update()
 {
 	GetAinmater()->Update();
+	_Bonfire->SetLocation(GetLocation() + Vector3(-800, 200, 0));
 	//_Bonfire->Update();
 }
 
@@ -90,14 +93,13 @@ void WoodHouse::Render()
 // 마녀 등장
 void WoodHouse::OnTriggerExit(Collider* collider) // 근처에 가면 문 열리는 이미지로 바꿈
 {
-
-	
 	if (collider->GetOwnerObject()->GetName() == L"Player")
 	{
 		if (WITCH_GIMMICK::WITCHOPEN == _WitchGimmick)
 		{
-		StateChange(WITCH_STATE::OPEN);
-		//GetAinmater()
+			StateChange(WITCH_STATE::OPEN);
+			GetAinmater()->SetIsLoop(false);
+			Music::soundManager->PlayMusic(Music::eSoundList::Cottage_door_open, Music::eSoundChannel::Effect);//음악 재생
 		}
 	}
 }

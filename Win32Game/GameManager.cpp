@@ -45,10 +45,7 @@ namespace game
 		Music::soundManager->LoadMusic(Music::eSoundList::Snake_moving, true,						"Sound\\Snake_moving.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Stage_Transition_with_correct, false,		"Sound\\Stage_Transition_with_correct.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Stage_Transition_with_wrong, false,		"Sound\\Stage_Transition_with_wrong.mp3");
-		Music::soundManager->LoadMusic(Music::eSoundList::Sunflower_Crying, true,					"Sound\\Sunflower_Crying.mp3");
-		Music::soundManager->LoadMusic(Music::eSoundList::Sunflower_Laughing, true,					"Sound\\Sunflower_Laughing.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::When_the_wrong_picture_triggered_1, true, "Sound\\When_the_wrong_picture_triggered_1.mp3"); //화면에 보여지면 소리니까 루프?
-		Music::soundManager->LoadMusic(Music::eSoundList::When_the_wrong_picture_triggered_2, true, "Sound\\When_the_wrong_picture_triggered_2.mp3");
 	}
 
 	void GameManager::Update()

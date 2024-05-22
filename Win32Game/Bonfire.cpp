@@ -4,12 +4,13 @@
 #include "Player.h"
 #include "Utility.h"
 #include "ResourceManager.h"
+#include "Music.h"
 
 Bonfire::Bonfire() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"NPC", L"Bonfire\\Image\\bonfire.png");
 
-	SetLocation(Vector3(300, 300, 0));
+	
 	CreateCollider();
 	GetCollider()->SetScale(Vector3(600, 600, 0.0f));
 	CreateAnimater(L"Bonfire", 0.1f);
@@ -57,6 +58,17 @@ void Bonfire::StateChange(BONFIRE_STATE _BonfireState)
 		}
 	}
 }
+
+void Bonfire::OnTriggerExit(Collider* collision)
+{
+	Music::soundManager->StopMusic( Music::eSoundChannel::Fire);//擠學 營儅
+}
+
+void Bonfire::OnTriggerEnter(Collider* collision)
+{
+	Music::soundManager->PlayMusic(Music::eSoundList::bonfire, Music::eSoundChannel::Fire);//擠學 營儅
+}
+
 
 void Bonfire::ResetState()
 {

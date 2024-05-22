@@ -14,7 +14,8 @@ public:
 	void Render();
 	void ResetState();
 	void StateChange(BONFIRE_STATE bonfireState);
-
+	void OnTriggerExit(Collider* collision);
+	void OnTriggerEnter(Collider* collision);
 private:
 	BONFIRE_STATE _BonfireState;
 	TextBox* _TextBox;

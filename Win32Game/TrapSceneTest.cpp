@@ -3,7 +3,7 @@
 #include "CollisionManager.h"
 #include "InGameObjectHeader.h"
 #include "SceneManager.h"
-
+#include "Music.h"
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(1), _AreaSettingState{}
 {
 	//TODO: 여기서 각 구역 별 오브젝트를 생성해야 합니다.
@@ -85,22 +85,12 @@ void TrapSceneTest::Start()
 		_AnomalyObjects[5].push_back(woodhouse);
 	}
 
-
-
-
-
-
 	MainGameUI* mainUi = new MainGameUI;
 	AddObject(mainUi, LAYER_GROUP::UI);
 
 	PauseUI* pauseUi = new PauseUI;
 	pauseUi->SetEnable(false);
 	AddObject(pauseUi, LAYER_GROUP::UI);
-
-
-	GameObject* woodhouse = new WoodHouse;
-	woodhouse->SetLocation(Vector3((float)1200, (float)100, 0));
-	AddObject(woodhouse, LAYER_GROUP::SEARCH);
 
 	GameObject* bg = new GameBG;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
@@ -224,6 +214,7 @@ bool TrapSceneTest::NextStage()
 {
 	if (CheckCorrect() == true) {
 		_StageNum++;
+		Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_correct, Music::eSoundChannel::Effect);
 		if (_StageNum > 6) {
 			sceneManager->LoadScene(SCENE_LAYER::ENDING);
 			return false;
@@ -231,6 +222,7 @@ bool TrapSceneTest::NextStage()
 	}
 	else {
 		if (_StageNum > 1) {
+			Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_wrong, Music::eSoundChannel::Effect);
 			_StageNum--;
 		}
 	}
@@ -244,6 +236,7 @@ void TrapSceneTest::SetDiffAnomaly(int count)
 		int randomNum = GetRandomNum(_AreaCount);
 		if (randomNum == 5 && _StageNum == 6) continue;
 		if (_AreaSettingState[randomNum] == 0) {
+			Music::soundManager->SetIsWrong(randomNum, true);
 			_AreaSettingState[randomNum] = 1;
 			count--;
 		}

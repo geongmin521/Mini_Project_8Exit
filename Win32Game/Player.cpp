@@ -35,6 +35,7 @@ Player::~Player()
 
 void Player::Update()
 {
+	Music::soundManager->ManageMusic(GetLocation());
 	if (_IsHit == false)
 	{
 		Move();

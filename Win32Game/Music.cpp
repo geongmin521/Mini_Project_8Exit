@@ -1,6 +1,5 @@
 #include "Music.h"
-
-
+#include "globalheader.h"
 namespace Music
 {
     SoundManager* SoundManager::mInstance = nullptr;
@@ -55,6 +54,16 @@ namespace Music
         mVolume = volume;
         for (unsigned int i = 0; i < static_cast<unsigned int>(eSoundChannel::Size); ++i)
             mChannel[i]->setVolume(mVolume);
+    }
+
+    void SoundManager::ManageMusic(const Vector3 Playerpos)
+    {
+        int index = int(Playerpos._x + WindowWidth / 2) / 3840;
+        if (IsWrong[index]==true)
+        {
+            mInstance->PlayMusic(eSoundList::When_the_wrong_picture_triggered_1,eSoundChannel::BGM);
+        }
+          
     }
 
     SoundManager::SoundManager(): mSystem(), mChannel{}, mSoundList{}, mVolume(0.5f)

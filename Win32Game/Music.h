@@ -11,6 +11,7 @@ using namespace FMOD;
 using namespace FMOD;
 #endif
 #include <string>
+#include "Vector3.h"
 namespace Music
 {
     enum class eSoundChannel
@@ -20,6 +21,7 @@ namespace Music
         Talk,
         Player,
         Object,
+        Fire,
         Size
     };
 
@@ -37,12 +39,9 @@ namespace Music
         Snake_drop_from_Web,                //: 1구역에서 거미 대신 뱀이 떨어질 때 재생  //clear
         Snake_Bite,                         //: 뱀이 물 때 재생 //clear
         Snake_moving,                       //:: 뱀이 움직일 때 재생하는 효과음 //clear
-        Stage_Transition_with_correct,      //: 스테이지 전환 시, 정답을 모두 맞췄을 때 재생 //아래부터는 세민이형 트리거족너을 좀더 잘알듯?
-        Stage_Transition_with_wrong,        //: 스테이지 전환 시, 오답이 있을 경우 재생
-        Sunflower_Crying,                   //: 해바라기 구역에서 재생
-        Sunflower_Laughing,                 //: 해바라기가 웃고 있는 이상 기믹에서 재생
-        When_the_wrong_picture_triggered_1, //: 틀린 그림 기믹이 발생한 오브젝트가, 플레이어 화면에 보여질 경우, 두 사운드 중 하나를 재생 (억지로 깨도록 도와주는 시스템)
-        When_the_wrong_picture_triggered_2,
+        Stage_Transition_with_correct,      //: 스테이지 전환 시, 정답을 모두 맞췄을 때 재생 //clear
+        Stage_Transition_with_wrong,        //: 스테이지 전환 시, 오답이 있을 경우 재생//clear
+        When_the_wrong_picture_triggered_1, //clear
         Size
     };
     class SoundManager;  // 클래스 전방 선언
@@ -65,6 +64,10 @@ namespace Music
 
         void SetVolume(float volume);
 
+        void ManageMusic(const Vector3 Playerpos);
+        void SetIsWrong(int index, bool ture) { IsWrong[index] = ture;}
+
+
     private:
         SoundManager();
 
@@ -72,7 +75,7 @@ namespace Music
 
     private:
         static SoundManager* mInstance;
-
+        bool IsWrong[6] = { false, false, false, false, false, false };
         FMOD::System* mSystem;
         FMOD::Channel* mChannel[static_cast<int>(eSoundChannel::Size)];
         FMOD::Sound* mSoundList[static_cast<int>(eSoundList::Size)];
