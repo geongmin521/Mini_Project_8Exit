@@ -213,7 +213,7 @@ bool TrapSceneTest::NextStage()
 	if (CheckCorrect() == true) {
 		_StageNum++;
 		Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_correct, Music::eSoundChannel::Effect);
-		if (_StageNum > 1) {
+		if (_StageNum > 6) {
 			sceneManager->LoadScene(SCENE_LAYER::ENDING);
 			return false;
 		}
