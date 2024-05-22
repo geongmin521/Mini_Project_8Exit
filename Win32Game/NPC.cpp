@@ -61,7 +61,7 @@ void NPC::Render()
 			);
 		}
 	}
-	_TextBox->SetLocation(Vector3(startX, startY-200, 0));
+	_TextBox->SetLocation(Vector3(startX+400, startY-50, 0));
 	ComponentRender();
 }
 
@@ -127,7 +127,7 @@ void NPC::TutorialDiaLog() //콜라이더 와 상관없이 진행하기?
 void NPC::EndDioLog()
 {
 	std::wstring text;
-	if (_StageNum == 1)
+	if (_StageNum == 0)
 	{
 		text = resourceManager->GetDialog(L"EndCat0");
 	}

@@ -3,10 +3,12 @@
 TextBox::TextBox(std::wstring text, int fontSize, Color color, int fontType, bool DrawBack) : _MyTex(nullptr)
 {
 	this->_DrawBack = DrawBack;
-	_MyTex = resourceManager->GetTexture(L"BigTextBox", L"Image\\UI\\Chatwindow_Big.png");
+	_MyTex = resourceManager->GetTexture(L"BigTextBox", L"Image\\UI\\Chatwindow_Small.png");
 	GameObject::CreateText(fontSize, color, fontType);
 	GetTextComponent()->SetRect(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetTextComponent()->SetText(text);
+	GetTextComponent()->SetOffset(Vector3(-80,-30,0));
+
 }
 
 TextBox::~TextBox()

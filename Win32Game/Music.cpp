@@ -61,7 +61,7 @@ namespace Music
         int index = int(Playerpos._x + WindowWidth / 2) / 3840;
         if (IsWrong[index]==true)
         {
-            mInstance->PlayMusic(eSoundList::When_the_wrong_picture_triggered_1,eSoundChannel::BGM);
+            mInstance->PlayMusic(eSoundList::When_the_wrong_picture_triggered_1,eSoundChannel::Effect);
         }
           
     }
