@@ -29,12 +29,17 @@ void Credit::Update()
 	else {
 		camera->PlayEffect(FADE_IN);
 		_StartTimer = true;
-		if (_StartTimer) {
-			_Timer += timeManager->GetDeltaTime();
-			if (_Timer >= 1.0f) {
-				_StartTimer = false;
-				sceneManager->LoadScene(SCENE_LAYER::MAIN);
-			}
+	}
+	if (inputSystem->GetMouseButtonDown(0)) {
+		camera->PlayEffect(FADE_IN);
+		_StartTimer = true;
+	}
+	if (_StartTimer) {
+		_Timer += timeManager->GetDeltaTime();
+		if (_Timer >= 1.0f) {
+			_StartTimer = false;
+			_Timer = 0.0f;
+			sceneManager->LoadScene(SCENE_LAYER::MAIN);
 		}
 	}
 }

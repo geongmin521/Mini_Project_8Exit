@@ -2,11 +2,17 @@
 #include "Button_Start.h"
 #include "MainBG.h"
 #include "Button_End.h"
+#include "Button_Credit.h"
 
 LobbyUI::LobbyUI()
 {
 	MainBG* bg = new MainBG;
 	_Child.push_back(bg);
+
+	Button_Credit* btnCredit = new Button_Credit;
+	btnCredit->_Parent = this;
+	btnCredit->_Pos = Vector3(1740.0f, 50.0f, 0.0f);
+	_Child.push_back(btnCredit);
 
 	Button_Start* btnStart = new Button_Start;
 	btnStart->_Parent = this;
