@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnswerCircle.h" />
+    <ClInclude Include="Bonfire.h" />
     <ClInclude Include="Button_Pause.h" />
     <ClInclude Include="Button_Resume.h" />
     <ClInclude Include="Button_Start.h" />
@@ -218,6 +219,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnswerCircle.cpp" />
+    <ClCompile Include="Bonfire.cpp" />
     <ClCompile Include="Button_Pause.cpp" />
     <ClCompile Include="Button_Resume.cpp" />
     <ClCompile Include="Button_Start.cpp" />
@@ -279,7 +281,6 @@
     <ClCompile Include="Vector3.cpp" />
     <ClCompile Include="Win32GameProject.cpp" />
     <ClCompile Include="WoodHouse.cpp" />
-    <ClCompile Include="WoodHouse2.cpp" />
     <ClCompile Include="WoodSign.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

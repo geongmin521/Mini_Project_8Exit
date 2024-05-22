@@ -360,9 +360,6 @@
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
     </ClInclude>
-    <ClInclude Include="Witch.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="WoodHouse2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -392,6 +389,15 @@
     </ClInclude>
     <ClInclude Include="EndingImage.h">
       <Filter>소스 파일\EndingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="House.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Bonfire.h">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -579,12 +585,6 @@
     <ClCompile Include="AnswerCircle.cpp">
       <Filter>소스 파일\Player</Filter>
     </ClCompile>
-    <ClCompile Include="WoodHouse2.cpp">
-      <Filter>소스 파일\MainScene\WoodHouse</Filter>
-    </ClCompile>
-    <ClCompile Include="Witch.cpp">
-      <Filter>소스 파일\MainScene\WoodHouse</Filter>
-    </ClCompile>
     <ClCompile Include="MainBG.cpp">
       <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
     </ClCompile>
@@ -617,6 +617,15 @@
     </ClCompile>
     <ClCompile Include="EndingImage.cpp">
       <Filter>소스 파일\EndingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="House.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonfire.cpp">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
