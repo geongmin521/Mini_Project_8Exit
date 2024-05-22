@@ -151,9 +151,9 @@ GameObject* GetUIObject(const std::wstring& name)
 bool BorderCheck(Vector3& aPos, Vector3& aScale, Vector3& bPos, Vector3& bScale)
 {
 	if (
-		aPos._x - aScale._x / 2.0f > bPos._x + bScale._x / 2.0f &&
-		aPos._x + aScale._x / 2.0f < bPos._x - bScale._x / 2.0f &&
-		aPos._y - aScale._y / 2.0f > bPos._y + bScale._y / 2.0f &&
+		aPos._x - aScale._x / 2.0f > bPos._x + bScale._x / 2.0f ||
+		aPos._x + aScale._x / 2.0f < bPos._x - bScale._x / 2.0f ||
+		aPos._y - aScale._y / 2.0f > bPos._y + bScale._y / 2.0f ||
 		aPos._y + aScale._y / 2.0f < bPos._y - bScale._y / 2.0f) {
 		return false;
 	}
