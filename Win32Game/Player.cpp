@@ -245,7 +245,7 @@ void Player::StateManager()
 
 void Player::Run()
 {
-	if (inputSystem->isKey(VK_CONTROL) && _Stamina > 0 && _Runable&&_IsWalk)//스테이터스 
+	if (inputSystem->isKey(VK_LSHIFT) && _Stamina > 0 && _Runable&&_IsWalk)//스테이터스 
 	{
 		_IsRun = true;
 	}
@@ -255,7 +255,7 @@ void Player::Run()
 		_IsRun = false;
 	}
 
-	if (!inputSystem->isKey(VK_CONTROL))
+	if (!inputSystem->isKey(VK_LSHIFT))
 	{
 		_Runable = true;
 	}
