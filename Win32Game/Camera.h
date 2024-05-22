@@ -16,7 +16,7 @@ public:
 
 	void SetLookPos(Vector3& pos) { _LookPos = pos; }
 	void SetTarget(GameObject* target) { _TargetObject = target; }
-
+	void ResetLookPos() { _LookPos = Vector3(0, 0, 0); }
 	void Update();
 	void CalDiff();
 
