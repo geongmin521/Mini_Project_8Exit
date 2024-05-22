@@ -55,10 +55,8 @@ void Player::Update()
 
 	Vector3 renderPosition = camera->GetRenderPos(GetLocation());
 	if ((int)renderPosition._x - (_MyTex->Width() / 2) >= WindowWidth) {
-		_FadeIn->SetEnable(true);
+		SceneReload();
 	}
-	if(_FadeIn->Enable())
-		_FadeIn->Update();
 	if (GetAinmater() != nullptr)
 	{
 		GetAinmater()->Update();
@@ -117,8 +115,6 @@ void Player::Render()
 		
 	}
 	ComponentRender();
-	if (_FadeIn->Enable())
-		_FadeIn->Render();
 }
 
 void Player::Move()

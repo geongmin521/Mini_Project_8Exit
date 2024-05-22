@@ -15,14 +15,9 @@ void FadeIn::Update()
 {
     _Alpha += 1.0f * timeManager->GetDeltaTime();
     if (_Alpha >= 1.0f) {
-        if (_TargetScene == SCENE_LAYER::END) {
-            SceneReload();
-        }
-        else {
-            sceneManager->LoadScene(_TargetScene);
-        }
-        SetEnable(false);
         _Alpha = 0.0f;
+        camera->SetEffectEnd();
+        SetEnable(false);
     }
 }
 

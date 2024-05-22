@@ -19,6 +19,8 @@ TrapSceneTest::~TrapSceneTest()
 
 void TrapSceneTest::Start()
 {
+	camera->PlayEffect(FADE_OUT);
+
 	//=============
 	//	1±¸¿ª : spider
 	//=============
@@ -141,11 +143,17 @@ void TrapSceneTest::Start()
 
 void TrapSceneTest::End() 
 {
+	for (int i = 0; i < _AnomalyObjects.size(); i++) {
+		_AnomalyObjects[i].clear();
+	}
+	_DefaultObjects.clear();
 	SceneEnd();
 }
 
 void TrapSceneTest::InitObjectPlace()
 {
+	camera->PlayEffect(FADE_OUT);
+
 	dynamic_cast<WoodSign*>(_DefaultObjects[0])->Init(_StageNum);
 	dynamic_cast<NPC*>(_DefaultObjects[1])->Init(_StageNum);
 	dynamic_cast<NPC*>(_DefaultObjects[2])->Init(_StageNum);
@@ -251,6 +259,7 @@ void TrapSceneTest::ResetObjectPos()
 			_AnomalyObjects[i][j]->ResetState();
 		}
 	}
+	_AnomalyIdx.clear();
 }
 
 bool TrapSceneTest::CheckCorrect() {

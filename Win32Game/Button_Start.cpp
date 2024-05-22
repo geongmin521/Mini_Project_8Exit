@@ -2,11 +2,10 @@
 #include "ResourceManager.h"
 #include "SceneManager.h"
 
-Button_Start::Button_Start() : _MyTex(nullptr), _Parent(nullptr), _FadeIn(nullptr)
+Button_Start::Button_Start() : _MyTex(nullptr), _Parent(nullptr), _Timer(0)
 {
 	_MyTex = resourceManager->GetTexture(L"Button_Start", L"Image\\Button\\Button_Start.png");
 	SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
-	_FadeIn = new FadeIn;
 }
 
 Button_Start::~Button_Start()
@@ -18,11 +17,17 @@ void Button_Start::Update()
 	SetLocation(_Pos);
 	if (inputSystem->GetMouseButtonUp(0)) {
 		if (CheckPositionOnUI(this) == true) {
-			OnClick();
+			_StartTimer = true;
+			camera->PlayEffect(FADE_IN);
 		}
 	}
-	if (_FadeIn->Enable()) {
-		_FadeIn->Update();
+	if (_StartTimer == true) {
+		_Timer += timeManager->GetDeltaTime();
+		if (_Timer >= 1.0f) {
+			_Timer = 0;
+			_StartTimer = false;
+			OnClick();
+		}
 	}
 }
 
@@ -36,13 +41,9 @@ void Button_Start::Render()
 		(INT)_Pos._x - endX / 2, (INT)_Pos._y - endY / 2,
 		endX, endY
 	);
-	if (_FadeIn->Enable()) {
-		_FadeIn->Render();
-	}
 }
 
 void Button_Start::OnClick()
 {
-	_FadeIn->SetTargetScene(SCENE_LAYER::STORY);
-	_FadeIn->SetEnable(true);
+	sceneManager->LoadScene(SCENE_LAYER::STORY);
 }

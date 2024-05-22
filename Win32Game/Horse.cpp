@@ -1,8 +1,10 @@
 #include "Horse.h"
+#include "Collider.h"
 
 Horse::Horse() //생각해보니 이부분좀 더 얘기 해야겠는데?
 {
 	init(true); //테스용init
+	
 }
 
 Horse::~Horse()
@@ -23,6 +25,10 @@ void Horse::init(bool isTrap)
 
 	std::wstring path = L"Image\\Horse_Variation\\Horse_Variation_" + std::to_wstring((int)_State) + L".png"; //이미 변경 기믹
 	_MyTex = resourceManager->GetTexture(L"Horse", path);
+	CreateCollider();
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
+	GetCollider()->SetTrigger(true);
+	
 }
 
 void Horse::Update()

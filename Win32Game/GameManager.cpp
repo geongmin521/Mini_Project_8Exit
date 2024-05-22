@@ -70,6 +70,7 @@ namespace game
 	{
 		renderSystem->StartDraw();
 		sceneManager->Render();
+		camera->RenderScreenEffect();
 		renderSystem->EndDraw();
 	}
 	void GameManager::Finalize()
