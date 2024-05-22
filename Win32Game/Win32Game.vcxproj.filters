@@ -130,6 +130,9 @@
     <Filter Include="소스 파일\EndingScene">
       <UniqueIdentifier>{9cfbe553-684d-45fd-b93c-7bb8da59aa11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\EndingCreditScene">
+      <UniqueIdentifier>{78f4cad9-15b5-4953-853e-5532d6368b4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -402,6 +405,15 @@
     <ClInclude Include="Button_End.h">
       <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
     </ClInclude>
+    <ClInclude Include="EndingCredit.h">
+      <Filter>소스 파일\EndingCreditScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Credit.h">
+      <Filter>소스 파일\EndingCreditScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_Credit.h">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -631,6 +643,15 @@
       <Filter>소스 파일\MainScene\WoodHouse</Filter>
     </ClCompile>
     <ClCompile Include="Button_End.cpp">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingCredit.cpp">
+      <Filter>소스 파일\EndingCreditScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Credit.cpp">
+      <Filter>소스 파일\EndingCreditScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_Credit.cpp">
       <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
     </ClCompile>
   </ItemGroup>

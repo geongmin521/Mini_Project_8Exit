@@ -141,6 +141,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnswerCircle.h" />
     <ClInclude Include="Bonfire.h" />
+    <ClInclude Include="Button_Credit.h" />
     <ClInclude Include="Button_End.h" />
     <ClInclude Include="Button_Pause.h" />
     <ClInclude Include="Button_Resume.h" />
@@ -150,7 +151,9 @@
     <ClInclude Include="CartoonObject.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="Credit.h" />
     <ClInclude Include="DataRead.h" />
+    <ClInclude Include="EndingCredit.h" />
     <ClInclude Include="EndingImage.h" />
     <ClInclude Include="EndingScene.h" />
     <ClInclude Include="EventManager.h" />
@@ -222,6 +225,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnswerCircle.cpp" />
     <ClCompile Include="Bonfire.cpp" />
+    <ClCompile Include="Button_Credit.cpp" />
     <ClCompile Include="Button_End.cpp" />
     <ClCompile Include="Button_Pause.cpp" />
     <ClCompile Include="Button_Resume.cpp" />
@@ -231,7 +235,9 @@
     <ClCompile Include="CartoonObject.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="Credit.cpp" />
     <ClCompile Include="DataRead.cpp" />
+    <ClCompile Include="EndingCredit.cpp" />
     <ClCompile Include="EndingImage.cpp" />
     <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="EventManager.cpp" />

@@ -6,6 +6,7 @@
 #include "OpeningScene.h"
 #include "HomeScene.h"
 #include "EndingScene.h"
+#include "EndingCredit.h"
 
 SceneManager* SceneManager::Instance = nullptr;
 SceneManager::SceneManager() : _CurScene(nullptr) {
@@ -40,6 +41,7 @@ void SceneManager::InitScene() {
 	_Scenes[(int)SCENE_LAYER::PLAY] = new TrapSceneTest;
 	_Scenes[(int)SCENE_LAYER::ENDING] = new HomeScene;
 	_Scenes[(int)SCENE_LAYER::ENDINGSTORY] = new EndingScene;
+	_Scenes[(int)SCENE_LAYER::CREDIT] = new EndingCredit;
 	_CurScene = _Scenes[(int)SCENE_LAYER::MAIN];
 	_CurScene->Start();
 }
