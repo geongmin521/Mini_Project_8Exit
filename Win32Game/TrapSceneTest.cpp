@@ -224,7 +224,7 @@ bool TrapSceneTest::NextStage()
 {
 	if (CheckCorrect() == true) {
 		_StageNum++;
-		if (_StageNum > 1) {
+		if (_StageNum > 6) {
 			sceneManager->LoadScene(SCENE_LAYER::ENDING);
 			return false;
 		}

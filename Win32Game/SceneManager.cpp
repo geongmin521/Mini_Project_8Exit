@@ -40,7 +40,7 @@ void SceneManager::InitScene() {
 	_Scenes[(int)SCENE_LAYER::PLAY] = new TrapSceneTest;
 	_Scenes[(int)SCENE_LAYER::ENDING] = new HomeScene;
 	_Scenes[(int)SCENE_LAYER::ENDINGSTORY] = new EndingScene;
-	_CurScene = _Scenes[(int)SCENE_LAYER::PLAY];
+	_CurScene = _Scenes[(int)SCENE_LAYER::MAIN];
 	_CurScene->Start();
 }
 
