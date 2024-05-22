@@ -111,12 +111,12 @@ void TrapSceneTest::Start()
 	_DefaultObjects.push_back(sign); // 0
 
 	GameObject* npc1 = new NPC(L"StageCat"); //테스트용 다른 npc
-	npc1->SetLocation(Vector3(0, 80, 0));
+	npc1->SetLocation(Vector3(-250.0f, -25.0f, 0));
 	AddObject(npc1, LAYER_GROUP::SEARCH);
 	_DefaultObjects.push_back(npc1); // 1
 
 	GameObject* npc2 = new NPC(L"EndCat");//테스트용 다른 npc
-	npc2->SetLocation(Vector3(20000, 80, 0));
+	npc2->SetLocation(Vector3(21000.0f, -25.0f, 0));
 	AddObject(npc2, LAYER_GROUP::SEARCH);
 	_DefaultObjects.push_back(npc2); // 2
 
@@ -129,6 +129,11 @@ void TrapSceneTest::Start()
 	AddObject(explain, LAYER_GROUP::UI);
 	_DefaultObjects.push_back(explain); // 4
 	timeManager->SetTimeScale(1.0f);
+
+	GameObject* sign2 = new WoodSign;
+	sign2->SetLocation(Vector3(21000.0f, 220.0f, 0));
+	AddObject(sign2, LAYER_GROUP::BACKUNIT);
+	_DefaultObjects.push_back(sign2); // 5
 
 	camera->SetTarget(player);
 
