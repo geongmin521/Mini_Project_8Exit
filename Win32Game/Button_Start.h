@@ -1,7 +1,6 @@
 #pragma once
 #include "GameObject.h"
 #include "Texture.h"
-#include "FadeIn.h"
 
 class Button_Start :
     public GameObject
@@ -18,7 +17,9 @@ public:
 private:
     Texture* _MyTex;
     Vector3 _Pos;
-    FadeIn* _FadeIn;
+
+    bool _StartTimer = false;
+    float _Timer;
     GameObject* _Parent;
 
     friend class LobbyUI;

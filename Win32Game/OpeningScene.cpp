@@ -1,5 +1,7 @@
 #include "OpeningScene.h"
 #include "CartoonObject.h"
+#include "FadeIn.h"
+#include "FadeOut.h"
 
 OpeningScene::OpeningScene()
 {

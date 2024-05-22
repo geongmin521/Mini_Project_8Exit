@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "CollisionManager.h"
 #include "InGameObjectHeader.h"
+#include "SceneManager.h"
 
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(1), _AreaSettingState{}
 {
@@ -18,6 +19,8 @@ TrapSceneTest::~TrapSceneTest()
 
 void TrapSceneTest::Start()
 {
+	camera->PlayEffect(FADE_OUT);
+
 	//=============
 	//	1±¸¿ª : spider
 	//=============
@@ -141,11 +144,17 @@ void TrapSceneTest::Start()
 
 void TrapSceneTest::End() 
 {
+	for (int i = 0; i < _AnomalyObjects.size(); i++) {
+		_AnomalyObjects[i].clear();
+	}
+	_DefaultObjects.clear();
 	SceneEnd();
 }
 
 void TrapSceneTest::InitObjectPlace()
 {
+	camera->PlayEffect(FADE_OUT);
+
 	dynamic_cast<WoodSign*>(_DefaultObjects[0])->Init(_StageNum);
 	dynamic_cast<NPC*>(_DefaultObjects[1])->Init(_StageNum);
 	dynamic_cast<NPC*>(_DefaultObjects[2])->Init(_StageNum);
@@ -168,8 +177,6 @@ void TrapSceneTest::InitObjectPlace()
 	memset(_AreaSettingState, 0, sizeof(_AreaSettingState));
 	SetDiffAnomaly(diffCount);
 	SetMoveAnomaly(moveCount);
-
-	_AreaSettingState[0] = 2;
 
 	for (int areaIdx = 0; areaIdx < 6; areaIdx++) {
 		Vector3 worldLocation(areaOffset._x + _AreaWidth * areaIdx, areaOffset._y, areaOffset._z);
@@ -214,6 +221,9 @@ void TrapSceneTest::NextStage()
 {
 	if (CheckCorrect() == true) {
 		_StageNum++;
+		if (_StageNum > 6) {
+			//sceneManager->LoadScene(SCENE_LAYER::)
+		}
 	}
 	else {
 		if (_StageNum > 1) {
@@ -258,6 +268,7 @@ void TrapSceneTest::ResetObjectPos()
 			_AnomalyObjects[i][j]->ResetState();
 		}
 	}
+	_AnomalyIdx.clear();
 }
 
 bool TrapSceneTest::CheckCorrect() {

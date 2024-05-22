@@ -1,14 +1,23 @@
 #include "Camera.h"
 #include "globalheader.h"
+#include "FadeIn.h"
+#include "FadeOut.h"
 
 Camera* Camera::Instance = nullptr;
 
 Camera::Camera() : _TargetObject(nullptr)
 {
+    FadeIn* fadein = new FadeIn;
+    _ScreenEffects.push_back(fadein);
+    FadeOut* fadeout = new FadeOut;
+    _ScreenEffects.push_back(fadeout);
 }
 
 Camera::~Camera()
 {
+    for (int i = 0; i < _ScreenEffects.size(); i++) {
+        delete _ScreenEffects[i];
+    }
 }
 
 Camera* Camera::GetInstance()
@@ -39,6 +48,23 @@ void Camera::Update()
     Vector3 center = screenSize / 2.0f;
     _CameraPos = center + _Diff;
     CalDiff();
+
+    for (int i = 0; i < _ScreenEffects.size(); i++) {
+        if(_ScreenEffects[i]->Enable() == true) _ScreenEffects[i]->Update();
+    }
+}
+
+void Camera::PlayEffect(int idx)
+{
+    _ScreenEffects[idx]->SetEnable(true);
+    _EffectEnd = false;
+}
+
+void Camera::RenderScreenEffect()
+{
+    for (int i = 0; i < _ScreenEffects.size(); i++) {
+        if (_ScreenEffects[i]->Enable() == true) _ScreenEffects[i]->Render();
+    }
 }
 
 void Camera::CalDiff()

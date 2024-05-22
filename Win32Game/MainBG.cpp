@@ -2,7 +2,7 @@
 
 MainBG::MainBG() : _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"PauseBG", L"Image\\UI\\Title_main.png");
+	_MyTex = resourceManager->GetTexture(L"TitleBG", L"Image\\UI\\Title_main.png");
 }
 
 MainBG::~MainBG()

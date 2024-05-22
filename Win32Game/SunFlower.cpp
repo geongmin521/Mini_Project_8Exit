@@ -1,11 +1,15 @@
 #include "SunFlower.h"
 #include "ResourceManager.h"
+#include "Collider.h"
 
 SunFlower::SunFlower() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"SunFlower_Head", L"Image\\Flower_Head_Crop.png");
 	_StartPos = 200.0f - (float)(WindowHeight / 2);
 	_EndPos = 400.0f - (float)(WindowHeight / 2);
+	CreateCollider();
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
+	GetCollider()->SetTrigger(true);
 	SetName(L"SunFlower");
 	_MyStem = new FlowerStem;
 	_MyStem->SetLocation(Vector3(-10000, -10000, 0));

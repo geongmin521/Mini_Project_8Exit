@@ -1,5 +1,6 @@
 #include "SunFlower_Anomaly.h"
 #include "ResourceManager.h"
+#include "Collider.h"
 
 SunFlower_Anomaly::SunFlower_Anomaly() : _MyTex(nullptr)
 {
@@ -7,6 +8,9 @@ SunFlower_Anomaly::SunFlower_Anomaly() : _MyTex(nullptr)
 	_StartPos = 200.0f - (float)(WindowHeight / 2);
 	_EndPos = 400.0f - (float)(WindowHeight / 2);
 	SetName(L"SunFlower_Anomaly");
+	CreateCollider();
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
+	GetCollider()->SetTrigger(true);
 	_MyStem = new FlowerStem;
 	_MyStem->SetLocation(Vector3(-10000, -10000, 0));
 	CreateObject(_MyStem, LAYER_GROUP::BACKUNIT);

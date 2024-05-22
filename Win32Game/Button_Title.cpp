@@ -24,9 +24,6 @@ void Button_Title::Update()
 			OnClick();
 		}
 	}
-	if (_FadeIn->Enable()) {
-		_FadeIn->Update();
-	}
 }
 
 void Button_Title::Render()
@@ -39,13 +36,9 @@ void Button_Title::Render()
 		(INT)_Pos._x - endX / 2, (INT)_Pos._y - endY / 2,
 		endX, endY
 	);
-	if (_FadeIn->Enable()) {
-		_FadeIn->Render();
-	}
 }
 
 void Button_Title::OnClick()
 {
-	_FadeIn->SetTargetScene(SCENE_LAYER::MAIN);
-	_FadeIn->SetEnable(true);
+	sceneManager->LoadScene(SCENE_LAYER::MAIN);
 }

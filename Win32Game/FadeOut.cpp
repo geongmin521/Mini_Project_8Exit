@@ -15,6 +15,8 @@ void FadeOut::Update()
 {
     _Alpha -= 1.0f * timeManager->GetDeltaTime();
     if (_Alpha <= 0.0f) {
+        _Alpha = 1.0f;
+        camera->SetEffectEnd();
         SetEnable(false);
     }
 }
