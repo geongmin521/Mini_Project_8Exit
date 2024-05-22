@@ -4,7 +4,7 @@
 Horse::Horse() //생각해보니 이부분좀 더 얘기 해야겠는데?
 {
 	//테스용init
-	//Init();
+	Init();
 }
 
 Horse::~Horse()
