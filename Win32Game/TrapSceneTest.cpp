@@ -66,12 +66,10 @@ void TrapSceneTest::Start()
 	//=============
 	//	5±¸¿ª : spider_hive
 	//=============
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 6; i++) {
 		GameObject* spider = new Spider1;
 		_AnomalyObjects[4].push_back(spider);
 	}
-	GameObject* scareCrow_Rotate = new ScareCrow_Rotate;
-	_AnomalyObjects[4].push_back(scareCrow_Rotate);
 
 	GameObject* scareCrowRotate_Anomaly = new ScareCrow_Rotate;
 	scareCrowRotate_Anomaly->SetMoveAnomalyState(true);
@@ -215,7 +213,7 @@ bool TrapSceneTest::NextStage()
 	if (CheckCorrect() == true) {
 		_StageNum++;
 		Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_correct, Music::eSoundChannel::Effect);
-		if (_StageNum > 6) {
+		if (_StageNum > 1) {
 			sceneManager->LoadScene(SCENE_LAYER::ENDING);
 			return false;
 		}
