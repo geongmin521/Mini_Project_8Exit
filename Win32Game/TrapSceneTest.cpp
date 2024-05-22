@@ -84,8 +84,7 @@ void TrapSceneTest::Start()
 		GameObject* woodhouse = new WoodHouse;
 		_AnomalyObjects[5].push_back(woodhouse);
 	}
-	GameObject* woodhouse2 = new WoodHouse2;
-	_AnomalyObjects[5].push_back(woodhouse2);
+
 
 
 

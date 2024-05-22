@@ -177,15 +177,6 @@
     <ClInclude Include="CollisionManager.h">
       <Filter>소스 파일\Component\Collider</Filter>
     </ClInclude>
-    <ClInclude Include="SampleScene.h">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="SampleObject.h">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClInclude>
     <ClInclude Include="EventManager.h">
       <Filter>소스 파일\Event</Filter>
     </ClInclude>
@@ -206,9 +197,6 @@
     </ClInclude>
     <ClInclude Include="Music.h">
       <Filter>소스 파일\Sound</Filter>
-    </ClInclude>
-    <ClInclude Include="BackGround.h">
-      <Filter>소스 파일\TestGameScene</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>소스 파일\Player</Filter>
@@ -245,18 +233,6 @@
     </ClInclude>
     <ClInclude Include="TrapManager.h">
       <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="SignMonster.h">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="MainBackGround.h">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="LastBackGround.h">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClInclude>
-    <ClInclude Include="StaminaBar.h">
-      <Filter>소스 파일\TestGameScene</Filter>
     </ClInclude>
     <ClInclude Include="StaminaBarMin.h">
       <Filter>소스 파일\TestGameScene</Filter>
@@ -381,9 +357,6 @@
     <ClInclude Include="TrapSceneTest.h">
       <Filter>소스 파일\MainScene</Filter>
     </ClInclude>
-    <ClInclude Include="Witch.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="WoodHouse2.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -401,6 +374,15 @@
     </ClInclude>
     <ClInclude Include="Explain.h">
       <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="House.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Bonfire.h">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -462,15 +444,6 @@
     <ClCompile Include="CollisionManager.cpp">
       <Filter>소스 파일\Component\Collider</Filter>
     </ClCompile>
-    <ClCompile Include="SampleScene.cpp">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="SampleObject.cpp">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Monster.cpp">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClCompile>
     <ClCompile Include="EventManager.cpp">
       <Filter>소스 파일\Event</Filter>
     </ClCompile>
@@ -482,9 +455,6 @@
     </ClCompile>
     <ClCompile Include="Music.cpp">
       <Filter>소스 파일\Sound</Filter>
-    </ClCompile>
-    <ClCompile Include="BackGround.cpp">
-      <Filter>소스 파일\TestGameScene</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>소스 파일\Player</Filter>
@@ -509,18 +479,6 @@
     </ClCompile>
     <ClCompile Include="TrapManager.cpp">
       <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="SignMonster.cpp">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="MainBackGround.cpp">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="LastBackGround.cpp">
-      <Filter>소스 파일\TestGameScene</Filter>
-    </ClCompile>
-    <ClCompile Include="StaminaBar.cpp">
-      <Filter>소스 파일\TestGameScene</Filter>
     </ClCompile>
     <ClCompile Include="StaminaBarMin.cpp">
       <Filter>소스 파일\TestGameScene</Filter>
@@ -612,12 +570,6 @@
     <ClCompile Include="AnswerCircle.cpp">
       <Filter>소스 파일\Player</Filter>
     </ClCompile>
-    <ClCompile Include="WoodHouse2.cpp">
-      <Filter>소스 파일\MainScene\WoodHouse</Filter>
-    </ClCompile>
-    <ClCompile Include="Witch.cpp">
-      <Filter>소스 파일\MainScene\WoodHouse</Filter>
-    </ClCompile>
     <ClCompile Include="MainBG.cpp">
       <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
     </ClCompile>
@@ -638,6 +590,15 @@
     </ClCompile>
     <ClCompile Include="Explain.cpp">
       <Filter>소스 파일\MainScene</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="House.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Bonfire.cpp">
+      <Filter>소스 파일\MainScene\WoodHouse</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

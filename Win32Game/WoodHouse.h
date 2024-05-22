@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Texture.h"
-#include "NPC.h"
+#include "Bonfire.h"
 enum class WITCH_STATE {
     IDLE,
     OPEN
@@ -29,10 +29,11 @@ public:
 private:
     Texture* _MyTex;
     WITCH_STATE _WitchState;
+    WITCH_GIMMICK _WitchGimmick;
     float _CoolTime;
     float _WitchMoveSpeed;
     float _WaitTime;
     int index;
-    NPC* _Npc;
+    Bonfire* _Bonfire;
 };
 

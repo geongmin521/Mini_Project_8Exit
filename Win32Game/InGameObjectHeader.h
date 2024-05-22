@@ -23,5 +23,4 @@
 #include "WoodSign.h"
 #include "SunFlower_Anomaly.h"
 #include "WoodHouse.h"
-#include "WoodHouse2.h"
 #include "Explain.h"

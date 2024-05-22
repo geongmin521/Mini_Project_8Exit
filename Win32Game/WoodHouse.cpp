@@ -2,16 +2,13 @@
 #include "ResourceManager.h"
 #include "Collider.h"
 #include "Utility.h"
-#include "NPC.h"
+#include "Bonfire.h"
 WoodHouse::WoodHouse() : _MyTex(nullptr)
 {
+	_MyTex = resourceManager->GetTexture(L"Cottage1", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(1, 3);
-	index = dis(gen);
-	std::wstring path = L"Cottage\\Cottage_Variation" + std::to_wstring(index) + L".png";
-	//_MyTex = resourceManager->GetTexture(L"Cottage_Variation_" + std::to_wstring(index), path);
-	_MyTex = resourceManager->GetTexture(L"Cottage", L"Image\\Cottage\\Cottage_Variation\\Cottage_Variation_" + std::to_wstring(index) + L".png");
 	// 7번 위치 ( 25920~ )
 	SetLocation(Vector3(1000, 300, 0));
 	CreateCollider();
@@ -19,8 +16,10 @@ WoodHouse::WoodHouse() : _MyTex(nullptr)
 	GetCollider()->SetTrigger(true);
 	SetName(L"Cottage");
 	StateChange(WITCH_STATE::IDLE);
-	CreateAnimater(L"Cottage");
-	_Npc = new NPC;
+	CreateAnimater(L"Cottage", 0.1f);
+	_Bonfire = new Bonfire;
+	CreateObject(_Bonfire,LAYER_GROUP::SEARCH);
+	Init();
 }
 
 WoodHouse::~WoodHouse()
@@ -29,29 +28,29 @@ WoodHouse::~WoodHouse()
 
 void WoodHouse::Init()
 {
-	WITCH_GIMMICK rand = (WITCH_GIMMICK)GetRandomNum((int)WITCH_GIMMICK::SIZE);
-	switch (rand)
+	_WitchGimmick = (WITCH_GIMMICK)GetRandomNum((int)WITCH_GIMMICK::SIZE);
+	switch (_WitchGimmick)
 	{//기획한테요구하기 , 이미지3개, 혹은 마녀가 문여는거 
 	case WITCH_GIMMICK::NORMAL:
-		_MyTex = resourceManager->GetTexture(L"Cottage", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
+		_MyTex = resourceManager->GetTexture(L"Cottage1", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
 		break;
 	case WITCH_GIMMICK::WITCHOPEN:
-		_MyTex = resourceManager->GetTexture(L"Cottage", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
+		_MyTex = resourceManager->GetTexture(L"Cottage1", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
 		break;
 	case WITCH_GIMMICK::VARIATION1:
 		//문안열리고 그냥 이미지교체
-		_MyTex = resourceManager->GetTexture(L"Cottage", L"Image\\Cottage\\Cottage_Variation\\Cottage_Variation_2.png");
+		_MyTex = resourceManager->GetTexture(L"Cottage2", L"Image\\Cottage\\Cottage_Variation\\Cottage_Variation_2.png");
 		break;
 	case WITCH_GIMMICK::VARIATION2:
-		_MyTex = resourceManager->GetTexture(L"Cottage", L"Image\\Cottage\\Idle\\Cottage_Variation_3.png");
+		_MyTex = resourceManager->GetTexture(L"Cottage3", L"Image\\Cottage\\Cottage_Variation\\Cottage_Variation_3.png");
 		break;
 	}
 }
 
 void WoodHouse::Update()
 {
-	
 	GetAinmater()->Update();
+	//_Bonfire->Update();
 }
 
 
@@ -79,7 +78,7 @@ void WoodHouse::Render()
 		);
 	}
 	ComponentRender();
-	_Npc->Render();
+	//_Bonfire->Render();
 }
 
 //void WoodHouse::ResetState()
@@ -95,7 +94,7 @@ void WoodHouse::OnTriggerExit(Collider* collider) // 근처에 가면 문 열리는 이미�
 	
 	if (collider->GetOwnerObject()->GetName() == L"Player")
 	{
-		if (index == 1)
+		if (WITCH_GIMMICK::WITCHOPEN == _WitchGimmick)
 		{
 		StateChange(WITCH_STATE::OPEN);
 		//GetAinmater()
