@@ -188,13 +188,18 @@ void TrapSceneTest::InitObjectPlace()
 		else if (_AreaSettingState[areaIdx] == 2) {
 			targetObject = GetRandomNum(_AreaObjectCount[areaIdx]);
 			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {
-				if (i == targetObject) {
-					int moveIdx = GetRandomNum(_AreaMoveAnomalyCount[areaIdx]);
-					_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]
-						->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
-					_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]->SetEnable(true);
-					_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]->Init();
-					continue;
+				if (areaIdx == 5) {
+					_AnomalyObjects[areaIdx][2]->SetMoveAnomalyState(true);
+				}
+				else {
+					if (i == targetObject) {
+						int moveIdx = GetRandomNum(_AreaMoveAnomalyCount[areaIdx]);
+						_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]
+							->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
+						_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]->SetEnable(true);
+						_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]->Init();
+						continue;
+					}
 				}
 				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
 				_AnomalyObjects[areaIdx][i]->SetEnable(true);
