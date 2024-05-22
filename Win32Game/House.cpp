@@ -1,5 +1,6 @@
 #include "House.h"
 #include "Collider.h"
+#include "SceneManager.h"
 
 House::House() : _MyTex(nullptr)
 {
@@ -34,4 +35,9 @@ void House::Render()
 	);
 
 	ComponentRender();
+}
+
+void House::OnTriggerEnter(Collider* collider)
+{
+	sceneManager->LoadScene(SCENE_LAYER::ENDINGSTORY);
 }

@@ -14,6 +14,8 @@ HomeScene::~HomeScene()
 
 void HomeScene::Start()
 {
+	camera->PlayEffect(FADE_OUT);
+
 	GameObject* bg = new GameBG;
 	bg->SetLocation(Vector3(-(float)(WindowWidth / 2), -(float)(WindowHeight / 2), 0));
 	AddObject(bg, LAYER_GROUP::BACKGROUND);
@@ -23,6 +25,8 @@ void HomeScene::Start()
 	AddObject(player, LAYER_GROUP::PLAYER);
 
 	camera->SetTarget(nullptr);
+	camera->ResetLookPos();
+	
 	GameObject* house = new House;
 	house->SetLocation(Vector3(500.0f, 100.0f, 0));
 	AddObject(house, LAYER_GROUP::TRAPTRIGGER);

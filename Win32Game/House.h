@@ -12,6 +12,8 @@ public:
     virtual void Update();
     virtual void Render();
 
+    virtual void OnTriggerEnter(Collider* collider);
+
 private:
     Texture* _MyTex;
 };
