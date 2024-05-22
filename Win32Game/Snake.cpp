@@ -51,6 +51,7 @@ void Snake::ChangeState(SNAKE_STATE state)
 		if (SNAKE_STATE::CHASE == _State)
 		{
 			stateStr = L"Move";
+			Music::soundManager->PlayMusic(Music::eSoundList::Snake_moving, Music::eSoundChannel::Object);//À½¾Ç Àç»ý
 		}
 		else
 		{
@@ -98,6 +99,7 @@ void Snake::ResetState()
 void Snake::OnCollisionEnter(Collider* collider)
 {
 	Music::soundManager->PlayMusic(Music::eSoundList::Snake_Bite, Music::eSoundChannel::Effect);
+	
 	//if (_State == SNAKE_STATE::CHASE) {
 	//	SceneReload();
 	//}

@@ -148,6 +148,7 @@ void HorseCar::SetState(HorseCarMoveState _moveState)
 		case HorseCarMoveState::Move: 
 			stateStr = L"Move";
 			Music::soundManager->PlayMusic(Music::eSoundList::Carriage_rush, Music::eSoundChannel::BGM);
+			Music::soundManager->PlayMusic(Music::eSoundList::Carriage_moving, Music::eSoundChannel::Object);//À½¾Ç Àç»ý
 			break;
 		case HorseCarMoveState::Wait:
 			stateStr = L"Wait";
