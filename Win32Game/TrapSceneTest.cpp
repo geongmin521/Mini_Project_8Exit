@@ -118,7 +118,7 @@ void TrapSceneTest::Start()
 	_DefaultObjects.push_back(player); // 3
 
 	GameObject* explain = new Explain;
-	AddObject(explain, LAYER_GROUP::UI);
+	AddObject(explain, LAYER_GROUP::INGAMEUI);
 	_DefaultObjects.push_back(explain); // 4
 	timeManager->SetTimeScale(1.0f);
 

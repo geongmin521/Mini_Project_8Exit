@@ -2,8 +2,8 @@
 
 Explain::Explain(): _MyTex(nullptr)
 {
-	_MyTex = resourceManager->GetTexture(L"Explain", L"Image\\SunFlower_Anomaly.png");
-	SetLocation(Vector3(500, 500, 0));
+	_MyTex = resourceManager->GetTexture(L"Explain", L"Image\\Control.png");
+	SetLocation(Vector3(-650, -200, 0));
 }
 
 

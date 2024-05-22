@@ -21,6 +21,7 @@ namespace Music
         Talk,
         Player,
         Object,
+        Click,
         Fire,
         Size
     };
@@ -34,7 +35,9 @@ namespace Music
         Cottage_door_open,                  //: 오두막 문 열릴 때 재생  
         Merchant_chat,                      //: 마차상인 대화창 열릴 때 재생 //clear
         New_Background_music,               //: 새로운 배경음악.인게임 화면에서 재생 //clear
-        Player_Walk,                        //: 플레이어 이동 시 재생, 뛸 때 1.5배속 재생 //clear
+        Player_Walk,                        //: 플레이어 이동 시 재생, //clear
+        Player_run,                         //: 뛸 때 1.5배속 재생 //clear
+        click,                              //: 클릭할때 //clear
         Scarecrow_drop_from_Web,            //: 허수아비가 거미줄에서 떨어질 때 재생(5구역) //clear
         Snake_drop_from_Web,                //: 1구역에서 거미 대신 뱀이 떨어질 때 재생  //clear
         Snake_Bite,                         //: 뱀이 물 때 재생 //clear

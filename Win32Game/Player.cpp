@@ -70,6 +70,7 @@ void Player::CheckCircle()
 	if (inputSystem->GetMouseButtonDown(0)) //¿ÞÂÊ Å¬¸¯½Ã
 	{
 		if (CheckPositionOnUI() == false && CheckMouseOnScreen()) {
+			Music::soundManager->PlayMusic(Music::eSoundList::click, Music::eSoundChannel::Click);
 			for (int i = 0; i < _Answer.size(); i++)
 			{
 				if (CheckPositionOnWorld(_Answer[i]) && _Answer[i]->Enable() == true)
@@ -196,16 +197,17 @@ void Player::ChangeState(PlayerState state)
 			break;
 		case PlayerState::Walk:
 			stateStr = L"Walk";
-			Music::soundManager->PlayMusic(Music::eSoundList::Player_Walk, Music::eSoundChannel::Player);//À½¾Ç Àç»ý
+			Music::soundManager->PlayMusic(Music::eSoundList::Player_Walk, Music::eSoundChannel::Player);
 			break;
 		case PlayerState::Hit:
 			stateStr = L"Hit";
 			GetAinmater()->SetIsLoop(false);
-			Music::soundManager->PlayMusic(Music::eSoundList::Attacked_by_Objects, Music::eSoundChannel::Effect);//À½¾Ç Àç»ý
+			Music::soundManager->PlayMusic(Music::eSoundList::Attacked_by_Objects, Music::eSoundChannel::Effect);
 
 			break;
 		case PlayerState::Run:
 			stateStr = L"Run";
+			Music::soundManager->PlayMusic(Music::eSoundList::Player_run, Music::eSoundChannel::Player);
 			break;
 		default:
 			break;

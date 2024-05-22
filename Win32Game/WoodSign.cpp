@@ -4,7 +4,7 @@ WoodSign::WoodSign() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"WoodSign", L"Image\\Sign.png");
 	_TextBox = new TextBox(L"3", 60, Color(255, 0, 0, 0), (int)FontType::dialog,false);
-	CreateObject(_TextBox, LAYER_GROUP::UI);
+	CreateObject(_TextBox, LAYER_GROUP::INGAMEUI);
 	
 	_TextBox->GetTextComponent()->SetOffset(Vector3(-50, 100, 0));
 }

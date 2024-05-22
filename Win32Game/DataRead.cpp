@@ -28,7 +28,7 @@ void Dialog(std::wifstream& file)
     {
         int current = tokens[i].find(':'); //그곳의 인덱스를 찾는거지?
         std::wstring key = tokens[i].substr(0, current);
-        std::wstring dialog = tokens[i].substr(current, tokens[i].size());
+        std::wstring dialog = tokens[i].substr(current+1, tokens[i].size());
         resourceManager->InsertDialog(key, dialog);
     }
 }
