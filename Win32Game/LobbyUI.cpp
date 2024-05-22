@@ -1,6 +1,7 @@
 #include "LobbyUI.h"
 #include "Button_Start.h"
 #include "MainBG.h"
+#include "Button_End.h"
 
 LobbyUI::LobbyUI()
 {
@@ -9,8 +10,13 @@ LobbyUI::LobbyUI()
 
 	Button_Start* btnStart = new Button_Start;
 	btnStart->_Parent = this;
-	btnStart->_Pos = Vector3(960.0f, 700.0f, 0.0f);
+	btnStart->_Pos = Vector3(960.0f, 775.0f, 0.0f);
 	_Child.push_back(btnStart);
+
+	Button_End* btnEnd = new Button_End;
+	btnEnd->_Parent = this;
+	btnEnd->_Pos = Vector3(960.0f, 900.0f, 0.0f);
+	_Child.push_back(btnEnd);
 }
 
 LobbyUI::~LobbyUI()

@@ -140,6 +140,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnswerCircle.h" />
     <ClInclude Include="Bonfire.h" />
+    <ClInclude Include="Button_End.h" />
     <ClInclude Include="Button_Pause.h" />
     <ClInclude Include="Button_Resume.h" />
     <ClInclude Include="Button_Start.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnswerCircle.cpp" />
     <ClCompile Include="Bonfire.cpp" />
+    <ClCompile Include="Button_End.cpp" />
     <ClCompile Include="Button_Pause.cpp" />
     <ClCompile Include="Button_Resume.cpp" />
     <ClCompile Include="Button_Start.cpp" />
