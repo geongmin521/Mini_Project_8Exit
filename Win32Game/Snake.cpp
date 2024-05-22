@@ -1,6 +1,7 @@
 #include "Snake.h"
 #include "ResourceManager.h"
 #include "Collider.h"
+#include "Music.h"
 
 Snake::Snake() : _MyTex(nullptr)
 {
@@ -54,6 +55,8 @@ void Snake::ChangeState(SNAKE_STATE state)
 		else
 		{
 			stateStr = L"Idle";
+			if (SNAKE_STATE::MOVEDOWN == _State)
+				Music::soundManager->PlayMusic(Music::eSoundList::Snake_drop_from_Web , Music::eSoundChannel::Effect);//음악 재생//이거를 각 오브젝트가 처리하는게 맞나?
 		}
 		GetAinmater()->ChangeState(stateStr);
 	}
@@ -94,6 +97,7 @@ void Snake::ResetState()
 
 void Snake::OnCollisionEnter(Collider* collider)
 {
+	Music::soundManager->PlayMusic(Music::eSoundList::Snake_Bite, Music::eSoundChannel::Effect);
 	//if (_State == SNAKE_STATE::CHASE) {
 	//	SceneReload();
 	//}

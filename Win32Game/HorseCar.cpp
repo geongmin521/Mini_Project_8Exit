@@ -1,6 +1,8 @@
 #include "HorseCar.h"
 #include "Collider.h"
 #include "Utility.h"
+#include "Music.h"
+
 HorseCar::HorseCar() : _MyTex(nullptr)
 {
 	SetName(L"HorseCar");
@@ -145,6 +147,7 @@ void HorseCar::SetState(HorseCarMoveState _moveState)
 			break;
 		case HorseCarMoveState::Move: 
 			stateStr = L"Move";
+			Music::soundManager->PlayMusic(Music::eSoundList::Carriage_rush, Music::eSoundChannel::BGM);
 			break;
 		case HorseCarMoveState::Wait:
 			stateStr = L"Wait";

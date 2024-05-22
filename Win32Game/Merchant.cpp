@@ -1,6 +1,7 @@
 #include "Merchant.h"
 #include "Collider.h"
 #include "Utility.h"
+#include "Music.h"
 
 Merchant::Merchant()
 {
@@ -115,9 +116,11 @@ void Merchant::ChangeState(MerchantState state)
 		{
 		case MerchantState::Idle: //enum을 wstring으로 수동 변환
 			stateStr = L"Idle";
+			Music::soundManager->StopMusic(Music::eSoundChannel::Talk); //대화 배경음악 꺼버리기
 			break;
 		case MerchantState::Talk:
 			stateStr = L"Talk";
+			Music::soundManager->PlayMusic(Music::eSoundList::Merchant_chat, Music::eSoundChannel::Talk);
 			break;
 		}
 		GetAinmater()->ChangeState(stateStr);
