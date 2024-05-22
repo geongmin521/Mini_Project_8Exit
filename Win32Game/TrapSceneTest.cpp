@@ -182,7 +182,7 @@ void TrapSceneTest::InitObjectPlace()
 				if (i == targetObject) {
 					_AnomalyObjects[areaIdx][i]->SetDiffAnomalyState(true);
 				}
-				
+				_AnomalyObjects[areaIdx][i]->Init();
 			}
 		}
 		else if (_AreaSettingState[areaIdx] == 2) {
@@ -193,10 +193,12 @@ void TrapSceneTest::InitObjectPlace()
 					_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]
 						->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
 					_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]->SetEnable(true);
+					_AnomalyObjects[areaIdx][_AreaObjectCount[areaIdx] + moveIdx]->Init();
 					continue;
 				}
 				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
 				_AnomalyObjects[areaIdx][i]->SetEnable(true);
+				_AnomalyObjects[areaIdx][i]->Init();
 			}
 		}
 		else {
@@ -208,9 +210,9 @@ void TrapSceneTest::InitObjectPlace()
 	}
 }
 
-bool TrapSceneTest::NextStage()
+bool TrapSceneTest::NextStage(bool playerHit)
 {
-	if (CheckCorrect() == true) {
+	if (playerHit == false && CheckCorrect() == true) {
 		_StageNum++;
 		Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_correct, Music::eSoundChannel::Effect);
 		if (_StageNum > 6) {
@@ -225,6 +227,7 @@ bool TrapSceneTest::NextStage()
 		}
 	}
 	ResetObjectPos();
+	return true;
 }
 
 void TrapSceneTest::SetDiffAnomaly(int count)
