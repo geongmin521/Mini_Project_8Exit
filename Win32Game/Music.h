@@ -19,6 +19,7 @@ namespace Music
         Effect,
         Talk,
         Player,
+        Object,
         Size
     };
 
@@ -26,15 +27,16 @@ namespace Music
     {
         Attacked_by_Objects,                //clear
         Carriage_rush,                      //clear
-        bonfire,
-        Carriage_moving,
+        bonfire,                            // :불타는 오브젝트 
+        Carriage_moving,                    //: 뱀이 움직일 때 재생하는 효과음 //clear
         Cottage_door_open,                  //: 오두막 문 열릴 때 재생  
         Merchant_chat,                      //: 마차상인 대화창 열릴 때 재생 //clear
-        New_Background_music,               //:   새로운 배경음악.인게임 화면에서 재생 //clear
-        Player_Walk,                        //: 플레이어 이동 시 재생, 뛸 때 1.5배속 재생 //이거 사운드교체
+        New_Background_music,               //: 새로운 배경음악.인게임 화면에서 재생 //clear
+        Player_Walk,                        //: 플레이어 이동 시 재생, 뛸 때 1.5배속 재생 //clear
         Scarecrow_drop_from_Web,            //: 허수아비가 거미줄에서 떨어질 때 재생(5구역) //clear
         Snake_drop_from_Web,                //: 1구역에서 거미 대신 뱀이 떨어질 때 재생  //clear
         Snake_Bite,                         //: 뱀이 물 때 재생 //clear
+        Snake_moving,                       //:: 뱀이 움직일 때 재생하는 효과음 //clear
         Stage_Transition_with_correct,      //: 스테이지 전환 시, 정답을 모두 맞췄을 때 재생 //아래부터는 세민이형 트리거족너을 좀더 잘알듯?
         Stage_Transition_with_wrong,        //: 스테이지 전환 시, 오답이 있을 경우 재생
         Sunflower_Crying,                   //: 해바라기 구역에서 재생

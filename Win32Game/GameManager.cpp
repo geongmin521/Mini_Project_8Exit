@@ -42,6 +42,7 @@ namespace game
 		Music::soundManager->LoadMusic(Music::eSoundList::Scarecrow_drop_from_Web, false,			"Sound\\Scarecrow_drop_from_Web.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Snake_drop_from_Web, false,				"Sound\\Snake_drop_from_Web.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Snake_Bite, false,						"Sound\\Snake_Bite.mp3");
+		Music::soundManager->LoadMusic(Music::eSoundList::Snake_moving, true,						"Sound\\Snake_moving.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Stage_Transition_with_correct, false,		"Sound\\Stage_Transition_with_correct.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Stage_Transition_with_wrong, false,		"Sound\\Stage_Transition_with_wrong.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Sunflower_Crying, true,					"Sound\\Sunflower_Crying.mp3");
