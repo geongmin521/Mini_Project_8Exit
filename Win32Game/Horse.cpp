@@ -3,20 +3,21 @@
 
 Horse::Horse() //생각해보니 이부분좀 더 얘기 해야겠는데?
 {
-	init(true); //테스용init
-	
+	//테스용init
+	//Init();
 }
 
 Horse::~Horse()
 {
 }
 
-void Horse::init(bool isTrap)
+void Horse::Init()
 {
-	if (isTrap)//기믹인지아닌지에 따라 상태 뽑기
+	if (GetDiffAnomalyState())//기믹인지아닌지에 따라 상태 뽑기
 	{
 		//스테이지 6번이면 move 상태까지 뽑을수있음
 		_State = (HorseState)(GetRandomNum(2)+1);
+		SetDiffAnomalyState(false);
 	}
 	else
 	{
@@ -24,7 +25,7 @@ void Horse::init(bool isTrap)
 	}
 
 	std::wstring path = L"Image\\Horse_Variation\\Horse_Variation_" + std::to_wstring((int)_State) + L".png"; //이미 변경 기믹
-	_MyTex = resourceManager->GetTexture(L"Horse", path);
+	_MyTex = resourceManager->GetTexture(L"Horse" + std::to_wstring((int)_State), path);
 	CreateCollider();
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
 	GetCollider()->SetTrigger(true);
@@ -33,10 +34,10 @@ void Horse::init(bool isTrap)
 
 void Horse::Update()
 {
-	if (GetDiffAnomalyState() == true) {
-		init(true);
-		SetDiffAnomalyState(false);
-	}
+	//if (GetDiffAnomalyState() == true) {
+	//	init();
+	//	SetDiffAnomalyState(false);
+	//}
 }
 
 void Horse::Render()

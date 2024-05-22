@@ -29,18 +29,23 @@ void Merchant::Init()
 		switch (gimmick)
 		{
 		case 0://»ö±ò 		
+			_MyTex = resourceManager->GetTexture(L"Mercnant_Red", L"Image\\Merchant_Red.png");
 			GetAinmater()->SetName(L"RedMerchant");
 			break;
 		case 1://´ëÈ­ ³»¿ë
 			_TextBox->GetTextComponent()->SetText(L"°Å¤± ¸Ô¤±¤±?");
 			break;
 		}
+		SetDiffAnomalyState(false);
 	}
 	else
 	{
+		_MyTex = resourceManager->GetTexture(L"Merchant", L"Image\\Merchant.png");
+		_TextBox->GetTextComponent()->SetText(L"°Å¹Ì ¸ÔÀ»·¡?");
 		GetAinmater()->SetName(L"Merchant");
 		//³ë¸»
 	}
+	GetAinmater()->ChangeState(L"ClearAnimator");
 	GetAinmater()->ChangeState(L"Idle");
 }
 
@@ -86,6 +91,7 @@ void Merchant::Render()
 
 void Merchant::ResetState()
 {
+	Init();
 }
 
 void Merchant::OnTriggerEnter(Collider* collider)
@@ -129,8 +135,5 @@ void Merchant::ChangeState(MerchantState state)
 
 void Merchant::ChangeImage()
 {
-	if (GetDiffAnomalyState() == true) {
-		Init();
-		SetDiffAnomalyState(false);
-	}
+
 }

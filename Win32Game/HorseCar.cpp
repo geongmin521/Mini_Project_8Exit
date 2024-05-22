@@ -25,7 +25,7 @@ HorseCar::~HorseCar()
 
 void HorseCar::Update() //다른 클래스랑 거의 엇비슷한데.. 새로만들었네.. 이것들을 다합칠수있지 않았었을까?
 {
-	ChangeImage();
+	//ChangeImage();
 	//아래의 모든 코드는 움직이는 마차일때만 작동하는거지?
 	if (HorseCarState::Move != _State)
 		return;
@@ -109,6 +109,7 @@ void HorseCar::Init()
 	else if(GetDiffAnomalyState())
 	{
 		_State = (HorseCarState)(GetRandomNum(2) + 1);
+		SetDiffAnomalyState(false);
 	}
 	else
 	{
@@ -129,7 +130,7 @@ void HorseCar::Init()
 		path = L"Carriage_Variation\\Carriage_Variation_" + std::to_wstring((int)_State) + L".png";
 	}
 
-	_MyTex = resourceManager->GetTexture(L"Carriage", L"Image\\" + path);
+	_MyTex = resourceManager->GetTexture(L"Carriage" + std::to_wstring((int)_State), L"Image\\" + path);
 }
 
 void HorseCar::SetState(HorseCarMoveState _moveState)
@@ -165,8 +166,8 @@ void HorseCar::OnCollisoinEnter(Collider* collider)
 
 void HorseCar::ChangeImage()
 {
-	if (GetDiffAnomalyState() == true || GetMoveAnomalyState() == true) {
-		Init();// 스테이지 번호를 받아와야하는데.. 
-		SetDiffAnomalyState(false);
-	}
+	//if (GetDiffAnomalyState() == true || GetMoveAnomalyState() == true) {
+	//	Init();// 스테이지 번호를 받아와야하는데.. 
+	//	SetDiffAnomalyState(false);
+	//}
 }

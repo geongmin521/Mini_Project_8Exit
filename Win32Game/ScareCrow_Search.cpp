@@ -5,6 +5,7 @@ ScareCrow_Search::ScareCrow_Search()
 {
 	CreateCollider();
 	GetCollider()->SetScale(Vector3(3840.0f, 500.0f, 0));
+	GetCollider()->SetPos(Vector3(-10000.0f, -10000.0f, 0));
 	GetCollider()->SetTrigger(true);
 }
 

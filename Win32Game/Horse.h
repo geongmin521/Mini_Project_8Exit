@@ -14,7 +14,7 @@ class Horse :
 public:
     Horse();
     ~Horse();
-    void init(bool isTrap);
+    void Init();
     virtual void Update();
     virtual void Render();
 private:

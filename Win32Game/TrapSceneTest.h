@@ -14,7 +14,7 @@ public:
     virtual void End();
 
     void InitObjectPlace();
-    bool NextStage();
+    bool NextStage(bool playerHit);
 
 private:
     std::vector<GameObject*> _DefaultObjects;

@@ -6,7 +6,6 @@
 Snake::Snake() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"Snake", L"Image\\Snake.png");
-	SetLocation(Vector3(1300, -850, 0));
 	CreateCollider();
 
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0));
