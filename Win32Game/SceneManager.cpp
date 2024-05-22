@@ -5,6 +5,7 @@
 #include "LobbyScene.h"
 #include "OpeningScene.h"
 #include "HomeScene.h"
+#include "EndingScene.h"
 
 SceneManager* SceneManager::Instance = nullptr;
 SceneManager::SceneManager() : _CurScene(nullptr) {
@@ -38,6 +39,7 @@ void SceneManager::InitScene() {
 	_Scenes[(int)SCENE_LAYER::STORY] = new OpeningScene;
 	_Scenes[(int)SCENE_LAYER::PLAY] = new TrapSceneTest;
 	_Scenes[(int)SCENE_LAYER::ENDING] = new HomeScene;
+	_Scenes[(int)SCENE_LAYER::ENDINGSTORY] = new EndingScene;
 	_CurScene = _Scenes[(int)SCENE_LAYER::PLAY];
 	_CurScene->Start();
 }
@@ -60,6 +62,7 @@ void SceneManager::LoadScene(SCENE_LAYER layer)
 
 void SceneManager::SceneReload()
 {
-	dynamic_cast<TrapSceneTest*>(_CurScene)->NextStage();
-	dynamic_cast<TrapSceneTest*>(_CurScene)->InitObjectPlace();
+	if (dynamic_cast<TrapSceneTest*>(_CurScene)->NextStage()) {
+		dynamic_cast<TrapSceneTest*>(_CurScene)->InitObjectPlace();
+	}
 }
