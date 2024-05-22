@@ -399,6 +399,9 @@
     <ClInclude Include="Bonfire.h">
       <Filter>소스 파일\MainScene\WoodHouse</Filter>
     </ClInclude>
+    <ClInclude Include="Button_End.h">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -626,6 +629,9 @@
     </ClCompile>
     <ClCompile Include="Bonfire.cpp">
       <Filter>소스 파일\MainScene\WoodHouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_End.cpp">
+      <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
