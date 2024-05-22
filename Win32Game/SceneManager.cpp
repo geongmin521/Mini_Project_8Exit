@@ -60,9 +60,9 @@ void SceneManager::LoadScene(SCENE_LAYER layer)
 	_CurScene->Start();
 }
 
-void SceneManager::SceneReload()
+void SceneManager::SceneReload(bool playerState)
 {
-	if (dynamic_cast<TrapSceneTest*>(_CurScene)->NextStage()) {
+	if (dynamic_cast<TrapSceneTest*>(_CurScene)->NextStage(playerState)) {
 		dynamic_cast<TrapSceneTest*>(_CurScene)->InitObjectPlace();
 	}
 }

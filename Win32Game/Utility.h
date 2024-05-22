@@ -7,7 +7,7 @@ class GameObject;
 void CreateObject(GameObject* obj, LAYER_GROUP group);
 void DeleteObject(GameObject* obj);
 bool CheckRenderPosition(int& leftX, int& leftY, int& rightX, int& rightY);
-void SceneReload();
+void SceneReload(bool playerState);
 int GetRandomNum(int dis);
 int GetRandomNum(int from, int to);
 Vector3 GetMousePos();

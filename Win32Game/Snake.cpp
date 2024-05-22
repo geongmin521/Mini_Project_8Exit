@@ -94,6 +94,8 @@ void Snake::Render()
 void Snake::ResetState()
 {
 	ChangeState(SNAKE_STATE::IDLE);
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0));
+	GetCollider()->SetTrigger(true);
 }
 
 void Snake::OnCollisionEnter(Collider* collider)

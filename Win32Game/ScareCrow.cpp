@@ -93,6 +93,8 @@ void ScareCrow::ResetState()
 {
 	_State = SCARECROW_STATE::IDLE;
 	_MyTex = resourceManager->GetTexture(L"ScareCrow", L"Image\\ScareCrow.png");
+	GetCollider()->SetTrigger(true);
+	_Search->_PlayerLocation = Vector3(-10000, -10000, 0);
 }
 
 void ScareCrow::OnTriggerEnter(Collider* collider)

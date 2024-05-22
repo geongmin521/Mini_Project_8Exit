@@ -50,14 +50,14 @@ void Player::Update()
 		if (GetAinmater()->GetIsEnd() == true)
 		{
 			_IsHit = false;
-			SceneReload();
+			SceneReload(true);
 		}
 	}
 	StaminaBarActions();
 
 	Vector3 renderPosition = camera->GetRenderPos(GetLocation());
 	if ((int)renderPosition._x - (_MyTex->Width() / 2) >= WindowWidth) {
-		SceneReload();
+		SceneReload(false);
 	}
 	if (GetAinmater() != nullptr)
 	{

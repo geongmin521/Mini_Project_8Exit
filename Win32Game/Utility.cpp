@@ -29,9 +29,9 @@ bool CheckRenderPosition(int& leftX, int& leftY, int& rightX, int& rightY)
 	return true;
 }
 
-void SceneReload()
+void SceneReload(bool playerState)
 {
-	sceneManager->SceneReload();
+	sceneManager->SceneReload(playerState);
 }
 
 int GetRandomNum(int dis)

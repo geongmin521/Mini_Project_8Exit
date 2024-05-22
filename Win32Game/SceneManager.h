@@ -18,7 +18,7 @@ public:
 	void Update();
 	void Render();
 	void LoadScene(SCENE_LAYER layer);
-	void SceneReload();
+	void SceneReload(bool playerState);
 	Scene* GetCurScene() const { return _CurScene; }
 
 private:
