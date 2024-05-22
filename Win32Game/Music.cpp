@@ -9,7 +9,8 @@ namespace Music
     SoundManager* SoundManager::GetInstance() //일단 파일만 갖다놨고 추가하고싶은데.. 
     {
         if (mInstance == nullptr)
-            mInstance = new SoundManager();
+            mInstance = new SoundManager();  
+
         return mInstance;
     }
 
@@ -19,10 +20,16 @@ namespace Music
         mInstance = nullptr;
     }
 
-    void SoundManager::LoadMusic(eSoundList soundlist, bool loopcheck, const std::string& path)
+    void SoundManager::Init()
     {
         System_Create(&mSystem);
-        mSystem->init(20, FMOD_INIT_NORMAL, 0);
+        mSystem->init(2, FMOD_INIT_NORMAL, 0);
+    }
+
+
+    void SoundManager::LoadMusic(eSoundList soundlist, bool loopcheck, const std::string& path)
+    {
+
         std::string filepath = "data\\" + path;
  
         if (loopcheck)

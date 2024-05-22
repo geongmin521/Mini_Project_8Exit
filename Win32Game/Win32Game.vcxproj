@@ -150,6 +150,7 @@
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="DataRead.h" />
     <ClInclude Include="EventManager.h" />
+    <ClInclude Include="Explain.h" />
     <ClInclude Include="FadeIn.h" />
     <ClInclude Include="FadeOut.h" />
     <ClInclude Include="FlowerStem.h" />
@@ -233,6 +234,7 @@
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DataRead.cpp" />
     <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="Explain.cpp" />
     <ClCompile Include="FadeIn.cpp" />
     <ClCompile Include="FadeOut.cpp" />
     <ClCompile Include="FlowerStem.cpp" />

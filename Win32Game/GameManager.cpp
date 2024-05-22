@@ -30,9 +30,9 @@ namespace game
 		sceneManager->InitScene();
 		collisionManager->Init();		
 		Music::soundManager->GetInstance();
-
+		Music::soundManager->Init();
 		Music::soundManager->LoadMusic(Music::eSoundList::New_Background_music, true,				"Sound\\New_Background_music.mp3");
-		Music::soundManager->LoadMusic(Music::eSoundList::Attacked_by_Objects, false,				"Sound\\Attacked_by_Objects.mp3");
+		Music::soundManager->LoadMusic(Music::eSoundList::Attacked_by_Objects, false,				"Sound\\Attacked_by_Objects.mp3"); //ÀÌ°Å´Â ÆÄÀÏ¼Õ»óµÊ.. 
 		Music::soundManager->LoadMusic(Music::eSoundList::Carriage_rush, true,						"Sound\\Carriage_rush.mp3");//¹è°æÀ½¾Ç
 		Music::soundManager->LoadMusic(Music::eSoundList::bonfire, true,							"Sound\\bonfire.mp3");//¹è°æÀ½¾Ç
 		Music::soundManager->LoadMusic(Music::eSoundList::Carriage_moving, true,					"Sound\\Carriage_moving.mp3");//¹è°æÀ½¾Ç
@@ -40,6 +40,7 @@ namespace game
 		Music::soundManager->LoadMusic(Music::eSoundList::Merchant_chat, true,						"Sound\\Merchant_chat.mp3");			
 		Music::soundManager->LoadMusic(Music::eSoundList::Player_Walk, true,						"Sound\\Player_Walk.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Scarecrow_drop_from_Web, false,			"Sound\\Scarecrow_drop_from_Web.mp3");
+		Music::soundManager->LoadMusic(Music::eSoundList::Snake_drop_from_Web, false,				"Sound\\Snake_drop_from_Web.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Snake_Bite, false,						"Sound\\Snake_Bite.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Stage_Transition_with_correct, false,		"Sound\\Stage_Transition_with_correct.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Stage_Transition_with_wrong, false,		"Sound\\Stage_Transition_with_wrong.mp3");

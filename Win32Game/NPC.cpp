@@ -90,9 +90,17 @@ void NPC::Init(int stage)
 	{
 		EndDioLog();
 	}
-	else if (_DialogKey == L"StageCat")
+	else if (_DialogKey == L"StageCat"|| _DialogKey == L"StartCat")
 	{
-		StageDioLog();
+		if (_StageNum == 0)
+		{
+			_DialogKey = L"StartCat";
+		}
+		else
+		{
+			_DialogKey = L"StageCat";
+			StageDioLog();
+		}	
 	}
 }
 

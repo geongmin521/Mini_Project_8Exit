@@ -399,6 +399,9 @@
     <ClInclude Include="FadeOut.h">
       <Filter>소스 파일\FadeObject</Filter>
     </ClInclude>
+    <ClInclude Include="Explain.h">
+      <Filter>소스 파일\MainScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Win32Game.rc">
@@ -632,6 +635,9 @@
     </ClCompile>
     <ClCompile Include="FadeOut.cpp">
       <Filter>소스 파일\FadeObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Explain.cpp">
+      <Filter>소스 파일\MainScene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
