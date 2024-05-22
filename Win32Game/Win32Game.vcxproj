@@ -148,6 +148,8 @@
     <ClInclude Include="Collider.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="DataRead.h" />
+    <ClInclude Include="EndingImage.h" />
+    <ClInclude Include="EndingScene.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Explain.h" />
     <ClInclude Include="FadeIn.h" />
@@ -226,6 +228,8 @@
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="DataRead.cpp" />
+    <ClCompile Include="EndingImage.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Explain.cpp" />
     <ClCompile Include="FadeIn.cpp" />

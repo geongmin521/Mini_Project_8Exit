@@ -164,6 +164,7 @@ void TrapSceneTest::InitObjectPlace()
 	dynamic_cast<NPC*>(_DefaultObjects[2])->Init(_StageNum);
 	dynamic_cast<Player*>(_DefaultObjects[3])->Init();
 	dynamic_cast<Explain*>(_DefaultObjects[4])->Init(_StageNum);
+	dynamic_cast<WoodSign*>(_DefaultObjects[5])->Init(_StageNum);
 
 	ResetObjectPos();
 
@@ -215,11 +216,14 @@ void TrapSceneTest::InitObjectPlace()
 	}
 }
 
-void TrapSceneTest::NextStage()
+bool TrapSceneTest::NextStage()
 {
 	if (CheckCorrect() == true) {
 		_StageNum++;
-		if(_StageNum > 6) sceneManager->LoadScene(SCENE_LAYER::ENDING);
+		if (_StageNum > 1) {
+			sceneManager->LoadScene(SCENE_LAYER::ENDING);
+			return false;
+		}
 	}
 	else {
 		if (_StageNum > 1) {
