@@ -21,6 +21,7 @@ Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false),
 	for (int i = 0; i < 3; i++)
 	{
 		AnswerCircle* answer = new AnswerCircle;
+		answer->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
 		_Answer.push_back(answer);
 		CreateObject(answer, LAYER_GROUP::UI);
 
@@ -47,6 +48,7 @@ void Player::Update()
 	{
 		if (GetAinmater()->GetIsEnd() == true)
 		{
+			_IsHit = false;
 			SceneReload();
 		}
 	}
@@ -293,6 +295,13 @@ void Player::OnCollisionEnter(Collider* collider)
 
 void Player::Init() //스테이지 리로드마다 상태 변경해주기
 {
+	for (int i = 0; i < 3; i++)
+	{
+		_Answer[i]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
+		_Answer[i]->SetEnable(false);
+	}
+	Circle = 3;
+	SetLocation(Vector3(-800, 230, 0));
 	_Runable = true;
 	_IsHit = false;
 	_IsJump = false;
