@@ -225,9 +225,6 @@
     <ClInclude Include="Spider2.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
-    <ClInclude Include="SunFlower.h">
-      <Filter>소스 파일\TrapTest</Filter>
-    </ClInclude>
     <ClInclude Include="TrapManager.h">
       <Filter>소스 파일\TrapTest</Filter>
     </ClInclude>
@@ -413,6 +410,9 @@
     </ClInclude>
     <ClInclude Include="Button_Credit.h">
       <Filter>소스 파일\MainStartScene\UI\MainUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SunFlower.h">
+      <Filter>소스 파일\MainScene\SunFlowers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
