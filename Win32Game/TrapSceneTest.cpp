@@ -136,6 +136,8 @@ void TrapSceneTest::Start()
 	}
 
 	InitObjectPlace();
+
+	_StageNum = 1;
 }
 
 void TrapSceneTest::End() 
