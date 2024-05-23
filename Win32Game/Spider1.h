@@ -15,7 +15,7 @@ public:
 
     void SetStopLoc(float y);
 
-    void OnTriggerExit(Collider* collision);
+    void OnTrigger(Collider* collider);
 
 private:
     Texture* _MyTex;
