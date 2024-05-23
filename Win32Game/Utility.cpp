@@ -52,13 +52,13 @@ int GetRandomNum(int from, int to)
 
 Vector3 GetMousePos()
 {
-	Vector3 mousePos(inputSystem->GetMouseState()._x, inputSystem->GetMouseState()._y, 0);
+	Vector3 mousePos((float)inputSystem->GetMouseState()._x, (float)inputSystem->GetMouseState()._y, 0);
 	return mousePos;
 }
 
 Vector3 GetWorldMousePos()
 {
-	Vector3 mousePos(inputSystem->GetMouseState()._x, inputSystem->GetMouseState()._y, 0);
+	Vector3 mousePos((float)inputSystem->GetMouseState()._x, (float)inputSystem->GetMouseState()._y, 0);
 	Vector3 worldPos = camera->GetWorldPos(mousePos);
 	return worldPos;
 }
@@ -145,7 +145,7 @@ GameObject* GetUIObject(const std::wstring& name)
 			return uiObjects[i];
 		}
 	}
-	// TODO: 여기에 return 문을 삽입합니다.
+	return nullptr;
 }
 
 bool BorderCheck(Vector3& aPos, Vector3& aScale, Vector3& bPos, Vector3& bScale)

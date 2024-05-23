@@ -17,7 +17,7 @@ private:
     GUID* _DimentionIDs;
     UINT _FrameCount;
     UINT _Idx;
-    int _ImageIdx;
+    UINT _ImageIdx;
 
     bool _StartTimer = false;
     float _Timer;
