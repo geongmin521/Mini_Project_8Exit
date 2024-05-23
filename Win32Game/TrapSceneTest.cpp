@@ -104,12 +104,12 @@ void TrapSceneTest::Start()
 
 	GameObject* npc1 = new NPC(L"StageCat"); //테스트용 다른 npc
 	npc1->SetLocation(Vector3(-250.0f, -25.0f, 0));
-	AddObject(npc1, LAYER_GROUP::SEARCH);
+	AddObject(npc1, LAYER_GROUP::NPC);
 	_DefaultObjects.push_back(npc1); // 1
 
 	GameObject* npc2 = new NPC(L"EndCat");//테스트용 다른 npc
 	npc2->SetLocation(Vector3(21000.0f, -25.0f, 0));
-	AddObject(npc2, LAYER_GROUP::SEARCH);
+	AddObject(npc2, LAYER_GROUP::NPC);
 	_DefaultObjects.push_back(npc2); // 2
 
 	GameObject* player = new Player;
@@ -214,6 +214,7 @@ void TrapSceneTest::InitObjectPlace()
 			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {
 				_AnomalyObjects[areaIdx][i]->SetLocation(resourceManager->GetMapPos(L"area" + std::to_wstring(areaIdx + 1))[i] + worldLocation);
 				_AnomalyObjects[areaIdx][i]->SetEnable(true);
+				_AnomalyObjects[areaIdx][i]->Init();
 			}
 		}
 	}

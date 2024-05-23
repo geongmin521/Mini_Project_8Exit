@@ -30,8 +30,9 @@ enum class LAYER_GROUP {
 	SEARCH,
 	INGAMEUI,
 	INGAMETEXT,
+	NPC,
 	PLAYER,
-
+	
 	UI = 31,
 	END = 32,
 };
