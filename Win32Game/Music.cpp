@@ -41,7 +41,7 @@ namespace Music
     {
         mChannel[static_cast<int>(channel)]->stop();
         mSystem->playSound(mSoundList[static_cast<int>(soundlist)], nullptr, 0, &mChannel[static_cast<int>(channel)]);
-        mChannel[static_cast<int>(channel)]->setVolume(mVolume);
+        //mChannel[static_cast<int>(channel)]->setVolume(mVolume);
     }
 
     void SoundManager::StopMusic(eSoundChannel channel)
@@ -51,8 +51,8 @@ namespace Music
 
     void SoundManager::SetVolume(float volume, eSoundChannel chanel)
     {
-        mVolume = volume;
-        mChannel[(int)chanel]->setVolume(mVolume);
+        //mVolume = volume;
+        mChannel[(int)chanel]->setVolume(volume);
     }
 
     void SoundManager::ManageMusic(const Vector3 Playerpos)

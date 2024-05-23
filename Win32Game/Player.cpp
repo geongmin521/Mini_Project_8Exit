@@ -23,7 +23,7 @@ Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false),
 		AnswerCircle* answer = new AnswerCircle;
 		answer->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
 		_Answer.push_back(answer);
-		CreateObject(answer, LAYER_GROUP::UI);
+		CreateObject(answer, LAYER_GROUP::INGAMEUI);
 
 	}
 	Circle = 3;

@@ -17,6 +17,8 @@ HorseCar::HorseCar() : _MyTex(nullptr)
 	_CoolTime = 2;
 	_WaitTime = 1;
 	_MoveSpeed = 300;
+	GameObject::CreateAnimater(L"Carriage", 0.1f);
+	GetAinmater()->ChangeState(L"Idle"); //애니메이터
 }
 
 HorseCar::~HorseCar()
@@ -33,6 +35,7 @@ void HorseCar::Update() //다른 클래스랑 거의 엇비슷한데.. 새로만들었네.. 이것들�
 	
 	if (_MoveState == HorseCarMoveState::Idle) {
 		if (_Search->GetPlayerLocation()._x - GetLocation()._x >= 640.0f) {
+			Music::soundManager->PlayMusic(Music::eSoundList::Carriage_rush, Music::eSoundChannel::HorseCarRush);
 			SetState(HorseCarMoveState::Move);
 		}
 	}
@@ -65,7 +68,7 @@ void HorseCar::Update() //다른 클래스랑 거의 엇비슷한데.. 새로만들었네.. 이것들�
 void HorseCar::Render()
 {
 	Vector3 renderPosition = camera->GetRenderPos(GameObject::GetLocation());
-	if (GetAinmater() != nullptr)
+	if (GetAinmater() != nullptr && _State == HorseCarState::Move)
 	{
 		GetAinmater()->Render();
 	}
@@ -101,10 +104,12 @@ void HorseCar::ResetState()
 void HorseCar::Init()
 {
 	_MoveState = HorseCarMoveState::Idle;
-
+	GetCollider()->SetTrigger(true);
+	_Search->SetPlayerLocation(Vector3(-10000, -10000, 0));
 	if (GetMoveAnomalyState())
 	{			
 		_State = HorseCarState::Move;
+		SetMoveAnomalyState(false);
 	}
 	else if(GetDiffAnomalyState())
 	{
@@ -118,9 +123,7 @@ void HorseCar::Init()
 	std::wstring path;
 	
 	if (_State == HorseCarState::Move) //상태가 이동일때 애니메이션 할당하기
-	{
-		GameObject::CreateAnimater(L"Carriage", 0.1f);
-		GetAinmater()->ChangeState(L"Idle"); //애니메이터
+	{	
 		GetCollider()->SetScale(Vector3((float)_MyTex->Width() -440, (float)_MyTex->Height(), 0.0f));
 		GetCollider()->SetOffset(Vector3(-220,0,0));
 		path = L"Carriage_Variation\\Carriage_Variation_0.png";
@@ -129,7 +132,7 @@ void HorseCar::Init()
 	{
 		path = L"Carriage_Variation\\Carriage_Variation_" + std::to_wstring((int)_State) + L".png";
 	}
-
+	GetAinmater()->ChangeState(L"Idle"); //애니메이터
 	_MyTex = resourceManager->GetTexture(L"Carriage" + std::to_wstring((int)_State), L"Image\\" + path);
 }
 
@@ -148,10 +151,11 @@ void HorseCar::SetState(HorseCarMoveState _moveState)
 			break;
 		case HorseCarMoveState::Move: 
 			stateStr = L"Move";
-			Music::soundManager->PlayMusic(Music::eSoundList::Carriage_rush, Music::eSoundChannel::BGM);
-			Music::soundManager->PlayMusic(Music::eSoundList::Carriage_moving, Music::eSoundChannel::Object);//음악 재생
+
+			Music::soundManager->PlayMusic(Music::eSoundList::Carriage_moving, Music::eSoundChannel::HorseCarMove);
 			break;
 		case HorseCarMoveState::Wait:
+			Music::soundManager->StopMusic(Music::eSoundChannel::HorseCarMove);
 			stateStr = L"Wait";
 			break;
 		}

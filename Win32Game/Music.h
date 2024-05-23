@@ -17,13 +17,15 @@ namespace Music
     enum class eSoundChannel
     {
         BGM,
+        HorseCarRush,
         Effect,
         ChangeStageEffect,
         DoorOpenEffect,
         WrongEffect,
         Talk,
         Player,
-        Object,
+        HorseCarMove,
+        SnakeMove,
         Click,
         Fire,
         Size

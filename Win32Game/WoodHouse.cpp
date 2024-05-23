@@ -30,9 +30,11 @@ WoodHouse::~WoodHouse()
 
 void WoodHouse::Init()
 {
+	GetAinmater()->SetIsEnd(false);
 	//_WitchGimmick = (WITCH_GIMMICK)GetRandomNum((int)WITCH_GIMMICK::SIZE);
 	if (GetMoveAnomalyState())
 	{
+		SetMoveAnomalyState(false);
 		_WitchGimmick = WITCH_GIMMICK::WITCHOPEN;
 		_MyTex = resourceManager->GetTexture(L"Cottage1", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
 	}

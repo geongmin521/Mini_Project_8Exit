@@ -7,7 +7,7 @@ Snake::Snake() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"Snake", L"Image\\Snake.png");
 	CreateCollider();
-
+	
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0));
 	SetName(L"Snake");
 	GetCollider()->SetTrigger(true);
@@ -22,7 +22,14 @@ Snake::~Snake()
 void Snake::Update()
 {
 	if (_State == SNAKE_STATE::CHASE) {
-		SetLocation(GetLocation() + _RunDir *_MoveSpeed * timeManager->GetDeltaTime());
+		float moveDistance = _MoveSpeed * timeManager->GetDeltaTime();
+		SetLocation(GetLocation() + _RunDir * moveDistance);
+		_MaxDistance -= moveDistance;
+		if (_MaxDistance <= 0)
+		{
+			SetEnable(false);
+			Music::soundManager->StopMusic(Music::eSoundChannel::SnakeMove);//擠學 營儅
+		}
 	}
 	else if (_State == SNAKE_STATE::MOVEDOWN) {
 		SetLocation(GetLocation() + Vector3(0, 1, 0) * _MoveSpeed * timeManager->GetDeltaTime());
@@ -51,7 +58,7 @@ void Snake::ChangeState(SNAKE_STATE state)
 		if (SNAKE_STATE::CHASE == _State)
 		{
 			stateStr = L"Move";
-			Music::soundManager->PlayMusic(Music::eSoundList::Snake_moving, Music::eSoundChannel::Object);//擠學 營儅
+			Music::soundManager->PlayMusic(Music::eSoundList::Snake_moving, Music::eSoundChannel::SnakeMove);//擠學 營儅
 		}
 		else
 		{
@@ -93,6 +100,7 @@ void Snake::Render()
 
 void Snake::ResetState()
 {
+	_MaxDistance = 6000;
 	ChangeState(SNAKE_STATE::IDLE);
 	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), 2300.0f, 0));
 	GetCollider()->SetTrigger(true);

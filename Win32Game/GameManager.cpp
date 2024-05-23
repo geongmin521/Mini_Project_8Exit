@@ -36,7 +36,7 @@ namespace game
 		Music::soundManager->LoadMusic(Music::eSoundList::click, false,						"Sound\\click.mp3");  
 		Music::soundManager->LoadMusic(Music::eSoundList::New_Background_music, true,		"Sound\\New_Background_music.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Attacked_by_Objects, false,		"Sound\\Attacked_by_Objects.mp3");  
-		Music::soundManager->LoadMusic(Music::eSoundList::Carriage_rush, true,				"Sound\\Carriage_rush.mp3");//¹è°æÀ½¾Ç
+		Music::soundManager->LoadMusic(Music::eSoundList::Carriage_rush, false,				"Sound\\Carriage_rush.mp3");//¹è°æÀ½¾Ç
 		Music::soundManager->LoadMusic(Music::eSoundList::bonfire, true,					"Sound\\bonfire.mp3");//¹è°æÀ½¾Ç
 		Music::soundManager->LoadMusic(Music::eSoundList::Carriage_moving, true,			"Sound\\Carriage_moving.mp3");//¹è°æÀ½¾Ç
 		Music::soundManager->LoadMusic(Music::eSoundList::Cottage_door_open, false,			"Sound\\Cottage_door_open.mp3");	

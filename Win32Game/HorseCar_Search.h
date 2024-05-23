@@ -13,6 +13,7 @@ public:
 
     //const Vector3& GetPlayerDir() { return _PlayerDir; }
     const Vector3& GetPlayerLocation() { return _PlayerLocation; }
+    const void SetPlayerLocation(Vector3 pos) { _PlayerLocation = pos; }
 
     void OnTrigger(Collider* collider);
     void OnTriggerExit(Collider* collider);
