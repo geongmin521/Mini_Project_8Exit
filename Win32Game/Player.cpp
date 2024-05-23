@@ -29,6 +29,19 @@ _Stamina(500.0f), _MaxStamina(500.0f), _StaminaDrain(100.0f), _StaminaRecovery(1
 	Circle = 4;
 }
 
+Player::Player(float Timer) : _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
+_Stamina(500.0f), _MaxStamina(500.0f), _StaminaDrain(100.0f), _StaminaRecovery(150.0f), _CurState(PlayerState::Idle)
+{
+	_Timer = Timer;
+	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
+	GameObject::CreateCollider();
+	GameObject::CreateAnimater(L"Player", 0.1f);
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width() * 0.7f, (float)_MyTex->Height(), 0) * 0.70f);
+	GameObject::SetName(L"Player");
+	_StaminaBarMin = new StaminaBarMin;
+	Circle = 0;
+}
+
 Player::~Player()
 {
 }

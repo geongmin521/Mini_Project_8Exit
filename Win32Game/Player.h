@@ -19,6 +19,7 @@ class Player : public GameObject
 {
 public:
 	Player();
+	Player(float Timer);
 	~Player();
 	void Update();
 	void Render();
