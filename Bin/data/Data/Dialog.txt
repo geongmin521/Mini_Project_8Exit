@@ -14,7 +14,7 @@ StageCat1:두 번째 길이야.
 StageCat2:세 번째 길이야.
 StageCat3:네 번째 길이야.
 StageCat4:다섯 번째 길이야.
-StageCat5:마지막 번째 길이야.
+StageCat5:마지막 길이야.
 EndCat0:이 길을 잘 기억해둬
 EndCat1:제대로 보고 온 거 맞아?			
 EndCat2:오래 걸었어?			
