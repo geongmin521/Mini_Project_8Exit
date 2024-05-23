@@ -71,7 +71,7 @@ void Spider1::OnTriggerExit(Collider* collider) {
 void Spider1::ChangeImage()
 {
 	if (GetDiffAnomalyState() == true) {
-		std::wstring newKey = GetName() + L"_Anomaly";
+		std::wstring newKey = GetName() + L"_Anomaly" + std::to_wstring(GetRandomNum(2));
 		std::wstring newPath = L"Image\\" + newKey + L".png";
 		_MyTex = resourceManager->GetTexture(newKey, newPath);
 		SetDiffAnomalyState(false);
