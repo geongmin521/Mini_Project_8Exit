@@ -8,8 +8,8 @@
 #include "Utility.h"
 
 
-Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
-				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _CurState(PlayerState::Idle)
+Player::Player() : _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
+_Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _CurState(PlayerState::Idle), _Timer(0)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
 	_AnswerUI = resourceManager->GetTexture(L"Crayon", L"Image\\UI\\Crayon.png");
@@ -67,6 +67,9 @@ void Player::Update()
 
 void Player::CheckCircle()
 {
+	if (_Timer <= 20) {
+		return;
+	}
 	if (inputSystem->GetMouseButtonDown(0)) //¿ÞÂÊ Å¬¸¯½Ã
 	{
 		if (CheckPositionOnUI() == false && CheckMouseOnScreen()) {
@@ -122,14 +125,13 @@ void Player::Render()
 
 void Player::Move()
 {
-	static double Timer = 0;	
-	if (Timer <= 20)
+	if (_Timer <= 20)
 	{
-		if (inputSystem->isKeyDown(VK_RETURN))
+		if (inputSystem->GetMouseButtonDown(0))
 		{
-			Timer += 1.9;
+			_Timer += 2.0f;
 		}
-		Timer += timeManager->GetDeltaTime();
+		_Timer += timeManager->GetDeltaTime();
 		return;
 	}		
 

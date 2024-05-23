@@ -35,7 +35,7 @@ private:
 	HWND m_hWnd = { 0 };			// HWND is a handle to a window.
 
 	int width = 1920;
-	int height = 1080;
+	int height = 1110;
 };
 
 namespace global

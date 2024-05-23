@@ -34,7 +34,7 @@ void House::Render()
 		endX, endY
 	);
 
-	ComponentRender();
+	//ComponentRender();
 }
 
 void House::OnTriggerEnter(Collider* collider)

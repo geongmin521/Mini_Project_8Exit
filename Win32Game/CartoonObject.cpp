@@ -13,12 +13,9 @@ CartoonObject::~CartoonObject()
 void CartoonObject::Update()
 {
 	_RenderTime -= timeManager->GetDeltaTime();
-	if (inputSystem->isKeyDown(VK_SPACE)) {
-		if (_RenderTime <= 0.0f) {
-			sceneIdx++;
-			_RenderTime = 0.5f;
-		}
-		if (sceneIdx > 4) {
+	if (inputSystem->GetMouseButtonDown(0)) {
+		sceneIdx++;
+		if (sceneIdx > 5) {
 			_StartTimer = true;
 			camera->PlayEffect(FADE_IN);
 		}

@@ -120,9 +120,9 @@ void NPC::TutorialDiaLog() //콜라이더 와 상관없이 진행하기?
 	static int dialogCount=0;
 	static float Timer=0;
 	Timer += timeManager->GetDeltaTime();	
-	if (inputSystem->isKeyDown(VK_RETURN))
+	if (inputSystem->GetMouseButtonDown(0))
 	{
-		Timer = 1.9;
+		Timer = 2.0f;
 	}
 		
 	if (Timer >= 2)

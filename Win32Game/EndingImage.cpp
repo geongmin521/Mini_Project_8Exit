@@ -3,7 +3,7 @@
 
 EndingImage::EndingImage() : _MyTex(nullptr), _Timer(0), _StoryTimer(0)
 {
-	_MyTex = resourceManager->GetTexture(L"EndingStory", L"Image\\scenes\\5.png");
+	_MyTex = resourceManager->GetTexture(L"EndingStory", L"Image\\scenes\\6.png");
 }
 
 EndingImage::~EndingImage()

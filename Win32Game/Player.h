@@ -44,6 +44,7 @@ private:
 	float _MaxStamina;      // 최대 스태미너
 	float _StaminaDrain;    // 달리기 시 초당 스태미너 소모량
 	float _StaminaRecovery; // 초당 스태미너 회복량
+	float _Timer;
 	int Circle;// 남은 서클수?
 	bool _IsJump;
 	bool _IsHit;
