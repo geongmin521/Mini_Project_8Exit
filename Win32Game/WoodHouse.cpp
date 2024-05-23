@@ -132,7 +132,8 @@ void WoodHouse::StateChange(WITCH_STATE witchState)
 			break;
 		case WITCH_STATE::OPEN:
 			GetAinmater()->SetIsLoop(false);
-			Music::soundManager->PlayMusic(Music::eSoundList::Cottage_door_open, Music::eSoundChannel::Effect);//擠學 營儅
+			Music::soundManager->SetVolume(10, Music::eSoundChannel::DoorOpenEffect);
+			Music::soundManager->PlayMusic(Music::eSoundList::Cottage_door_open, Music::eSoundChannel::DoorOpenEffect);//擠學 營儅
 			stateStr = L"Open";
 			break;
 		}
