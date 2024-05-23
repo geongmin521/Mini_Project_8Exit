@@ -135,10 +135,8 @@ void TrapSceneTest::Start()
 			AddObject(_AnomalyObjects[i][j], LAYER_GROUP::MONSTER);
 		}
 	}
-
-	InitObjectPlace();
-
 	_StageNum = 1;
+	InitObjectPlace();
 }
 
 void TrapSceneTest::End() 
