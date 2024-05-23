@@ -26,7 +26,7 @@ void Dialog(std::wifstream& file)
 
     for (int i = 0; i < tokens.size(); i++)
     {
-        int current = tokens[i].find(':'); //그곳의 인덱스를 찾는거지?
+        int current = (int)tokens[i].find(':'); //그곳의 인덱스를 찾는거지?
         std::wstring key = tokens[i].substr(0, current);
         std::wstring dialog = tokens[i].substr(current+1, tokens[i].size());
         resourceManager->InsertDialog(key, dialog);
@@ -39,7 +39,7 @@ void Mapdata(std::wifstream& file)
 
     for (int i = 0; i < tokens.size(); i++)
     {
-        int current = tokens[i].find(':'); //그곳의 인덱스를 찾는거지?
+        int current = (int)tokens[i].find(':'); //그곳의 인덱스를 찾는거지?
         std::wstring key = tokens[i].substr(0, current); //키
         std::wstring value = tokens[i].substr(current+1, tokens[i].size()); //벨류
         std::vector<Vector3> V3Pos;     //vector3  
