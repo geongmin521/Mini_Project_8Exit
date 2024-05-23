@@ -30,22 +30,31 @@ WoodHouse::~WoodHouse()
 
 void WoodHouse::Init()
 {
-	_WitchGimmick = (WITCH_GIMMICK)GetRandomNum((int)WITCH_GIMMICK::SIZE);
-	switch (_WitchGimmick)
-	{//기획한테요구하기 , 이미지3개, 혹은 마녀가 문여는거 
-	case WITCH_GIMMICK::NORMAL:
+	//_WitchGimmick = (WITCH_GIMMICK)GetRandomNum((int)WITCH_GIMMICK::SIZE);
+	if (GetMoveAnomalyState())
+	{
+		_WitchGimmick = WITCH_GIMMICK::WITCHOPEN;
 		_MyTex = resourceManager->GetTexture(L"Cottage1", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
-		break;
-	case WITCH_GIMMICK::WITCHOPEN:
+	}
+	else if (GetDiffAnomalyState())
+	{
+		int index = GetRandomNum(2);
+		if (index == 0)
+		{
+			_WitchGimmick = WITCH_GIMMICK::VARIATION1;
+			_MyTex = resourceManager->GetTexture(L"Cottage2", L"Image\\Cottage\\Cottage_Variation\\Cottage_Variation_2.png");
+		}
+		else
+		{
+			_WitchGimmick = WITCH_GIMMICK::VARIATION2;
+			_MyTex = resourceManager->GetTexture(L"Cottage3", L"Image\\Cottage\\Cottage_Variation\\Cottage_Variation_3.png");
+		}
+		SetDiffAnomalyState(false);
+	}
+	else
+	{
+		_WitchGimmick = WITCH_GIMMICK::NORMAL;
 		_MyTex = resourceManager->GetTexture(L"Cottage1", L"Image\\Cottage\\Idle\\Cottage_Idle_0.png");
-		break;
-	case WITCH_GIMMICK::VARIATION1:
-		//문안열리고 그냥 이미지교체
-		_MyTex = resourceManager->GetTexture(L"Cottage2", L"Image\\Cottage\\Cottage_Variation\\Cottage_Variation_2.png");
-		break;
-	case WITCH_GIMMICK::VARIATION2:
-		_MyTex = resourceManager->GetTexture(L"Cottage3", L"Image\\Cottage\\Cottage_Variation\\Cottage_Variation_3.png");
-		break;
 	}
 }
 

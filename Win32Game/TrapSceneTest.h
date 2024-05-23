@@ -48,7 +48,7 @@ private:
         1,
         0,
         1,
-        1
+        0
     };
     std::vector<std::pair<int, int>> _AnomalyIdx;
     

@@ -188,8 +188,11 @@ void TrapSceneTest::InitObjectPlace()
 		else if (_AreaSettingState[areaIdx] == 2) {
 			targetObject = GetRandomNum(_AreaObjectCount[areaIdx]);
 			for (int i = 0; i < _AreaObjectCount[areaIdx]; i++) {
-				if (areaIdx == 5) {
+				if (areaIdx == 3) {
 					_AnomalyObjects[areaIdx][2]->SetMoveAnomalyState(true);
+				}
+				else if (areaIdx == 5) {
+					_AnomalyObjects[areaIdx][0]->SetMoveAnomalyState(true);
 				}
 				else {
 					if (i == targetObject) {
@@ -217,18 +220,20 @@ void TrapSceneTest::InitObjectPlace()
 
 bool TrapSceneTest::NextStage(bool playerHit)
 {
-	if (playerHit == false && CheckCorrect() == true) {
-		_StageNum++;
-		Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_correct, Music::eSoundChannel::Effect);
-		if (_StageNum > 6) {
-			sceneManager->LoadScene(SCENE_LAYER::ENDING);
-			return false;
+	if (playerHit == false) {
+		if (CheckCorrect() == true) {
+			_StageNum++;
+			Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_correct, Music::eSoundChannel::Effect);
+			if (_StageNum > 6) {
+				sceneManager->LoadScene(SCENE_LAYER::ENDING);
+				return false;
+			}
 		}
-	}
-	else {
-		if (_StageNum > 1) {
-			Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_wrong, Music::eSoundChannel::Effect);
-			_StageNum--;
+		else {
+			if (_StageNum > 1) {
+				Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_wrong, Music::eSoundChannel::Effect);
+				_StageNum--;
+			}
 		}
 	}
 	ResetObjectPos();
