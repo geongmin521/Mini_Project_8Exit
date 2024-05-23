@@ -12,7 +12,12 @@ NPC::NPC(std::wstring DialogKey) : _MyTex(nullptr)
 
 	SetLocation(Vector3(300, 300, 0));
 	_DialogKey = DialogKey;
-	_TextBox = new TextBox(resourceManager->GetDialog(_DialogKey + L"0"), 12, Color(255, 0, 0, 0), (int)FontType::dialog);
+	bool bigbox;
+	if (_DialogKey == L"StageCat")
+		bigbox = true;
+	else
+		bigbox = false;
+	_TextBox = new TextBox(resourceManager->GetDialog(_DialogKey + L"0"), 24, Color(255, 0, 0, 0), (int)FontType::dialog, true, bigbox);
 	CreateObject(_TextBox,LAYER_GROUP::UI);
 
 	CreateCollider();

@@ -18,6 +18,7 @@ namespace Music
     {
         BGM,
         Effect,
+        ChangeStageEffect,
         DoorOpenEffect,
         WrongEffect,
         Talk,

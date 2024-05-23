@@ -55,8 +55,8 @@ Gdiplus::RectF Text::GetRect(alignX alignX, alignY alignY)
 	return Gdiplus::RectF(
 		(Gdiplus::REAL)posX, 
 		(Gdiplus::REAL)posY,
-		(Gdiplus::REAL)(posX + (int)_Rect._x),
-		(Gdiplus::REAL)(posY + (int)_Rect._y));
+		(Gdiplus::REAL)((int)_Rect._x),
+		(Gdiplus::REAL)((int)_Rect._y));
 
 }
 

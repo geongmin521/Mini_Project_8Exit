@@ -22,7 +22,7 @@ namespace Music
     void SoundManager::Init()
     {
         System_Create(&mSystem);
-        mSystem->init(2, FMOD_INIT_NORMAL, 0);
+        mSystem->init(20, FMOD_INIT_NORMAL, 0);
     }
 
 

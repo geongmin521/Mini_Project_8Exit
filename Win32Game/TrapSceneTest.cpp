@@ -10,6 +10,7 @@ TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidt
 	
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::MONSTER);
 	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::SEARCH);
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::NPC);
 }
 
 TrapSceneTest::~TrapSceneTest()
@@ -225,7 +226,7 @@ bool TrapSceneTest::NextStage(bool playerHit)
 	if (playerHit == false) {
 		if (CheckCorrect() == true) {
 			_StageNum++;
-			Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_correct, Music::eSoundChannel::Effect);
+			Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_correct, Music::eSoundChannel::ChangeStageEffect);
 			if (_StageNum > 6) {
 				sceneManager->LoadScene(SCENE_LAYER::ENDING);
 				return false;
@@ -233,7 +234,7 @@ bool TrapSceneTest::NextStage(bool playerHit)
 		}
 		else {
 			if (_StageNum > 1) {
-				Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_wrong, Music::eSoundChannel::Effect);
+				Music::soundManager->PlayMusic(Music::eSoundList::Stage_Transition_with_wrong, Music::eSoundChannel::ChangeStageEffect);
 				_StageNum--;
 			}
 		}
@@ -247,7 +248,6 @@ void TrapSceneTest::SetDiffAnomaly(int count)
 	if (count == 0) return;
 	while (count > 0) {
 		int randomNum = GetRandomNum(_AreaCount);
-		if (randomNum == 5 && _StageNum == 6) continue;
 		if (_AreaSettingState[randomNum] == 0) {
 			Music::soundManager->SetIsWrong(randomNum, true);
 			_AreaSettingState[randomNum] = 1;
@@ -261,7 +261,7 @@ void TrapSceneTest::SetMoveAnomaly(int count)
 	if (count == 0) return;
 	while (count > 0) {
 		int randomNum = GetRandomNum(_AreaCount);
-		if (randomNum == 5 && _StageNum != 6) continue;
+		if (randomNum == 3 && _StageNum < 4) continue;
 		if (_AreaSettingState[randomNum] == 0 && _AreaMoveAnomalyCount[randomNum] != 0) {
 			_AreaSettingState[randomNum] = 2;
 			count--;
