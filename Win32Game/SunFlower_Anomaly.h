@@ -22,6 +22,6 @@ private:
     Vector3 _Dir = Vector3(0, 1, 0);
     float _StartPos;
     float _EndPos;
-    float _MoveSpeed = 200.0f;
+    float _MoveSpeed = 400.0f;
 };
 
