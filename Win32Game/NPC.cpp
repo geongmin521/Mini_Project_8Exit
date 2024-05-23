@@ -18,7 +18,7 @@ NPC::NPC(std::wstring DialogKey) : _MyTex(nullptr)
 	else
 		bigbox = false;
 	_TextBox = new TextBox(resourceManager->GetDialog(_DialogKey + L"0"), 24, Color(255, 0, 0, 0), (int)FontType::dialog, true, bigbox);
-	CreateObject(_TextBox,LAYER_GROUP::UI);
+	CreateObject(_TextBox,LAYER_GROUP::INGAMEUI);
 
 	CreateCollider();
 	GetCollider()->SetScale(Vector3(600, 600, 0.0f));

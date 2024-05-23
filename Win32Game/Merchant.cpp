@@ -11,7 +11,7 @@ Merchant::Merchant()
 	GetCollider()->SetTrigger(true);
 	SetName(L"Merchant");
 	_TextBox = new TextBox(L"°Å¹Ì ¸ÔÀ»·¡?",24,Color(255,0,0,0),(int)FontType::dialog, true, false);
-	CreateObject(_TextBox, LAYER_GROUP::UI);
+	CreateObject(_TextBox, LAYER_GROUP::INGAMEUI);
 	_TextBox->SetEnable(false); 
 
 	GameObject::CreateAnimater(L"Merchant", 0.1f);
