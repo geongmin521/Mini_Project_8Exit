@@ -13,7 +13,7 @@ WoodHouse::WoodHouse() : _MyTex(nullptr)
 	std::uniform_int_distribution<> dis(1, 3);
 	// 7번 위치 ( 25920~ )
 	CreateCollider();
-	GetCollider()->SetScale(Vector3(300, 550, 0.0f));
+	GetCollider()->SetScale(Vector3(_MyTex->Width(), _MyTex->Height() , 0.0f)); //중심 +100과 플레이어 위치로부터 
 	GetCollider()->SetTrigger(true);
 	SetName(L"Cottage");
 	StateChange(WITCH_STATE::IDLE);
@@ -100,15 +100,13 @@ void WoodHouse::Render()
 //}
 //마녀 나오는 오두막 만들기 기본적으로 둘다 적용되는 근처에 가면 문 열리는 기믹 만들기
 // 마녀 등장
-void WoodHouse::OnTriggerExit(Collider* collider) // 근처에 가면 문 열리는 이미지로 바꿈
+void WoodHouse::OnTrigger(Collider* collider) // 근처에 가면 문 열리는 이미지로 바꿈
 {
 	if (collider->GetOwnerObject()->GetName() == L"Player")
 	{
-		if (WITCH_GIMMICK::WITCHOPEN == _WitchGimmick)
+		if (WITCH_GIMMICK::WITCHOPEN == _WitchGimmick&& collider->GetOwnerObject()->GetLocation()._x >= GetLocation()._x +100)
 		{
-			StateChange(WITCH_STATE::OPEN);
-			GetAinmater()->SetIsLoop(false);
-			Music::soundManager->PlayMusic(Music::eSoundList::Cottage_door_open, Music::eSoundChannel::Effect);//음악 재생
+			StateChange(WITCH_STATE::OPEN);			
 		}
 	}
 }
@@ -133,6 +131,8 @@ void WoodHouse::StateChange(WITCH_STATE witchState)
 			stateStr = L"Idle";
 			break;
 		case WITCH_STATE::OPEN:
+			GetAinmater()->SetIsLoop(false);
+			Music::soundManager->PlayMusic(Music::eSoundList::Cottage_door_open, Music::eSoundChannel::Effect);//음악 재생
 			stateStr = L"Open";
 			break;
 		}

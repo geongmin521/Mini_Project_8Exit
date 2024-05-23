@@ -22,6 +22,7 @@ void ScareCrow_Rotate::Update()
 	if (_MoveDown == true) {
 		SetLocation(GetLocation() + Vector3(0, 1, 0) * 3500.0f * timeManager->GetDeltaTime());
 		if (GetLocation()._y >= 230) {
+			Music::soundManager->PlayMusic(Music::eSoundList::Scarecrow_drop_from_Web, Music::eSoundChannel::Effect);
 			_MoveDown = false;
 		}
 	}
@@ -63,7 +64,7 @@ void ScareCrow_Rotate::OnTriggerExit(Collider* collider)
 {
 	if(GetMoveAnomalyState() == true && GetLocation()._y < 230.0f) {
 		_MoveDown = true;
-		Music::soundManager->PlayMusic(Music::eSoundList::Scarecrow_drop_from_Web, Music::eSoundChannel::Effect);
+		
 	}
 }
 

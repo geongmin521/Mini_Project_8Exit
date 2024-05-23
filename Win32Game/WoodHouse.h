@@ -23,7 +23,7 @@ public:
     void Init();
     virtual void Update();
     virtual void Render();
-    virtual void OnTriggerExit(Collider* collider);
+    virtual void OnTrigger(Collider* collider);
     void ResetState();
     void StateChange(WITCH_STATE witchState);
 private:

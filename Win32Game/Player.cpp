@@ -15,7 +15,7 @@ Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false),
 	_AnswerUI = resourceManager->GetTexture(L"Crayon", L"Image\\UI\\Crayon.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"Player",0.1f);
-	GetCollider()->SetScale(Vector3((float)_MyTex->Width(), (float)_MyTex->Height(), 0));
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width() * 0.8f, (float)_MyTex->Height(), 0) * 0.85f);
 	GameObject::SetName(L"Player");
 	_StaminaBarMin = new StaminaBarMin;
 	for (int i = 0; i < 3; i++)
@@ -126,6 +126,8 @@ void Player::Move()
 	Vector3 dir;
 	if (inputSystem->isKey(VK_LEFT)|| inputSystem->isKey('A')) 
 	{
+		if (GetLocation()._x - _MyTex->Width() / 2 < -960)
+			return;
 		_IsWalk = true;
 		dir = Vector3(-1, 0, 0);
 		SetDir(dir);
