@@ -19,7 +19,7 @@ void HorseCar_Search::Update()
 
 void HorseCar_Search::Render()
 {
-	ComponentRender();
+	//ComponentRender();
 }
 
 void HorseCar_Search::OnTrigger(Collider* collider)

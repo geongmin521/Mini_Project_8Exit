@@ -3,7 +3,7 @@
 #include "Collider.h"
 #include "Utility.h"
 #include "Bonfire.h"
-#include "Music.h"
+
 
 WoodHouse::WoodHouse() : _MyTex(nullptr)
 {
@@ -91,7 +91,7 @@ void WoodHouse::Render()
 			endX, endY
 		);
 	}
-	ComponentRender();
+	//ComponentRender();
 	//_Bonfire->Render();
 }
 

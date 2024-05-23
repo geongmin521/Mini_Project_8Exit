@@ -1,7 +1,7 @@
 #include "HorseCar.h"
 #include "Collider.h"
 #include "Utility.h"
-#include "Music.h"
+
 
 HorseCar::HorseCar() : _MyTex(nullptr)
 {
@@ -16,7 +16,7 @@ HorseCar::HorseCar() : _MyTex(nullptr)
 	_isChase = false;
 	_CoolTime = 2;
 	_WaitTime = 1;
-	_MoveSpeed = 300;
+	_MoveSpeed = 700;
 	GameObject::CreateAnimater(L"Carriage", 0.1f);
 	GetAinmater()->ChangeState(L"Idle"); //애니메이터
 }

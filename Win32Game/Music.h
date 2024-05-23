@@ -12,6 +12,7 @@ using namespace FMOD;
 #endif
 #include <string>
 #include "Vector3.h"
+#include "globalheader.h"
 namespace Music
 {
     enum class eSoundChannel
@@ -27,6 +28,7 @@ namespace Music
         HorseCarMove,
         SnakeMove,
         Click,
+        ButtonClick,
         Fire,
         Size
     };
@@ -43,6 +45,7 @@ namespace Music
         Player_Walk,                        //: 플레이어 이동 시 재생, //clear
         Player_run,                         //: 뛸 때 1.5배속 재생 //clear
         click,                              //: 클릭할때 //clear
+        Buttoclick,                         //: 버튼클릭할때 //clear
         Scarecrow_drop_from_Web,            //: 허수아비가 거미줄에서 떨어질 때 재생(5구역) //clear
         Snake_drop_from_Web,                //: 1구역에서 거미 대신 뱀이 떨어질 때 재생  //clear
         Snake_Bite,                         //: 뱀이 물 때 재생 //clear

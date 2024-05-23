@@ -20,7 +20,7 @@ void ScareCrow_Search::Update()
 
 void ScareCrow_Search::Render()
 {
-	ComponentRender();
+	//ComponentRender();
 }
 
 void ScareCrow_Search::OnTrigger(Collider* collider)

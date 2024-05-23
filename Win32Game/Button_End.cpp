@@ -29,6 +29,7 @@ void Button_End::Update()
 	if (inputSystem->GetMouseButtonUp(0)) {
 		if (CheckPositionOnUI(this) == true) {
 			_StartTimer = true;
+			Music::soundManager->PlayMusic(Music::eSoundList::Buttoclick, Music::eSoundChannel::ButtonClick);//À½¾Ç Àç»ý
 			camera->PlayEffect(FADE_IN);
 		}
 	}
@@ -56,5 +57,6 @@ void Button_End::Render()
 
 void Button_End::OnClick()
 {
+	
 	DestroyWindow(WindowHandle);
 }

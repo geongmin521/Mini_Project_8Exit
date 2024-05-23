@@ -35,6 +35,7 @@ void Button_Resume::Render()
 
 void Button_Resume::OnClick()
 {
+	Music::soundManager->PlayMusic(Music::eSoundList::Buttoclick, Music::eSoundChannel::ButtonClick);//À½¾Ç Àç»ı
 	timeManager->SetTimeScale(1.0f);
 	_Parent->SetEnable(false);
 }

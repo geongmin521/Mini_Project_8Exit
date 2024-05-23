@@ -8,7 +8,7 @@
 #include "CollisionManager.h"
 #include "EventManager.h"
 #include "Camera.h"
-#include "Music.h"
+
 #include "DataRead.h"
 namespace game
 {
@@ -34,6 +34,7 @@ namespace game
 
 		Music::soundManager->LoadMusic(Music::eSoundList::Player_run, true,					"Sound\\Player_Run.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::click, false,						"Sound\\click.mp3");  
+		Music::soundManager->LoadMusic(Music::eSoundList::Buttoclick, false,				"Sound\\Buttonclick.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::New_Background_music, true,		"Sound\\New_Background_music.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Attacked_by_Objects, false,		"Sound\\Attacked_by_Objects.mp3");  
 		Music::soundManager->LoadMusic(Music::eSoundList::Carriage_rush, false,				"Sound\\Carriage_rush.mp3");//배경음악
@@ -49,6 +50,7 @@ namespace game
 		Music::soundManager->LoadMusic(Music::eSoundList::Stage_Transition_with_correct, false,		"Sound\\Stage_Transition_with_correct.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::Stage_Transition_with_wrong, false,		"Sound\\Stage_Transition_with_wrong.mp3");
 		Music::soundManager->LoadMusic(Music::eSoundList::When_the_wrong_picture_triggered_1, false,"Sound\\When_the_wrong_picture_triggered_1.mp3"); //화면에 보여지면 소리니까 루프?
+	
 	}
 
 	void GameManager::Update()
@@ -83,6 +85,7 @@ namespace game
 	{
 		MSG msg;
 		Music::soundManager->PlayMusic(Music::eSoundList::New_Background_music, Music::eSoundChannel::BGM);//음악 재생
+		Music::soundManager->SetVolume(0.5f, Music::eSoundChannel::BGM);
 		while (true)
 		{
 			if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))

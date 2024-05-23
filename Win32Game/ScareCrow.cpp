@@ -86,7 +86,7 @@ void ScareCrow::Render()
 			endX, endY
 		);
 	}
-	ComponentRender();
+	//ComponentRender();
 }
 
 void ScareCrow::ResetState()

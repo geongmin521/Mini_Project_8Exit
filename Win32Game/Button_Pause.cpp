@@ -36,6 +36,7 @@ void Button_Pause::Render()
 
 void Button_Pause::OnClick()
 {
+	Music::soundManager->PlayMusic(Music::eSoundList::Buttoclick, Music::eSoundChannel::ButtonClick);//À½¾Ç Àç»ı
 	timeManager->SetTimeScale(0);
 	GetUIObject(L"PauseUI")->SetEnable(true);
 }

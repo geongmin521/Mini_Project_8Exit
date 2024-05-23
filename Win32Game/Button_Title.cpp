@@ -40,5 +40,6 @@ void Button_Title::Render()
 
 void Button_Title::OnClick()
 {
+	Music::soundManager->PlayMusic(Music::eSoundList::Buttoclick, Music::eSoundChannel::ButtonClick);//À½¾Ç Àç»ý
 	sceneManager->LoadScene(SCENE_LAYER::MAIN);
 }

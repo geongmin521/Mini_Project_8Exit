@@ -6,7 +6,7 @@
 #include "Collider.h"
 #include "Camera.h"
 #include "Utility.h"
-#include "Music.h"
+
 
 Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
 				  _Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _CurState(PlayerState::Idle)
@@ -117,7 +117,7 @@ void Player::Render()
 		g.DrawImage(_AnswerUI->GetImage(), posX , posY, sizeX , sizeY);
 		
 	}
-	ComponentRender();
+	//ComponentRender();
 }
 
 void Player::Move()

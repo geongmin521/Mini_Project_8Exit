@@ -1,7 +1,7 @@
 #include "ScareCrow_Rotate.h"
 #include "ResourceManager.h"
 #include "Collider.h"
-#include "Music.h"
+
 ScareCrow_Rotate::ScareCrow_Rotate() : _MyTex(nullptr)
 {
 	_MyTex = resourceManager->GetTexture(L"ScareCrow_Rotated", L"Image\\ScareCrow.png");
@@ -51,7 +51,7 @@ void ScareCrow_Rotate::Render()
 			endX, endY
 		);
 	}
-	ComponentRender();
+	//ComponentRender();
 }
 
 void ScareCrow_Rotate::ResetState()

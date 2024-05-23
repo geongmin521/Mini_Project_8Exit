@@ -47,7 +47,7 @@ void Spider1::Render()
 			endX, endY
 		);
 	}
-	ComponentRender();
+	//ComponentRender();
 }
 
 void Spider1::ResetState()

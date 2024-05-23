@@ -63,7 +63,7 @@ void NPC::Render()
 		}
 	}
 	_TextBox->SetLocation(Vector3((float)(startX + 400), (float)(startY - 50) , 0));
-	ComponentRender();
+	//ComponentRender();
 }
 
 

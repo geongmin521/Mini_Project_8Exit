@@ -1,7 +1,7 @@
 #include "Snake.h"
 #include "ResourceManager.h"
 #include "Collider.h"
-#include "Music.h"
+
 
 Snake::Snake() : _MyTex(nullptr)
 {
@@ -96,7 +96,7 @@ void Snake::Render()
 		}
 	}
 	
-	ComponentRender();
+	//ComponentRender();
 }
 
 void Snake::ResetState()

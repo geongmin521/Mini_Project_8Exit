@@ -54,7 +54,7 @@ void Spider2::Render()
 		);
 	}
 
-	ComponentRender();
+	//ComponentRender();
 }
 
 void Spider2::ResetState()

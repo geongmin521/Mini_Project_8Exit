@@ -1,5 +1,6 @@
+
 #include "Music.h"
-#include "globalheader.h"
+
 namespace Music
 {
     SoundManager* SoundManager::mInstance = nullptr;
@@ -23,6 +24,8 @@ namespace Music
     {
         System_Create(&mSystem);
         mSystem->init(20, FMOD_INIT_NORMAL, 0);
+
+
     }
 
 

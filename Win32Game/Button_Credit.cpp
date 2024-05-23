@@ -29,6 +29,7 @@ void Button_Credit::Update()
 
 	if (inputSystem->GetMouseButtonUp(0)) {
 		if (CheckPositionOnUI(this) == true) {
+			Music::soundManager->PlayMusic(Music::eSoundList::Buttoclick, Music::eSoundChannel::ButtonClick);//À½¾Ç Àç»ý
 			_StartTimer = true;
 			camera->PlayEffect(FADE_IN);
 		}
@@ -57,5 +58,6 @@ void Button_Credit::Render()
 
 void Button_Credit::OnClick()
 {
+	
 	sceneManager->LoadScene(SCENE_LAYER::CREDIT);
 }

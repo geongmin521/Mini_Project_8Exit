@@ -32,6 +32,7 @@ void Button_Start::Update()
 		if (CheckPositionOnUI(this) == true) {
 			_StartTimer = true;
 			camera->PlayEffect(FADE_IN);
+			Music::soundManager->PlayMusic(Music::eSoundList::Buttoclick, Music::eSoundChannel::ButtonClick);//À½¾Ç Àç»ý
 		}
 	}
 	if (_StartTimer == true) {
@@ -58,5 +59,6 @@ void Button_Start::Render()
 
 void Button_Start::OnClick()
 {
+	
 	sceneManager->LoadScene(SCENE_LAYER::STORY);
 }

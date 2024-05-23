@@ -15,7 +15,7 @@
 #include <random>
 
 #include "Vector3.h"
-
+#include "Music.h"
 #include <ole2.h>
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")

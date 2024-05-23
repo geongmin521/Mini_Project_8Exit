@@ -3,7 +3,7 @@
 #include "CollisionManager.h"
 #include "InGameObjectHeader.h"
 #include "SceneManager.h"
-#include "Music.h"
+
 TrapSceneTest::TrapSceneTest() : _PrevTrapIdx(-1), _AnomalyObjects(6), _AreaWidth(3840), _StageNum(1), _AreaSettingState{}
 {
 	//TODO: 여기서 각 구역 별 오브젝트를 생성해야 합니다.

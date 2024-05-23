@@ -6,7 +6,7 @@ WoodSign::WoodSign() : _MyTex(nullptr)
 	_TextBox = new TextBox(L"3", 60, Color(255, 0, 0, 0), (int)FontType::dialog,false,false);
 	CreateObject(_TextBox, LAYER_GROUP::INGAMEUI);
 	
-	_TextBox->GetTextComponent()->SetOffset(Vector3(-50, 100, 0));
+	_TextBox->GetTextComponent()->SetOffset(Vector3(-100, 120, 0));
 }
 
 WoodSign::~WoodSign()
@@ -15,7 +15,7 @@ WoodSign::~WoodSign()
 
 void WoodSign::Init(int _SceneNum)
 {
-	_TextBox->GetTextComponent()->SetText(std::to_wstring(_SceneNum));
+	_TextBox->GetTextComponent()->SetText(std::to_wstring(7 - _SceneNum)+L"KM");
 }
 
 void WoodSign::Update()
