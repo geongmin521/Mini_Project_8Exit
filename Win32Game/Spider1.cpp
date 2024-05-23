@@ -61,7 +61,7 @@ void Spider1::SetStopLoc(float y)
 	_StopLoc = y;
 }
 
-void Spider1::OnTriggerExit(Collider* collider) {
+void Spider1::OnTrigger(Collider* collider) {
 	if (GetLocation()._x < collider->GetOwnerObject()->GetLocation()._x) {
 		_MoveDown = true;
 	}
