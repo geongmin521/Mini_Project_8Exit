@@ -9,7 +9,7 @@
 
 
 Player::Player() : _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false), _RunSpeed(250),
-_Stamina(10.0f), _MaxStamina(10.0f), _StaminaDrain(5.0f), _StaminaRecovery(10.0f), _CurState(PlayerState::Idle), _Timer(0)
+_Stamina(500.0f), _MaxStamina(500.0f), _StaminaDrain(100.0f), _StaminaRecovery(150.0f), _CurState(PlayerState::Idle), _Timer(0)
 {
 	_MyTex = resourceManager->GetTexture(L"Player", L"Image\\Player\\Idle\\Player_idle_0.png");
 	_AnswerUI = resourceManager->GetTexture(L"Crayon", L"Image\\UI\\Crayon.png");
@@ -166,8 +166,8 @@ void Player::Move()
 	if (_IsWalk)
 		SetLocation(GetLocation() + dir * timeManager->GetDeltaTime() * speed);
 
-	if (inputSystem->isKey('P'))
-		_Speed = 5000;
+	//if (inputSystem->isKey('P'))
+	//	_Speed = 5000;
 	
 }
 
