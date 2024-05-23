@@ -34,6 +34,7 @@ void Snake::Update()
 		_CoolTime -= timeManager->GetDeltaTime();
 		if (_CoolTime <= 0) {
 			ChangeState(SNAKE_STATE::CHASE);
+			_CoolTime = 1.2f;
 		}
 	}
 	GetAinmater()->Update();

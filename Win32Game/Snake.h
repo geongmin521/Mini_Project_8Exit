@@ -27,7 +27,7 @@ private:
     Texture* _MyTex;
 
     float _MoveSpeed = 500.0f * 1.7f;
-    float _CoolTime = 0.7f;
+    float _CoolTime = 1.2f;
     Vector3 _RunDir;
 
     SNAKE_STATE _State = SNAKE_STATE::IDLE;
