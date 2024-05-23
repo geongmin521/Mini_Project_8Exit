@@ -18,6 +18,9 @@ namespace Music
     {
         BGM,
         Effect,
+        ChangeStageEffect,
+        DoorOpenEffect,
+        WrongEffect,
         Talk,
         Player,
         Object,
@@ -65,7 +68,7 @@ namespace Music
 
         void StopMusic(eSoundChannel channel);
 
-        void SetVolume(float volume);
+        void SetVolume(float volume, eSoundChannel chanel);
 
         void ManageMusic(const Vector3 Playerpos);
         void SetIsWrong(int index, bool ture) { IsWrong[index] = ture;}
