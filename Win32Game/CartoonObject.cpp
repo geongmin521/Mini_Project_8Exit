@@ -1,7 +1,7 @@
 #include "CartoonObject.h"
 #include "SceneManager.h"
 
-CartoonObject::CartoonObject() : _MyTex(nullptr), _RenderTime(1.0f), sceneIdx(1), _Timer(0)
+CartoonObject::CartoonObject() : _MyTex(nullptr), _RenderTime(0.5f), sceneIdx(1), _Timer(0)
 {
 	_MyTex = resourceManager->GetTexture(L"OpeningScene1", L"Image\\scenes\\1.png");
 }
@@ -13,9 +13,11 @@ CartoonObject::~CartoonObject()
 void CartoonObject::Update()
 {
 	_RenderTime -= timeManager->GetDeltaTime();
-	if (_RenderTime <= 0) {
-		_RenderTime = 1.0f;
-		sceneIdx++;
+	if (inputSystem->isKeyDown(VK_SPACE)) {
+		if (_RenderTime <= 0.0f) {
+			sceneIdx++;
+			_RenderTime = 0.5f;
+		}
 		if (sceneIdx > 4) {
 			_StartTimer = true;
 			camera->PlayEffect(FADE_IN);

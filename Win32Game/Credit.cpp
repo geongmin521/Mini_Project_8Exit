@@ -1,7 +1,7 @@
 #include "Credit.h"
 #include "SceneManager.h"
 
-Credit::Credit() : _ImgConnect(nullptr), _ImageIdx(0), _Idx(0), _Timer(0.0f), _GifNextTimer(0.03f)
+Credit::Credit() : _ImgConnect(nullptr), _ImageIdx(0), _Idx(0), _Timer(0.0f), _GifNextTimer(0.06f)
 {
 	_ImgConnect = new Image(L"data\\Image\\Ending_Credit\\Credit.gif");
 	_Count = _ImgConnect->GetFrameDimensionsCount();
@@ -23,7 +23,7 @@ void Credit::Update()
 		_GifNextTimer -= timeManager->GetDeltaTime();
 		if (_GifNextTimer <= 0.0f) {
 			_ImageIdx++;
-			_GifNextTimer = 0.03f;
+			_GifNextTimer = 0.06f;
 		}
 	}
 	else {
