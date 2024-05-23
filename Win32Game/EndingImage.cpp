@@ -21,9 +21,8 @@ void EndingImage::Update()
 	if (_StartTimer == true) {
 		_Timer += timeManager->GetDeltaTime();
 		if (_Timer >= 1.0f) {
-			sceneManager->LoadScene(SCENE_LAYER::MAIN);
+			sceneManager->LoadScene(SCENE_LAYER::CREDIT);
 		}
-
 	}
 }
 

@@ -6,6 +6,7 @@
 
 HomeScene::HomeScene()
 {
+	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::TRAPTRIGGER);
 }
 
 HomeScene::~HomeScene()
@@ -31,7 +32,7 @@ void HomeScene::Start()
 	house->SetLocation(Vector3(500.0f, 100.0f, 0));
 	AddObject(house, LAYER_GROUP::TRAPTRIGGER);
 
-	collisionManager->CheckGroup(LAYER_GROUP::PLAYER, LAYER_GROUP::TRAPTRIGGER);
+	
 }
 
 void HomeScene::End()
