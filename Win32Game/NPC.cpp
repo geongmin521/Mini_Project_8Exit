@@ -87,6 +87,7 @@ void NPC::OnTriggerExit(Collider* collider) {
 void NPC::Init(int stage)
 {
 	_StageNum = stage - 1;
+	DialogCount = 0;
 	if (_DialogKey == L"EndCat")
 	{
 		EndDioLog();
@@ -117,7 +118,7 @@ void NPC::StageDioLog()
 
 void NPC::TutorialDiaLog() //콜라이더 와 상관없이 진행하기?
 {
-	static int dialogCount=0;
+
 	static float Timer=0;
 	Timer += timeManager->GetDeltaTime();	
 	if (inputSystem->GetMouseButtonDown(0))
@@ -128,10 +129,10 @@ void NPC::TutorialDiaLog() //콜라이더 와 상관없이 진행하기?
 	if (Timer >= 2)
 	{
 		Timer = 0;
-		std::wstring text = resourceManager->GetDialog(L"StartCat" + std::to_wstring(dialogCount));
-		if(dialogCount<=10)
+		std::wstring text = resourceManager->GetDialog(L"StartCat" + std::to_wstring(DialogCount));
+		if(DialogCount <=10)
 			_TextBox->GetTextComponent()->SetText(text); 
-		dialogCount++;
+		DialogCount++;
 	}
 }
 

@@ -28,6 +28,7 @@ private:
 	Texture* _MyTex;
 	std::wstring _DialogKey;
 	int _StageNum;
+	int DialogCount;
 	//bool _isTalk; //각 오브젝트가 상태를 들고있어야하지않을까?
 	//스테이지를 npc가 들고잇는게 맞는듯?
 	//텍스트 받아오는알고리즘
