@@ -27,6 +27,7 @@ void Snake::Update()
 		_MaxDistance -= moveDistance;
 		if (_MaxDistance <= 0)
 		{
+			GetCollider()->SetPos(Vector3( - 10000, -10000, 0));
 			SetEnable(false);
 			Music::soundManager->StopMusic(Music::eSoundChannel::SnakeMove);//À½¾Ç Àç»ý
 		}

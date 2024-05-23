@@ -12,12 +12,8 @@ NPC::NPC(std::wstring DialogKey) : _MyTex(nullptr)
 
 	SetLocation(Vector3(300, 300, 0));
 	_DialogKey = DialogKey;
-	bool bigbox;
-	if (_DialogKey == L"StageCat")
-		bigbox = true;
-	else
-		bigbox = false;
-	_TextBox = new TextBox(resourceManager->GetDialog(_DialogKey + L"0"), 24, Color(255, 0, 0, 0), (int)FontType::dialog, true, bigbox);
+
+	_TextBox = new TextBox(resourceManager->GetDialog(_DialogKey + L"0"), 24, Color(255, 0, 0, 0), (int)FontType::dialog, true, true);
 	CreateObject(_TextBox,LAYER_GROUP::INGAMEUI);
 
 	CreateCollider();
@@ -100,10 +96,14 @@ void NPC::Init(int stage)
 		if (_StageNum == 0)
 		{
 			_DialogKey = L"StartCat";
+			GetAinmater()->ChangeState(L"Talk");
+			_TextBox->SetEnable(true);
+			_TextBox->GetTextComponent()->SetText(resourceManager->GetDialog(L"StartCat0"));
 		}
 		else
 		{
 			_DialogKey = L"StageCat";
+			_TextBox->SetEnable(false);
 			StageDioLog();
 		}	
 	}
@@ -120,11 +120,17 @@ void NPC::TutorialDiaLog() //콜라이더 와 상관없이 진행하기?
 	static int dialogCount=0;
 	static float Timer=0;
 	Timer += timeManager->GetDeltaTime();	
+	if (inputSystem->isKeyDown(VK_RETURN))
+	{
+		Timer = 1.9;
+	}
+		
 	if (Timer >= 2)
 	{
 		Timer = 0;
 		std::wstring text = resourceManager->GetDialog(L"StartCat" + std::to_wstring(dialogCount));
-		_TextBox->GetTextComponent()->SetText(text); 
+		if(dialogCount<=10)
+			_TextBox->GetTextComponent()->SetText(text); 
 		dialogCount++;
 	}
 }

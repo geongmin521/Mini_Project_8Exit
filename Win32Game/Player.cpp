@@ -15,10 +15,10 @@ Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false),
 	_AnswerUI = resourceManager->GetTexture(L"Crayon", L"Image\\UI\\Crayon.png");
 	GameObject::CreateCollider();
 	GameObject::CreateAnimater(L"Player",0.1f);
-	GetCollider()->SetScale(Vector3((float)_MyTex->Width() * 0.8f, (float)_MyTex->Height(), 0) * 0.85f);
+	GetCollider()->SetScale(Vector3((float)_MyTex->Width() * 0.7f, (float)_MyTex->Height(), 0) * 0.70f);
 	GameObject::SetName(L"Player");
 	_StaminaBarMin = new StaminaBarMin;
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		AnswerCircle* answer = new AnswerCircle;
 		answer->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
@@ -26,7 +26,7 @@ Player::Player(): _MyTex(nullptr), _JumpPower(1800), _Speed(500), _IsRun(false),
 		CreateObject(answer, LAYER_GROUP::INGAMEUI);
 
 	}
-	Circle = 3;
+	Circle = 4;
 }
 
 Player::~Player()
@@ -122,6 +122,17 @@ void Player::Render()
 
 void Player::Move()
 {
+	static double Timer = 0;	
+	if (Timer <= 20)
+	{
+		if (inputSystem->isKeyDown(VK_RETURN))
+		{
+			Timer += 1.9;
+		}
+		Timer += timeManager->GetDeltaTime();
+		return;
+	}		
+
 	float speed;
 	Vector3 dir;
 	if (inputSystem->isKey(VK_LEFT)|| inputSystem->isKey('A')) 
@@ -300,12 +311,12 @@ void Player::OnCollisionEnter(Collider* collider)
 
 void Player::Init() //스테이지 리로드마다 상태 변경해주기
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		_Answer[i]->SetLocation(Vector3(-10000.0f, -10000.0f, 0));
 		_Answer[i]->SetEnable(false);
 	}
-	Circle = 3;
+	Circle = 4;
 	SetLocation(Vector3(-800, 230, 0));
 	_Runable = true;
 	_IsHit = false;
